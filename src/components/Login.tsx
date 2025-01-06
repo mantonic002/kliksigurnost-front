@@ -8,7 +8,7 @@ const schema = z.object({
   email: z.string().email({ message: "Email is not valid" }),
   password: z
     .string()
-    .min(8, { message: "Password must be longer than 8 characters" }),
+    .min(5, { message: "Password must be longer than 8 characters" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -22,7 +22,7 @@ function Login() {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = (data: FieldValues) =>
+  const onSubmit = (data: FieldValues) => {
     authService
       .login(data.email, data.password)
       .then(() => console.log(authService.getToken()))
@@ -30,6 +30,9 @@ function Login() {
         setErr(error.message);
         console.log(err);
       });
+
+    //TODO: redirect to home
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

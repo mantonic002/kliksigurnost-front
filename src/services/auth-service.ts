@@ -13,6 +13,7 @@ class AuthService {
             // Store the JWT token in localStorage
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
+                this.setTokenToApiClient(response.data.token)
             }
             return response;
         } catch (error) {
@@ -30,6 +31,7 @@ class AuthService {
             // Store the JWT token in localStorage
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
+                this.setTokenToApiClient(response.data.token)
             }
             return response;
         } catch (error) {
@@ -50,6 +52,20 @@ class AuthService {
     // Get token from localStorage
     getToken() {
         return localStorage.getItem('token');
+    }
+
+    setTokenToApiClient(token:string) {
+        apiClient.interceptors.request.use(
+            (config) => {
+                if (token) {
+                    config.headers['Authorization'] = `Bearer ${token}`;
+                }
+                return config;
+            },
+            (error) => {
+                return Promise.reject(error);
+            }
+        );
     }
 }
 
