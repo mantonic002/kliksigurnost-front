@@ -1,0 +1,56 @@
+import apiClient from "./api-client";
+
+class AuthService {
+    // Register method
+    async register(firstName: string, lastName: string, email: string, password: string) {
+        try {
+            const response = await apiClient.post('/api/auth/register', {
+                firstName,
+                lastName,
+                email,
+                password,
+            });
+            // Store the JWT token in localStorage
+            if (response.data.token) {
+                localStorage.setItem('token', response.data.token);
+            }
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // Login method
+    async login(email: string, password: string) {
+        try {
+            const response = await apiClient.post('/api/auth/authenticate', {
+                email,
+                password,
+            });
+            // Store the JWT token in localStorage
+            if (response.data.token) {
+                localStorage.setItem('token', response.data.token);
+            }
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // Logout method
+    logout() {
+        localStorage.removeItem('token');
+    }
+
+    // Check if user is authenticated by checking token in localStorage
+    isAuthenticated() {
+        return !!localStorage.getItem('token');
+    }
+
+    // Get token from localStorage
+    getToken() {
+        return localStorage.getItem('token');
+    }
+}
+
+export default new AuthService();
