@@ -2,11 +2,9 @@ import apiClient from "./api-client";
 
 class AuthService {
     // Register method
-    async register(firstName: string, lastName: string, email: string, password: string) {
+    async register(email: string, password: string) {
         try {
             const response = await apiClient.post('/api/auth/register', {
-                firstName,
-                lastName,
                 email,
                 password,
             });

@@ -4,16 +4,29 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../services/auth-service";
 import { useState } from "react";
 
-const schema = z.object({
-  email: z.string().email({ message: "Email is not valid" }),
-  password: z
-    .string()
-    .min(5, { message: "Password must be longer than 5 characters" }),
-});
+const schema = z
+  .object({
+    email: z.string().email({ message: "Email is not valid" }),
+    password: z
+      .string()
+      .min(5, { message: "Password must be longer than 5 characters" }),
+    confirmPassword: z
+      .string()
+      .min(5, { message: "Password must be longer than 5 characters" }),
+  })
+  .superRefine((val, ctx) => {
+    if (val.password !== val.confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Password is not the same as confirm password",
+        path: ["confirmPassword"],
+      });
+    }
+  });
 
 type FormData = z.infer<typeof schema>;
 
-function Login() {
+function Register() {
   const [err, setErr] = useState("");
 
   const {
@@ -24,8 +37,11 @@ function Login() {
 
   const onSubmit = (data: FieldValues) => {
     authService
-      .login(data.email, data.password)
-      .then(() => console.log(authService.getToken()))
+      .register(data.email, data.password)
+      .then(() => {
+        console.log(authService.getToken());
+        //TODO: check for errors
+      })
       .catch((error) => {
         setErr(error.message);
         console.log(err);
@@ -62,6 +78,21 @@ function Login() {
           <p className="text-danger">{errors.password.message}</p>
         )}
       </div>
+
+      <div className="mb-3">
+        <label htmlFor="confirm-password" className="form-label">
+          Confirm password:
+        </label>
+        <input
+          {...register("confirmPassword")}
+          id="confirm-password"
+          type="password"
+          className="form-control"
+        />
+        {errors.confirmPassword && (
+          <p className="text-danger">{errors.confirmPassword.message}</p>
+        )}
+      </div>
       <button id="submit" type="submit" className="btn btn-primary">
         Submit
       </button>
@@ -69,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
