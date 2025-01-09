@@ -1,9 +1,11 @@
-import "../App.css";
-import { SidebarData } from "./SidebarData";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { SidebarData } from "./SidebarData";
 
-function Sidebar() {
-  let navigate = useNavigate();
+const Sidebar = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
@@ -11,9 +13,15 @@ function Sidebar() {
           <li
             key={index}
             className="SidebarItem"
-            id={window.location.pathname == item.link ? "active" : ""}
+            id={window.location.pathname === item.link ? "active" : ""}
             onClick={() => {
-              navigate(item.link);
+              // If the item is "Odjava" (logout), perform logout
+              if (item.title === "Odjava") {
+                logout();
+                navigate("/login"); // Redirect to login
+              } else {
+                navigate(item.link); // Navigate to other links
+              }
             }}
           >
             <div id="icon">{item.icon}</div>
@@ -23,6 +31,6 @@ function Sidebar() {
       </ul>
     </div>
   );
-}
+};
 
 export default Sidebar;

@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../services/auth-service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const schema = z
   .object({
@@ -30,6 +31,7 @@ type FormData = z.infer<typeof schema>;
 function Register() {
   const [err, setErr] = useState("");
   let navigate = useNavigate();
+  const { login } = useAuth();
 
   const {
     register,
@@ -42,7 +44,8 @@ function Register() {
       .register(data.email, data.password)
       .then(() => {
         console.log(authService.getToken());
-        navigate("/");
+        login();
+        navigate("/home");
         //TODO: check for errors
       })
       .catch((error) => {
@@ -93,6 +96,11 @@ function Register() {
         {errors.confirmPassword && (
           <p className="text-danger">{errors.confirmPassword.message}</p>
         )}
+      </div>
+      <div>
+        <a href="/login" onClick={() => navigate("/login")}>
+          Vec imate nalog? Prijavite se.
+        </a>
       </div>
       <button id="submit" type="submit" className="btn btn-primary">
         Submit

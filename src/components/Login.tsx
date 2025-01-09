@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../services/auth-service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const schema = z.object({
   email: z.string().email({ message: "Email is not valid" }),
@@ -17,6 +18,7 @@ type FormData = z.infer<typeof schema>;
 function Login() {
   const [err, setErr] = useState("");
   let navigate = useNavigate();
+  const { login } = useAuth();
 
   const {
     register,
@@ -29,7 +31,8 @@ function Login() {
       .login(data.email, data.password)
       .then(() => {
         console.log(authService.getToken());
-        navigate("/");
+        login();
+        navigate("/home");
       })
       .catch((error) => {
         setErr(error.message);
@@ -67,6 +70,11 @@ function Login() {
       </div>
       {err && <p className="text-danger">Wrong email or password</p>}
 
+      <div>
+        <a href="/register" onClick={() => navigate("/register")}>
+          Kreirajte novi nalog
+        </a>
+      </div>
       <button id="submit" type="submit" className="btn btn-primary">
         Submit
       </button>
