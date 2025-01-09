@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../services/auth-service";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().email({ message: "Email is not valid" }),
@@ -15,6 +16,7 @@ type FormData = z.infer<typeof schema>;
 
 function Login() {
   const [err, setErr] = useState("");
+  let navigate = useNavigate();
 
   const {
     register,
@@ -25,13 +27,14 @@ function Login() {
   const onSubmit = (data: FieldValues) => {
     authService
       .login(data.email, data.password)
-      .then(() => console.log(authService.getToken()))
+      .then(() => {
+        console.log(authService.getToken());
+        navigate("/");
+      })
       .catch((error) => {
         setErr(error.message);
         console.log(err);
       });
-
-    //TODO: redirect to home
   };
 
   return (
@@ -62,6 +65,8 @@ function Login() {
           <p className="text-danger">{errors.password.message}</p>
         )}
       </div>
+      {err && <p className="text-danger">Wrong email or password</p>}
+
       <button id="submit" type="submit" className="btn btn-primary">
         Submit
       </button>

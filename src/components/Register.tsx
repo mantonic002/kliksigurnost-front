@@ -3,6 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../services/auth-service";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const schema = z
   .object({
@@ -28,6 +29,7 @@ type FormData = z.infer<typeof schema>;
 
 function Register() {
   const [err, setErr] = useState("");
+  let navigate = useNavigate();
 
   const {
     register,
@@ -40,14 +42,13 @@ function Register() {
       .register(data.email, data.password)
       .then(() => {
         console.log(authService.getToken());
+        navigate("/");
         //TODO: check for errors
       })
       .catch((error) => {
         setErr(error.message);
         console.log(err);
       });
-
-    //TODO: redirect to home
   };
 
   return (
