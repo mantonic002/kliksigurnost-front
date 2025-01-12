@@ -21,7 +21,7 @@ class HttpService {
     }
 
     post<T>(entity:T) {
-        return apiClient.post(this.endpoint + '/', entity)
+        return apiClient.post(this.endpoint, entity)
     }
 }
 

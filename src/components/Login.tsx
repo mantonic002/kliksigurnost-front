@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const schema = z.object({
-  email: z.string().email({ message: "Email is not valid" }),
+  email: z.string().email({ message: "Email nije validan" }),
   password: z
     .string()
-    .min(5, { message: "Password must be longer than 5 characters" }),
+    .min(5, { message: "Lozinka mora biti duža od 6 karaktera" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -56,7 +56,7 @@ function Login() {
       </div>
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
-          Password:
+          Lozinka:
         </label>
         <input
           {...register("password")}
@@ -68,7 +68,7 @@ function Login() {
           <p className="text-danger">{errors.password.message}</p>
         )}
       </div>
-      {err && <p className="text-danger">Wrong email or password</p>}
+      {err && <p className="text-danger">Pogrešan email ili lozinka</p>}
 
       <div>
         <a href="/register" onClick={() => navigate("/register")}>
@@ -76,7 +76,7 @@ function Login() {
         </a>
       </div>
       <button id="submit" type="submit" className="btn btn-primary">
-        Submit
+        Potvrdi
       </button>
     </form>
   );
