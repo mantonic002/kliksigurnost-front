@@ -5,6 +5,6 @@ export interface Policy {
     name: string;
     action: string;
     traffic: string;
-  }
+}
 
 export default create("/api/policies");
