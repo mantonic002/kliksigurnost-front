@@ -1,49 +1,107 @@
 .App {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
 
 .Sidebar {
-    height: 100%;
-    width: 30%;
-    background-color: #2F4050;
+  height: 100%;
+  width: 30%;
+  background-color: #2f4050;
 }
 
 .SidebarList {
-    height: auto;
-    padding: 0;
-    width: 100%;
+  height: auto;
+  padding: 0;
+  width: 100%;
 }
 
 .SidebarList .SidebarItem {
-    width: 100%;
-    height: 60px;
-    list-style-type: none;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .SidebarList .SidebarItem:hover {
-    cursor: pointer;
-    background-color: #293545;
+  cursor: pointer;
+  background-color: #293545;
 }
 
 .SidebarList #active {
-    background-color: #293545;
+  background-color: #293545;
 }
 
 .SidebarItem #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
+  flex: 30%;
+  display: grid;
+  place-items: center;
 }
 
 .SidebarItem #title {
-    flex: 70%;
+  flex: 70%;
+}
+
+/* Schedule form */
+.scheduleForm {
+  border: solid gray 1px;
+  padding: 10px;
+  border-radius: 1%;
+  width: fit-content;
+  height: fit-content;
+}
+
+.scheduleContainer {
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.scheduleContainer .label {
+  flex: 10%;
+  min-width: 60px;
+  display: grid;
+  place-items: left;
+  padding: 5px;
+}
+
+.timeRangeContainer {
+  flex: 80%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.timeRange {
+  padding: 5px;
+}
+
+.timeRange input {
+  margin-right: 3px;
+  width: auto;
+}
+
+.btnAddRange {
+  flex: 10%;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.timeZoneInput {
+  margin-bottom: 10px;
+}
+
+.timeZoneInput input {
+  margin-bottom: 10px;
 }
