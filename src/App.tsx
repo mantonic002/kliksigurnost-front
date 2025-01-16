@@ -26,20 +26,24 @@ const AppContent = () => {
       {/* Show sidebar only if user is logged in */}
       {isAuthenticated && <Sidebar />}
 
-      <Routes>
-        {/* Routes for login and register */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+      <div className="Content">
+        <Routes>
+          {/* Routes for login and register */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        {/* Dynamically render routes based on SidebarData */}
-        {SidebarData.map((item, index) => {
-          if (item.title === "Odjava") {
-            return <Route path={item.link} element={<Login />} key={index} />;
-          }
-          // Other routes for logged-in users
-          return <Route path={item.link} element={item.element} key={index} />;
-        })}
-      </Routes>
+          {/* Dynamically render routes based on SidebarData */}
+          {SidebarData.map((item, index) => {
+            if (item.title === "Odjava") {
+              return <Route path={item.link} element={<Login />} key={index} />;
+            }
+            // Other routes for logged-in users
+            return (
+              <Route path={item.link} element={item.element} key={index} />
+            );
+          })}
+        </Routes>
+      </div>
     </div>
   );
 };

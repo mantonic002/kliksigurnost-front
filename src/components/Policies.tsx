@@ -6,6 +6,12 @@ import policyService, { Policy } from "../services/policy-service";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
+import {
+  AiFillCaretDown,
+  AiFillCaretUp,
+  AiFillPlusCircle,
+  AiFillPlusSquare,
+} from "react-icons/ai";
 
 // Define the schedule schema
 const scheduleSchema = z.object({
@@ -33,6 +39,7 @@ function PolicyManager() {
   const [error, setError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]); // To track selected categories and subcategories
   const [isLoading, setIsLoading] = useState(false);
+  const [scheduleFormOpen, setScheduleFormOpen] = useState(false);
 
   const {
     register,
@@ -219,51 +226,67 @@ function PolicyManager() {
           </div>
 
           {/* Schedule Picker */}
-          <div className="scheduleForm">
-            {Object.keys(days).map((day) => {
-              const dayKey = day as keyof PolicyFormData["schedule"];
-              if (dayKey === "time_zone") return null;
-              return (
-                <div key={dayKey} className="scheduleContainer">
-                  <label className="label form-label">
-                    {dayKey.charAt(0).toUpperCase() + dayKey.slice(1)}:
-                  </label>
-                  <div className="timeRangeContainer">
-                    {Array.isArray(days[dayKey]) &&
-                      days[dayKey]?.map((_, index) => {
-                        if (index % 2 === 0) {
-                          return (
-                            <div key={index} className="timeRange">
-                              <input
-                                type="time"
-                                {...register(
-                                  `schedule.${dayKey}.${index}` as const
-                                )}
-                                placeholder="Start Time"
-                              />
-                              <input
-                                type="time"
-                                {...register(
-                                  `schedule.${dayKey}.${index + 1}` as const
-                                )}
-                                placeholder="End Time"
-                              />
-                            </div>
-                          );
-                        }
-                        return null;
-                      })}
-                  </div>
-                  <button
-                    className="btnAddRange btn btn-success"
-                    type="button"
-                    onClick={() => addTimeRange(dayKey)}
-                  >
-                    +
-                  </button>
+          <div className="mb-3">
+            <label className="form-label">Schedule</label>
+            {scheduleFormOpen ? (
+              <>
+                <AiFillCaretUp
+                  className="iconButton"
+                  onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
+                ></AiFillCaretUp>
+                <div className="scheduleForm">
+                  {Object.keys(days).map((day) => {
+                    const dayKey = day as keyof PolicyFormData["schedule"];
+                    if (dayKey === "time_zone") return null;
+                    return (
+                      <div key={dayKey} className="scheduleContainer">
+                        <label className="label form-label">
+                          {dayKey.charAt(0).toUpperCase() + dayKey.slice(1)}:
+                        </label>
+                        <div className="timeRangeContainer">
+                          {Array.isArray(days[dayKey]) &&
+                            days[dayKey]?.map((_, index) => {
+                              if (index % 2 === 0) {
+                                return (
+                                  <div key={index} className="timeRange">
+                                    <input
+                                      type="time"
+                                      {...register(
+                                        `schedule.${dayKey}.${index}` as const
+                                      )}
+                                      placeholder="Start Time"
+                                    />
+                                    <input
+                                      type="time"
+                                      {...register(
+                                        `schedule.${dayKey}.${
+                                          index + 1
+                                        }` as const
+                                      )}
+                                      placeholder="End Time"
+                                    />
+                                  </div>
+                                );
+                              }
+                              return null;
+                            })}
+                        </div>
+                        <AiFillPlusSquare
+                          className="iconButton"
+                          size="40"
+                          onClick={() => addTimeRange(dayKey)}
+                        ></AiFillPlusSquare>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </>
+            ) : (
+              <AiFillCaretDown
+                className="iconButton"
+                onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
+              ></AiFillCaretDown>
+            )}
           </div>
 
           <button type="submit" className="btn btn-success">
