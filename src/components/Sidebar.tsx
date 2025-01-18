@@ -18,9 +18,9 @@ const Sidebar = () => {
               // If the item is "Odjava" (logout), perform logout
               if (item.title === "Odjava") {
                 logout();
-                navigate("/login"); // Redirect to login
+                navigate("/login");
               } else {
-                navigate(item.link); // Navigate to other links
+                navigate(item.link);
               }
             }}
           >
