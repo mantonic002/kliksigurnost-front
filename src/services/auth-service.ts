@@ -43,16 +43,7 @@ class AuthService {
 
     logout() {
         localStorage.removeItem('token');
-        apiClient.interceptors.request.use(
-          (config) => {
-            delete config.headers['Authorization'];
-            return config;
-          },
-          (error) => {
-            return Promise.reject(error);
-          }
-        );
-      }
+    }
       
 
     isAuthenticated() {

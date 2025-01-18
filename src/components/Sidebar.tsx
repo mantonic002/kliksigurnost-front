@@ -19,6 +19,7 @@ const Sidebar = () => {
               if (item.title === "Odjava") {
                 logout();
                 navigate("/login");
+                window.location.reload();
               } else {
                 navigate(item.link);
               }
