@@ -29,6 +29,7 @@ const AppContent = () => {
       <div className="Content">
         <Routes>
           {/* Routes for login and register */}
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 

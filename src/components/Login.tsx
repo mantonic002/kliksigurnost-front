@@ -26,6 +26,10 @@ function Login() {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
+  const googleLogin = () => {
+    window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+  };
+
   const onSubmit = (data: FieldValues) => {
     authService
       .login(data.email, data.password)
@@ -41,44 +45,52 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email:
-        </label>
-        <input
-          {...register("email")}
-          id="email"
-          type="text"
-          className="form-control"
-        />
-        {errors.email && <p className="text-danger">{errors.email.message}</p>}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Lozinka:
-        </label>
-        <input
-          {...register("password")}
-          id="password"
-          type="password"
-          className="form-control"
-        />
-        {errors.password && (
-          <p className="text-danger">{errors.password.message}</p>
-        )}
-      </div>
-      {err && <p className="text-danger">Pogrešan email ili lozinka</p>}
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
+          <input
+            {...register("email")}
+            id="email"
+            type="text"
+            className="form-control"
+          />
+          {errors.email && (
+            <p className="text-danger">{errors.email.message}</p>
+          )}
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Lozinka:
+          </label>
+          <input
+            {...register("password")}
+            id="password"
+            type="password"
+            className="form-control"
+          />
+          {errors.password && (
+            <p className="text-danger">{errors.password.message}</p>
+          )}
+        </div>
+        {err && <p className="text-danger">Pogrešan email ili lozinka</p>}
 
+        <button id="submit" type="submit" className="btn btn-primary">
+          Potvrdi
+        </button>
+      </form>
+
+      <button onClick={googleLogin} className="btn btn-success">
+        Prijavite se pomoču google naloga
+      </button>
       <div>
         <a href="/register" onClick={() => navigate("/register")}>
           Kreirajte novi nalog
         </a>
       </div>
-      <button id="submit" type="submit" className="btn btn-primary">
-        Potvrdi
-      </button>
-    </form>
+    </>
   );
 }
 

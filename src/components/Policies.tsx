@@ -37,7 +37,7 @@ type PolicyFormData = z.infer<typeof schema>;
 function PolicyManager() {
   const [policies, setPolicies] = useState<Policy[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategories, setSelectedCategories] = useState<any[]>([]); // To track selected categories and subcategories
+  const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [scheduleFormOpen, setScheduleFormOpen] = useState(false);
 
@@ -61,7 +61,7 @@ function PolicyManager() {
     fri: ["", ""],
     sat: ["", ""],
     sun: ["", ""],
-    time_zone: "", // Change this to an empty string instead of an array
+    time_zone: "",
   });
 
   const addTimeRange = (day: keyof PolicyFormData["schedule"]) => {
@@ -95,8 +95,8 @@ function PolicyManager() {
     ...(category.subcategories
       ? category.subcategories.map((sub) => ({
           value: sub.id,
-          label: `— ${sub.name}`, // Indented label for subcategory
-          parentId: category.id, // Indicate the parent category
+          label: `— ${sub.name}`,
+          parentId: category.id,
         }))
       : []),
   ]);
