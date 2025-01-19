@@ -1,6 +1,11 @@
 import apiClient from "./api-client";
 
 class AuthService {
+    constructor() {
+        // Ensure the token is set when the app initializes
+        this.setTokenToApiClient(localStorage.getItem('token'));
+    }
+
     async register(email: string, password: string) {
         try {
             const response = await apiClient.post('/api/auth/register', {
@@ -9,7 +14,7 @@ class AuthService {
             });
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                this.setTokenToApiClient(response.data.token)
+                this.setTokenToApiClient(response.data.token);
             }
             return response;
         } catch (error) {
@@ -25,7 +30,7 @@ class AuthService {
             });
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                this.setTokenToApiClient(response.data.token)
+                this.setTokenToApiClient(response.data.token);
             }
             return response;
         } catch (error) {
@@ -36,15 +41,13 @@ class AuthService {
     loginGoogle(token: string) {
         if (token) {
             localStorage.setItem('token', token);
-            this.setTokenToApiClient(token)
+            this.setTokenToApiClient(token);
         }
     }
-
 
     logout() {
         localStorage.removeItem('token');
     }
-      
 
     isAuthenticated() {
         return !!localStorage.getItem('token');
@@ -54,7 +57,8 @@ class AuthService {
         return localStorage.getItem('token');
     }
 
-    setTokenToApiClient(token:string) {
+    // Set token to apiClient's headers
+    setTokenToApiClient(token: string | null) {
         apiClient.interceptors.request.use(
             (config) => {
                 if (token) {

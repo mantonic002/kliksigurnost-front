@@ -5,6 +5,8 @@ import { SidebarData } from "./components/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import { useEffect } from "react";
+import authService from "./services/auth-service";
 
 function App() {
   return (
@@ -19,7 +21,13 @@ function App() {
 }
 
 const AppContent = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
+
+  useEffect(() => {
+    const token = authService.getToken();
+    if (token) authService.setTokenToApiClient(token);
+    else logout();
+  }, []);
 
   return (
     <div className="App">
