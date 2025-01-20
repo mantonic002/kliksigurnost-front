@@ -52,9 +52,7 @@ function PolicyManager() {
     resolver: zodResolver(schema),
   });
 
-  const [days, setDays] = useState<
-    Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
-  >({
+  const defDays = {
     mon: ["", ""],
     tue: ["", ""],
     wed: ["", ""],
@@ -63,7 +61,11 @@ function PolicyManager() {
     sat: ["", ""],
     sun: ["", ""],
     time_zone: "",
-  });
+  };
+  const [days, setDays] =
+    useState<
+      Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
+    >(defDays);
 
   const addTimeRange = (day: keyof PolicyFormData["schedule"]) => {
     setDays((prevDays) => ({
@@ -173,16 +175,56 @@ function PolicyManager() {
   const onSubmit = (data: PolicyFormData) => {
     const formattedSchedule = Object.entries(data.schedule).reduce(
       (acc, [day, timeRanges]) => {
-        if (day !== "time_zone") {
-          const formattedRanges = (timeRanges as string[])
-            .reduce((result, time, index, arr) => {
+        if (day !== "time_zone" && timeRanges[0] !== "") {
+          console.log(timeRanges);
+
+          // Create a list of ranges
+          const ranges = (timeRanges as string[]).reduce(
+            (result, time, index, arr) => {
               if (time && index % 2 === 0) {
-                result.push(`${time}-${arr[index + 1]}`);
+                result.push({ start: time, end: arr[index + 1] });
               }
               return result;
-            }, [] as string[])
-            .join(",");
-          acc[day as keyof PolicyFormData["schedule"]] = formattedRanges;
+            },
+            [] as { start: string; end: string }[]
+          );
+
+          const timeToMinutes = (time: string) => {
+            const [hours, minutes] = time.split(":").map(Number);
+            return hours * 60 + minutes;
+          };
+
+          // Sort ranges by start time
+          ranges.sort(
+            (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start)
+          );
+
+          // Merge overlapping ranges
+          const mergedRanges = [];
+          let currentStart = ranges[0].start;
+          let currentEnd = ranges[0].end;
+
+          for (let i = 1; i < ranges.length; i++) {
+            const { start, end } = ranges[i];
+            if (timeToMinutes(start) <= timeToMinutes(currentEnd)) {
+              // Overlapping or touching ranges, merge them
+              currentEnd =
+                timeToMinutes(end) > timeToMinutes(currentEnd)
+                  ? end
+                  : currentEnd;
+            } else {
+              // No overlap, push the previous range and start a new one
+              mergedRanges.push(`${currentStart}-${currentEnd}`);
+              currentStart = start;
+              currentEnd = end;
+            }
+          }
+
+          // Push the last merged range
+          mergedRanges.push(`${currentStart}-${currentEnd}`);
+
+          // Join the merged ranges into a string and assign to the accumulator
+          acc[day as keyof PolicyFormData["schedule"]] = mergedRanges.join(",");
         }
         return acc;
       },
@@ -207,6 +249,7 @@ function PolicyManager() {
         setPolicies(res.data);
         reset(); // Clears the form
         setScheduleFormOpen(false);
+        setDays(defDays);
         handleCategoryChange([]);
       })
       .catch((error: any) => {
