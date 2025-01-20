@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import policyService, { Policy } from "../services/policy-service";
+import policyService, { Policy, Schedule } from "../services/policy-service";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
@@ -62,6 +62,7 @@ function PolicyManager() {
     sun: ["", ""],
     time_zone: "",
   };
+
   const [days, setDays] =
     useState<
       Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
@@ -72,6 +73,19 @@ function PolicyManager() {
       ...prevDays,
       [day]: [...(prevDays[day] || []), "", ""],
     }));
+  };
+
+  // For displaying policies
+  const formatSchedule = (schedule: Schedule) => {
+    return Object.entries(schedule)
+      .map(([day, timeRanges]) => {
+        if (day === "time_zone" || timeRanges === null) return null;
+        else {
+          return `${day}: ${timeRanges}`;
+        }
+      })
+      .filter(Boolean)
+      .join(" | ");
   };
 
   // Fetch policies on component mount
@@ -271,17 +285,23 @@ function PolicyManager() {
               <th>Name</th>
               <th>Action</th>
               <th>Category</th>
+              <th>Schedule</th> {/* New column for Schedule */}
             </tr>
           </thead>
           <tbody>
             {policies.map((policy) => {
               const categoryIds = extractCategoryIds(policy.traffic);
               const categoryNames = getCategoryNames(categoryIds);
+
+              // Format schedule for this policy
+              const schedule = formatSchedule(policy.schedule || {});
+
               return (
                 <tr key={policy.id}>
                   <td>{policy.name}</td>
                   <td>{policy.action}</td>
                   <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                  <td>{schedule}</td> {/* Display schedule */}
                 </tr>
               );
             })}
