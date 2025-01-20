@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import policyService, { Policy } from "../services/policy-service";
+import policyService, { Policy, Schedule } from "../services/policy-service";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
@@ -52,9 +52,7 @@ function PolicyManager() {
     resolver: zodResolver(schema),
   });
 
-  const [days, setDays] = useState<
-    Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
-  >({
+  const defDays = {
     mon: ["", ""],
     tue: ["", ""],
     wed: ["", ""],
@@ -63,13 +61,31 @@ function PolicyManager() {
     sat: ["", ""],
     sun: ["", ""],
     time_zone: "",
-  });
+  };
+
+  const [days, setDays] =
+    useState<
+      Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
+    >(defDays);
 
   const addTimeRange = (day: keyof PolicyFormData["schedule"]) => {
     setDays((prevDays) => ({
       ...prevDays,
       [day]: [...(prevDays[day] || []), "", ""],
     }));
+  };
+
+  // For displaying policies
+  const formatSchedule = (schedule: Schedule) => {
+    return Object.entries(schedule)
+      .map(([day, timeRanges]) => {
+        if (day === "time_zone" || timeRanges === null) return null;
+        else {
+          return `${day}: ${timeRanges}`;
+        }
+      })
+      .filter(Boolean)
+      .join(" | ");
   };
 
   // Fetch policies on component mount
@@ -173,16 +189,56 @@ function PolicyManager() {
   const onSubmit = (data: PolicyFormData) => {
     const formattedSchedule = Object.entries(data.schedule).reduce(
       (acc, [day, timeRanges]) => {
-        if (day !== "time_zone") {
-          const formattedRanges = (timeRanges as string[])
-            .reduce((result, time, index, arr) => {
+        if (day !== "time_zone" && timeRanges[0] !== "") {
+          console.log(timeRanges);
+
+          // Create a list of ranges
+          const ranges = (timeRanges as string[]).reduce(
+            (result, time, index, arr) => {
               if (time && index % 2 === 0) {
-                result.push(`${time}-${arr[index + 1]}`);
+                result.push({ start: time, end: arr[index + 1] });
               }
               return result;
-            }, [] as string[])
-            .join(",");
-          acc[day as keyof PolicyFormData["schedule"]] = formattedRanges;
+            },
+            [] as { start: string; end: string }[]
+          );
+
+          const timeToMinutes = (time: string) => {
+            const [hours, minutes] = time.split(":").map(Number);
+            return hours * 60 + minutes;
+          };
+
+          // Sort ranges by start time
+          ranges.sort(
+            (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start)
+          );
+
+          // Merge overlapping ranges
+          const mergedRanges = [];
+          let currentStart = ranges[0].start;
+          let currentEnd = ranges[0].end;
+
+          for (let i = 1; i < ranges.length; i++) {
+            const { start, end } = ranges[i];
+            if (timeToMinutes(start) <= timeToMinutes(currentEnd)) {
+              // Overlapping or touching ranges, merge them
+              currentEnd =
+                timeToMinutes(end) > timeToMinutes(currentEnd)
+                  ? end
+                  : currentEnd;
+            } else {
+              // No overlap, push the previous range and start a new one
+              mergedRanges.push(`${currentStart}-${currentEnd}`);
+              currentStart = start;
+              currentEnd = end;
+            }
+          }
+
+          // Push the last merged range
+          mergedRanges.push(`${currentStart}-${currentEnd}`);
+
+          // Join the merged ranges into a string and assign to the accumulator
+          acc[day as keyof PolicyFormData["schedule"]] = mergedRanges.join(",");
         }
         return acc;
       },
@@ -207,6 +263,7 @@ function PolicyManager() {
         setPolicies(res.data);
         reset(); // Clears the form
         setScheduleFormOpen(false);
+        setDays(defDays);
         handleCategoryChange([]);
       })
       .catch((error: any) => {
@@ -228,17 +285,23 @@ function PolicyManager() {
               <th>Name</th>
               <th>Action</th>
               <th>Category</th>
+              <th>Schedule</th> {/* New column for Schedule */}
             </tr>
           </thead>
           <tbody>
             {policies.map((policy) => {
               const categoryIds = extractCategoryIds(policy.traffic);
               const categoryNames = getCategoryNames(categoryIds);
+
+              // Format schedule for this policy
+              const schedule = formatSchedule(policy.schedule || {});
+
               return (
                 <tr key={policy.id}>
                   <td>{policy.name}</td>
                   <td>{policy.action}</td>
                   <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                  <td>{schedule}</td> {/* Display schedule */}
                 </tr>
               );
             })}
