@@ -9,7 +9,6 @@ import categoriesData from "../data/content-categories.json";
 import {
   AiFillCaretDown,
   AiFillCaretUp,
-  AiFillPlusCircle,
   AiFillPlusSquare,
 } from "react-icons/ai";
 
@@ -38,7 +37,7 @@ function PolicyManager() {
   const [policies, setPolicies] = useState<Policy[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false); // isLoading deleted, add later if needed
   const [scheduleFormOpen, setScheduleFormOpen] = useState(false);
 
   const {
@@ -46,7 +45,7 @@ function PolicyManager() {
     handleSubmit,
     formState: { errors },
     setValue,
-    getValues,
+   // getValues, uncomment later if needed
   } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
