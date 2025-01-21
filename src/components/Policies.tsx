@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import policyService, { Policy } from "../services/policy-service";
+import policyService, { Policy, Schedule } from "../services/policy-service";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
+import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import {
   AiFillCaretDown,
   AiFillCaretUp,
@@ -45,14 +46,14 @@ function PolicyManager() {
     handleSubmit,
     formState: { errors },
     setValue,
+
    // getValues, uncomment later if needed
+    reset,
   } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
 
-  const [days, setDays] = useState<
-    Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
-  >({
+  const defDays = {
     mon: ["", ""],
     tue: ["", ""],
     wed: ["", ""],
@@ -61,13 +62,31 @@ function PolicyManager() {
     sat: ["", ""],
     sun: ["", ""],
     time_zone: "",
-  });
+  };
+
+  const [days, setDays] =
+    useState<
+      Partial<Record<keyof PolicyFormData["schedule"], string | string[]>>
+    >(defDays);
 
   const addTimeRange = (day: keyof PolicyFormData["schedule"]) => {
     setDays((prevDays) => ({
       ...prevDays,
       [day]: [...(prevDays[day] || []), "", ""],
     }));
+  };
+
+  // For displaying policies
+  const formatSchedule = (schedule: Schedule) => {
+    return Object.entries(schedule)
+      .map(([day, timeRanges]) => {
+        if (day === "time_zone" || timeRanges === null) return null;
+        else {
+          return `${day}: ${timeRanges}`;
+        }
+      })
+      .filter(Boolean)
+      .join(" | ");
   };
 
   // Fetch policies on component mount
@@ -88,17 +107,63 @@ function PolicyManager() {
     return () => cancel();
   }, []);
 
-  // Flatten category structure and create options for react-select
-  const categoryOptions = categoriesData.categories.flatMap((category) => [
-    { value: category.id, label: category.name, parentId: null }, // Parent category
-    ...(category.subcategories
-      ? category.subcategories.map((sub) => ({
-          value: sub.id,
-          label: `— ${sub.name}`,
-          parentId: category.id,
-        }))
-      : []),
-  ]);
+  // Preprocess categories into a structure that makes lookups easy
+  const { categoryOptions, categoryMap } = useMemo(() => {
+    const categoryMap = new Map<number, string>();
+    const categoryOptions = categoriesData.categories.flatMap((category) => [
+      { value: category.id, label: category.name, parentId: null }, // Parent category
+      ...(category.subcategories
+        ? category.subcategories.map((sub) => ({
+            value: sub.id,
+            label: `— ${sub.name}`,
+            parentId: category.id,
+          }))
+        : []),
+    ]);
+
+    categoriesData.categories.forEach((category) => {
+      categoryMap.set(category.id, category.name);
+      category.subcategories?.forEach((sub) => {
+        categoryMap.set(sub.id, sub.name);
+      });
+    });
+
+    return { categoryOptions, categoryMap };
+  }, []);
+
+  // Helper function to extract category IDs from traffic string
+  const extractCategoryIds = (traffic: string): number[] => {
+    const match = traffic.match(/{([^}]+)}/);
+    return match ? match[1].split(" ").map(Number) : [];
+  };
+
+  // Function to get category names from IDs using the preprocessed categoryMap
+  const getCategoryNames = (categoryIds: number[]): string[] => {
+    return categoryIds.map((id) => categoryMap.get(id) || "Unknown");
+  };
+
+  // Helper function to truncate category list
+  const truncateCategoryNames = (
+    categoryNames: string[],
+    maxLength: number = 3
+  ) => {
+    if (categoryNames.length > maxLength) {
+      return [...categoryNames.slice(0, maxLength), "..."];
+    }
+    return categoryNames;
+  };
+
+  const renderCategoriesWithTooltip = (categoryNames: string[]) => {
+    const categoryText = categoryNames.join(", ");
+    return (
+      <OverlayTrigger
+        placement="bottom"
+        overlay={<Tooltip id="tooltip-categories">{categoryText}</Tooltip>}
+      >
+        <span>{truncateCategoryNames(categoryNames).join(", ")}</span>
+      </OverlayTrigger>
+    );
+  };
 
   // Handle category selection and automatically select subcategories if parent category is selected
   const handleCategoryChange = (selectedOptions: any) => {
@@ -125,16 +190,56 @@ function PolicyManager() {
   const onSubmit = (data: PolicyFormData) => {
     const formattedSchedule = Object.entries(data.schedule).reduce(
       (acc, [day, timeRanges]) => {
-        if (day !== "time_zone") {
-          const formattedRanges = (timeRanges as string[])
-            .reduce((result, time, index, arr) => {
+        if (day !== "time_zone" && timeRanges[0] !== "") {
+          console.log(timeRanges);
+
+          // Create a list of ranges
+          const ranges = (timeRanges as string[]).reduce(
+            (result, time, index, arr) => {
               if (time && index % 2 === 0) {
-                result.push(`${time}-${arr[index + 1]}`);
+                result.push({ start: time, end: arr[index + 1] });
               }
               return result;
-            }, [] as string[])
-            .join(",");
-          acc[day as keyof PolicyFormData["schedule"]] = formattedRanges;
+            },
+            [] as { start: string; end: string }[]
+          );
+
+          const timeToMinutes = (time: string) => {
+            const [hours, minutes] = time.split(":").map(Number);
+            return hours * 60 + minutes;
+          };
+
+          // Sort ranges by start time
+          ranges.sort(
+            (a, b) => timeToMinutes(a.start) - timeToMinutes(b.start)
+          );
+
+          // Merge overlapping ranges
+          const mergedRanges = [];
+          let currentStart = ranges[0].start;
+          let currentEnd = ranges[0].end;
+
+          for (let i = 1; i < ranges.length; i++) {
+            const { start, end } = ranges[i];
+            if (timeToMinutes(start) <= timeToMinutes(currentEnd)) {
+              // Overlapping or touching ranges, merge them
+              currentEnd =
+                timeToMinutes(end) > timeToMinutes(currentEnd)
+                  ? end
+                  : currentEnd;
+            } else {
+              // No overlap, push the previous range and start a new one
+              mergedRanges.push(`${currentStart}-${currentEnd}`);
+              currentStart = start;
+              currentEnd = end;
+            }
+          }
+
+          // Push the last merged range
+          mergedRanges.push(`${currentStart}-${currentEnd}`);
+
+          // Join the merged ranges into a string and assign to the accumulator
+          acc[day as keyof PolicyFormData["schedule"]] = mergedRanges.join(",");
         }
         return acc;
       },
@@ -157,6 +262,10 @@ function PolicyManager() {
       })
       .then((res) => {
         setPolicies(res.data);
+        reset(); // Clears the form
+        setScheduleFormOpen(false);
+        setDays(defDays);
+        handleCategoryChange([]);
       })
       .catch((error: any) => {
         setError(error.message || "Failed to create policy");
@@ -165,25 +274,45 @@ function PolicyManager() {
 
   return (
     <div className="container">
-      <h1>Cloudflare Policies</h1>
+      <h1 className="mb-4">Cloudflare Policies</h1>
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div>
+      <div className="mb-4">
         <h2>Policies</h2>
-        <ul>
-          {policies.map((policy) => (
-            <li key={policy.id}>
-              <strong>{policy.name}</strong> - {policy.action} -{" "}
-              {policy.traffic}
-            </li>
-          ))}
-        </ul>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Action</th>
+              <th>Category</th>
+              <th>Schedule</th> {/* New column for Schedule */}
+            </tr>
+          </thead>
+          <tbody>
+            {policies.map((policy) => {
+              const categoryIds = extractCategoryIds(policy.traffic);
+              const categoryNames = getCategoryNames(categoryIds);
+
+              // Format schedule for this policy
+              const schedule = formatSchedule(policy.schedule || {});
+
+              return (
+                <tr key={policy.id}>
+                  <td>{policy.name}</td>
+                  <td>{policy.action}</td>
+                  <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                  <td>{schedule}</td> {/* Display schedule */}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
 
       <div>
         <h2>Create a New Policy</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name:
@@ -232,28 +361,32 @@ function PolicyManager() {
                 <AiFillCaretUp
                   className="iconButton"
                   onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
-                ></AiFillCaretUp>
-                <div className="scheduleForm">
+                />
+                <div
+                  className="border p-3 rounded"
+                  style={{ minWidth: "450px" }}
+                >
                   {Object.keys(days).map((day) => {
                     const dayKey = day as keyof PolicyFormData["schedule"];
                     if (dayKey === "time_zone") return null;
                     return (
-                      <div key={dayKey} className="scheduleContainer">
-                        <label className="label form-label">
+                      <div key={dayKey} className="d-flex align-items-top mb-3">
+                        <label className="form-label flex-shrink-0 w-25">
                           {dayKey.charAt(0).toUpperCase() + dayKey.slice(1)}:
                         </label>
-                        <div className="timeRangeContainer">
+                        <div className="d-flex flex-column w-75">
                           {Array.isArray(days[dayKey]) &&
                             days[dayKey]?.map((_, index) => {
                               if (index % 2 === 0) {
                                 return (
-                                  <div key={index} className="timeRange">
+                                  <div key={index} className="d-flex mb-2">
                                     <input
                                       type="time"
                                       {...register(
                                         `schedule.${dayKey}.${index}` as const
                                       )}
                                       placeholder="Start Time"
+                                      className="form-control me-2 w-50"
                                     />
                                     <input
                                       type="time"
@@ -263,6 +396,7 @@ function PolicyManager() {
                                         }` as const
                                       )}
                                       placeholder="End Time"
+                                      className="form-control w-50"
                                     />
                                   </div>
                                 );
@@ -270,11 +404,12 @@ function PolicyManager() {
                               return null;
                             })}
                         </div>
-                        <AiFillPlusSquare
-                          className="iconButton"
-                          size="40"
-                          onClick={() => addTimeRange(dayKey)}
-                        ></AiFillPlusSquare>
+                        <div className="m-1 text-success">
+                          <AiFillPlusSquare
+                            size="30"
+                            onClick={() => addTimeRange(dayKey)}
+                          />
+                        </div>
                       </div>
                     );
                   })}
@@ -282,9 +417,10 @@ function PolicyManager() {
               </>
             ) : (
               <AiFillCaretDown
-                className="iconButton"
+                className="m-1 text-success"
+                size={20}
                 onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
-              ></AiFillCaretDown>
+              />
             )}
           </div>
 
