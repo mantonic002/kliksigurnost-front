@@ -1,0 +1,3430 @@
+{
+    "app_types": [
+        {
+        "id": 1,
+        "name": "Collaboration \u0026 Online Meetings",
+        "description": "Applications used to communicate or collaborate in a business setting.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 505,
+        "name": "Asana",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1190,
+        "name": "Chatwork",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 527,
+        "name": "Confluence",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 534,
+        "name": "Discord",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 517,
+        "name": "Basecamp",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 552,
+        "name": "Google Calendar",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 553,
+        "name": "Google Chat",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 556,
+        "name": "Google Keep",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 557,
+        "name": "Google Meet",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 558,
+        "name": "GoToMeeting",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 559,
+        "name": "GoToRoom",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 560,
+        "name": "GoToTraining",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 561,
+        "name": "GoToWebinar",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 590,
+        "name": "Monday",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 611,
+        "name": "Sharepoint",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 617,
+        "name": "Slack",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 626,
+        "name": "Microsoft Teams",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 629,
+        "name": "Trello",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 616,
+        "name": "Skype for Business",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 636,
+        "name": "Cisco WebEx",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 641,
+        "name": "Wrike",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 647,
+        "name": "Zoom",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1417,
+        "name": "Jitsi Meet",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 803,
+        "name": "LINE WORKS",
+        "application_type_id": 1,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 2,
+        "name": "Public Cloud",
+        "description": "Applications used to manage public cloud infrastructure.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 513,
+        "name": "Amazon Web Services",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 514,
+        "name": "Microsoft Azure",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1245,
+        "name": "Google Cloud Platform (Do Not Inspect)",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 533,
+        "name": "DigitalOcean",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 547,
+        "name": "Google Cloud Platform",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 566,
+        "name": "Heroku",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 598,
+        "name": "OVHcloud",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 605,
+        "name": "Red Hat OpenShift",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 772,
+        "name": "Snowflake",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 570,
+        "name": "IBM Cloud",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 581,
+        "name": "Linode",
+        "application_type_id": 2,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 3,
+        "name": "Human Resources",
+        "description": "Applications used to manage employees and workforce tools.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 500,
+        "name": "ADP",
+        "application_type_id": 3,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 563,
+        "name": "Greenhouse",
+        "application_type_id": 3,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 640,
+        "name": "Workday",
+        "application_type_id": 3,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 4,
+        "name": "Finance \u0026 Accounting",
+        "description": "Applications used as finance and accounting tools.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 546,
+        "name": "Freshdesk",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 603,
+        "name": "Quickbooks",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 607,
+        "name": "SAP Ariba",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 608,
+        "name": "SAP Concur",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 622,
+        "name": "Stripe",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 642,
+        "name": "Xero",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1361,
+        "name": "N26 Banking",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1431,
+        "name": "Cash App",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1435,
+        "name": "Venmo",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1436,
+        "name": "Zelle",
+        "application_type_id": 4,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 5,
+        "name": "Legal",
+        "description": "Applications used for as legal tools.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 537,
+        "name": "DocuSign",
+        "application_type_id": 5,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 574,
+        "name": "Ironclad",
+        "application_type_id": 5,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 6,
+        "name": "IT Management",
+        "description": "Applications used to manage IT deployments.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 516,
+        "name": "Azure AD",
+        "application_type_id": 6,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 545,
+        "name": "Fleetsmith",
+        "application_type_id": 6,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 577,
+        "name": "Kandji",
+        "application_type_id": 6,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 7,
+        "name": "Productivity",
+        "description": "Applications used as business tools.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 499,
+        "name": "Adobe Creative Cloud",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 501,
+        "name": "Airtable",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 530,
+        "name": "Coursera",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 540,
+        "name": "Evernote",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 510,
+        "name": "Autodesk Fusion360",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 564,
+        "name": "Google Workspace",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 594,
+        "name": "Microsoft Office365",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 601,
+        "name": "Microsoft Power BI",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 625,
+        "name": "Tableau",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1852,
+        "name": "Grammarly",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 645,
+        "name": "Zapier",
+        "application_type_id": 7,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 8,
+        "name": "Sales \u0026 Marketing",
+        "description": "Applications used as sales and marketing tools.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 768,
+        "name": "Back in Stock",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 522,
+        "name": "Buffer",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 523,
+        "name": "Canva",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 528,
+        "name": "ConstantContact",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1074,
+        "name": "Five9",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 551,
+        "name": "Google Analytics",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 567,
+        "name": "Hootsuite",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 606,
+        "name": "Salesforce",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 612,
+        "name": "Shopify",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 623,
+        "name": "SurveyMonkey",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 751,
+        "name": "Zoho Assist",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 646,
+        "name": "Zendesk",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 568,
+        "name": "Hubspot",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 771,
+        "name": "Khoros",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 584,
+        "name": "Mailchimp",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 587,
+        "name": "Marketo",
+        "application_type_id": 8,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 9,
+        "name": "Development",
+        "description": "Applications used for software development and development operations.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 504,
+        "name": "Angular",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 506,
+        "name": "Atom",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 508,
+        "name": "Auth0",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 515,
+        "name": "Azure DevOps",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 520,
+        "name": "Bitbucket",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 802,
+        "name": "Cloudflare Dashboard",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 529,
+        "name": "Contentful",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 532,
+        "name": "Datadog",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1075,
+        "name": "DBeaver",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 536,
+        "name": "Docker",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 498,
+        "name": "Adobe Business Catalyst",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 539,
+        "name": "Elastic Cloud",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 543,
+        "name": "Figma",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 544,
+        "name": "Firebase",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 548,
+        "name": "GitHub",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 549,
+        "name": "GitLab",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 562,
+        "name": "Grafana",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 591,
+        "name": "MongoDB",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 599,
+        "name": "PagerDuty",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 609,
+        "name": "Sentry",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 610,
+        "name": "ServiceNow",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 635,
+        "name": "Microsoft Visual Studio",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 631,
+        "name": "Twilio",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 502,
+        "name": "Algolia",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 573,
+        "name": "Intercom",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 576,
+        "name": "Jira",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 583,
+        "name": "Magento",
+        "application_type_id": 9,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 10,
+        "name": "File Sharing",
+        "description": "Applications used to share files.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1818,
+        "name": "Cohesity",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1819,
+        "name": "Files.com",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1820,
+        "name": "Google Photos",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1377,
+        "name": "Airdroid",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 769,
+        "name": "Bajoo",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1821,
+        "name": "Hightail",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 521,
+        "name": "box",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 531,
+        "name": "Cyberduck",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 538,
+        "name": "Dropbox",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 554,
+        "name": "Google Drive",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1174,
+        "name": "Google Play Store",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1823,
+        "name": "Neat",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 596,
+        "name": "Microsoft OneDrive",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1824,
+        "name": "OneHub",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1825,
+        "name": "Sharefile",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1826,
+        "name": "Smash",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1827,
+        "name": "SmugMug",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1829,
+        "name": "WeCom",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1849,
+        "name": "Flickr",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 637,
+        "name": "WeTransfer",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1344,
+        "name": "imgur",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1387,
+        "name": "Egnyte",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1389,
+        "name": "Filecloud",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1399,
+        "name": "pCloud",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1401,
+        "name": "sendanywhere",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1402,
+        "name": "SHAREit",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1405,
+        "name": "Workplace",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1406,
+        "name": "Xender",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1407,
+        "name": "Zapya",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 767,
+        "name": "1fichier",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 571,
+        "name": "iCloud",
+        "application_type_id": 10,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 11,
+        "name": "Social Networking",
+        "description": "Applications used for social networking.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 541,
+        "name": "Facebook",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 555,
+        "name": "Google Groups",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 600,
+        "name": "Pinterest",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 604,
+        "name": "Reddit",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 618,
+        "name": "Snapchat",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 773,
+        "name": "Strava",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 628,
+        "name": "TikTok",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1848,
+        "name": "Classmates",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1850,
+        "name": "Swarm (FourSquare)",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1851,
+        "name": "Glassdoor",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1853,
+        "name": "Meetup",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 633,
+        "name": "X",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1858,
+        "name": "Weibo",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 639,
+        "name": "Wordpress",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1084,
+        "name": "Amino",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1086,
+        "name": "ASKfm",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1097,
+        "name": "Diply",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1110,
+        "name": "iFunny",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1122,
+        "name": "Quora",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1135,
+        "name": "VSCO",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1137,
+        "name": "Wattpad",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1138,
+        "name": "Whisper",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1139,
+        "name": "Wishbone",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1144,
+        "name": "Yik Yak",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1130,
+        "name": "Tumblr",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1429,
+        "name": "WeChat",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 572,
+        "name": "Instagram",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 580,
+        "name": "LinkedIn",
+        "application_type_id": 11,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 12,
+        "name": "Instant Messaging",
+        "description": "Applications used for instant messaging.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1193,
+        "name": "Android Messages",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1158,
+        "name": "iMessage",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1188,
+        "name": "Messages+",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 542,
+        "name": "Facebook Messenger",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 615,
+        "name": "Skype",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 614,
+        "name": "Signal",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 638,
+        "name": "WhatsApp",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1099,
+        "name": "Duo",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1107,
+        "name": "GroupMe",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1108,
+        "name": "HOLLA",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1115,
+        "name": "Kik",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1116,
+        "name": "Line",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1117,
+        "name": "Monkey",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1121,
+        "name": "Omegle",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1133,
+        "name": "Viber",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1114,
+        "name": "Kakao Talk",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1202,
+        "name": "Telegram",
+        "application_type_id": 12,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 13,
+        "name": "Email",
+        "description": "Applications used for email.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1410,
+        "name": "Aqua Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 550,
+        "name": "Gmail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 597,
+        "name": "Microsoft Outlook",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 602,
+        "name": "Proton Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 585,
+        "name": "Mail.ru",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 643,
+        "name": "Yahoo Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1393,
+        "name": "K-9 Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1411,
+        "name": "Blue Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1412,
+        "name": "Canary Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1413,
+        "name": "Edison Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1414,
+        "name": "Front",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1415,
+        "name": "Hey Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1418,
+        "name": "Newton Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1420,
+        "name": "Spark Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1421,
+        "name": "Spike Mail",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1422,
+        "name": "Twobird",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1423,
+        "name": "TypeApp",
+        "application_type_id": 13,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 14,
+        "name": "Video Streaming",
+        "description": "Applications used for streaming video.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 518,
+        "name": "BBC iPlayer",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 535,
+        "name": "Disney Plus",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1171,
+        "name": "Fios TV",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 565,
+        "name": "Max (HBO Go)",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 588,
+        "name": "Masterclass",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 592,
+        "name": "Netflix",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1272,
+        "name": "Playeur",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1079,
+        "name": "9gag",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1091,
+        "name": "CBS And Paramount Plus",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1094,
+        "name": "Crackle",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1096,
+        "name": "DailyMotion",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1102,
+        "name": "Fandom",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1112,
+        "name": "IMDb",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1124,
+        "name": "Rumble",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1125,
+        "name": "Sling TV",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1131,
+        "name": "Playeur",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1132,
+        "name": "Vevo",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1134,
+        "name": "VideosHub",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1136,
+        "name": "Vudu",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 613,
+        "name": "Showtime Anytime",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 632,
+        "name": "Twitch",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 634,
+        "name": "Vimeo",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1189,
+        "name": "Xfinity Stream",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 644,
+        "name": "YouTube",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 503,
+        "name": "Amazon Prime Video",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 569,
+        "name": "Hulu",
+        "application_type_id": 14,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 15,
+        "name": "Security",
+        "description": "Applications used for information security.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 509,
+        "name": "Authy",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 511,
+        "name": "Avast",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 512,
+        "name": "Avira",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 519,
+        "name": "BeyondTrust",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 524,
+        "name": "Carbon Black",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 525,
+        "name": "Cisco AMP",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 526,
+        "name": "Citrix Cloud",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 586,
+        "name": "Malwarebytes",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 589,
+        "name": "McAfee",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 593,
+        "name": "NoMachine",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 595,
+        "name": "Okta",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 619,
+        "name": "Sophos",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 624,
+        "name": "Symantec",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 627,
+        "name": "Teamviewer",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 630,
+        "name": "Trend Micro",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 575,
+        "name": "Jamf",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 578,
+        "name": "Kaspersky",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 579,
+        "name": "Lastpass",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 582,
+        "name": "LogMeIn",
+        "application_type_id": 15,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 16,
+        "name": "Do Not Inspect",
+        "description": "Applications that either send non-web traffic such as Session Initiation Protocol (SIP) or Extensible Messaging and Presence Protocol (XMPP) over TLS",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 650,
+        "name": "Southwest Mobile App (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 653,
+        "name": "Akamai EAA (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 654,
+        "name": "Amazon Alexa (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 831,
+        "name": "Amazon (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 655,
+        "name": "Amazon Echo (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 778,
+        "name": "American Express (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 656,
+        "name": "Android (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1268,
+        "name": "Kakao Talk (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 658,
+        "name": "AWS (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 659,
+        "name": "Bitdefender (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 660,
+        "name": "Blizzard Online Games (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 785,
+        "name": "Bank of America (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 739,
+        "name": "Brave (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 764,
+        "name": "Carbon Black (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 786,
+        "name": "Chase Bank (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 661,
+        "name": "Cloudflare Services (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 787,
+        "name": "Coinbase (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 662,
+        "name": "Cryptocat (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 663,
+        "name": "Debian apt (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 664,
+        "name": "Discord (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 665,
+        "name": "DocHub (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 669,
+        "name": "Google Chat (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 735,
+        "name": "Duo (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 788,
+        "name": "ETRADE (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 667,
+        "name": "Evernote (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 789,
+        "name": "Fidelity (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 668,
+        "name": "Google (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 670,
+        "name": "Google Play Store (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 733,
+        "name": "Google Drive (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 671,
+        "name": "Google Services (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 672,
+        "name": "GoTo Meeting (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 756,
+        "name": "Grab (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 775,
+        "name": "Highfive (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 779,
+        "name": "HSBC (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 760,
+        "name": "iMobile (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 673,
+        "name": "Instabug (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 674,
+        "name": "Instagram (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 675,
+        "name": "JAMF Cloud (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 740,
+        "name": "JS Hosting Sites (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 676,
+        "name": "Kandji (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 677,
+        "name": "Keybase (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 652,
+        "name": "Adobe Updates (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1073,
+        "name": "Ring (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 791,
+        "name": "N26",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 784,
+        "name": "ActivoBank (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1154,
+        "name": "Playstation (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1247,
+        "name": "Google Meet (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1192,
+        "name": "box (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 651,
+        "name": "Adobe Sign (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1273,
+        "name": "Dell Peripheral Manager (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1077,
+        "name": "DBeaver (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 766,
+        "name": "Crowdstrike (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1862,
+        "name": "ChatGPT (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1191,
+        "name": "Chatwork (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 783,
+        "name": "Acorns (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1326,
+        "name": "Pingboard (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 743,
+        "name": "Webex (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 648,
+        "name": "Kolide (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 649,
+        "name": "Notion (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 792,
+        "name": "Novo Banco (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 749,
+        "name": "Node Package Manager (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 684,
+        "name": "Online Certificate Status Protocol (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 685,
+        "name": "PayPal (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 686,
+        "name": "Periscope (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 687,
+        "name": "Python Pip (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 833,
+        "name": "Qualys (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 782,
+        "name": "Revolut (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 793,
+        "name": "Robinhood (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 794,
+        "name": "Santander (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 795,
+        "name": "Schwab (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 757,
+        "name": "SentinelOne (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 689,
+        "name": "Signal (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 690,
+        "name": "Silent Circle (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 691,
+        "name": "Skype (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 692,
+        "name": "Slack (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 694,
+        "name": "Sonos (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 695,
+        "name": "Sophos (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 696,
+        "name": "Spotify (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 697,
+        "name": "Squareup (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 742,
+        "name": "Stripe (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 777,
+        "name": "SureMDM (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 698,
+        "name": "SurveyMonkey (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 762,
+        "name": "Swiggy (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 765,
+        "name": "Sync (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 812,
+        "name": "Tableau (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 699,
+        "name": "Tesla Car App (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 796,
+        "name": "Titan (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 821,
+        "name": "Uber (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 701,
+        "name": "UbuntuOne (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 702,
+        "name": "USAA Mobile App (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 703,
+        "name": "Vagrant Cloud (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 797,
+        "name": "Vanguard (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 704,
+        "name": "Verizon Wireless (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 832,
+        "name": "Walmart (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 798,
+        "name": "Wealthfront (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 705,
+        "name": "Webroot (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 706,
+        "name": "Wells Fargo Mobile App (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 707,
+        "name": "WhatsApp (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 708,
+        "name": "Wire (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 709,
+        "name": "Xbox Live (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 753,
+        "name": "Zoho Assist (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 763,
+        "name": "Zomato (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 710,
+        "name": "Zoom (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 693,
+        "name": "Snap Chat (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1322,
+        "name": "MyQ (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 700,
+        "name": "X (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 683,
+        "name": "Okta (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 678,
+        "name": "LogMeIn (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 825,
+        "name": "Line (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 804,
+        "name": "LINE WORKS (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 679,
+        "name": "Malwarebytes (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 790,
+        "name": "MB Way (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 681,
+        "name": "Monday (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 780,
+        "name": "Monzo (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 761,
+        "name": "Mozilla (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 781,
+        "name": "NatWest (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 682,
+        "name": "Nest (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1238,
+        "name": "Pycharm (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 666,
+        "name": "Dropbox (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 680,
+        "name": "Microsoft (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1375,
+        "name": "Microsoft Azure Virtual Desktop (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1376,
+        "name": "Microsoft Office365 (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1425,
+        "name": "Feishu (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1426,
+        "name": "Lark (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 688,
+        "name": "Samsung (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1424,
+        "name": "Apple Music (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 657,
+        "name": "Apple (Do Not Inspect)",
+        "application_type_id": 16,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 17,
+        "name": "Encrypted DNS",
+        "description": "Applications used for encrypting DNS.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 713,
+        "name": "BlahDNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 715,
+        "name": "Comcast Encrypted DNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 727,
+        "name": "OpenDNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 728,
+        "name": "PowerDNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 729,
+        "name": "Quad9",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 730,
+        "name": "Rubyfish",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 714,
+        "name": "CleanBrowsing",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 720,
+        "name": "GoogleDNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 726,
+        "name": "nextDNS",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 712,
+        "name": "AdGuard",
+        "application_type_id": 17,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 18,
+        "name": "Gaming",
+        "description": "Games and gaming related applications.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1155,
+        "name": "8 Ball Pool",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1157,
+        "name": "Angry Birds",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1160,
+        "name": "Ballz",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1164,
+        "name": "Chicken Scream",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1162,
+        "name": "Call of Duty",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1170,
+        "name": "Faceswap",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1163,
+        "name": "Candy Crush",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1176,
+        "name": "Grand Theft Auto",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1165,
+        "name": "Clash of Clans",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1166,
+        "name": "Clash Royale",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1167,
+        "name": "Color Switch",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1183,
+        "name": "Power Rangers: Legacy Wars",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1169,
+        "name": "Disney Now",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1172,
+        "name": "Fortnite Games Battle Royal",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1173,
+        "name": "Fruit Ninja",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1179,
+        "name": "Minecraft",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1181,
+        "name": "Pokemon Go",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1182,
+        "name": "Pokemon Quest",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1184,
+        "name": "Roblox",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1186,
+        "name": "Super Mario Run",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1855,
+        "name": "Second Life",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1860,
+        "name": "Hellcopter",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1432,
+        "name": "Coin Master",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1156,
+        "name": "Among Us",
+        "application_type_id": 18,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 19,
+        "name": "News",
+        "description": "Applications delivering news",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1817,
+        "name": "AOL",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1856,
+        "name": "Slashdot",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1080,
+        "name": "ABC",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1085,
+        "name": "Apple News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1087,
+        "name": "BBC",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1093,
+        "name": "CNN",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1103,
+        "name": "Fox news",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1106,
+        "name": "Google News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1118,
+        "name": "NBC",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1120,
+        "name": "NY Times",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1123,
+        "name": "Reuters",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1127,
+        "name": "The Guardian",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1141,
+        "name": "Yahoo! News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1379,
+        "name": "CBS News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1382,
+        "name": "Dailyhunt",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1383,
+        "name": "Daily Mail",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1384,
+        "name": "Daily Wire",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1386,
+        "name": "The Economist",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1390,
+        "name": "Financial Times",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1392,
+        "name": "HuffPost",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1395,
+        "name": "New Yorker",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1396,
+        "name": "New York Post",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1397,
+        "name": "New York Times",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1404,
+        "name": "The Atlantic",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1433,
+        "name": "Good News Network",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1439,
+        "name": "Flipboard The Social Magazine",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1441,
+        "name": "Ground News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1442,
+        "name": "Inoreader News \u0026 RSS reader",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1444,
+        "name": "NewsBreak Local News \u0026 Alerts",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1445,
+        "name": "Pocket",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1446,
+        "name": "SmartNews News That Matters",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1447,
+        "name": "The Sun Mobile - Daily News",
+        "application_type_id": 19,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 20,
+        "name": "Search Engines",
+        "description": "Search engines",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1159,
+        "name": "Ask.com",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1294,
+        "name": "Google Search",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1088,
+        "name": "Bing",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1343,
+        "name": "Baidu",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1098,
+        "name": "DuckDuckGo",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1140,
+        "name": "Yahoo!",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1143,
+        "name": "Yandex",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1345,
+        "name": "Internet Archive",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1346,
+        "name": "Naver",
+        "application_type_id": 20,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 21,
+        "name": "Shopping",
+        "description": "Applications for shopping and buying online",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1327,
+        "name": "Best Buy",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1185,
+        "name": "SHEIN",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1187,
+        "name": "Tilly's",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1180,
+        "name": "PacSun",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1328,
+        "name": "Target",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1329,
+        "name": "Walmart",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1177,
+        "name": "H\u0026M",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1081,
+        "name": "AliExpress",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1082,
+        "name": "Amazon",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1095,
+        "name": "CraigsList",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1100,
+        "name": "Ebay",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1109,
+        "name": "Hot Topic",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1113,
+        "name": "Instacart",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1146,
+        "name": "Zappos",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1349,
+        "name": "Wawa",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1350,
+        "name": "Wish.com",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1434,
+        "name": "Sephora",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1178,
+        "name": "Lululemon",
+        "application_type_id": 21,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 22,
+        "name": "Sports",
+        "description": "Applications delivering content related to sports",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1078,
+        "name": "90min dot com",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1089,
+        "name": "BleacherReport",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1092,
+        "name": "CBSSports",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1101,
+        "name": "ESPN",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1104,
+        "name": "Fox Sports",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1105,
+        "name": "goal dot com",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1119,
+        "name": "NBC Sports",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1126,
+        "name": "Sports Illustrated",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1142,
+        "name": "Yahoo! Sports",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1437,
+        "name": "365Scores Live Scores \u0026 News",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1438,
+        "name": "Flashscore - Live scores",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1440,
+        "name": "FotMob - Soccer Live Scores",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1443,
+        "name": "LiveScore",
+        "application_type_id": 22,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 23,
+        "name": "Dating",
+        "description": "Applications used for online dating",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1351,
+        "name": "Badoo",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1161,
+        "name": "Blendr",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1175,
+        "name": "Grindr",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1300,
+        "name": "Hinge",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1090,
+        "name": "Bumble",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1129,
+        "name": "Tinder",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1352,
+        "name": "BLK",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1353,
+        "name": "Boo",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1354,
+        "name": "Christian Mingle",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1355,
+        "name": "eHarmony",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1356,
+        "name": "Elite Singles",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1357,
+        "name": "Happn",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1358,
+        "name": "Kippo",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1359,
+        "name": "Luxy",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1360,
+        "name": "Match.com",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1362,
+        "name": "Nevermet",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1363,
+        "name": "OkCupid",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1364,
+        "name": "parship",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1365,
+        "name": "Plenty of Fish",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1366,
+        "name": "Pure",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1367,
+        "name": "RandoChat",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1368,
+        "name": "Raya",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1369,
+        "name": "Seeking",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1370,
+        "name": "Silver Singles",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1371,
+        "name": "Stir",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1372,
+        "name": "Veggly",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1373,
+        "name": "Zoosk",
+        "application_type_id": 23,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 24,
+        "name": "Audio Streaming",
+        "description": "Applications used for streaming audio",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1408,
+        "name": "Apple Music",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1409,
+        "name": "Apple Podcasts",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 507,
+        "name": "Audible",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1168,
+        "name": "Deezer",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1197,
+        "name": "Pandora",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1111,
+        "name": "iHeartRadio",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1128,
+        "name": "Tidal",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1145,
+        "name": "Youtube Music",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 620,
+        "name": "Soundcloud",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 621,
+        "name": "Spotify",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1416,
+        "name": "Jango Radio",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1419,
+        "name": "LiveOne (Slacker Radio)",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1083,
+        "name": "Amazon Music",
+        "application_type_id": 24,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 25,
+        "name": "Artificial Intelligence",
+        "description": "Applications used for AI algorithms",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1199,
+        "name": "ChatGPT",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1198,
+        "name": "Google Bard",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1847,
+        "name": "Aircover.ai",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1339,
+        "name": "Microsoft Copilot",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1378,
+        "name": "Chat \u0026 Ask AI",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1385,
+        "name": "DataBot",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1388,
+        "name": "Elsa Speak",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1340,
+        "name": "Google Gemini",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1394,
+        "name": "Lensa",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1398,
+        "name": "Otter",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1400,
+        "name": "Seeing AI",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1403,
+        "name": "synthesia.io",
+        "application_type_id": 25,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 26,
+        "name": "Telephony \u0026 Voice Communication",
+        "description": "Applications used for voice and SMS communication.",
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1832,
+        "name": "2ndLine",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1833,
+        "name": "800.com",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1834,
+        "name": "Aircall",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1835,
+        "name": "hushed",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1836,
+        "name": "Line2",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1837,
+        "name": "OnlineSIM",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1838,
+        "name": "OpenPhone",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1839,
+        "name": "Phoner",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1840,
+        "name": "Quackr",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1841,
+        "name": "RingCentral",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1842,
+        "name": "SwitchUp",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1843,
+        "name": "Temp Number",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1844,
+        "name": "TextNow",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1845,
+        "name": "VirtualSIM",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        },
+        {
+        "id": 1846,
+        "name": "WePhone",
+        "application_type_id": 26,
+        "created_at": "0001-01-01T00:00:00Z"
+        }
+    ]
+}

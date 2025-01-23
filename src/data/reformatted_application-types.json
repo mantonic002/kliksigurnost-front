@@ -1,0 +1,2911 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Collaboration & Online Meetings",
+            "description": "Applications used to communicate or collaborate in a business setting.",
+            "subcategories": [
+                {
+                    "id": 505,
+                    "name": "Asana",
+                    "subcategories": null
+                },
+                {
+                    "id": 1190,
+                    "name": "Chatwork",
+                    "subcategories": null
+                },
+                {
+                    "id": 527,
+                    "name": "Confluence",
+                    "subcategories": null
+                },
+                {
+                    "id": 534,
+                    "name": "Discord",
+                    "subcategories": null
+                },
+                {
+                    "id": 517,
+                    "name": "Basecamp",
+                    "subcategories": null
+                },
+                {
+                    "id": 552,
+                    "name": "Google Calendar",
+                    "subcategories": null
+                },
+                {
+                    "id": 553,
+                    "name": "Google Chat",
+                    "subcategories": null
+                },
+                {
+                    "id": 556,
+                    "name": "Google Keep",
+                    "subcategories": null
+                },
+                {
+                    "id": 557,
+                    "name": "Google Meet",
+                    "subcategories": null
+                },
+                {
+                    "id": 558,
+                    "name": "GoToMeeting",
+                    "subcategories": null
+                },
+                {
+                    "id": 559,
+                    "name": "GoToRoom",
+                    "subcategories": null
+                },
+                {
+                    "id": 560,
+                    "name": "GoToTraining",
+                    "subcategories": null
+                },
+                {
+                    "id": 561,
+                    "name": "GoToWebinar",
+                    "subcategories": null
+                },
+                {
+                    "id": 590,
+                    "name": "Monday",
+                    "subcategories": null
+                },
+                {
+                    "id": 611,
+                    "name": "Sharepoint",
+                    "subcategories": null
+                },
+                {
+                    "id": 617,
+                    "name": "Slack",
+                    "subcategories": null
+                },
+                {
+                    "id": 626,
+                    "name": "Microsoft Teams",
+                    "subcategories": null
+                },
+                {
+                    "id": 629,
+                    "name": "Trello",
+                    "subcategories": null
+                },
+                {
+                    "id": 616,
+                    "name": "Skype for Business",
+                    "subcategories": null
+                },
+                {
+                    "id": 636,
+                    "name": "Cisco WebEx",
+                    "subcategories": null
+                },
+                {
+                    "id": 641,
+                    "name": "Wrike",
+                    "subcategories": null
+                },
+                {
+                    "id": 647,
+                    "name": "Zoom",
+                    "subcategories": null
+                },
+                {
+                    "id": 1417,
+                    "name": "Jitsi Meet",
+                    "subcategories": null
+                },
+                {
+                    "id": 803,
+                    "name": "LINE WORKS",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Public Cloud",
+            "description": "Applications used to manage public cloud infrastructure.",
+            "subcategories": [
+                {
+                    "id": 513,
+                    "name": "Amazon Web Services",
+                    "subcategories": null
+                },
+                {
+                    "id": 514,
+                    "name": "Microsoft Azure",
+                    "subcategories": null
+                },
+                {
+                    "id": 1245,
+                    "name": "Google Cloud Platform (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 533,
+                    "name": "DigitalOcean",
+                    "subcategories": null
+                },
+                {
+                    "id": 547,
+                    "name": "Google Cloud Platform",
+                    "subcategories": null
+                },
+                {
+                    "id": 566,
+                    "name": "Heroku",
+                    "subcategories": null
+                },
+                {
+                    "id": 598,
+                    "name": "OVHcloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 605,
+                    "name": "Red Hat OpenShift",
+                    "subcategories": null
+                },
+                {
+                    "id": 772,
+                    "name": "Snowflake",
+                    "subcategories": null
+                },
+                {
+                    "id": 570,
+                    "name": "IBM Cloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 581,
+                    "name": "Linode",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Human Resources",
+            "description": "Applications used to manage employees and workforce tools.",
+            "subcategories": [
+                {
+                    "id": 500,
+                    "name": "ADP",
+                    "subcategories": null
+                },
+                {
+                    "id": 563,
+                    "name": "Greenhouse",
+                    "subcategories": null
+                },
+                {
+                    "id": 640,
+                    "name": "Workday",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Finance & Accounting",
+            "description": "Applications used as finance and accounting tools.",
+            "subcategories": [
+                {
+                    "id": 546,
+                    "name": "Freshdesk",
+                    "subcategories": null
+                },
+                {
+                    "id": 603,
+                    "name": "Quickbooks",
+                    "subcategories": null
+                },
+                {
+                    "id": 607,
+                    "name": "SAP Ariba",
+                    "subcategories": null
+                },
+                {
+                    "id": 608,
+                    "name": "SAP Concur",
+                    "subcategories": null
+                },
+                {
+                    "id": 622,
+                    "name": "Stripe",
+                    "subcategories": null
+                },
+                {
+                    "id": 642,
+                    "name": "Xero",
+                    "subcategories": null
+                },
+                {
+                    "id": 1361,
+                    "name": "N26 Banking",
+                    "subcategories": null
+                },
+                {
+                    "id": 1431,
+                    "name": "Cash App",
+                    "subcategories": null
+                },
+                {
+                    "id": 1435,
+                    "name": "Venmo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1436,
+                    "name": "Zelle",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Legal",
+            "description": "Applications used for as legal tools.",
+            "subcategories": [
+                {
+                    "id": 537,
+                    "name": "DocuSign",
+                    "subcategories": null
+                },
+                {
+                    "id": 574,
+                    "name": "Ironclad",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "IT Management",
+            "description": "Applications used to manage IT deployments.",
+            "subcategories": [
+                {
+                    "id": 516,
+                    "name": "Azure AD",
+                    "subcategories": null
+                },
+                {
+                    "id": 545,
+                    "name": "Fleetsmith",
+                    "subcategories": null
+                },
+                {
+                    "id": 577,
+                    "name": "Kandji",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Productivity",
+            "description": "Applications used as business tools.",
+            "subcategories": [
+                {
+                    "id": 499,
+                    "name": "Adobe Creative Cloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 501,
+                    "name": "Airtable",
+                    "subcategories": null
+                },
+                {
+                    "id": 530,
+                    "name": "Coursera",
+                    "subcategories": null
+                },
+                {
+                    "id": 540,
+                    "name": "Evernote",
+                    "subcategories": null
+                },
+                {
+                    "id": 510,
+                    "name": "Autodesk Fusion360",
+                    "subcategories": null
+                },
+                {
+                    "id": 564,
+                    "name": "Google Workspace",
+                    "subcategories": null
+                },
+                {
+                    "id": 594,
+                    "name": "Microsoft Office365",
+                    "subcategories": null
+                },
+                {
+                    "id": 601,
+                    "name": "Microsoft Power BI",
+                    "subcategories": null
+                },
+                {
+                    "id": 625,
+                    "name": "Tableau",
+                    "subcategories": null
+                },
+                {
+                    "id": 1852,
+                    "name": "Grammarly",
+                    "subcategories": null
+                },
+                {
+                    "id": 645,
+                    "name": "Zapier",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Sales & Marketing",
+            "description": "Applications used as sales and marketing tools.",
+            "subcategories": [
+                {
+                    "id": 768,
+                    "name": "Back in Stock",
+                    "subcategories": null
+                },
+                {
+                    "id": 522,
+                    "name": "Buffer",
+                    "subcategories": null
+                },
+                {
+                    "id": 523,
+                    "name": "Canva",
+                    "subcategories": null
+                },
+                {
+                    "id": 528,
+                    "name": "ConstantContact",
+                    "subcategories": null
+                },
+                {
+                    "id": 1074,
+                    "name": "Five9",
+                    "subcategories": null
+                },
+                {
+                    "id": 551,
+                    "name": "Google Analytics",
+                    "subcategories": null
+                },
+                {
+                    "id": 567,
+                    "name": "Hootsuite",
+                    "subcategories": null
+                },
+                {
+                    "id": 606,
+                    "name": "Salesforce",
+                    "subcategories": null
+                },
+                {
+                    "id": 612,
+                    "name": "Shopify",
+                    "subcategories": null
+                },
+                {
+                    "id": 623,
+                    "name": "SurveyMonkey",
+                    "subcategories": null
+                },
+                {
+                    "id": 751,
+                    "name": "Zoho Assist",
+                    "subcategories": null
+                },
+                {
+                    "id": 646,
+                    "name": "Zendesk",
+                    "subcategories": null
+                },
+                {
+                    "id": 568,
+                    "name": "Hubspot",
+                    "subcategories": null
+                },
+                {
+                    "id": 771,
+                    "name": "Khoros",
+                    "subcategories": null
+                },
+                {
+                    "id": 584,
+                    "name": "Mailchimp",
+                    "subcategories": null
+                },
+                {
+                    "id": 587,
+                    "name": "Marketo",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Development",
+            "description": "Applications used for software development and development operations.",
+            "subcategories": [
+                {
+                    "id": 504,
+                    "name": "Angular",
+                    "subcategories": null
+                },
+                {
+                    "id": 506,
+                    "name": "Atom",
+                    "subcategories": null
+                },
+                {
+                    "id": 508,
+                    "name": "Auth0",
+                    "subcategories": null
+                },
+                {
+                    "id": 515,
+                    "name": "Azure DevOps",
+                    "subcategories": null
+                },
+                {
+                    "id": 520,
+                    "name": "Bitbucket",
+                    "subcategories": null
+                },
+                {
+                    "id": 802,
+                    "name": "Cloudflare Dashboard",
+                    "subcategories": null
+                },
+                {
+                    "id": 529,
+                    "name": "Contentful",
+                    "subcategories": null
+                },
+                {
+                    "id": 532,
+                    "name": "Datadog",
+                    "subcategories": null
+                },
+                {
+                    "id": 1075,
+                    "name": "DBeaver",
+                    "subcategories": null
+                },
+                {
+                    "id": 536,
+                    "name": "Docker",
+                    "subcategories": null
+                },
+                {
+                    "id": 498,
+                    "name": "Adobe Business Catalyst",
+                    "subcategories": null
+                },
+                {
+                    "id": 539,
+                    "name": "Elastic Cloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 543,
+                    "name": "Figma",
+                    "subcategories": null
+                },
+                {
+                    "id": 544,
+                    "name": "Firebase",
+                    "subcategories": null
+                },
+                {
+                    "id": 548,
+                    "name": "GitHub",
+                    "subcategories": null
+                },
+                {
+                    "id": 549,
+                    "name": "GitLab",
+                    "subcategories": null
+                },
+                {
+                    "id": 562,
+                    "name": "Grafana",
+                    "subcategories": null
+                },
+                {
+                    "id": 591,
+                    "name": "MongoDB",
+                    "subcategories": null
+                },
+                {
+                    "id": 599,
+                    "name": "PagerDuty",
+                    "subcategories": null
+                },
+                {
+                    "id": 609,
+                    "name": "Sentry",
+                    "subcategories": null
+                },
+                {
+                    "id": 610,
+                    "name": "ServiceNow",
+                    "subcategories": null
+                },
+                {
+                    "id": 635,
+                    "name": "Microsoft Visual Studio",
+                    "subcategories": null
+                },
+                {
+                    "id": 631,
+                    "name": "Twilio",
+                    "subcategories": null
+                },
+                {
+                    "id": 502,
+                    "name": "Algolia",
+                    "subcategories": null
+                },
+                {
+                    "id": 573,
+                    "name": "Intercom",
+                    "subcategories": null
+                },
+                {
+                    "id": 576,
+                    "name": "Jira",
+                    "subcategories": null
+                },
+                {
+                    "id": 583,
+                    "name": "Magento",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "File Sharing",
+            "description": "Applications used to share files.",
+            "subcategories": [
+                {
+                    "id": 1818,
+                    "name": "Cohesity",
+                    "subcategories": null
+                },
+                {
+                    "id": 1819,
+                    "name": "Files.com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1820,
+                    "name": "Google Photos",
+                    "subcategories": null
+                },
+                {
+                    "id": 1377,
+                    "name": "Airdroid",
+                    "subcategories": null
+                },
+                {
+                    "id": 769,
+                    "name": "Bajoo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1821,
+                    "name": "Hightail",
+                    "subcategories": null
+                },
+                {
+                    "id": 521,
+                    "name": "box",
+                    "subcategories": null
+                },
+                {
+                    "id": 531,
+                    "name": "Cyberduck",
+                    "subcategories": null
+                },
+                {
+                    "id": 538,
+                    "name": "Dropbox",
+                    "subcategories": null
+                },
+                {
+                    "id": 554,
+                    "name": "Google Drive",
+                    "subcategories": null
+                },
+                {
+                    "id": 1174,
+                    "name": "Google Play Store",
+                    "subcategories": null
+                },
+                {
+                    "id": 1823,
+                    "name": "Neat",
+                    "subcategories": null
+                },
+                {
+                    "id": 596,
+                    "name": "Microsoft OneDrive",
+                    "subcategories": null
+                },
+                {
+                    "id": 1824,
+                    "name": "OneHub",
+                    "subcategories": null
+                },
+                {
+                    "id": 1825,
+                    "name": "Sharefile",
+                    "subcategories": null
+                },
+                {
+                    "id": 1826,
+                    "name": "Smash",
+                    "subcategories": null
+                },
+                {
+                    "id": 1827,
+                    "name": "SmugMug",
+                    "subcategories": null
+                },
+                {
+                    "id": 1829,
+                    "name": "WeCom",
+                    "subcategories": null
+                },
+                {
+                    "id": 1849,
+                    "name": "Flickr",
+                    "subcategories": null
+                },
+                {
+                    "id": 637,
+                    "name": "WeTransfer",
+                    "subcategories": null
+                },
+                {
+                    "id": 1344,
+                    "name": "imgur",
+                    "subcategories": null
+                },
+                {
+                    "id": 1387,
+                    "name": "Egnyte",
+                    "subcategories": null
+                },
+                {
+                    "id": 1389,
+                    "name": "Filecloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 1399,
+                    "name": "pCloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 1401,
+                    "name": "sendanywhere",
+                    "subcategories": null
+                },
+                {
+                    "id": 1402,
+                    "name": "SHAREit",
+                    "subcategories": null
+                },
+                {
+                    "id": 1405,
+                    "name": "Workplace",
+                    "subcategories": null
+                },
+                {
+                    "id": 1406,
+                    "name": "Xender",
+                    "subcategories": null
+                },
+                {
+                    "id": 1407,
+                    "name": "Zapya",
+                    "subcategories": null
+                },
+                {
+                    "id": 767,
+                    "name": "1fichier",
+                    "subcategories": null
+                },
+                {
+                    "id": 571,
+                    "name": "iCloud",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Social Networking",
+            "description": "Applications used for social networking.",
+            "subcategories": [
+                {
+                    "id": 541,
+                    "name": "Facebook",
+                    "subcategories": null
+                },
+                {
+                    "id": 555,
+                    "name": "Google Groups",
+                    "subcategories": null
+                },
+                {
+                    "id": 600,
+                    "name": "Pinterest",
+                    "subcategories": null
+                },
+                {
+                    "id": 604,
+                    "name": "Reddit",
+                    "subcategories": null
+                },
+                {
+                    "id": 618,
+                    "name": "Snapchat",
+                    "subcategories": null
+                },
+                {
+                    "id": 773,
+                    "name": "Strava",
+                    "subcategories": null
+                },
+                {
+                    "id": 628,
+                    "name": "TikTok",
+                    "subcategories": null
+                },
+                {
+                    "id": 1848,
+                    "name": "Classmates",
+                    "subcategories": null
+                },
+                {
+                    "id": 1850,
+                    "name": "Swarm (FourSquare)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1851,
+                    "name": "Glassdoor",
+                    "subcategories": null
+                },
+                {
+                    "id": 1853,
+                    "name": "Meetup",
+                    "subcategories": null
+                },
+                {
+                    "id": 633,
+                    "name": "X",
+                    "subcategories": null
+                },
+                {
+                    "id": 1858,
+                    "name": "Weibo",
+                    "subcategories": null
+                },
+                {
+                    "id": 639,
+                    "name": "Wordpress",
+                    "subcategories": null
+                },
+                {
+                    "id": 1084,
+                    "name": "Amino",
+                    "subcategories": null
+                },
+                {
+                    "id": 1086,
+                    "name": "ASKfm",
+                    "subcategories": null
+                },
+                {
+                    "id": 1097,
+                    "name": "Diply",
+                    "subcategories": null
+                },
+                {
+                    "id": 1110,
+                    "name": "iFunny",
+                    "subcategories": null
+                },
+                {
+                    "id": 1122,
+                    "name": "Quora",
+                    "subcategories": null
+                },
+                {
+                    "id": 1135,
+                    "name": "VSCO",
+                    "subcategories": null
+                },
+                {
+                    "id": 1137,
+                    "name": "Wattpad",
+                    "subcategories": null
+                },
+                {
+                    "id": 1138,
+                    "name": "Whisper",
+                    "subcategories": null
+                },
+                {
+                    "id": 1139,
+                    "name": "Wishbone",
+                    "subcategories": null
+                },
+                {
+                    "id": 1144,
+                    "name": "Yik Yak",
+                    "subcategories": null
+                },
+                {
+                    "id": 1130,
+                    "name": "Tumblr",
+                    "subcategories": null
+                },
+                {
+                    "id": 1429,
+                    "name": "WeChat",
+                    "subcategories": null
+                },
+                {
+                    "id": 572,
+                    "name": "Instagram",
+                    "subcategories": null
+                },
+                {
+                    "id": 580,
+                    "name": "LinkedIn",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Instant Messaging",
+            "description": "Applications used for instant messaging.",
+            "subcategories": [
+                {
+                    "id": 1193,
+                    "name": "Android Messages",
+                    "subcategories": null
+                },
+                {
+                    "id": 1158,
+                    "name": "iMessage",
+                    "subcategories": null
+                },
+                {
+                    "id": 1188,
+                    "name": "Messages+",
+                    "subcategories": null
+                },
+                {
+                    "id": 542,
+                    "name": "Facebook Messenger",
+                    "subcategories": null
+                },
+                {
+                    "id": 615,
+                    "name": "Skype",
+                    "subcategories": null
+                },
+                {
+                    "id": 614,
+                    "name": "Signal",
+                    "subcategories": null
+                },
+                {
+                    "id": 638,
+                    "name": "WhatsApp",
+                    "subcategories": null
+                },
+                {
+                    "id": 1099,
+                    "name": "Duo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1107,
+                    "name": "GroupMe",
+                    "subcategories": null
+                },
+                {
+                    "id": 1108,
+                    "name": "HOLLA",
+                    "subcategories": null
+                },
+                {
+                    "id": 1115,
+                    "name": "Kik",
+                    "subcategories": null
+                },
+                {
+                    "id": 1116,
+                    "name": "Line",
+                    "subcategories": null
+                },
+                {
+                    "id": 1117,
+                    "name": "Monkey",
+                    "subcategories": null
+                },
+                {
+                    "id": 1121,
+                    "name": "Omegle",
+                    "subcategories": null
+                },
+                {
+                    "id": 1133,
+                    "name": "Viber",
+                    "subcategories": null
+                },
+                {
+                    "id": 1114,
+                    "name": "Kakao Talk",
+                    "subcategories": null
+                },
+                {
+                    "id": 1202,
+                    "name": "Telegram",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Email",
+            "description": "Applications used for email.",
+            "subcategories": [
+                {
+                    "id": 1410,
+                    "name": "Aqua Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 550,
+                    "name": "Gmail",
+                    "subcategories": null
+                },
+                {
+                    "id": 597,
+                    "name": "Microsoft Outlook",
+                    "subcategories": null
+                },
+                {
+                    "id": 602,
+                    "name": "Proton Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 585,
+                    "name": "Mail.ru",
+                    "subcategories": null
+                },
+                {
+                    "id": 643,
+                    "name": "Yahoo Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1393,
+                    "name": "K-9 Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1411,
+                    "name": "Blue Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1412,
+                    "name": "Canary Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1413,
+                    "name": "Edison Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1414,
+                    "name": "Front",
+                    "subcategories": null
+                },
+                {
+                    "id": 1415,
+                    "name": "Hey Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1418,
+                    "name": "Newton Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1420,
+                    "name": "Spark Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1421,
+                    "name": "Spike Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1422,
+                    "name": "Twobird",
+                    "subcategories": null
+                },
+                {
+                    "id": 1423,
+                    "name": "TypeApp",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Video Streaming",
+            "description": "Applications used for streaming video.",
+            "subcategories": [
+                {
+                    "id": 518,
+                    "name": "BBC iPlayer",
+                    "subcategories": null
+                },
+                {
+                    "id": 535,
+                    "name": "Disney Plus",
+                    "subcategories": null
+                },
+                {
+                    "id": 1171,
+                    "name": "Fios TV",
+                    "subcategories": null
+                },
+                {
+                    "id": 565,
+                    "name": "Max (HBO Go)",
+                    "subcategories": null
+                },
+                {
+                    "id": 588,
+                    "name": "Masterclass",
+                    "subcategories": null
+                },
+                {
+                    "id": 592,
+                    "name": "Netflix",
+                    "subcategories": null
+                },
+                {
+                    "id": 1272,
+                    "name": "Playeur",
+                    "subcategories": null
+                },
+                {
+                    "id": 1079,
+                    "name": "9gag",
+                    "subcategories": null
+                },
+                {
+                    "id": 1091,
+                    "name": "CBS And Paramount Plus",
+                    "subcategories": null
+                },
+                {
+                    "id": 1094,
+                    "name": "Crackle",
+                    "subcategories": null
+                },
+                {
+                    "id": 1096,
+                    "name": "DailyMotion",
+                    "subcategories": null
+                },
+                {
+                    "id": 1102,
+                    "name": "Fandom",
+                    "subcategories": null
+                },
+                {
+                    "id": 1112,
+                    "name": "IMDb",
+                    "subcategories": null
+                },
+                {
+                    "id": 1124,
+                    "name": "Rumble",
+                    "subcategories": null
+                },
+                {
+                    "id": 1125,
+                    "name": "Sling TV",
+                    "subcategories": null
+                },
+                {
+                    "id": 1131,
+                    "name": "Playeur",
+                    "subcategories": null
+                },
+                {
+                    "id": 1132,
+                    "name": "Vevo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1134,
+                    "name": "VideosHub",
+                    "subcategories": null
+                },
+                {
+                    "id": 1136,
+                    "name": "Vudu",
+                    "subcategories": null
+                },
+                {
+                    "id": 613,
+                    "name": "Showtime Anytime",
+                    "subcategories": null
+                },
+                {
+                    "id": 632,
+                    "name": "Twitch",
+                    "subcategories": null
+                },
+                {
+                    "id": 634,
+                    "name": "Vimeo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1189,
+                    "name": "Xfinity Stream",
+                    "subcategories": null
+                },
+                {
+                    "id": 644,
+                    "name": "YouTube",
+                    "subcategories": null
+                },
+                {
+                    "id": 503,
+                    "name": "Amazon Prime Video",
+                    "subcategories": null
+                },
+                {
+                    "id": 569,
+                    "name": "Hulu",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Security",
+            "description": "Applications used for information security.",
+            "subcategories": [
+                {
+                    "id": 509,
+                    "name": "Authy",
+                    "subcategories": null
+                },
+                {
+                    "id": 511,
+                    "name": "Avast",
+                    "subcategories": null
+                },
+                {
+                    "id": 512,
+                    "name": "Avira",
+                    "subcategories": null
+                },
+                {
+                    "id": 519,
+                    "name": "BeyondTrust",
+                    "subcategories": null
+                },
+                {
+                    "id": 524,
+                    "name": "Carbon Black",
+                    "subcategories": null
+                },
+                {
+                    "id": 525,
+                    "name": "Cisco AMP",
+                    "subcategories": null
+                },
+                {
+                    "id": 526,
+                    "name": "Citrix Cloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 586,
+                    "name": "Malwarebytes",
+                    "subcategories": null
+                },
+                {
+                    "id": 589,
+                    "name": "McAfee",
+                    "subcategories": null
+                },
+                {
+                    "id": 593,
+                    "name": "NoMachine",
+                    "subcategories": null
+                },
+                {
+                    "id": 595,
+                    "name": "Okta",
+                    "subcategories": null
+                },
+                {
+                    "id": 619,
+                    "name": "Sophos",
+                    "subcategories": null
+                },
+                {
+                    "id": 624,
+                    "name": "Symantec",
+                    "subcategories": null
+                },
+                {
+                    "id": 627,
+                    "name": "Teamviewer",
+                    "subcategories": null
+                },
+                {
+                    "id": 630,
+                    "name": "Trend Micro",
+                    "subcategories": null
+                },
+                {
+                    "id": 575,
+                    "name": "Jamf",
+                    "subcategories": null
+                },
+                {
+                    "id": 578,
+                    "name": "Kaspersky",
+                    "subcategories": null
+                },
+                {
+                    "id": 579,
+                    "name": "Lastpass",
+                    "subcategories": null
+                },
+                {
+                    "id": 582,
+                    "name": "LogMeIn",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Do Not Inspect",
+            "description": "Applications that either send non-web traffic such as Session Initiation Protocol (SIP) or Extensible Messaging and Presence Protocol (XMPP) over TLS",
+            "subcategories": [
+                {
+                    "id": 650,
+                    "name": "Southwest Mobile App (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 653,
+                    "name": "Akamai EAA (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 654,
+                    "name": "Amazon Alexa (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 831,
+                    "name": "Amazon (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 655,
+                    "name": "Amazon Echo (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 778,
+                    "name": "American Express (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 656,
+                    "name": "Android (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1268,
+                    "name": "Kakao Talk (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 658,
+                    "name": "AWS (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 659,
+                    "name": "Bitdefender (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 660,
+                    "name": "Blizzard Online Games (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 785,
+                    "name": "Bank of America (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 739,
+                    "name": "Brave (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 764,
+                    "name": "Carbon Black (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 786,
+                    "name": "Chase Bank (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 661,
+                    "name": "Cloudflare Services (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 787,
+                    "name": "Coinbase (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 662,
+                    "name": "Cryptocat (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 663,
+                    "name": "Debian apt (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 664,
+                    "name": "Discord (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 665,
+                    "name": "DocHub (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 669,
+                    "name": "Google Chat (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 735,
+                    "name": "Duo (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 788,
+                    "name": "ETRADE (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 667,
+                    "name": "Evernote (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 789,
+                    "name": "Fidelity (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 668,
+                    "name": "Google (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 670,
+                    "name": "Google Play Store (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 733,
+                    "name": "Google Drive (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 671,
+                    "name": "Google Services (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 672,
+                    "name": "GoTo Meeting (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 756,
+                    "name": "Grab (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 775,
+                    "name": "Highfive (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 779,
+                    "name": "HSBC (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 760,
+                    "name": "iMobile (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 673,
+                    "name": "Instabug (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 674,
+                    "name": "Instagram (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 675,
+                    "name": "JAMF Cloud (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 740,
+                    "name": "JS Hosting Sites (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 676,
+                    "name": "Kandji (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 677,
+                    "name": "Keybase (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 652,
+                    "name": "Adobe Updates (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1073,
+                    "name": "Ring (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 791,
+                    "name": "N26",
+                    "subcategories": null
+                },
+                {
+                    "id": 784,
+                    "name": "ActivoBank (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1154,
+                    "name": "Playstation (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1247,
+                    "name": "Google Meet (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1192,
+                    "name": "box (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 651,
+                    "name": "Adobe Sign (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1273,
+                    "name": "Dell Peripheral Manager (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1077,
+                    "name": "DBeaver (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 766,
+                    "name": "Crowdstrike (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1862,
+                    "name": "ChatGPT (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1191,
+                    "name": "Chatwork (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 783,
+                    "name": "Acorns (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1326,
+                    "name": "Pingboard (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 743,
+                    "name": "Webex (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 648,
+                    "name": "Kolide (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 649,
+                    "name": "Notion (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 792,
+                    "name": "Novo Banco (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 749,
+                    "name": "Node Package Manager (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 684,
+                    "name": "Online Certificate Status Protocol (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 685,
+                    "name": "PayPal (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 686,
+                    "name": "Periscope (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 687,
+                    "name": "Python Pip (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 833,
+                    "name": "Qualys (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 782,
+                    "name": "Revolut (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 793,
+                    "name": "Robinhood (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 794,
+                    "name": "Santander (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 795,
+                    "name": "Schwab (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 757,
+                    "name": "SentinelOne (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 689,
+                    "name": "Signal (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 690,
+                    "name": "Silent Circle (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 691,
+                    "name": "Skype (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 692,
+                    "name": "Slack (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 694,
+                    "name": "Sonos (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 695,
+                    "name": "Sophos (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 696,
+                    "name": "Spotify (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 697,
+                    "name": "Squareup (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 742,
+                    "name": "Stripe (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 777,
+                    "name": "SureMDM (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 698,
+                    "name": "SurveyMonkey (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 762,
+                    "name": "Swiggy (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 765,
+                    "name": "Sync (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 812,
+                    "name": "Tableau (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 699,
+                    "name": "Tesla Car App (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 796,
+                    "name": "Titan (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 821,
+                    "name": "Uber (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 701,
+                    "name": "UbuntuOne (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 702,
+                    "name": "USAA Mobile App (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 703,
+                    "name": "Vagrant Cloud (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 797,
+                    "name": "Vanguard (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 704,
+                    "name": "Verizon Wireless (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 832,
+                    "name": "Walmart (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 798,
+                    "name": "Wealthfront (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 705,
+                    "name": "Webroot (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 706,
+                    "name": "Wells Fargo Mobile App (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 707,
+                    "name": "WhatsApp (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 708,
+                    "name": "Wire (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 709,
+                    "name": "Xbox Live (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 753,
+                    "name": "Zoho Assist (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 763,
+                    "name": "Zomato (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 710,
+                    "name": "Zoom (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 693,
+                    "name": "Snap Chat (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1322,
+                    "name": "MyQ (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 700,
+                    "name": "X (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 683,
+                    "name": "Okta (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 678,
+                    "name": "LogMeIn (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 825,
+                    "name": "Line (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 804,
+                    "name": "LINE WORKS (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 679,
+                    "name": "Malwarebytes (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 790,
+                    "name": "MB Way (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 681,
+                    "name": "Monday (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 780,
+                    "name": "Monzo (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 761,
+                    "name": "Mozilla (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 781,
+                    "name": "NatWest (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 682,
+                    "name": "Nest (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1238,
+                    "name": "Pycharm (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 666,
+                    "name": "Dropbox (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 680,
+                    "name": "Microsoft (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1375,
+                    "name": "Microsoft Azure Virtual Desktop (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1376,
+                    "name": "Microsoft Office365 (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1425,
+                    "name": "Feishu (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1426,
+                    "name": "Lark (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 688,
+                    "name": "Samsung (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1424,
+                    "name": "Apple Music (Do Not Inspect)",
+                    "subcategories": null
+                },
+                {
+                    "id": 657,
+                    "name": "Apple (Do Not Inspect)",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Encrypted DNS",
+            "description": "Applications used for encrypting DNS.",
+            "subcategories": [
+                {
+                    "id": 713,
+                    "name": "BlahDNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 715,
+                    "name": "Comcast Encrypted DNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 727,
+                    "name": "OpenDNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 728,
+                    "name": "PowerDNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 729,
+                    "name": "Quad9",
+                    "subcategories": null
+                },
+                {
+                    "id": 730,
+                    "name": "Rubyfish",
+                    "subcategories": null
+                },
+                {
+                    "id": 714,
+                    "name": "CleanBrowsing",
+                    "subcategories": null
+                },
+                {
+                    "id": 720,
+                    "name": "GoogleDNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 726,
+                    "name": "nextDNS",
+                    "subcategories": null
+                },
+                {
+                    "id": 712,
+                    "name": "AdGuard",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Gaming",
+            "description": "Games and gaming related applications.",
+            "subcategories": [
+                {
+                    "id": 1155,
+                    "name": "8 Ball Pool",
+                    "subcategories": null
+                },
+                {
+                    "id": 1157,
+                    "name": "Angry Birds",
+                    "subcategories": null
+                },
+                {
+                    "id": 1160,
+                    "name": "Ballz",
+                    "subcategories": null
+                },
+                {
+                    "id": 1164,
+                    "name": "Chicken Scream",
+                    "subcategories": null
+                },
+                {
+                    "id": 1162,
+                    "name": "Call of Duty",
+                    "subcategories": null
+                },
+                {
+                    "id": 1170,
+                    "name": "Faceswap",
+                    "subcategories": null
+                },
+                {
+                    "id": 1163,
+                    "name": "Candy Crush",
+                    "subcategories": null
+                },
+                {
+                    "id": 1176,
+                    "name": "Grand Theft Auto",
+                    "subcategories": null
+                },
+                {
+                    "id": 1165,
+                    "name": "Clash of Clans",
+                    "subcategories": null
+                },
+                {
+                    "id": 1166,
+                    "name": "Clash Royale",
+                    "subcategories": null
+                },
+                {
+                    "id": 1167,
+                    "name": "Color Switch",
+                    "subcategories": null
+                },
+                {
+                    "id": 1183,
+                    "name": "Power Rangers: Legacy Wars",
+                    "subcategories": null
+                },
+                {
+                    "id": 1169,
+                    "name": "Disney Now",
+                    "subcategories": null
+                },
+                {
+                    "id": 1172,
+                    "name": "Fortnite Games Battle Royal",
+                    "subcategories": null
+                },
+                {
+                    "id": 1173,
+                    "name": "Fruit Ninja",
+                    "subcategories": null
+                },
+                {
+                    "id": 1179,
+                    "name": "Minecraft",
+                    "subcategories": null
+                },
+                {
+                    "id": 1181,
+                    "name": "Pokemon Go",
+                    "subcategories": null
+                },
+                {
+                    "id": 1182,
+                    "name": "Pokemon Quest",
+                    "subcategories": null
+                },
+                {
+                    "id": 1184,
+                    "name": "Roblox",
+                    "subcategories": null
+                },
+                {
+                    "id": 1186,
+                    "name": "Super Mario Run",
+                    "subcategories": null
+                },
+                {
+                    "id": 1855,
+                    "name": "Second Life",
+                    "subcategories": null
+                },
+                {
+                    "id": 1860,
+                    "name": "Hellcopter",
+                    "subcategories": null
+                },
+                {
+                    "id": 1432,
+                    "name": "Coin Master",
+                    "subcategories": null
+                },
+                {
+                    "id": 1156,
+                    "name": "Among Us",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "News",
+            "description": "Applications delivering news",
+            "subcategories": [
+                {
+                    "id": 1817,
+                    "name": "AOL",
+                    "subcategories": null
+                },
+                {
+                    "id": 1856,
+                    "name": "Slashdot",
+                    "subcategories": null
+                },
+                {
+                    "id": 1080,
+                    "name": "ABC",
+                    "subcategories": null
+                },
+                {
+                    "id": 1085,
+                    "name": "Apple News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1087,
+                    "name": "BBC",
+                    "subcategories": null
+                },
+                {
+                    "id": 1093,
+                    "name": "CNN",
+                    "subcategories": null
+                },
+                {
+                    "id": 1103,
+                    "name": "Fox news",
+                    "subcategories": null
+                },
+                {
+                    "id": 1106,
+                    "name": "Google News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1118,
+                    "name": "NBC",
+                    "subcategories": null
+                },
+                {
+                    "id": 1120,
+                    "name": "NY Times",
+                    "subcategories": null
+                },
+                {
+                    "id": 1123,
+                    "name": "Reuters",
+                    "subcategories": null
+                },
+                {
+                    "id": 1127,
+                    "name": "The Guardian",
+                    "subcategories": null
+                },
+                {
+                    "id": 1141,
+                    "name": "Yahoo! News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1379,
+                    "name": "CBS News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1382,
+                    "name": "Dailyhunt",
+                    "subcategories": null
+                },
+                {
+                    "id": 1383,
+                    "name": "Daily Mail",
+                    "subcategories": null
+                },
+                {
+                    "id": 1384,
+                    "name": "Daily Wire",
+                    "subcategories": null
+                },
+                {
+                    "id": 1386,
+                    "name": "The Economist",
+                    "subcategories": null
+                },
+                {
+                    "id": 1390,
+                    "name": "Financial Times",
+                    "subcategories": null
+                },
+                {
+                    "id": 1392,
+                    "name": "HuffPost",
+                    "subcategories": null
+                },
+                {
+                    "id": 1395,
+                    "name": "New Yorker",
+                    "subcategories": null
+                },
+                {
+                    "id": 1396,
+                    "name": "New York Post",
+                    "subcategories": null
+                },
+                {
+                    "id": 1397,
+                    "name": "New York Times",
+                    "subcategories": null
+                },
+                {
+                    "id": 1404,
+                    "name": "The Atlantic",
+                    "subcategories": null
+                },
+                {
+                    "id": 1433,
+                    "name": "Good News Network",
+                    "subcategories": null
+                },
+                {
+                    "id": 1439,
+                    "name": "Flipboard The Social Magazine",
+                    "subcategories": null
+                },
+                {
+                    "id": 1441,
+                    "name": "Ground News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1442,
+                    "name": "Inoreader News & RSS reader",
+                    "subcategories": null
+                },
+                {
+                    "id": 1444,
+                    "name": "NewsBreak Local News & Alerts",
+                    "subcategories": null
+                },
+                {
+                    "id": 1445,
+                    "name": "Pocket",
+                    "subcategories": null
+                },
+                {
+                    "id": 1446,
+                    "name": "SmartNews News That Matters",
+                    "subcategories": null
+                },
+                {
+                    "id": 1447,
+                    "name": "The Sun Mobile - Daily News",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Search Engines",
+            "description": "Search engines",
+            "subcategories": [
+                {
+                    "id": 1159,
+                    "name": "Ask.com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1294,
+                    "name": "Google Search",
+                    "subcategories": null
+                },
+                {
+                    "id": 1088,
+                    "name": "Bing",
+                    "subcategories": null
+                },
+                {
+                    "id": 1343,
+                    "name": "Baidu",
+                    "subcategories": null
+                },
+                {
+                    "id": 1098,
+                    "name": "DuckDuckGo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1140,
+                    "name": "Yahoo!",
+                    "subcategories": null
+                },
+                {
+                    "id": 1143,
+                    "name": "Yandex",
+                    "subcategories": null
+                },
+                {
+                    "id": 1345,
+                    "name": "Internet Archive",
+                    "subcategories": null
+                },
+                {
+                    "id": 1346,
+                    "name": "Naver",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "name": "Shopping",
+            "description": "Applications for shopping and buying online",
+            "subcategories": [
+                {
+                    "id": 1327,
+                    "name": "Best Buy",
+                    "subcategories": null
+                },
+                {
+                    "id": 1185,
+                    "name": "SHEIN",
+                    "subcategories": null
+                },
+                {
+                    "id": 1187,
+                    "name": "Tilly's",
+                    "subcategories": null
+                },
+                {
+                    "id": 1180,
+                    "name": "PacSun",
+                    "subcategories": null
+                },
+                {
+                    "id": 1328,
+                    "name": "Target",
+                    "subcategories": null
+                },
+                {
+                    "id": 1329,
+                    "name": "Walmart",
+                    "subcategories": null
+                },
+                {
+                    "id": 1177,
+                    "name": "H&M",
+                    "subcategories": null
+                },
+                {
+                    "id": 1081,
+                    "name": "AliExpress",
+                    "subcategories": null
+                },
+                {
+                    "id": 1082,
+                    "name": "Amazon",
+                    "subcategories": null
+                },
+                {
+                    "id": 1095,
+                    "name": "CraigsList",
+                    "subcategories": null
+                },
+                {
+                    "id": 1100,
+                    "name": "Ebay",
+                    "subcategories": null
+                },
+                {
+                    "id": 1109,
+                    "name": "Hot Topic",
+                    "subcategories": null
+                },
+                {
+                    "id": 1113,
+                    "name": "Instacart",
+                    "subcategories": null
+                },
+                {
+                    "id": 1146,
+                    "name": "Zappos",
+                    "subcategories": null
+                },
+                {
+                    "id": 1349,
+                    "name": "Wawa",
+                    "subcategories": null
+                },
+                {
+                    "id": 1350,
+                    "name": "Wish.com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1434,
+                    "name": "Sephora",
+                    "subcategories": null
+                },
+                {
+                    "id": 1178,
+                    "name": "Lululemon",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "name": "Sports",
+            "description": "Applications delivering content related to sports",
+            "subcategories": [
+                {
+                    "id": 1078,
+                    "name": "90min dot com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1089,
+                    "name": "BleacherReport",
+                    "subcategories": null
+                },
+                {
+                    "id": 1092,
+                    "name": "CBSSports",
+                    "subcategories": null
+                },
+                {
+                    "id": 1101,
+                    "name": "ESPN",
+                    "subcategories": null
+                },
+                {
+                    "id": 1104,
+                    "name": "Fox Sports",
+                    "subcategories": null
+                },
+                {
+                    "id": 1105,
+                    "name": "goal dot com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1119,
+                    "name": "NBC Sports",
+                    "subcategories": null
+                },
+                {
+                    "id": 1126,
+                    "name": "Sports Illustrated",
+                    "subcategories": null
+                },
+                {
+                    "id": 1142,
+                    "name": "Yahoo! Sports",
+                    "subcategories": null
+                },
+                {
+                    "id": 1437,
+                    "name": "365Scores Live Scores & News",
+                    "subcategories": null
+                },
+                {
+                    "id": 1438,
+                    "name": "Flashscore - Live scores",
+                    "subcategories": null
+                },
+                {
+                    "id": 1440,
+                    "name": "FotMob - Soccer Live Scores",
+                    "subcategories": null
+                },
+                {
+                    "id": 1443,
+                    "name": "LiveScore",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "name": "Dating",
+            "description": "Applications used for online dating",
+            "subcategories": [
+                {
+                    "id": 1351,
+                    "name": "Badoo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1161,
+                    "name": "Blendr",
+                    "subcategories": null
+                },
+                {
+                    "id": 1175,
+                    "name": "Grindr",
+                    "subcategories": null
+                },
+                {
+                    "id": 1300,
+                    "name": "Hinge",
+                    "subcategories": null
+                },
+                {
+                    "id": 1090,
+                    "name": "Bumble",
+                    "subcategories": null
+                },
+                {
+                    "id": 1129,
+                    "name": "Tinder",
+                    "subcategories": null
+                },
+                {
+                    "id": 1352,
+                    "name": "BLK",
+                    "subcategories": null
+                },
+                {
+                    "id": 1353,
+                    "name": "Boo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1354,
+                    "name": "Christian Mingle",
+                    "subcategories": null
+                },
+                {
+                    "id": 1355,
+                    "name": "eHarmony",
+                    "subcategories": null
+                },
+                {
+                    "id": 1356,
+                    "name": "Elite Singles",
+                    "subcategories": null
+                },
+                {
+                    "id": 1357,
+                    "name": "Happn",
+                    "subcategories": null
+                },
+                {
+                    "id": 1358,
+                    "name": "Kippo",
+                    "subcategories": null
+                },
+                {
+                    "id": 1359,
+                    "name": "Luxy",
+                    "subcategories": null
+                },
+                {
+                    "id": 1360,
+                    "name": "Match.com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1362,
+                    "name": "Nevermet",
+                    "subcategories": null
+                },
+                {
+                    "id": 1363,
+                    "name": "OkCupid",
+                    "subcategories": null
+                },
+                {
+                    "id": 1364,
+                    "name": "parship",
+                    "subcategories": null
+                },
+                {
+                    "id": 1365,
+                    "name": "Plenty of Fish",
+                    "subcategories": null
+                },
+                {
+                    "id": 1366,
+                    "name": "Pure",
+                    "subcategories": null
+                },
+                {
+                    "id": 1367,
+                    "name": "RandoChat",
+                    "subcategories": null
+                },
+                {
+                    "id": 1368,
+                    "name": "Raya",
+                    "subcategories": null
+                },
+                {
+                    "id": 1369,
+                    "name": "Seeking",
+                    "subcategories": null
+                },
+                {
+                    "id": 1370,
+                    "name": "Silver Singles",
+                    "subcategories": null
+                },
+                {
+                    "id": 1371,
+                    "name": "Stir",
+                    "subcategories": null
+                },
+                {
+                    "id": 1372,
+                    "name": "Veggly",
+                    "subcategories": null
+                },
+                {
+                    "id": 1373,
+                    "name": "Zoosk",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "name": "Audio Streaming",
+            "description": "Applications used for streaming audio",
+            "subcategories": [
+                {
+                    "id": 1408,
+                    "name": "Apple Music",
+                    "subcategories": null
+                },
+                {
+                    "id": 1409,
+                    "name": "Apple Podcasts",
+                    "subcategories": null
+                },
+                {
+                    "id": 507,
+                    "name": "Audible",
+                    "subcategories": null
+                },
+                {
+                    "id": 1168,
+                    "name": "Deezer",
+                    "subcategories": null
+                },
+                {
+                    "id": 1197,
+                    "name": "Pandora",
+                    "subcategories": null
+                },
+                {
+                    "id": 1111,
+                    "name": "iHeartRadio",
+                    "subcategories": null
+                },
+                {
+                    "id": 1128,
+                    "name": "Tidal",
+                    "subcategories": null
+                },
+                {
+                    "id": 1145,
+                    "name": "Youtube Music",
+                    "subcategories": null
+                },
+                {
+                    "id": 620,
+                    "name": "Soundcloud",
+                    "subcategories": null
+                },
+                {
+                    "id": 621,
+                    "name": "Spotify",
+                    "subcategories": null
+                },
+                {
+                    "id": 1416,
+                    "name": "Jango Radio",
+                    "subcategories": null
+                },
+                {
+                    "id": 1419,
+                    "name": "LiveOne (Slacker Radio)",
+                    "subcategories": null
+                },
+                {
+                    "id": 1083,
+                    "name": "Amazon Music",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "name": "Artificial Intelligence",
+            "description": "Applications used for AI algorithms",
+            "subcategories": [
+                {
+                    "id": 1199,
+                    "name": "ChatGPT",
+                    "subcategories": null
+                },
+                {
+                    "id": 1198,
+                    "name": "Google Bard",
+                    "subcategories": null
+                },
+                {
+                    "id": 1847,
+                    "name": "Aircover.ai",
+                    "subcategories": null
+                },
+                {
+                    "id": 1339,
+                    "name": "Microsoft Copilot",
+                    "subcategories": null
+                },
+                {
+                    "id": 1378,
+                    "name": "Chat & Ask AI",
+                    "subcategories": null
+                },
+                {
+                    "id": 1385,
+                    "name": "DataBot",
+                    "subcategories": null
+                },
+                {
+                    "id": 1388,
+                    "name": "Elsa Speak",
+                    "subcategories": null
+                },
+                {
+                    "id": 1340,
+                    "name": "Google Gemini",
+                    "subcategories": null
+                },
+                {
+                    "id": 1394,
+                    "name": "Lensa",
+                    "subcategories": null
+                },
+                {
+                    "id": 1398,
+                    "name": "Otter",
+                    "subcategories": null
+                },
+                {
+                    "id": 1400,
+                    "name": "Seeing AI",
+                    "subcategories": null
+                },
+                {
+                    "id": 1403,
+                    "name": "synthesia.io",
+                    "subcategories": null
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "name": "Telephony & Voice Communication",
+            "description": "Applications used for voice and SMS communication.",
+            "subcategories": [
+                {
+                    "id": 1832,
+                    "name": "2ndLine",
+                    "subcategories": null
+                },
+                {
+                    "id": 1833,
+                    "name": "800.com",
+                    "subcategories": null
+                },
+                {
+                    "id": 1834,
+                    "name": "Aircall",
+                    "subcategories": null
+                },
+                {
+                    "id": 1835,
+                    "name": "hushed",
+                    "subcategories": null
+                },
+                {
+                    "id": 1836,
+                    "name": "Line2",
+                    "subcategories": null
+                },
+                {
+                    "id": 1837,
+                    "name": "OnlineSIM",
+                    "subcategories": null
+                },
+                {
+                    "id": 1838,
+                    "name": "OpenPhone",
+                    "subcategories": null
+                },
+                {
+                    "id": 1839,
+                    "name": "Phoner",
+                    "subcategories": null
+                },
+                {
+                    "id": 1840,
+                    "name": "Quackr",
+                    "subcategories": null
+                },
+                {
+                    "id": 1841,
+                    "name": "RingCentral",
+                    "subcategories": null
+                },
+                {
+                    "id": 1842,
+                    "name": "SwitchUp",
+                    "subcategories": null
+                },
+                {
+                    "id": 1843,
+                    "name": "Temp Number",
+                    "subcategories": null
+                },
+                {
+                    "id": 1844,
+                    "name": "TextNow",
+                    "subcategories": null
+                },
+                {
+                    "id": 1845,
+                    "name": "VirtualSIM",
+                    "subcategories": null
+                },
+                {
+                    "id": 1846,
+                    "name": "WePhone",
+                    "subcategories": null
+                }
+            ]
+        }
+    ]
+}
