@@ -2,7 +2,8 @@ import { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import policyService, { Policy, Schedule } from "../services/policy-service";
+import policyService from "../services/policy-service";
+import { Policy, Schedule } from "../models/Policy";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
@@ -42,7 +43,7 @@ function PolicyManager() {
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<any[]>([]);
 
-  const [, setIsLoading] = useState(false); // isLoading deleted, add later if needed
+  const [isLoading, setIsLoading] = useState(false); // isLoading deleted, add later if needed
   const [scheduleFormOpen, setScheduleFormOpen] = useState(false);
 
   const {
@@ -437,27 +438,31 @@ function PolicyManager() {
               <th>Schedule</th>
             </tr>
           </thead>
-          <tbody>
-            {policies.map((policy) => {
-              const categoryIds = extractCategoryIds(policy.traffic);
-              const categoryNames = getCategoryNames(categoryIds);
-              const applicationIds = extractApplicationIds(policy.traffic);
-              const applicationNames = getApplicationNames(applicationIds);
+          {isLoading ? (
+            <div className="spinner-border"></div>
+          ) : (
+            <tbody>
+              {policies.map((policy) => {
+                const categoryIds = extractCategoryIds(policy.traffic);
+                const categoryNames = getCategoryNames(categoryIds);
+                const applicationIds = extractApplicationIds(policy.traffic);
+                const applicationNames = getApplicationNames(applicationIds);
 
-              // Format schedule for this policy
-              const schedule = formatSchedule(policy.schedule || {});
+                // Format schedule for this policy
+                const schedule = formatSchedule(policy.schedule || {});
 
-              return (
-                <tr key={policy.id}>
-                  <td>{policy.name}</td>
-                  <td>{policy.action}</td>
-                  <td>{renderCategoriesWithTooltip(categoryNames)}</td>
-                  <td>{renderApplicationsWithTooltip(applicationNames)}</td>
-                  <td>{schedule}</td>
-                </tr>
-              );
-            })}
-          </tbody>
+                return (
+                  <tr key={policy.id}>
+                    <td>{policy.name}</td>
+                    <td>{policy.action}</td>
+                    <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                    <td>{renderApplicationsWithTooltip(applicationNames)}</td>
+                    <td>{schedule}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          )}
         </table>
       </div>
 
