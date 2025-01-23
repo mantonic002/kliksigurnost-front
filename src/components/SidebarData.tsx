@@ -2,11 +2,13 @@ import {
   AiOutlineBarChart,
   AiOutlineHome,
   AiOutlineLogout,
+  AiOutlineMobile,
   AiOutlineSliders,
 } from "react-icons/ai";
 import Home from "./Home";
 import Policies from "./Policies";
 import Logs from "./Logs";
+import Devices from "./Devices";
 
 interface SidebarItem {
   title: string;
@@ -28,6 +30,12 @@ export const SidebarData: SidebarItem[] = [
     icon: <AiOutlineSliders />,
     element: <Policies />,
     link: "/policies",
+  },
+  {
+    title: "Uredjaji",
+    icon: <AiOutlineMobile />,
+    element: <Devices />,
+    link: "/devices",
   },
   {
     title: "Praćenje",
