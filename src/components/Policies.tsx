@@ -6,6 +6,7 @@ import policyService, { Policy, Schedule } from "../services/policy-service";
 import { CanceledError } from "axios";
 import Select from "react-select";
 import categoriesData from "../data/content-categories.json";
+import appData from "../data/reformatted_application-types.json";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import {
   AiFillCaretDown,
@@ -28,7 +29,8 @@ const scheduleSchema = z.object({
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   action: z.string().min(1, { message: "Action is required" }),
-  traffic: z.string().min(1, { message: "Traffic is required" }),
+  trafficApplications: z.string().optional(),
+  trafficCategories: z.string().optional(),
   schedule: scheduleSchema,
 });
 
@@ -38,6 +40,8 @@ function PolicyManager() {
   const [policies, setPolicies] = useState<Policy[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
+  const [selectedApplications, setSelectedApplications] = useState<any[]>([]);
+
   const [, setIsLoading] = useState(false); // isLoading deleted, add later if needed
   const [scheduleFormOpen, setScheduleFormOpen] = useState(false);
 
@@ -46,8 +50,6 @@ function PolicyManager() {
     handleSubmit,
     formState: { errors },
     setValue,
-
-   // getValues, uncomment later if needed
     reset,
   } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
@@ -107,6 +109,7 @@ function PolicyManager() {
     return () => cancel();
   }, []);
 
+  // ----------CATEGORIES----------
   // Preprocess categories into a structure that makes lookups easy
   const { categoryOptions, categoryMap } = useMemo(() => {
     const categoryMap = new Map<number, string>();
@@ -184,15 +187,150 @@ function PolicyManager() {
     const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(
       " "
     )}})`;
-    setValue("traffic", trafficString);
+    setValue("trafficCategories", trafficString);
+  };
+
+  // ----------APPLICATIONS----------
+  // Preprocess Applications into a structure grouped by application type
+  const { applicationOptions, applicationMap } = useMemo(() => {
+    const applicationMap = new Map<number, string>(); // Create map for applications
+    const applicationOptions = appData.categories.flatMap((category) => [
+      { value: category.id, label: category.name, parentId: null }, // Parent category
+      ...(category.subcategories
+        ? category.subcategories.map((sub) => ({
+            value: sub.id,
+            label: `— ${sub.name}`,
+            parentId: category.id,
+          }))
+        : []),
+    ]);
+
+    appData.categories.forEach((category) => {
+      applicationMap.set(category.id, category.name); // Map parent application category
+      category.subcategories?.forEach((sub) => {
+        applicationMap.set(sub.id, sub.name); // Map subcategories as applications
+      });
+    });
+
+    return { applicationOptions, applicationMap }; // Return correct map and options
+  }, []);
+
+  // Helper function to extract application IDs from traffic string
+  const extractApplicationIds = (traffic: string): number[] => {
+    // Match app.ids[*] and app.type.ids[*]
+    const appIdsMatch = traffic.match(/app.ids\[\*] in {([^}]+)}/);
+    const appTypeIdsMatch = traffic.match(/app.type.ids\[\*] in {([^}]+)}/);
+
+    // Extract the IDs from the matched strings
+    const appIds = appIdsMatch ? appIdsMatch[1].split(" ").map(Number) : [];
+    const appTypeIds = appTypeIdsMatch
+      ? appTypeIdsMatch[1].split(" ").map(Number)
+      : [];
+
+    return [...appIds, ...appTypeIds];
+  };
+
+  // Function to get application names from IDs using the preprocessed applicationMap
+  const getApplicationNames = (appIds: number[]): string[] => {
+    return appIds.map((id) => applicationMap.get(id) || "Unknown");
+  };
+
+  // Helper function to truncate category list
+  const truncateApplicationNames = (
+    applicationNames: string[],
+    maxLength: number = 3
+  ) => {
+    if (applicationNames.length > maxLength) {
+      return [...applicationNames.slice(0, maxLength), "..."];
+    }
+    return applicationNames;
+  };
+
+  const renderApplicationsWithTooltip = (applicationNames: string[]) => {
+    const applicationText = applicationNames.join(", ");
+    return (
+      <OverlayTrigger
+        placement="bottom"
+        overlay={<Tooltip id="tooltip-applications">{applicationText}</Tooltip>}
+      >
+        <span>{truncateApplicationNames(applicationNames).join(", ")}</span>
+      </OverlayTrigger>
+    );
+  };
+
+  // Handle application selection
+  const handleApplicationChange = (selectedOptions: any) => {
+    const updatedApplications = new Set<number>();
+    const updatedApplicationTypes = new Set<number>();
+
+    // Classify selected options into applications and types
+    selectedOptions.forEach((option: any) => {
+      if (option.parentId) {
+        updatedApplications.add(option.value);
+      } else {
+        updatedApplicationTypes.add(option.value);
+      }
+    });
+
+    // Automatically select subcategories if a parent category is selected
+    applicationOptions.forEach((option) => {
+      if (option.parentId && updatedApplicationTypes.has(option.parentId)) {
+        updatedApplications.add(option.value);
+      }
+    });
+
+    // Convert sets to arrays
+    const selectedApplicationTypesArray = Array.from(updatedApplicationTypes);
+    const selectedApplicationsArray = Array.from(updatedApplications);
+
+    // Find applications whose parentId is not in selectedApplicationTypesArray
+    const selectedApplicationsNotInAppTypesArray = Array.from(
+      updatedApplications
+    ).filter((appId) => {
+      const option = applicationOptions.find(
+        (option) => option.value === appId
+      );
+      return (
+        option &&
+        option.parentId &&
+        !selectedApplicationTypesArray.includes(option.parentId)
+      );
+    });
+
+    // Set the selected values
+    setSelectedApplications([
+      ...selectedApplicationsArray,
+      ...selectedApplicationTypesArray,
+    ]);
+
+    // Update traffic field based on selected categories and applications
+    let trafficString = "";
+
+    const appsNotInTypes =
+      selectedApplicationsNotInAppTypesArray.length > 0
+        ? `any(app.ids[*] in {${selectedApplicationsNotInAppTypesArray.join(
+            " "
+          )}})`
+        : "";
+
+    const appTypes =
+      selectedApplicationTypesArray.length > 0
+        ? `any(app.type.ids[*] in {${selectedApplicationTypesArray.join(" ")}})`
+        : "";
+
+    if (appsNotInTypes && appTypes) {
+      trafficString = `${appsNotInTypes} or ${appTypes}`;
+    } else if (appsNotInTypes || appTypes) {
+      trafficString = appsNotInTypes || appTypes;
+    }
+
+    setValue("trafficApplications", trafficString);
   };
 
   const onSubmit = (data: PolicyFormData) => {
     const formattedSchedule = Object.entries(data.schedule).reduce(
       (acc, [day, timeRanges]) => {
         if (day !== "time_zone" && timeRanges[0] !== "") {
-          console.log(timeRanges);
-
           // Create a list of ranges
           const ranges = (timeRanges as string[]).reduce(
             (result, time, index, arr) => {
@@ -254,8 +392,16 @@ function PolicyManager() {
       },
     };
 
+    const policy: Policy = {
+      name: formData.name,
+      action: formData.action,
+      traffic:
+        formData.trafficCategories + " or " + formData.trafficApplications,
+      schedule: formData.schedule,
+    };
+
     policyService
-      .post<Policy>(formData)
+      .post<Policy>(policy)
       .then(() => {
         const { req } = policyService.getAll<Policy>();
         return req;
@@ -266,6 +412,7 @@ function PolicyManager() {
         setScheduleFormOpen(false);
         setDays(defDays);
         handleCategoryChange([]);
+        handleApplicationChange([]);
       })
       .catch((error: any) => {
         setError(error.message || "Failed to create policy");
@@ -274,11 +421,11 @@ function PolicyManager() {
 
   return (
     <div className="container">
-      <h1 className="mb-4">Cloudflare Policies</h1>
+      <h1 className="mb-5">Cloudflare Policies</h1>
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div className="mb-4">
+      <div className="mb-5">
         <h2>Policies</h2>
         <table className="table table-striped">
           <thead>
@@ -286,13 +433,16 @@ function PolicyManager() {
               <th>Name</th>
               <th>Action</th>
               <th>Category</th>
-              <th>Schedule</th> {/* New column for Schedule */}
+              <th>Application</th>
+              <th>Schedule</th>
             </tr>
           </thead>
           <tbody>
             {policies.map((policy) => {
               const categoryIds = extractCategoryIds(policy.traffic);
               const categoryNames = getCategoryNames(categoryIds);
+              const applicationIds = extractApplicationIds(policy.traffic);
+              const applicationNames = getApplicationNames(applicationIds);
 
               // Format schedule for this policy
               const schedule = formatSchedule(policy.schedule || {});
@@ -302,7 +452,8 @@ function PolicyManager() {
                   <td>{policy.name}</td>
                   <td>{policy.action}</td>
                   <td>{renderCategoriesWithTooltip(categoryNames)}</td>
-                  <td>{schedule}</td> {/* Display schedule */}
+                  <td>{renderApplicationsWithTooltip(applicationNames)}</td>
+                  <td>{schedule}</td>
                 </tr>
               );
             })}
@@ -347,6 +498,22 @@ function PolicyManager() {
               closeMenuOnSelect={false}
               value={categoryOptions.filter((option) =>
                 selectedCategories.includes(option.value)
+              )}
+              getOptionLabel={(e) => e.label}
+              getOptionValue={(e) => String(e.value)}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Applications:</label>
+            <Select
+              isMulti
+              name="applications"
+              options={applicationOptions}
+              onChange={handleApplicationChange}
+              closeMenuOnSelect={false}
+              value={applicationOptions.filter((option) =>
+                selectedApplications.includes(option.value)
               )}
               getOptionLabel={(e) => e.label}
               getOptionValue={(e) => String(e.value)}
