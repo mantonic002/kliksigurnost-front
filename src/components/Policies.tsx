@@ -185,10 +185,12 @@ function PolicyManager() {
     setSelectedCategories(selectedCategoryArray);
 
     // Update traffic field based on selected categories
-    const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(
-      " "
-    )}})`;
-    setValue("trafficCategories", trafficString);
+    if (selectedCategoryArray.length > 0) {
+      const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(
+        " "
+      )}})`;
+      setValue("trafficCategories", trafficString);
+    }
   };
 
   // ----------APPLICATIONS----------
@@ -385,19 +387,28 @@ function PolicyManager() {
       {} as Record<keyof PolicyFormData["schedule"], string>
     );
 
+    const isScheduleEmpty = Object.values(formattedSchedule).every(
+      (value) => value === "" || value === null
+    );
+
     const formData = {
       ...data,
-      schedule: {
-        ...formattedSchedule,
-        time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      },
+      ...(isScheduleEmpty ? {schedule: undefined} : { schedule: { ...formattedSchedule, time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone } }),
+
     };
+
+    var trafficString: string[] = [];
+    if (formData.trafficCategories) {
+      trafficString.push(formData.trafficCategories);
+    }
+    if (formData.trafficApplications) {
+      trafficString.push(formData.trafficApplications);
+    }
 
     const policy: Policy = {
       name: formData.name,
       action: formData.action,
-      traffic:
-        formData.trafficCategories + " or " + formData.trafficApplications,
+      traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
 
