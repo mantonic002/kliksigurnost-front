@@ -6,7 +6,7 @@
 
 .Sidebar {
   height: 100vh; /* Ensure full height for the sidebar */
-  width: 20%;
+  width: 30%;
   background-color: #2f4050;
   position: sticky; /* Enables sticky positioning */
   top: 0; /* Sticks to the top of the viewport */
@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-.SidebarList .SidebarItem {
+.SidebarList .SidebarItem, .SidebarItemStatic{
   width: 100%;
   height: 60px;
   list-style-type: none;

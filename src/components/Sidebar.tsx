@@ -3,12 +3,15 @@ import { useAuth } from "../contexts/AuthContext";
 import { SidebarData } from "./SidebarData";
 
 const Sidebar = () => {
-  const { logout } = useAuth();
+  const { email, logout } = useAuth();
   const navigate = useNavigate();
 
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
+        <li 
+        className="SidebarItemStatic"
+        >{email}</li>
         {SidebarData.map((item, index) => (
           <li
             key={index}
