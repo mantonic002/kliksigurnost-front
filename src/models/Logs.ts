@@ -4,6 +4,6 @@ export interface Log {
     matchedApplicationName: string,
     policyId: string,
     policyName: string,
-    String: string,
+    queryName: string,
     resolverDecision: Number
   }
