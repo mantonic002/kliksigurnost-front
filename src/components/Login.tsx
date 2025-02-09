@@ -35,7 +35,6 @@ function Login() {
     authService
       .login(data.email, data.password)
       .then(() => {
-        console.log(authService.getToken());
         login();
         navigate("/home");
       })

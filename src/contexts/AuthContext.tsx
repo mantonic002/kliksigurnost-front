@@ -2,6 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import authService from "../services/auth-service";
 
 interface AuthContextType {
+  email: string;
   isAuthenticated: boolean;
   login: () => void;
   logout: () => void;
@@ -26,14 +27,22 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     authService.isAuthenticated()
   );
 
-  const login = () => setIsAuthenticated(true);
+  const [email, setEmail] = useState<string>(
+    authService.getEmail()!
+  )
+
+  const login = () => {
+    setIsAuthenticated(true);
+    setEmail(authService.getEmail()!);
+  }
   const logout = () => {
     authService.logout();
     setIsAuthenticated(false);
+    setEmail("");
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{email, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

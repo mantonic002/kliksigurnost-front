@@ -21,7 +21,7 @@ function App() {
 }
 
 const AppContent = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const {email, isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const token = authService.getToken();

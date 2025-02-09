@@ -1,4 +1,5 @@
 import apiClient from "./api-client";
+import { jwtDecode } from "jwt-decode";
 
 class AuthService {
     constructor() {
@@ -15,6 +16,7 @@ class AuthService {
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 this.setTokenToApiClient(response.data.token);
+                this.setEmailFromToken();
             }
             return response;
         } catch (error) {
@@ -31,6 +33,8 @@ class AuthService {
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 this.setTokenToApiClient(response.data.token);
+                this.setEmailFromToken();
+
             }
             return response;
         } catch (error) {
@@ -42,6 +46,8 @@ class AuthService {
         if (token) {
             localStorage.setItem('token', token);
             this.setTokenToApiClient(token);
+            this.setEmailFromToken();
+
         }
     }
 
@@ -55,6 +61,29 @@ class AuthService {
 
     getToken() {
         return localStorage.getItem('token');
+    }
+
+    getEmail() {
+        return localStorage.getItem('email');
+    }
+
+    setEmailFromToken() {
+        const token = this.getToken();
+        if (token) {
+            try {
+                const decoded: any = jwtDecode(token);
+                const email = decoded.email;
+                if (email) {
+                    localStorage.setItem('email', email);
+                } else {
+                  console.warn("Email not found in token")
+                }
+            } catch (error) {
+                console.error("Error decoding token:", error);
+                localStorage.removeItem('token')
+                localStorage.removeItem('email')
+            }
+        }
     }
 
     // Set token to apiClient's headers
