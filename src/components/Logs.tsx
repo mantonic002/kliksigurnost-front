@@ -140,10 +140,11 @@ function Logs() {
           Fetch Logs
         </button>
 
-        <table className="table table-striped mt-4">
+        <table className="table table-striped mt-5">
           <thead>
             <tr>
               <th>Category Names</th>
+              <th>Query name</th>
               <th>Date & Time</th>
               <th>Application Name</th>
               <th>Policy ID</th>
@@ -158,6 +159,7 @@ function Logs() {
               {logs.map((log) => (
                 <tr key={log.policyId}>
                   <td>{log.categoryNames.join(", ")}</td>
+                  <td>{log.queryName}</td>
                   <td>{log.datetime}</td>
                   <td>{log.matchedApplicationName}</td>
                   <td>{log.policyId}</td>
