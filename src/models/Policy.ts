@@ -1,7 +1,7 @@
 export interface Policy {
     id?: string;
-    name: string;
-    action: string;
+    name?: string;
+    action?: string;
     traffic: string;
     schedule?: Schedule;
   }
