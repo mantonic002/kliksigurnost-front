@@ -28,8 +28,6 @@ const scheduleSchema = z.object({
 });
 
 const schema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  action: z.string().min(1, { message: "Action is required" }),
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
   schedule: scheduleSchema,
@@ -49,7 +47,6 @@ function PolicyManager() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     setValue,
     reset,
   } = useForm<PolicyFormData>({
@@ -406,8 +403,7 @@ function PolicyManager() {
     }
 
     const policy: Policy = {
-      name: formData.name,
-      action: formData.action,
+      action: "block",
       traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
@@ -480,29 +476,6 @@ function PolicyManager() {
       <div>
         <h2>Create a New Policy</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              Name:
-            </label>
-            <input {...register("name")} id="name" className="form-control" />
-            {errors.name && (
-              <p className="text-danger">{errors.name.message}</p>
-            )}
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="action" className="form-label">
-              Action:
-            </label>
-            <input
-              {...register("action")}
-              id="action"
-              className="form-control"
-            />
-            {errors.action && (
-              <p className="text-danger">{errors.action.message}</p>
-            )}
-          </div>
 
           <div className="mb-3">
             <label className="form-label">Categories:</label>

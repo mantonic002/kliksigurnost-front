@@ -16,7 +16,7 @@ function Logs() {
   function resetStartAndEndDateTime() {
     const now = new Date();
     const tenDaysAgo = new Date(now);
-    tenDaysAgo.setDate(now.getDate() - 10);
+    tenDaysAgo.setDate(now.getDate() - 20);
 
     // Format both dates in the required format (YYYY-MM-DDTHH:mm)
     const formatDate = (date: Date) => {
@@ -55,18 +55,18 @@ function Logs() {
   };
 
   // Handler for Start Date change
-  function handleStartChange(ev: ChangeEvent<HTMLInputElement>) {
-    if (!ev.target["validity"].valid) return;
-    const dt = ev.target["value"] + ":00Z";
-    setStartDateTime(dt);
-  }
+  // function handleStartChange(ev: ChangeEvent<HTMLInputElement>) {
+  //   if (!ev.target["validity"].valid) return;
+  //   const dt = ev.target["value"] + ":00Z";
+  //   setStartDateTime(dt);
+  // }
 
-  // Handler for End Date change
-  function handleEndChange(ev: ChangeEvent<HTMLInputElement>) {
-    if (!ev.target["validity"].valid) return;
-    const dt = ev.target["value"] + ":00Z";
-    setEndDateTime(dt);
-  }
+  // // Handler for End Date change
+  // function handleEndChange(ev: ChangeEvent<HTMLInputElement>) {
+  //   if (!ev.target["validity"].valid) return;
+  //   const dt = ev.target["value"] + ":00Z";
+  //   setEndDateTime(dt);
+  // }
 
   // Convert local time to UTC format for API request
   const convertToUTC = (localDate: string) => {
@@ -116,7 +116,7 @@ function Logs() {
         <h2>Log List</h2>
 
         {/* Time range inputs */}
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label>Start Date & Time</label>
           <input
             type="datetime-local"
@@ -138,7 +138,7 @@ function Logs() {
 
         <button className="btn btn-primary" onClick={fetchLogs}>
           Fetch Logs
-        </button>
+        </button> */}
 
         <table className="table table-striped mt-5">
           <thead>
