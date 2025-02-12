@@ -6,7 +6,7 @@ import {
   AiOutlineSliders,
 } from "react-icons/ai";
 import Home from "./Home";
-import Policies from "./Policies";
+import Policies from "./PolicyManager";
 import Logs from "./Logs";
 import Devices from "./Devices";
 
