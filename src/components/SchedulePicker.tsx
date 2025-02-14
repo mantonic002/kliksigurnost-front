@@ -70,13 +70,12 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
 
   return (
     <div className="mb-3">
-      <label className="form-label">Schedule</label>
       <button
         type="button"
         className="btn btn-primary"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}
+        Schedule
       </button>
       
       {isOpen && (
