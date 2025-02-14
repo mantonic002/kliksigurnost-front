@@ -78,7 +78,7 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       >
         {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}
       </button>
-
+      
       {isOpen && (
         <div className="schedule-picker-modal">
           <div className="modal-header">
