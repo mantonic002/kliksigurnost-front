@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
+import "../App.css";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;
@@ -9,6 +10,7 @@ interface SchedulePickerProps {
 export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
   const { days, setDays } = useSchedule();
   const [isOpen, setIsOpen] = useState(false);
+  const isDragging = useRef(false); // Use a ref for synchronous drag state
 
   const timeSlots = Array.from({ length: 48 }, (_, i) => {
     const hour = Math.floor(i / 2);
@@ -31,10 +33,40 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
     });
   };
 
- useEffect(() => {
+  const handleMouseDown = (day: string, timeSlot: string) => {
+    isDragging.current = true; // Set dragging state synchronously
+    handleTimeSlotClick(day, timeSlot); // Select the starting field
+  };
+
+  const handleMouseEnter = (day: string, timeSlot: string) => {
+    if (isDragging.current) {
+      handleTimeSlotClick(day, timeSlot); // Select fields during drag
+    }
+  };
+
+  // Add global mouseUp listener
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isDragging.current) {
+        isDragging.current = false; // Reset dragging state
+      }
+    };
+
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+
+    return () => {
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, []);
+
+  // Prevent default dragging behavior
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  useEffect(() => {
     onChange(days);
   }, [days, onChange]);
-  
 
   return (
     <div className="mb-3">
@@ -48,27 +80,8 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       </button>
 
       {isOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            backgroundColor: "white",
-            padding: "20px",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            zIndex: 1000,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "10px",
-            }}
-          >
+        <div className="schedule-picker-modal">
+          <div className="modal-header">
             <h5>Select Schedule</h5>
             <button
               className="btn btn-sm btn-danger"
@@ -78,28 +91,13 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
             </button>
           </div>
 
-          <div
-            style={{
-              maxHeight: "400px",
-              overflowY: "auto",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              padding: "10px",
-            }}
-          >
+          <div className="time-slots-container">
             <div className="d-flex">
-              <div style={{ width: "100px" }}></div>
+              <div className="time-label"></div>
               {Object.keys(days).map((day) => {
                 if (day === "time_zone") return null;
                 return (
-                  <div
-                    key={day}
-                    style={{
-                      flex: 1,
-                      textAlign: "center",
-                      fontWeight: "bold",
-                    }}
-                  >
+                  <div key={day} className="day-header">
                     {day.charAt(0).toUpperCase() + day.slice(1)}
                   </div>
                 );
@@ -109,10 +107,9 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
             {timeSlots.map((timeSlot) => (
               <div
                 key={timeSlot}
-                className="d-flex align-items-center"
-                style={{ marginBottom: "4px" }}
+                className="d-flex align-items-center time-slot-row"
               >
-                <div style={{ width: "100px" }}>{timeSlot}</div>
+                <div className="time-label">{timeSlot}</div>
                 {Object.keys(days).map((day) => {
                   if (day === "time_zone") return null;
                   const isSelected =
@@ -120,19 +117,14 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
                   return (
                     <div
                       key={`${day}-${timeSlot}`}
-                      style={{
-                        flex: 1,
-                        padding: "8px",
-                        border: "1px solid #ddd",
-                        backgroundColor: isSelected ? "#007bff" : "#f8f9fa",
-                        color: isSelected ? "white" : "black",
-                        textAlign: "center",
-                        cursor: "pointer",
+                      className={`time-slot ${isSelected ? "selected" : ""}`}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        handleMouseDown(day, timeSlot);
                       }}
-                      onClick={() => handleTimeSlotClick(day, timeSlot)}
-                    >
-                      {isSelected ? "✔" : ""}
-                    </div>
+                      onMouseEnter={() => handleMouseEnter(day, timeSlot)}
+                      onDragStart={handleDragStart}
+                    ></div>
                   );
                 })}
               </div>
