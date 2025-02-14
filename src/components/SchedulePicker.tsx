@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; // Add useEffect here
+import {useEffect } from "react"; // Add useEffect here
 import { AiFillCaretDown, AiFillCaretUp, AiFillPlusSquare } from "react-icons/ai";
 import { useSchedule } from "./useSchedule"; // Adjust the import path as needed
 
@@ -50,7 +50,7 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
                   </label>
                   <div className="d-flex flex-column w-75">
                     {Array.isArray(days[day]) &&
-                      days[day].map((time, index) => {
+                      days[day].map((_, index) => {
                         if (index % 2 === 0) {
                           return (
                             <div key={index} className="d-flex mb-2">

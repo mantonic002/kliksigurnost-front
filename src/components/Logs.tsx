@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { Log } from "../models/Logs";
 import logService from "../services/log-service";
 import { CanceledError } from "axios";
