@@ -86,7 +86,6 @@
   overflow-y: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 10px;
 }
 
 .time-label {
@@ -97,6 +96,7 @@
   flex: 1;
   text-align: center;
   font-weight: bold;
+  padding-right: 10px;
 }
 
 .time-slot {
@@ -117,5 +117,5 @@
 }
 
 .time-slot:hover {
-  background-color: #e9ecef;
+  background-color: #82b5f0;
 }
