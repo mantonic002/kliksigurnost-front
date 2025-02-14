@@ -1,31 +1,69 @@
-import {useEffect } from "react"; // Add useEffect here
-import { AiFillCaretDown, AiFillCaretUp, AiFillPlusSquare } from "react-icons/ai";
-import { useSchedule } from "./useSchedule"; // Adjust the import path as needed
+import { useState, useEffect, useRef } from "react";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { useSchedule } from "./useSchedule";
+import "../App.css";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;
 }
 
 export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
-  const {
-    days,
-    setDays,
-    scheduleFormOpen,
-    setScheduleFormOpen,
-    addTimeRange,
-  } = useSchedule();
+  const { days, setDays } = useSchedule();
+  const [isOpen, setIsOpen] = useState(false);
+  const isDragging = useRef(false); // Use a ref for synchronous drag state
 
-  const handleTimeChange = (day: string, index: number, value: string) => {
+  const timeSlots = Array.from({ length: 48 }, (_, i) => {
+    const hour = Math.floor(i / 2);
+    const minute = i % 2 === 0 ? "00" : "30";
+    return `${hour.toString().padStart(2, "0")}:${minute}`;
+  });
+
+  const handleTimeSlotClick = (day: string, timeSlot: string) => {
     setDays((prevDays) => {
       const updatedDays = { ...prevDays };
       if (Array.isArray(updatedDays[day])) {
-        updatedDays[day][index] = value;
+        const index = updatedDays[day].indexOf(timeSlot);
+        if (index === -1) {
+          updatedDays[day].push(timeSlot);
+        } else {
+          updatedDays[day].splice(index, 1);
+        }
       }
       return updatedDays;
     });
   };
 
-  // Notify the parent component whenever the schedule changes
+  const handleMouseDown = (day: string, timeSlot: string) => {
+    isDragging.current = true; // Set dragging state synchronously
+    handleTimeSlotClick(day, timeSlot); // Select the starting field
+  };
+
+  const handleMouseEnter = (day: string, timeSlot: string) => {
+    if (isDragging.current) {
+      handleTimeSlotClick(day, timeSlot); // Select fields during drag
+    }
+  };
+
+  // Add global mouseUp listener
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isDragging.current) {
+        isDragging.current = false; // Reset dragging state
+      }
+    };
+
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+
+    return () => {
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, []);
+
+  // Prevent default dragging behavior
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     onChange(days);
   }, [days, onChange]);
@@ -33,68 +71,66 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
   return (
     <div className="mb-3">
       <label className="form-label">Schedule</label>
-      {scheduleFormOpen ? (
-        <>
-          <AiFillCaretUp
-            className="iconButton"
-            onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
-          />
-          <div className="border p-3 rounded" style={{ minWidth: "450px" }}>
-            {Object.keys(days).map((day) => {
-              if (day === "time_zone") return null; // Skip the time_zone field for rendering
-
-              return (
-                <div key={day} className="d-flex align-items-top mb-3">
-                  <label className="form-label flex-shrink-0 w-25">
-                    {day.charAt(0).toUpperCase() + day.slice(1)}:
-                  </label>
-                  <div className="d-flex flex-column w-75">
-                    {Array.isArray(days[day]) &&
-                      days[day].map((_, index) => {
-                        if (index % 2 === 0) {
-                          return (
-                            <div key={index} className="d-flex mb-2">
-                              <input
-                                type="time"
-                                value={days[day][index]}
-                                onChange={(e) =>
-                                  handleTimeChange(day, index, e.target.value)
-                                }
-                                placeholder="Start Time"
-                                className="form-control me-2 w-50"
-                              />
-                              <input
-                                type="time"
-                                value={days[day][index + 1]}
-                                onChange={(e) =>
-                                  handleTimeChange(day, index + 1, e.target.value)
-                                }
-                                placeholder="End Time"
-                                className="form-control w-50"
-                              />
-                            </div>
-                          );
-                        }
-                        return null;
-                      })}
-                  </div>
-                  <div className="m-1 text-success">
-                    <AiFillPlusSquare
-                      size="30"
-                      onClick={() => addTimeRange(day)}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}
+      </button>
+      
+      {isOpen && (
+        <div className="schedule-picker-modal">
+          <div className="modal-header">
+            <h5>Select Schedule</h5>
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={() => setIsOpen(false)}
+            >
+              Close
+            </button>
           </div>
-        </>
-      ) : (
-        <AiFillCaretDown
-          className="m-1 text-success"
-          size={20}
-          onClick={() => setScheduleFormOpen(!scheduleFormOpen)}
-        />
+
+          <div className="time-slots-container">
+            <div className="d-flex">
+              <div className="time-label"></div>
+              {Object.keys(days).map((day) => {
+                if (day === "time_zone") return null;
+                return (
+                  <div key={day} className="day-header">
+                    {day.charAt(0).toUpperCase() + day.slice(1)}
+                  </div>
+                );
+              })}
+            </div>
+
+            {timeSlots.map((timeSlot) => (
+              <div
+                key={timeSlot}
+                className="d-flex align-items-center time-slot-row"
+              >
+                <div className="time-label">{timeSlot}</div>
+                {Object.keys(days).map((day) => {
+                  if (day === "time_zone") return null;
+                  const isSelected =
+                    Array.isArray(days[day]) && days[day].includes(timeSlot);
+                  return (
+                    <div
+                      key={`${day}-${timeSlot}`}
+                      className={`time-slot ${isSelected ? "selected" : ""}`}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        handleMouseDown(day, timeSlot);
+                      }}
+                      onMouseEnter={() => handleMouseEnter(day, timeSlot)}
+                      onDragStart={handleDragStart}
+                    ></div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

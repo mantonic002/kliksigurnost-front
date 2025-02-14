@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Define schema
 const schema = z.object({
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
@@ -34,8 +33,8 @@ type SelectOption = {
 };
 
 interface PolicyFormProps {
-  categoryOptions: { value: number; label: string; parentId: number | null }[];
-  applicationOptions: { value: number; label: string; parentId: number | null }[];
+  categoryOptions: SelectOption[];
+  applicationOptions: SelectOption[];
   setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>;
 }
 
@@ -56,18 +55,15 @@ export const PolicyForm = ({
     resolver: zodResolver(schema),
   });
 
-  // Update both local state and form state for schedule
   const updateSchedule = (newSchedule: { [key: string]: string[] | string }) => {
-    setSchedule(newSchedule); // Update local state
-    setValue("schedule", newSchedule); // Update form state
+    setSchedule(newSchedule);
+    setValue("schedule", newSchedule);
   };
 
-  // Handle category selection
   const handleCategoryChange = (selectedOptions: readonly SelectOption[]) => {
     const selectedIds = selectedOptions.map((option) => option.value);
     const updatedCategories = new Set(selectedIds);
   
-    // Automatically select subcategories if a parent category is selected
     categoryOptions.forEach((option) => {
       if (option.parentId && selectedIds.includes(option.parentId)) {
         updatedCategories.add(option.value);
@@ -77,21 +73,18 @@ export const PolicyForm = ({
     const selectedCategoryArray = Array.from(updatedCategories);
     setSelectedCategories(selectedCategoryArray);
   
-    // Update traffic field based on selected categories
     if (selectedCategoryArray.length > 0) {
       const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(" ")}})`;
       setValue("trafficCategories", trafficString);
     } else {
-      setValue("trafficCategories", ""); // Clear if no categories are selected
+      setValue("trafficCategories", "");
     }
   };
 
-  // Handle application selection
   const handleApplicationChange = (selectedOptions: readonly SelectOption[]) => {
     const updatedApplications = new Set<number>();
     const updatedApplicationTypes = new Set<number>();
 
-    // Classify selected options into applications and types
     selectedOptions.forEach((option) => {
       if (option.parentId) {
         updatedApplications.add(option.value);
@@ -100,18 +93,15 @@ export const PolicyForm = ({
       }
     });
 
-    // Automatically select subcategories if a parent category is selected
     applicationOptions.forEach((option) => {
       if (option.parentId && updatedApplicationTypes.has(option.parentId)) {
         updatedApplications.add(option.value);
       }
     });
 
-    // Convert sets to arrays
     const selectedApplicationTypesArray = Array.from(updatedApplicationTypes);
     const selectedApplicationsArray = Array.from(updatedApplications);
 
-    // Find applications whose parentId is not in selectedApplicationTypesArray
     const selectedApplicationsNotInAppTypesArray = Array.from(updatedApplications).filter(
       (appId) => {
         const option = applicationOptions.find((option) => option.value === appId);
@@ -119,10 +109,8 @@ export const PolicyForm = ({
       }
     );
 
-    // Set the selected values
     setSelectedApplications([...selectedApplicationsArray, ...selectedApplicationTypesArray]);
 
-    // Update traffic field based on selected applications
     let trafficString = "";
 
     const appsNotInTypes =
@@ -144,59 +132,60 @@ export const PolicyForm = ({
     setValue("trafficApplications", trafficString);
   };
 
-  // Handle form submission
+  const timeToMinutes = (time: string) => {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+  };
+
+  const formatTimeRanges = (timeSlots: string[]) => {
+    if (timeSlots.length === 0) return "";
+
+    timeSlots.sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
+
+    const ranges: string[] = [];
+    let start = timeSlots[0];
+    let end = timeSlots[0];
+
+    for (let i = 1; i < timeSlots.length; i++) {
+      const currentTime = timeSlots[i];
+      const prevTime = timeSlots[i - 1];
+
+      if (timeToMinutes(currentTime) - timeToMinutes(prevTime) === 30) {
+        end = currentTime;
+      } else {
+        ranges.push(`${start}-${end}`);
+        start = currentTime;
+        end = currentTime;
+      }
+    }
+
+    ranges.push(`${start}-${end}`);
+
+    return ranges.join(",");
+  };
+
   const onSubmit = (data: PolicyFormData) => {
-    data.schedule = schedule;
-
-    const formattedSchedule = Object.entries(data.schedule).reduce(
-      (acc: Record<string, string>, [day, timeRanges]) => {
-        if (day !== "time_zone" && timeRanges && timeRanges[0] !== "") {
-          const ranges = (timeRanges as string[]).reduce((result, time, index, arr) => {
-            if (time && index % 2 === 0) {
-              result.push({ start: time, end: arr[index + 1] });
-            }
-            return result;
-          }, [] as { start: string; end: string }[]);
-
-          const timeToMinutes = (time: string) => {
-            const [hours, minutes] = time.split(":").map(Number);
-            return hours * 60 + minutes;
-          };
-
-          ranges.sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start));
-
-          const mergedRanges = [];
-          let currentStart = ranges[0].start;
-          let currentEnd = ranges[0].end;
-
-          for (let i = 1; i < ranges.length; i++) {
-            const { start, end } = ranges[i];
-            if (timeToMinutes(start) <= timeToMinutes(currentEnd)) {
-              currentEnd = timeToMinutes(end) > timeToMinutes(currentEnd) ? end : currentEnd;
-            } else {
-              mergedRanges.push(`${currentStart}-${currentEnd}`);
-              currentStart = start;
-              currentEnd = end;
-            }
-          }
-
-          mergedRanges.push(`${currentStart}-${currentEnd}`);
-          acc[day] = mergedRanges.join(",");
+    const formattedSchedule = Object.entries(data.schedule || {}).reduce(
+      (acc: Record<string, string>, [day, timeSlots]) => {
+        if (day === "time_zone") {
+          acc[day] = timeSlots as string;
+        } else if (Array.isArray(timeSlots)) {
+          acc[day] = formatTimeRanges(timeSlots);
         }
         return acc;
       },
       {} as Record<string, string>
     );
-
+  
     const isScheduleEmpty = Object.values(formattedSchedule).every(
       (value) => value === "" || value === null
     );
-
+  
     const formData = {
       ...data,
       ...(isScheduleEmpty ? { schedule: undefined } : { schedule: { ...formattedSchedule, time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone } }),
     };
-
+  
     const trafficString: string[] = [];
     if (formData.trafficCategories) {
       trafficString.push(formData.trafficCategories);
@@ -204,13 +193,13 @@ export const PolicyForm = ({
     if (formData.trafficApplications) {
       trafficString.push(formData.trafficApplications);
     }
-
+  
     const policy: Policy = {
       action: "block",
       traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
-
+  
     policyService
       .post<Policy>(policy)
       .then(() => {
@@ -228,6 +217,7 @@ export const PolicyForm = ({
         alert(error.message || "Failed to create policy");
       });
   };
+  
 
   return (
     <div>
