@@ -177,9 +177,9 @@ export const PolicyForm = ({
       {} as Record<string, string>
     );
   
-    const isScheduleEmpty = Object.values(formattedSchedule).every(
-      (value) => value === "" || value === null
-    );
+    const isScheduleEmpty = Object.entries(formattedSchedule)
+    .filter(([key]) => key !== "time_zone")
+    .every(([_, value]) => value === "" || value === null);
   
     const formData = {
       ...data,

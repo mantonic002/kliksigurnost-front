@@ -1,10 +1,13 @@
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import policyService from "../services/policy-service";
+import { Policy, Schedule } from "../models/Policy";
 
 interface PolicyTableProps {
-  policies: any[];
+  policies: Policy[];
   isLoading: boolean;
   categoryMap: Map<number, string>;
   applicationMap: Map<number, string>;
+  onDelete: (policyId: string) => void;
 }
 
 export const PolicyTable = ({
@@ -12,6 +15,7 @@ export const PolicyTable = ({
   isLoading,
   categoryMap,
   applicationMap,
+  onDelete,
 }: PolicyTableProps) => {
   const extractCategoryIds = (traffic: string): number[] => {
     const match = traffic.match(/{([^}]+)}/);
@@ -36,7 +40,8 @@ export const PolicyTable = ({
     return appIds.map((id) => applicationMap.get(id) || "Unknown");
   };
 
-  const formatSchedule = (schedule: any) => {
+  const formatSchedule = (schedule: Schedule | undefined): string => {
+    if (!schedule) return "No schedule";
     return Object.entries(schedule)
       .map(([day, timeRanges]) => {
         if (day === "time_zone" || timeRanges === null) return null;
@@ -70,6 +75,15 @@ export const PolicyTable = ({
     );
   };
 
+  const handleDelete = async (policyId: string) => {
+    try {
+      await policyService.delete(policyId);
+      onDelete(policyId);
+    } catch (error) {
+      console.error("Failed to delete policy:", error);
+    }
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -78,9 +92,12 @@ export const PolicyTable = ({
         <table className="table">
           <thead>
             <tr>
+              <th>Name</th>
+              <th>Action</th>
               <th>Categories</th>
               <th>Applications</th>
               <th>Schedule</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -89,7 +106,7 @@ export const PolicyTable = ({
               const categoryNames = getCategoryNames(categoryIds);
               const applicationIds = extractApplicationIds(policy.traffic);
               const applicationNames = getApplicationNames(applicationIds);
-              const schedule = formatSchedule(policy.schedule || {});
+              const schedule = formatSchedule(policy.schedule);
 
               return (
                 <tr key={policy.id}>
@@ -98,11 +115,20 @@ export const PolicyTable = ({
                   <td>{renderCategoriesWithTooltip(categoryNames)}</td>
                   <td>{renderApplicationsWithTooltip(applicationNames)}</td>
                   <td>{schedule}</td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => handleDelete(policy.id!)}
+                    >
+                      Delete
+                    </Button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
-      </table>
+        </table>
       )}
     </div>
   );
