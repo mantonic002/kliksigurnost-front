@@ -16,6 +16,12 @@ function PolicyManager() {
   const { categoryOptions, categoryMap } = useCategories();
   const { applicationOptions, applicationMap } = useApplications();
 
+  const handleDelete = (policyId: string) => {
+    setPolicies((prevPolicies) =>
+      prevPolicies.filter((policy) => policy.id !== policyId)
+    );
+  };
+
   useEffect(() => {
     setIsLoading(true);
     const { req, cancel } = policyService.getAll<Policy>();
@@ -45,6 +51,7 @@ function PolicyManager() {
         isLoading={isLoading}
         categoryMap={categoryMap}
         applicationMap={applicationMap}
+        onDelete={handleDelete}
       />
 
       <PredefinedPolicyForm setPolicies={setPolicies} />
