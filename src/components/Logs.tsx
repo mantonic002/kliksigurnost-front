@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Log } from "../models/Logs";
 import logService from "../services/log-service";
 import { CanceledError } from "axios";
@@ -7,6 +7,10 @@ function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [lastLog, setLastLog] = useState<Log | null>(null);
+  const [pageSize] = useState(25);
 
   // Date filter state
   const [startDateTime, setStartDateTime] = useState<string>("");
@@ -42,31 +46,9 @@ function Logs() {
   // UseEffect that triggers after startDateTime and endDateTime are set
   useEffect(() => {
     if (startDateTime && endDateTime) {
-      fetchLogs();
+      fetchLogs('next'); // Pass a default direction
     }
-  }, [startDateTime, endDateTime]); // Dependency on startDateTime and endDateTime
-
-  // Function to calculate the difference in seconds
-  const calculateDateDifferenceInSeconds = (start: string, end: string): number => {
-    const startDate = new Date(start).getTime(); // Get time in milliseconds
-    const endDate = new Date(end).getTime(); // Get time in milliseconds
-    const timeDifferenceInSeconds = (endDate - startDate) / 1000; // Convert milliseconds to seconds
-    return timeDifferenceInSeconds;
-  };
-
-  // Handler for Start Date change
-  // function handleStartChange(ev: ChangeEvent<HTMLInputElement>) {
-  //   if (!ev.target["validity"].valid) return;
-  //   const dt = ev.target["value"] + ":00Z";
-  //   setStartDateTime(dt);
-  // }
-
-  // // Handler for End Date change
-  // function handleEndChange(ev: ChangeEvent<HTMLInputElement>) {
-  //   if (!ev.target["validity"].valid) return;
-  //   const dt = ev.target["value"] + ":00Z";
-  //   setEndDateTime(dt);
-  // }
+  }, [startDateTime, endDateTime]);
 
   // Convert local time to UTC format for API request
   const convertToUTC = (localDate: string) => {
@@ -75,31 +57,27 @@ function Logs() {
   };
 
   // Fetch logs based on time range
-  const fetchLogs = () => {
-    if (!startDateTime || !endDateTime) {
-      setError("Please select both start and end date/time");
-      return;
-    }
-
-    // Check if the difference between the dates is more than 2,590,000 seconds (30 days)
-    const dateDifferenceInSeconds = calculateDateDifferenceInSeconds(startDateTime, endDateTime);
-    if (dateDifferenceInSeconds > 2592000) {
-      setError("The selected date range cannot be more than 30 days apart.");
-      return;
-    }
-
+  const fetchLogs = (direction: 'next' | 'prev') => {
     setIsLoading(true);
-
     const utcStartDate = convertToUTC(startDateTime);
     const utcEndDate = convertToUTC(endDateTime);
 
-    logService
-      .getLogs(utcStartDate, utcEndDate)
+    logService.getLogs({
+      startDateTime: utcStartDate,
+      endDateTime: utcEndDate,
+      page: currentPage,
+      pageSize,
+      lastDateTime: direction === 'next' ? lastLog?.datetime : undefined,
+      lastPolicyId: direction === 'next' ? lastLog?.policyId : undefined,
+      direction,
+    })
       .then((res) => {
         setLogs(res);
+        setLastLog(res[res.length - 1] || null);
+        setCurrentPage(prev => direction === 'next' ? prev + 1 : prev - 1);
         setIsLoading(false);
       })
-      .catch((error: any) => {
+      .catch((error) => {
         if (error instanceof CanceledError) return;
         setError(error.message || "Failed to fetch logs");
         setIsLoading(false);
@@ -114,31 +92,6 @@ function Logs() {
 
       <div className="mb-5">
         <h2>Log List</h2>
-
-        {/* Time range inputs */}
-        {/* <div className="mb-3">
-          <label>Start Date & Time</label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            value={startDateTime}
-            onChange={(e) => handleStartChange(e)}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>End Date & Time</label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            value={endDateTime}
-            onChange={(e) => handleEndChange(e)}
-          />
-        </div>
-
-        <button className="btn btn-primary" onClick={fetchLogs}>
-          Fetch Logs
-        </button> */}
 
         <table className="table table-striped mt-5">
           <thead>
@@ -170,6 +123,22 @@ function Logs() {
             </tbody>
           )}
         </table>
+        <div>
+          <button 
+            className="btn btn-success"
+            onClick={() => fetchLogs('prev')} 
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <button 
+            className="btn btn-success"
+            onClick={() => fetchLogs('next')} 
+            disabled={logs.length < pageSize}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

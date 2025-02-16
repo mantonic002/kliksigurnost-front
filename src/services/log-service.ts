@@ -2,19 +2,19 @@ import { Log } from "../models/Logs";
 import apiClient from "./api-client";
 
 class LogService {
-  async getLogs(startDateTime: string, endDateTime: string): Promise<Log[]> {
-    try {
-      const response = await apiClient.get<Log[]>('/api/policies/userLogs', {
-        params: {
-          startDateTime,
-          endDateTime,
-        },
-      });
-
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+  async getLogs(params: {
+    startDateTime: string;
+    endDateTime: string;
+    page: number;
+    pageSize: number;
+    lastDateTime?: string;
+    lastPolicyId?: string;
+    direction: 'next' | 'prev';
+  }): Promise<Log[]> {
+    const response = await apiClient.get('/api/policies/userLogs', {
+      params: { ...params }
+    });
+    return response.data;
   }
 }
 
