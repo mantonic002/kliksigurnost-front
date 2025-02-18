@@ -7,21 +7,28 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { useEffect } from "react";
 import authService from "./services/auth-service";
+import { Navigate, Outlet } from "react-router-dom";
 
 function App() {
   return (
     <AuthProvider>
-      {/* Wrap the app with AuthProvider */}
       <Router>
         <AppContent />
-        {/* Use a new component to handle authentication logic */}
       </Router>
     </AuthProvider>
   );
 }
 
+const ProtectedRoute = () => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  return <Outlet />;
+};
+
 const AppContent = () => {
-  const {isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const token = authService.getToken();
@@ -42,15 +49,17 @@ const AppContent = () => {
           <Route path="/register" element={<Register />} />
 
           {/* Dynamically render routes based on SidebarData */}
-          {SidebarData.map((item, index) => {
-            if (item.title === "Odjava") {
-              return <Route path={item.link} element={<Login />} key={index} />;
-            }
-            // Other routes for logged-in users
-            return (
-              <Route path={item.link} element={item.element} key={index} />
-            );
-          })}
+          <Route element={<ProtectedRoute />}>
+            {SidebarData.map((item, index) => {
+              if (item.title === "Odjava") {
+                return <Route path={item.link} element={<Login />} key={index} />;
+              }
+              // Other routes for logged-in users
+              return (
+                <Route path={item.link} element={item.element} key={index} />
+              );
+            })}
+          </Route>
         </Routes>
       </div>
     </div>

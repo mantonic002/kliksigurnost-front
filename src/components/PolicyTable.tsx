@@ -1,6 +1,7 @@
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
 import policyService from "../services/policy-service";
 import { Policy, Schedule } from "../models/Policy";
+import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
 
 interface PolicyTableProps {
   policies: Policy[];
@@ -85,7 +86,7 @@ export const PolicyTable = ({
   };
 
   return (
-    <div>
+    <div className="table-container">
       {isLoading ? (
         <div className="spinner-border"></div>
       ) : (
@@ -115,14 +116,11 @@ export const PolicyTable = ({
                   <td>{renderCategoriesWithTooltip(categoryNames)}</td>
                   <td>{renderApplicationsWithTooltip(applicationNames)}</td>
                   <td>{schedule}</td>
-                  <td>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => handleDelete(policy.id!)}
-                    >
-                      Delete
-                    </Button>
+                  <td className="action">
+                    <div className="action-icon" onClick={() => handleDelete(policy.id!)}>
+                      <AiOutlineDelete className="action-red outlined" />
+                      <AiFillDelete className="action-red filled" />
+                    </div>
                   </td>
                 </tr>
               );
