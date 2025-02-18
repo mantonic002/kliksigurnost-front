@@ -55,14 +55,8 @@ function Register() {
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center w-100 "
-      style={{ minWidth: "100vw" }}
-    >
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-10 border p-3 rounded"
-      >
+    <div className="modal-container">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="m-3">
           <label htmlFor="email" className="form-label">
             Email:
