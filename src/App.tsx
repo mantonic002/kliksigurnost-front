@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { SidebarData } from "./components/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { useEffect } from "react";
 import authService from "./services/auth-service";
-import { Navigate, Outlet } from "react-router-dom";
+import TopBar from "./components/TopBar";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ const ProtectedRoute = () => {
 
 const AppContent = () => {
   const { isAuthenticated, logout } = useAuth();
+  const [title, setTitle] = useState("")
 
   useEffect(() => {
     const token = authService.getToken();
@@ -38,8 +39,13 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      {/* Show sidebar only if user is logged in */}
-      {isAuthenticated && <Sidebar />}
+      {/* Show sidebar and top bar only if user is logged in */}
+      {isAuthenticated && (
+        <>
+          <TopBar title="Klik Sigurnost"/>
+          <Sidebar />
+        </>
+      )}
 
       <div className="Content">
         <Routes>

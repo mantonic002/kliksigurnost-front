@@ -86,14 +86,12 @@ function Logs() {
 
   return (
     <div className="container">
-      <h1 className="mb-5">Logs</h1>
+      <h3 className="mb-4">Logs</h3>
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div className="mb-5">
-        <h2>Log List</h2>
-
-        <table className="table table-striped mt-5">
+      <div className="table-container">
+        <table className="table">
           <thead>
             <tr>
               <th>Category Names</th>
