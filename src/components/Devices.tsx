@@ -26,11 +26,11 @@ function Devices() {
 
   return (
     <div className="container">
-      <h3 className="mb-5">Devices</h3>
+      <h3 className="mb-4">Devices</h3>
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div className="tab;e-container">
+      <div className="table-container">
         <table className="table">
           <thead>
             <tr>
