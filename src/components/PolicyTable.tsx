@@ -1,4 +1,4 @@
-import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import policyService from "../services/policy-service";
 import { Policy, Schedule } from "../models/Policy";
 import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";

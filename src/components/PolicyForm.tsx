@@ -44,7 +44,7 @@ export const PolicyForm = ({
   applicationOptions,
   setPolicies,
 }: PolicyFormProps) => {
-  const [schedule, setSchedule] = useState<{ [key: string]: string[] | string }>({});
+  const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<number[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);

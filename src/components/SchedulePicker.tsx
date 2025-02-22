@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { AiFillCaretDown, AiFillCaretUp, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
 import "../App.css";
 
