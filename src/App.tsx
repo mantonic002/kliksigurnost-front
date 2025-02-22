@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
@@ -29,7 +29,6 @@ const ProtectedRoute = () => {
 
 const AppContent = () => {
   const { isAuthenticated, logout } = useAuth();
-  const [title, setTitle] = useState("")
 
   useEffect(() => {
     const token = authService.getToken();
