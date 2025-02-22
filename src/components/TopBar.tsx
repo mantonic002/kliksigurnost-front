@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import "../App.css";
 import { AiFillBell, AiOutlineBell } from "react-icons/ai";
 import { Notification } from "../models/Notification";
 import notificationService from "../services/notification-service";
+import { CanceledError } from "axios";
 
 interface TopBarProps {
   title: string;
@@ -13,15 +14,22 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
   const { email } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [notificationCount, setNotificationCount] = useState(0);
 
   const openNotifications = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   useEffect(() => {
+    fetchNotificationCount();
+  }, []);
+
+  useEffect(() => {
     if (isDropdownOpen) {
-      // Fetch notifications when the dropdown is opened
       fetchNotifications();
+    } else {
+      setNotifications([]);
+      setNotificationCount(0);
     }
   }, [isDropdownOpen]);
 
@@ -30,11 +38,21 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
       .getUnseenNotifications()
       .then((res) => {
         setNotifications(res);
+        setNotificationCount(res.length);
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        setError(error.message || "Failed to fetch policies");
-        setIsLoading(false);
+      });
+  };
+
+  const fetchNotificationCount = async () => {
+    notificationService
+      .getUnseenNotificationCount()
+      .then((res) => {
+        setNotificationCount(res);
+      })
+      .catch((error: any) => {
+        if (error instanceof CanceledError) return;
       });
   };
 
@@ -46,6 +64,7 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
         <div className="action-icon mb-3" onClick={openNotifications}>
           <AiOutlineBell size={25} className="action-blue outlined" />
           <AiFillBell size={25} className="action-blue filled" />
+          <span className="notification-badge">{notificationCount}</span>
         </div>
         {isDropdownOpen && (
           <div className="notifications-dropdown">
