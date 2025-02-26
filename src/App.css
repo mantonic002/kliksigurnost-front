@@ -155,19 +155,16 @@
 .Sidebar {
   height: calc(100vh - 60px);
   width: 250px;
-  min-width: 250px;
-  max-width: 250px;
   background-color: white;
   position: sticky;
   top: 60px;
   left: 0;
   z-index: 999;
+  transition: width 0.3s ease
 }
 
 .Sidebar.collapsed {
   width: 80px;
-  min-width: 80px;
-  max-width: 80px;
 }
 
 .SidebarList {
@@ -181,6 +178,7 @@
   align-items: center;
   padding: 10px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .SidebarItem:hover {
@@ -188,23 +186,17 @@
   color: #007bff;
 }
 
-.SidebarItem:hover .icon-container {
-  color: #007bff;
-}
-
-.SidebarItem:hover .title {
-  cursor: default;
-}
-
 .icon-container {
   flex: 30%;
   display: grid;
   place-items: center;
+  font-size: 24px;
 }
 
 .title {
   flex: 70%;
   transition: opacity 0.3s ease;
+  cursor: pointer;
 }
 
 .Sidebar.collapsed .title {
@@ -223,7 +215,7 @@
   top: 0;
   left: 0;
   z-index: 1000; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .TopBar-element {
@@ -234,7 +226,7 @@
 }
 
 .TopBar.collapsed {
-  left: 60px; /* Adjust based on collapsed sidebar width */
+  left: 60px;
 }
 
 /* Schedule Picker Styles */
@@ -277,6 +269,8 @@
   background-color: #82b5f0;
 }
 
+
+/* Notification styles */
 .notification-badge {
   position: absolute;
   top: -5px;
@@ -317,4 +311,8 @@
 .notification-date {
   font-size: 0.8em;
   color: #666;
+}
+
+.userEmail {
+  margin-left: 20px;
 }

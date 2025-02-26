@@ -80,7 +80,7 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
             )}
           </div>
         )}
-        <div className="UserEmail">{email}</div>
+        <div className="userEmail">{email}</div>
       </div>
     </div>
   );
