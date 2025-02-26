@@ -2,20 +2,16 @@ import apiClient from "./api-client";
 import { jwtDecode } from "jwt-decode";
 
 class AuthService {
-    constructor() {
-        // Ensure the token is set when the app initializes
-        this.setTokenToApiClient(localStorage.getItem('token'));
-    }
 
     async register(email: string, password: string) {
         try {
-            const response = await apiClient.post('/api/auth/register', {
+            const response = await apiClient.post('/auth/register', {
                 email,
                 password,
             });
-            if (response.data.token) {
+            if (response.data.token && response.data.refreshToken) {
                 localStorage.setItem('token', response.data.token);
-                this.setTokenToApiClient(response.data.token);
+                localStorage.setItem('refreshToken', response.data.refreshToken);
                 this.setEmailFromToken();
             }
             return response;
@@ -26,15 +22,14 @@ class AuthService {
 
     async login(email: string, password: string) {
         try {
-            const response = await apiClient.post('/api/auth/authenticate', {
+            const response = await apiClient.post('/auth/authenticate', {
                 email,
                 password,
             });
-            if (response.data.token) {
+            if (response.data.token && response.data.refreshToken) {
                 localStorage.setItem('token', response.data.token);
-                this.setTokenToApiClient(response.data.token);
+                localStorage.setItem('refreshToken', response.data.refreshToken);
                 this.setEmailFromToken();
-
             }
             return response;
         } catch (error) {
@@ -42,17 +37,17 @@ class AuthService {
         }
     }
 
-    loginGoogle(token: string) {
-        if (token) {
+    loginGoogle(token: string, refreshToken: string) {
+        if (token && refreshToken) {
             localStorage.setItem('token', token);
-            this.setTokenToApiClient(token);
+            localStorage.setItem('refreshToken', refreshToken);
             this.setEmailFromToken();
-
         }
     }
 
     logout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken')
     }
 
     isAuthenticated() {
@@ -74,6 +69,7 @@ class AuthService {
                 const decoded: any = jwtDecode(token);
                 const email = decoded.email;
                 if (email) {
+                    console.log('email:',email)
                     localStorage.setItem('email', email);
                 } else {
                   console.warn("Email not found in token")
@@ -84,21 +80,6 @@ class AuthService {
                 localStorage.removeItem('email')
             }
         }
-    }
-
-    // Set token to apiClient's headers
-    setTokenToApiClient(token: string | null) {
-        apiClient.interceptors.request.use(
-            (config) => {
-                if (token) {
-                    config.headers['Authorization'] = `Bearer ${token}`;
-                }
-                return config;
-            },
-            (error) => {
-                return Promise.reject(error);
-            }
-        );
     }
 }
 

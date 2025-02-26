@@ -4,7 +4,7 @@ import { Notification } from "../models/Notification";
 class DeviceService {
     async getUnseenNotifications(): Promise<Notification[]> {
         try {
-            const response = await apiClient.get<Notification[]>('/api/notifications/unseen');
+            const response = await apiClient.get<Notification[]>('/notifications/unseen');
             
             return response.data;
         } catch (error) {
@@ -14,7 +14,7 @@ class DeviceService {
 
     async getUnseenNotificationCount(): Promise<number> {
         try {
-            const response = await apiClient.get<number>('/api/notifications/unseenCount');
+            const response = await apiClient.get<number>('/notifications/unseenCount');
             
             return response.data;
         } catch (error) {

@@ -11,7 +11,7 @@ class LogService {
     lastPolicyId?: string;
     direction: 'next' | 'prev';
   }): Promise<Log[]> {
-    const response = await apiClient.get('/api/policies/userLogs', {
+    const response = await apiClient.get('/policies/userLogs', {
       params: { ...params }
     });
     return response.data;
