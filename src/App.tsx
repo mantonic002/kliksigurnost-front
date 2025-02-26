@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { SidebarData } from "./components/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import authService from "./services/auth-service";
 import TopBar from "./components/TopBar";
 import deviceService from "./services/device-service";
+import authService from "./services/auth-service";
 
 function App() {
   return (
@@ -22,24 +22,33 @@ function App() {
 
 const ProtectedRoute = () => {
   const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) {
+  const location = useLocation();
+
+  // Check if the user is in the process of Google OAuth2 authentication
+  const isGoogleAuth = new URLSearchParams(location.search).has("token");
+
+  if (!isAuthenticated && !isGoogleAuth) {
     return <Navigate to="/login" replace />;
   }
+
   return <Outlet />;
 };
 
 const AppContent = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, login } = useAuth();
 
   useEffect(() => {
-    const token = authService.getToken();
-    if (token) authService.setTokenToApiClient(token);
-    else logout();
-  }, []);
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    const refreshToken = urlParams.get("refreshToken");
 
-  useEffect(() => {
+    if (token && refreshToken) {
+      authService.loginGoogle(token, refreshToken);
+      login();
+    }
+
     deviceService.getDevices();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, login]);
 
   return (
     <div className="App">
