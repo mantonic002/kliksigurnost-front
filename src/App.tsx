@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import authService from "./services/auth-service";
 import TopBar from "./components/TopBar";
+import deviceService from "./services/device-service";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ const AppContent = () => {
     if (token) authService.setTokenToApiClient(token);
     else logout();
   }, []);
+
+  useEffect(() => {
+    deviceService.getDevices();
+  }, [isAuthenticated]);
 
   return (
     <div className="App">

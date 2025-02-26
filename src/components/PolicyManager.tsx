@@ -40,7 +40,7 @@ function PolicyManager() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h3 className="mb-4">Cloudflare Policies</h3>
 
       {error && <p className="text-danger">{error}</p>}
