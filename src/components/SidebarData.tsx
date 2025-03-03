@@ -3,6 +3,7 @@ import {
   AiFillMobile,
   AiFillSliders,
   AiOutlineBarChart,
+  AiOutlineCustomerService,
   AiOutlineHome,
   AiOutlineLogout,
   AiOutlineMobile,
@@ -12,6 +13,7 @@ import Home from "./Home";
 import Policies from "./PolicyManager";
 import Logs from "./Logs";
 import Devices from "./Devices";
+import AppointmentForm from "./AppointmentForm";
 
 interface SidebarItem {
   title: string;
@@ -49,6 +51,12 @@ export const SidebarData: SidebarItem[] = [
     iconOutline: <AiOutlineBarChart />,
     element: <Logs />,
     link: "/logs",
+  },
+  {
+    title: "Korisnička podrška",
+    iconOutline: <AiOutlineCustomerService />,
+    element: <AppointmentForm />,
+    link: "/support",
   },
   {
     title: "Odjava",
