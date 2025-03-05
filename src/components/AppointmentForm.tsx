@@ -3,11 +3,32 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import AppointmentService from '../services/AppointmentService';
 import { useNavigate } from 'react-router-dom';
+import { Appointment } from '../models/Appointment';
+import { AiFillDelete, AiOutlineDelete } from 'react-icons/ai';
 
 const AppointmentForm = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [availableSlots, setAvailableSlots] = useState<string[]>([]);
+    const [appointments, setAppointments] = useState<Appointment[]>([])
     let navigate = useNavigate();
+
+    const utcToLocal = (time: string) => {
+        const utcDate = new Date(time);
+        return new Date(utcDate.getTime() - utcDate.getTimezoneOffset() * 60000).toString();
+    }
+
+    useEffect(() => {
+        const fetchAppointments = async () => {
+            AppointmentService.getAppointments()
+                .then((res) => {
+                    setAppointments(res);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+        fetchAppointments();
+    }, []);
 
     useEffect(() => {
         const fetchAvailableSlots = async () => {
@@ -16,8 +37,7 @@ const AppointmentForm = () => {
                 .then((res) => {
                     // Convert UTC times to local time
                     const localSlots = res.map((slot) => {
-                        const utcDate = new Date(slot);
-                        return new Date(utcDate.getTime() - utcDate.getTimezoneOffset() * 60000).toString();
+                        return utcToLocal(slot);
                     });
                     setAvailableSlots(localSlots);
                 })
@@ -50,10 +70,44 @@ const AppointmentForm = () => {
             });
     };
 
+    const handleDelete = async (appointmentId: number) => {
+        AppointmentService.deleteAppointment(appointmentId)
+        setAppointments((prevAppointments) =>
+            prevAppointments.filter((appointment) => appointment.id !== appointmentId)
+        );
+    };
+
     // Convert available slots to Date objects for easier comparison
     const availableSlotDates = availableSlots.map((slot) => new Date(slot));
 
     return (
+        <div>
+        <div className="table-container">
+            <table className="table">
+            <thead>
+                <tr>
+                <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {appointments.map((appointment) => {
+                    const date = utcToLocal(appointment.appointmentDateTime);
+
+                    return (
+                        <tr key={appointment.id}>
+                        <td>{date}</td>
+                        <td className="action">
+                            <div className="action-icon" onClick={() => handleDelete(appointment.id!)}>
+                            <AiOutlineDelete className="action-red outlined" />
+                            <AiFillDelete className="action-red filled" />
+                            </div>
+                        </td>
+                        </tr>
+                    );
+                })}
+            </tbody>
+            </table>
+        </div>
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label className="form-label">Date and Time:</label>
@@ -81,6 +135,7 @@ const AppointmentForm = () => {
                     Schedule Appointment
             </button>
         </form>
+        </div>
     );
 };
 
