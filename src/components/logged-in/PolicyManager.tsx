@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
-import policyService from "../services/policy-service";
-import { Policy } from "../models/Policy";
+import policyService from "../../services/policy-service";
+import { Policy } from "../../models/Policy";
 import { PolicyTable } from "./PolicyTable";
 import { PolicyForm } from "./PolicyForm";
 import { useCategories } from "./useCategories";

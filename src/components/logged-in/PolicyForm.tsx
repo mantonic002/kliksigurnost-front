@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Select from "react-select";
 import { SchedulePicker } from "./SchedulePicker";
-import { Policy } from "../models/Policy";
-import policyService from "../services/policy-service";
+import { Policy } from "../../models/Policy";
+import policyService from "../../services/policy-service";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -43,7 +43,7 @@ export const PolicyForm = ({
   applicationOptions,
   setPolicies,
 }: PolicyFormProps) => {
-  const [schedule, setSchedule] = useState<{ [key: string]: string[] | string }>({});
+  const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<number[]>([]);
 

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
-import { SidebarData } from "./components/SidebarData";
+import Sidebar from "./components/logged-in/Sidebar";
+import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/logged-in/Login";
+import Register from "./components/logged-in/Register";
 import { useEffect } from "react";
 import authService from "./services/auth-service";
 

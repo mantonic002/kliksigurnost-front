@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
-import "../App.css";
+import "../../App.css";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;

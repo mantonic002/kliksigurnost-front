@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import appData from "../data/reformatted_application-types.json";
+import appData from "../../data/reformatted_application-types.json";
 
 export const useApplications = () => {
   const { applicationOptions, applicationMap } = useMemo(() => {

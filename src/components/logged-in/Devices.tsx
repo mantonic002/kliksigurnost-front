@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Device } from "../models/Device";
-import deviceService from "../services/device-service";
+import { Device } from "../../models/Device";
+import deviceService from "../../services/device-service";
 import { CanceledError } from "axios";
 
 function Devices() {

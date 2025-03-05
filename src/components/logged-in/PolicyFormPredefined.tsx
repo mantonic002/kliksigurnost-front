@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Select from "react-select";
-import { Policy } from "../models/Policy";
-import policyService from "../services/policy-service";
+import { Policy } from "../../models/Policy";
+import policyService from "../../services/policy-service";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import predefinedPolicies from "../data/predefined-policies.json";
+import predefinedPolicies from "../../data/predefined-policies.json";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),

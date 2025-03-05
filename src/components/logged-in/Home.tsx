@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import authService from "../services/auth-service";
+import { useAuth } from "../../contexts/AuthContext";
+import authService from "../../services/auth-service";
 
 function Home() {
   const navigate = useNavigate();
