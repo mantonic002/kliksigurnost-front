@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Tab, Nav, Row, Col, Container } from "react-bootstrap";
+import { useState } from "react";
+import { Nav, Row, Col, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaShieldAlt, FaChartBar, FaClock, FaCalendarAlt, FaPhoneAlt, FaMapMarkerAlt, FaBell, FaWifi, FaBookOpen, FaLock } from "react-icons/fa";
+import { FaShieldAlt, FaChartBar, FaClock, FaPhoneAlt, FaMapMarkerAlt, FaWifi, FaBookOpen, FaLock } from "react-icons/fa";
 
 
 const tabData = [
@@ -9,55 +9,55 @@ const tabData = [
     title: "Automatsko filtriranje neprimerenog sadržaja",
     content: "KlikSigurnost automatski blokira sadržaje poput pornografije, sajtova za kockanje, nasilja, govora mržnje i sajtova koji promovišu povređivanje/samopovređivanje.",
     icon: <FaShieldAlt />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Praćenje lokacije deteta",
     content: "KlikSigurnost omogućava roditeljima da u realnom vremenu prate lokaciju deteta na mapi putem intuitivne aplikacije.",
     icon: <FaMapMarkerAlt />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Selektivno filtriranje sadržaja i vremenska kontrola",
     content: "KlikSigurnost omogućava roditeljima da precizno definišu koje vrste sadržaja su dostupne u određenim periodima dana. Možete blokirati društvene mreže tokom školskih sati, dozvoliti samo edukativne sajtove tokom učenja ili ograničiti pristup zabavnim aplikacijama pre spavanja.",
     icon: <FaShieldAlt />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Praćenje aktivnosti",
     content: "Roditelji mogu pratiti koje sajtove njihova deca posećuju i dobiti detaljne izveštaje kako bi prepoznali potencijalne probleme na vreme.",
     icon: <FaChartBar />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Obezbeđivanje celokupne kućne mreže",
     content: "KlikSigurnost pruža mogućnost zaštite cele kućne mreže, blokirajući neprimerene sadržaje i pretnje za sve uređaje povezane na vaš Wi-Fi, uključujući telefone, tablete, računare i pametne televizore.",
     icon: <FaWifi />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Vremenska ograničenja",
     content: "Roditelji mogu ograničiti vreme koje deca provode online, što pomaže u održavanju balansa između digitalnih i stvarnih aktivnosti.",
     icon: <FaClock />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Sigurnost tokom učenja",
     content: "Alat omogućava roditeljima da deci dozvole pristup samo edukativnim sajtovima tokom časa ili domaćeg zadatka, osiguravajući fokus na važne aktivnosti.",
     icon: <FaBookOpen />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Podrška na srpskom jeziku",
     content: "KlikSigurnost pruža tehničku podršku na srpskom jeziku putem poziva, online sastanka ili e-maila, čime roditeljima olakšava svaku nedoumicu ili tehnički izazov.",
     icon: <FaPhoneAlt />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   },
   {
     title: "Transparentnost i privatnost",
     content: "KlikSigurnost ne prikuplja podatke dece za marketinške svrhe, što osigurava potpunu privatnost korisnika.",
     icon: <FaLock />,
-    image: "../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png"
   }
 ];
 

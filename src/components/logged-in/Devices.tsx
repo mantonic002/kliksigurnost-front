@@ -26,13 +26,12 @@ function Devices() {
 
   return (
     <div className="container">
-      <h1 className="mb-5">Devices</h1>
+      <h3 className="mb-4">Devices</h3>
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div className="mb-5">
-        <h2>Device List</h2>
-        <table className="table table-striped">
+      <div className="table-container">
+        <table className="table">
           <thead>
             <tr>
               <th>Manufacturer</th>

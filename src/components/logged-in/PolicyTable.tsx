@@ -1,10 +1,14 @@
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import policyService from "../../services/policy-service";
+import { Policy, Schedule } from "../../models/Policy";
+import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
 
 interface PolicyTableProps {
-  policies: any[];
+  policies: Policy[];
   isLoading: boolean;
   categoryMap: Map<number, string>;
   applicationMap: Map<number, string>;
+  onDelete: (policyId: string) => void;
 }
 
 export const PolicyTable = ({
@@ -12,6 +16,7 @@ export const PolicyTable = ({
   isLoading,
   categoryMap,
   applicationMap,
+  onDelete,
 }: PolicyTableProps) => {
   const extractCategoryIds = (traffic: string): number[] => {
     const match = traffic.match(/{([^}]+)}/);
@@ -36,7 +41,8 @@ export const PolicyTable = ({
     return appIds.map((id) => applicationMap.get(id) || "Unknown");
   };
 
-  const formatSchedule = (schedule: any) => {
+  const formatSchedule = (schedule: Schedule | undefined): string => {
+    if (!schedule) return "No schedule";
     return Object.entries(schedule)
       .map(([day, timeRanges]) => {
         if (day === "time_zone" || timeRanges === null) return null;
@@ -70,40 +76,66 @@ export const PolicyTable = ({
     );
   };
 
-  return (
-    <div>
-      {isLoading ? (
-        <div className="spinner-border"></div>
-      ) : (
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Categories</th>
-              <th>Applications</th>
-              <th>Schedule</th>
-            </tr>
-          </thead>
-          <tbody>
-            {policies.map((policy) => {
-              const categoryIds = extractCategoryIds(policy.traffic);
-              const categoryNames = getCategoryNames(categoryIds);
-              const applicationIds = extractApplicationIds(policy.traffic);
-              const applicationNames = getApplicationNames(applicationIds);
-              const schedule = formatSchedule(policy.schedule || {});
+  const handleDelete = async (policyId: string) => {
+    try {
+      await policyService.delete(policyId);
+      onDelete(policyId);
+    } catch (error) {
+      console.error("Failed to delete policy:", error);
+    }
+  };
 
-              return (
-                <tr key={policy.id}>
-                  <td>{policy.name}</td>
-                  <td>{policy.action}</td>
-                  <td>{renderCategoriesWithTooltip(categoryNames)}</td>
-                  <td>{renderApplicationsWithTooltip(applicationNames)}</td>
-                  <td>{schedule}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-      </table>
-      )}
-    </div>
+  return (
+      <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Action</th>
+                <th>Categories</th>
+                <th>Applications</th>
+                <th>Schedule</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            {isLoading ? (
+              <div className="spinner-border"></div>
+            ) : (
+            <tbody>
+                  <tr key="nebitno">
+                    <td>Podrazumevano</td>
+                    <td>Blok</td>
+                    <td>Virusi, pretnje, prevare</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+              {policies.map((policy) => {
+                const categoryIds = extractCategoryIds(policy.traffic);
+                const categoryNames = getCategoryNames(categoryIds);
+                const applicationIds = extractApplicationIds(policy.traffic);
+                const applicationNames = getApplicationNames(applicationIds);
+                const schedule = formatSchedule(policy.schedule);
+
+                return (
+                  <tr key={policy.id}>
+                    <td>{policy.name}</td>
+                    <td>{policy.action}</td>
+                    <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                    <td>{renderApplicationsWithTooltip(applicationNames)}</td>
+                    <td>{schedule}</td>
+                    <td className="action">
+                      <div className="action-icon" onClick={() => handleDelete(policy.id!)}>
+                        <AiOutlineDelete className="action-red outlined" />
+                        <AiFillDelete className="action-red filled" />
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            )}
+          </table>
+      </div>
   );
 };

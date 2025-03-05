@@ -16,6 +16,12 @@ function PolicyManager() {
   const { categoryOptions, categoryMap } = useCategories();
   const { applicationOptions, applicationMap } = useApplications();
 
+  const handleDelete = (policyId: string) => {
+    setPolicies((prevPolicies) =>
+      prevPolicies.filter((policy) => policy.id !== policyId)
+    );
+  };
+
   useEffect(() => {
     setIsLoading(true);
     const { req, cancel } = policyService.getAll<Policy>();
@@ -35,25 +41,27 @@ function PolicyManager() {
 
   return (
     <div className="container">
-      <h1 className="mb-5">Cloudflare Policies</h1>
+      <h3 className="mb-4">Cloudflare Policies</h3>
 
       {error && <p className="text-danger">{error}</p>}
-
 
       <PolicyTable
         policies={policies}
         isLoading={isLoading}
         categoryMap={categoryMap}
         applicationMap={applicationMap}
+        onDelete={handleDelete}
       />
-
-      <PredefinedPolicyForm setPolicies={setPolicies} />
-
       <PolicyForm
         categoryOptions={categoryOptions}
         applicationOptions={applicationOptions}
         setPolicies={setPolicies}
       />
+      <br></br>
+      <br></br>
+      <PredefinedPolicyForm setPolicies={setPolicies} />
+
+
     </div>
   );
 }

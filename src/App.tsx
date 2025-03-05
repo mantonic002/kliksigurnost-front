@@ -1,57 +1,87 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/logged-in/Sidebar";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/logged-in/Login";
-import Register from "./components/logged-in/Register";
-import { useEffect } from "react";
 import authService from "./services/auth-service";
+import deviceService from "./services/device-service";
+import TopBar from "./components/logged-in/TopBar";
+import OAuthSuccess from "./components/logged-in/OAuthSuccess";
+import Signup from "./components/logged-out/SignUp/SignUp";
+import Concerns from "./components/logged-out/Concerns/Concerns";
+import Footer from "./components/logged-out/Footer/Footer";
+import Hero from "./components/logged-out/Hero/Hero";
+import MadeEasy from "./components/logged-out/madeeasy/MadeEasy";
+import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
+import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
 
 function App() {
   return (
     <AuthProvider>
-      {/* Wrap the app with AuthProvider */}
       <Router>
         <AppContent />
-        {/* Use a new component to handle authentication logic */}
       </Router>
     </AuthProvider>
   );
 }
 
+const ProtectedRoute = () => {
+  const { isAuthenticated } = useAuth();
+
+  // Check if the token is valid
+  const isTokenValid = authService.isAuthenticated();
+
+  if (!isAuthenticated || !isTokenValid) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
+};
+
 const AppContent = () => {
-  const {isAuthenticated, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    const token = authService.getToken();
-    if (token) authService.setTokenToApiClient(token);
-    else logout();
+    if (isAuthenticated) {
+      deviceService.getDevices();
+    }
   }, []);
 
   return (
     <div className="App">
-      {/* Show sidebar only if user is logged in */}
-      {isAuthenticated && <Sidebar />}
+      {isAuthenticated && (
+        <>
+          <TopBar title="Klik Sigurnost"/>
+          <Sidebar />
+        </>
+      )}
 
       <div className="Content">
+        <TestimonialSlider/>
+        <ProjectTabs/>
+        <Concerns/>
+        <Hero/>
+        <MadeEasy/>
         <Routes>
-          {/* Routes for login and register */}
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Signup />} />
+          <Route path="/oauth-success" element={<OAuthSuccess />} />
 
-          {/* Dynamically render routes based on SidebarData */}
-          {SidebarData.map((item, index) => {
-            if (item.title === "Odjava") {
-              return <Route path={item.link} element={<Login />} key={index} />;
-            }
-            // Other routes for logged-in users
-            return (
-              <Route path={item.link} element={item.element} key={index} />
-            );
-          })}
+          <Route element={<ProtectedRoute />}>
+            {SidebarData.map((item, index) => {
+              if (item.title === "Odjava") {
+                return <Route path={item.link} element={<Login />} key={index} />;
+              }
+              return (
+                <Route path={item.link} element={item.element} key={index} />
+              );
+            })}
+          </Route>
         </Routes>
+        <Footer/>
       </div>
     </div>
   );

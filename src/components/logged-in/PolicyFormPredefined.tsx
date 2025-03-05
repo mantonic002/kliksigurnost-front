@@ -88,7 +88,6 @@ export const PredefinedPolicyForm = ({ setPolicies }: PredefinedPolicyFormProps)
 
   return (
     <div>
-      <h2>Create a Predefined Policy</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
         <div className="mb-3">
           <label className="form-label">Predefined Policies:</label>

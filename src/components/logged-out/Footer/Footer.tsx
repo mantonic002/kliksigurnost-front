@@ -1,7 +1,6 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import logo from "../../logo_final2.png";
+import logo from "../../../logo_final2.png";
 
 const Footer = () => {
   return (

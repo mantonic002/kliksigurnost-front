@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
 import "../../App.css";
 
@@ -78,55 +79,52 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       </button>
       
       {isOpen && (
-        <div className="schedule-picker-modal">
-          <div className="modal-header">
-            <h5>Select Schedule</h5>
-            <button
-              className="btn btn-sm btn-danger"
-              onClick={() => setIsOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-
-          <div className="time-slots-container">
-            <div className="d-flex">
-              <div className="time-label"></div>
-              {Object.keys(days).map((day) => {
-                if (day === "time_zone") return null;
-                return (
-                  <div key={day} className="day-header">
-                    {day.charAt(0).toUpperCase() + day.slice(1)}
-                  </div>
-                );
-              })}
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <div className="modal-header">
+              <h5>Select Schedule</h5>
+              <AiOutlineClose onClick={() => setIsOpen(false)}/> 
             </div>
 
-            {timeSlots.map((timeSlot) => (
-              <div
-                key={timeSlot}
-                className="d-flex align-items-center time-slot-row"
-              >
-                <div className="time-label">{timeSlot}</div>
+            <div className="time-slots-container">
+              <div className="d-flex">
+                <div className="time-label"></div>
                 {Object.keys(days).map((day) => {
                   if (day === "time_zone") return null;
-                  const isSelected =
-                    Array.isArray(days[day]) && days[day].includes(timeSlot);
                   return (
-                    <div
-                      key={`${day}-${timeSlot}`}
-                      className={`time-slot ${isSelected ? "selected" : ""}`}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        handleMouseDown(day, timeSlot);
-                      }}
-                      onMouseEnter={() => handleMouseEnter(day, timeSlot)}
-                      onDragStart={handleDragStart}
-                    ></div>
+                    <div key={day} className="day-header">
+                      {day.charAt(0).toUpperCase() + day.slice(1)}
+                    </div>
                   );
                 })}
               </div>
-            ))}
+
+              {timeSlots.map((timeSlot) => (
+                <div
+                  key={timeSlot}
+                  className="d-flex align-items-center time-slot-row"
+                >
+                  <div className="time-label">{timeSlot}</div>
+                  {Object.keys(days).map((day) => {
+                    if (day === "time_zone") return null;
+                    const isSelected =
+                      Array.isArray(days[day]) && days[day].includes(timeSlot);
+                    return (
+                      <div
+                        key={`${day}-${timeSlot}`}
+                        className={`time-slot ${isSelected ? "selected" : ""}`}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          handleMouseDown(day, timeSlot);
+                        }}
+                        onMouseEnter={() => handleMouseEnter(day, timeSlot)}
+                        onDragStart={handleDragStart}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

@@ -1,8 +1,6 @@
-import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaWindows, FaApple, FaAndroid, FaChrome } from "react-icons/fa";
-import { IoLogoIonic } from "react-icons/io";
-import heroImage from "../../../public/images/happy_family_brush.png"; // Make sure to replace with the correct image path
+import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
+import heroImage from "../../../../public/images/happy_family_brush.png"; // Make sure to replace with the correct image path
 import "bootstrap/dist/css/bootstrap.min.css";
 
 

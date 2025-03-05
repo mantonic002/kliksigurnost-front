@@ -5,7 +5,7 @@ class DeviceService {
     // Method to fetch devices
     async getDevices(): Promise<Device[]> {
         try {
-            const response = await apiClient.get<Device[]>('/api/policies/devices');
+            const response = await apiClient.get<Device[]>('/policies/devices');
             
             return response.data;
         } catch (error) {

@@ -6,6 +6,7 @@ import policyService from "../../services/policy-service";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { AiOutlineClose } from "react-icons/ai";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -46,6 +47,7 @@ export const PolicyForm = ({
   const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<number[]>([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const {
     handleSubmit,
@@ -177,9 +179,9 @@ export const PolicyForm = ({
       {} as Record<string, string>
     );
   
-    const isScheduleEmpty = Object.values(formattedSchedule).every(
-      (value) => value === "" || value === null
-    );
+    const isScheduleEmpty = Object.entries(formattedSchedule)
+    .filter(([key]) => key !== "time_zone")
+    .every(([_, value]) => value === "" || value === null);
   
     const formData = {
       ...data,
@@ -212,6 +214,7 @@ export const PolicyForm = ({
         setSchedule({});
         setSelectedCategories([]);
         setSelectedApplications([]);
+        setIsFormOpen(false);
       })
       .catch((error: any) => {
         alert(error.message || "Failed to create policy");
@@ -220,47 +223,62 @@ export const PolicyForm = ({
   
 
   return (
-    <div>
-      <h2>Create a New Policy</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-        <div className="mb-3">
-          <label className="form-label">Categories:</label>
-          <Select
-            isMulti
-            name="categories"
-            options={categoryOptions}
-            onChange={handleCategoryChange}
-            closeMenuOnSelect={false}
-            value={categoryOptions.filter((option) =>
-              selectedCategories.includes(option.value)
-            )}
-            getOptionLabel={(e) => e.label}
-            getOptionValue={(e) => String(e.value)}
-          />
-        </div>
+    <>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setIsFormOpen(!isFormOpen)}
+      >
+        New policy
+      </button>
+      {isFormOpen && 
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <div className="modal-header">
+              <h5>Create new policy</h5>
+              <AiOutlineClose onClick={() => setIsFormOpen(false)}/> 
+            </div>    
+            <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+              <div className="mb-3">
+                <label className="form-label">Categories:</label>
+                <Select
+                  isMulti
+                  name="categories"
+                  options={categoryOptions}
+                  onChange={handleCategoryChange}
+                  closeMenuOnSelect={false}
+                  value={categoryOptions.filter((option) =>
+                    selectedCategories.includes(option.value)
+                  )}
+                  getOptionLabel={(e) => e.label}
+                  getOptionValue={(e) => String(e.value)}
+                />
+              </div>
 
-        <div className="mb-3">
-          <label className="form-label">Applications:</label>
-          <Select
-            isMulti
-            name="applications"
-            options={applicationOptions}
-            onChange={handleApplicationChange}
-            closeMenuOnSelect={false}
-            value={applicationOptions.filter((option) =>
-              selectedApplications.includes(option.value)
-            )}
-            getOptionLabel={(e) => e.label}
-            getOptionValue={(e) => String(e.value)}
-          />
-        </div>
+              <div className="mb-3">
+                <label className="form-label">Applications:</label>
+                <Select
+                  isMulti
+                  name="applications"
+                  options={applicationOptions}
+                  onChange={handleApplicationChange}
+                  closeMenuOnSelect={false}
+                  value={applicationOptions.filter((option) =>
+                    selectedApplications.includes(option.value)
+                  )}
+                  getOptionLabel={(e) => e.label}
+                  getOptionValue={(e) => String(e.value)}
+                />
+              </div>
 
-        <SchedulePicker onChange={updateSchedule} />
+              <SchedulePicker onChange={updateSchedule} />
 
-        <button type="submit" className="btn btn-success">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+              <button type="submit" className="btn btn-success">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>}
+  </>
+  )
 };

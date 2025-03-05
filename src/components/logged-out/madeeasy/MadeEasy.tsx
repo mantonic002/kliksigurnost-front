@@ -1,7 +1,6 @@
-import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-import madeImg from "../../../public/images/made3.jpg";
+import madeImg from "../../../../public/images/made3.jpg";
 
 const MadeEasy = () => {
   return (

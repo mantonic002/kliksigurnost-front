@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Accordion } from "react-bootstrap";
 import { FaShieldAlt, FaChartBar, FaClock, FaCalendarAlt, FaPhoneAlt, FaMapMarkerAlt, FaBell, FaWifi, FaBookOpen, FaLock } from "react-icons/fa";
-import studyImage from "../../../public/images/happy_family_brush.png"; // Replace with actual image path
+import studyImage from "../../../../public/images/happy_family_brush.png"; // Replace with actual image path
+import { AccordionEventKey } from "react-bootstrap/esm/AccordionContext";
 
 const concernsData = [
     { title: "Automatsko filtriranje neprimerenog sadržaja", icon: <FaShieldAlt />, content: "KlikSigurnost automatski blokira sadržaje poput pornografije, sajtova za kockanje, nasilja, govora mržnje i sajtova koji promovišu povređivanje/samopovređivanje." },
@@ -17,11 +18,13 @@ const concernsData = [
 ];
 
 const Concerns = () => {
-    const [activeKey, setActiveKey] = useState(null);
+    const [activeKey, setActiveKey] = useState<AccordionEventKey | null>();
 
-    const toggleAccordion = (key) => {
-        setActiveKey(activeKey === key ? null : key);
+    const toggleAccordion = (key: AccordionEventKey) => {
+        setActiveKey(prevKey => (prevKey === key ? null : key));
     };
+    
+    
 
     return (
         <section className="concerns-section">
@@ -51,8 +54,9 @@ const Concerns = () => {
                                         key={index}
                                         className="concern-item"
                                         activeKey={activeKey}
-                                        onSelect={toggleAccordion}
+                                        onSelect={(eventKey) => toggleAccordion(eventKey)}
                                     >
+
                                         <Accordion.Item eventKey={index.toString()}>
                                             <Accordion.Header>
                                                 <span className="concern-icon">{concern.icon}</span> {concern.title}

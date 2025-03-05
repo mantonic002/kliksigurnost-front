@@ -1,5 +1,9 @@
 import {
+  AiFillHome,
+  AiFillMobile,
+  AiFillSliders,
   AiOutlineBarChart,
+  AiOutlineCustomerService,
   AiOutlineHome,
   AiOutlineLogout,
   AiOutlineMobile,
@@ -9,10 +13,12 @@ import Home from "./Home";
 import Policies from "./PolicyManager";
 import Logs from "./Logs";
 import Devices from "./Devices";
+import AppointmentForm from "./AppointmentForm";
 
 interface SidebarItem {
   title: string;
-  icon: JSX.Element;
+  iconOutline: JSX.Element;
+  iconFilled?: JSX.Element;
   element: JSX.Element;
   link: string;
   onClick?: () => void;
@@ -21,31 +27,40 @@ interface SidebarItem {
 export const SidebarData: SidebarItem[] = [
   {
     title: "Početna",
-    icon: <AiOutlineHome />,
+    iconOutline: <AiOutlineHome />,
+    iconFilled: <AiFillHome />,
     element: <Home />,
     link: "/home",
   },
   {
     title: "Pravila",
-    icon: <AiOutlineSliders />,
+    iconOutline: <AiOutlineSliders />,
+    iconFilled: <AiFillSliders />,
     element: <Policies />,
     link: "/policies",
   },
   {
     title: "Uredjaji",
-    icon: <AiOutlineMobile />,
+    iconOutline: <AiOutlineMobile />,
+    iconFilled: <AiFillMobile />,
     element: <Devices />,
     link: "/devices",
   },
   {
     title: "Praćenje",
-    icon: <AiOutlineBarChart />,
+    iconOutline: <AiOutlineBarChart />,
     element: <Logs />,
     link: "/logs",
   },
   {
+    title: "Korisnička podrška",
+    iconOutline: <AiOutlineCustomerService />,
+    element: <AppointmentForm />,
+    link: "/support",
+  },
+  {
     title: "Odjava",
-    icon: <AiOutlineLogout />,
+    iconOutline: <AiOutlineLogout />,
     element: <></>,
     link: "/login",
   },

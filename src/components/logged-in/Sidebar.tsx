@@ -1,24 +1,30 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { SidebarData } from "./SidebarData";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Sidebar = () => {
-  const { email, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="Sidebar">
+    <div className={`Sidebar ${collapsed ? "collapsed" : ""}`}>
       <ul className="SidebarList">
-        <li 
-        className="SidebarItemStatic"
-        >{email}</li>
+        {/* <li className="SidebarItemStatic">{email}</li> */}
+        <li className="SidebarItem" onClick={() => setCollapsed(!collapsed)}>
+          <div className="icon-container">
+              {collapsed ? <AiOutlineMenu /> : <AiOutlineClose />}
+          </div>
+          {!collapsed && <div className="title">Zatvori</div>}
+        </li>
         {SidebarData.map((item, index) => (
           <li
             key={index}
             className="SidebarItem"
             id={window.location.pathname === item.link ? "active" : ""}
             onClick={() => {
-              // If the item is "Odjava" (logout), perform logout
               if (item.title === "Odjava") {
                 logout();
                 navigate("/login");
@@ -28,8 +34,8 @@ const Sidebar = () => {
               }
             }}
           >
-            <div id="icon">{item.icon}</div>
-            <div id="title">{item.title}</div>
+            <div className="icon-container">{item.iconOutline}</div>
+            {!collapsed && <div className="title">{item.title}</div>}
           </li>
         ))}
       </ul>
