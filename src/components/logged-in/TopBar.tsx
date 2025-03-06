@@ -4,6 +4,7 @@ import { AiFillBell, AiOutlineBell } from "react-icons/ai";
 import { Notification } from "../../models/Notification";
 import notificationService from "../../services/notification-service";
 import { CanceledError } from "axios";
+import logo from "../../../public/images/logo_final2.png";
 
 interface TopBarProps {
   title: string;
@@ -57,7 +58,14 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
 
   return (
     <div className="TopBar">
-      <div className="Logo">Your Logo</div>
+      <div className="Logo">
+        <img
+          src={logo}
+          alt="Logo"
+          className="img-fluid"
+          style={{ maxWidth: '100%', maxHeight: '40px' }}
+        />
+      </div>
       <div className="PageTitle">{title}</div>
       <div className="TopBar-element">
         <div className="action-icon mb-3" onClick={openNotifications}>

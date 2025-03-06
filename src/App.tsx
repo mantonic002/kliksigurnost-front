@@ -4,7 +4,7 @@ import "./App.css";
 import Sidebar from "./components/logged-in/Sidebar";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
-import Login from "./components/logged-in/Login";
+import Login from "./components/logged-out/Login/Login";
 import authService from "./services/auth-service";
 import deviceService from "./services/device-service";
 import TopBar from "./components/logged-in/TopBar";
@@ -16,6 +16,7 @@ import Hero from "./components/logged-out/Hero/Hero";
 import MadeEasy from "./components/logged-out/madeeasy/MadeEasy";
 import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
 import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
+import Navbar from "./components/logged-out/Navbar/Navbar";
 
 function App() {
   return (
@@ -51,21 +52,16 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <>
-          <TopBar title="Klik Sigurnost"/>
+          <TopBar title="Klik Sigurnost" />
           <Sidebar />
         </>
-      )}
+      ) : <Navbar />}
 
       <div className="Content">
-        <TestimonialSlider/>
-        <ProjectTabs/>
-        <Concerns/>
-        <Hero/>
-        <MadeEasy/>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<><Hero /><ProjectTabs /><MadeEasy /><Concerns /><TestimonialSlider /></>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
@@ -81,10 +77,10 @@ const AppContent = () => {
             })}
           </Route>
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </div>
-  );
+    );
 };
 
 export default App;

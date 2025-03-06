@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Button, Container, Offcanvas } from "react-bootstrap";
+import logo from "../../../../public/images/logo_final2.png";
 import CustomDropdown from "./Dropdown";
-import logo from "../../../public/images/logo_final2.png";
+import { useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
     const [showOffcanvas, setShowOffcanvas] = useState(false);
+    let navigate = useNavigate();
 
     return (
         <Navbar expand="lg" className="bg-white shadow-sm py-1" fixed="top">
@@ -32,8 +34,8 @@ const NavigationBar = () => {
 
                 {/* Buttons */}
                 <div className="d-none d-lg-flex">
-                    <Button variant="outline-primary" className="me-2 px-3">Registracija in</Button>
-                    <Button variant="primary" className="px-3">Prijavljivanje</Button>
+                    <Button onClick={() => navigate("/register")} variant="outline-primary" className="me-2 px-3">Registracija in</Button>
+                    <Button onClick={() => navigate("/login")} variant="primary" className="px-3">Prijavljivanje</Button>
                 </div>
 
                 {/* Mobile Toggle Button */}

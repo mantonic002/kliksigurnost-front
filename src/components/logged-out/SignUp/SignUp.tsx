@@ -1,7 +1,70 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
+import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import authService from "../../../services/auth-service";
+import { useAuth } from "../../../contexts/AuthContext";
+
+const schema = z
+  .object({
+    email: z.string().email({ message: "Email nije validan" }),
+    password: z
+      .string()
+      .min(5, { message: "Lozinka mora biti duža od 5 karaktera" }),
+    confirmPassword: z
+      .string()
+      .min(5, { message: "Lozinka mora biti duža od 5 karaktera" }),
+  })
+  .superRefine((val, ctx) => {
+    if (val.password !== val.confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Lozinka nije ista u oba polja",
+        path: ["confirmPassword"],
+      });
+    }
+  });
+
+type FormData = z.infer<typeof schema>;
+
 const Signup = () => {
+
+      const [err, setErr] = useState("");
+      let navigate = useNavigate();
+      const { login } = useAuth();
+    
+      const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+      const googleLogin = () => {
+        window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+      };
+    
+      const onSubmit = (data: FieldValues) => {
+        authService
+          .register(data.email, data.password)
+          .then(() => {
+            console.log(authService.getToken());
+            login();
+            navigate("/home");
+          })
+          .catch((error) => {
+            if (error.response && error.response.data) {
+              setErr(error.response.data.error || "Registration failed");
+            } else {
+              setErr("An unknown error occurred");
+            }
+            console.error("Registration error:", error);
+          });
+      };
+      
     return (
         <section className="signup-section">
             <Container fluid className="signup-container">
@@ -12,7 +75,7 @@ const Signup = () => {
                         <p>
                             Alat koji roditelji širom regiona biraju za miran san i sigurnu budućnost svoje dece.
                         </p>
-                        <Button variant="outline-light" className="signin-btn">
+                        <Button onClick={() => navigate("/login")} variant="outline-light" className="signin-btn">
                             Imate nalog? Prijavite se.
                         </Button>
                     </Col>
@@ -20,34 +83,37 @@ const Signup = () => {
                     {/* Right Side */}
                     <Col md={6} className="signup-right">
                         <h2 className="signup-title">Napravite nalog</h2>
-                        <Form>
-                            <Form.Group controlId="username">
-                                <Form.Control type="text" placeholder="Korisničko ime" className="input-field" />
+                        <Form onSubmit={handleSubmit(onSubmit)}>
+                            <Form.Group controlId="email">
+                                <Form.Control {...register("email")} type="email" placeholder="E-mail adresa" className="input-field" />
+                                {errors.email && (
+                                <p className="text-danger">{errors.email.message}</p>
+                                )}  
                             </Form.Group>
 
-                            <Form.Group controlId="email">
-                                <Form.Control type="email" placeholder="E-mail adresa" className="input-field" />
-                            </Form.Group>
 
                             <Form.Group controlId="password">
-                                <Form.Control type="password" placeholder="Lozinka" className="input-field" />
+                                <Form.Control {...register("password")} type="password" placeholder="Lozinka" className="input-field" />
+                                {errors.password && (
+                                <p className="text-danger">{errors.password.message}</p>
+                                )}                        
                             </Form.Group>
 
                             <Form.Group controlId="confirmPassword">
-                                <Form.Control type="password" placeholder="Ponovite lozinku" className="input-field" />
+                                <Form.Control {...register("confirmPassword")} type="password" placeholder="Ponovite lozinku" className="input-field" />
                             </Form.Group>
+                            {errors.confirmPassword && (
+                                <p className="text-danger">{errors.confirmPassword.message}</p>
+                            )}
 
                             <Button className="signup-btn" type="submit">
                                 Registracija
                             </Button>
                         </Form>
-                        <Button variant="outline-light" className="form-signin">
-                            Imate nalog? Prijavite se.
-                        </Button>
                         <p className="or-text">Možete se registrovati i pomoću:</p>
                         <div className="social-icons">
                             <FaFacebookF className="icon fb" />
-                            <FaGoogle className="icon google" />
+                            <FaGoogle onClick={googleLogin} className="icon google" />
                             <FaLinkedinIn className="icon linkedin" />
                         </div>
                     </Col>
