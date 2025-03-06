@@ -984,6 +984,7 @@ body {
   
   /*==== Footer css start here =====*/
   .footer {
+    width: 100%;
     background-color: #f8f9fa;
     padding: 70px 0 10px 0;
     font-family: Arial, sans-serif;

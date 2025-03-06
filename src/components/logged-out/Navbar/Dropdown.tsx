@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { NavDropdown, Container } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa"; // Import the arrow icon
 
-const CustomDropdown = ({ isMobile }) => {
+
+interface DropdownProps {
+  isMobile: Boolean;
+}
+
+const CustomDropdown = ({ isMobile }: DropdownProps) => {
   const [show, setShow] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // State for hover effect
 
