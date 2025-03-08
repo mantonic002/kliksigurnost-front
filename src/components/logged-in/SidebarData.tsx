@@ -62,6 +62,6 @@ export const SidebarData: SidebarItem[] = [
     title: "Odjava",
     iconOutline: <AiOutlineLogout />,
     element: <></>,
-    link: "/login",
+    link: "/logout",
   },
 ];

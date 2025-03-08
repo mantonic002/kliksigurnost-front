@@ -1,7 +1,8 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Log } from "../../models/Logs";
 import logService from "../../services/log-service";
 import { CanceledError } from "axios";
+import "../../styles/components/Logs.css";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -19,8 +20,9 @@ function Logs() {
   // Function to initialize start and end date to default values
   function resetStartAndEndDateTime() {
     const now = new Date();
+
     const tenDaysAgo = new Date(now);
-    tenDaysAgo.setDate(now.getDate() - 20);
+    tenDaysAgo.setDate(now.getDate() - 10);
 
     // Format both dates in the required format (YYYY-MM-DDTHH:mm)
     const formatDate = (date: Date) => {
@@ -46,7 +48,7 @@ function Logs() {
   // UseEffect that triggers after startDateTime and endDateTime are set
   useEffect(() => {
     if (startDateTime && endDateTime) {
-      fetchLogs('next'); // Pass a default direction
+      fetchLogs("next"); // Pass a default direction
     }
   }, [startDateTime, endDateTime]);
 
@@ -57,24 +59,25 @@ function Logs() {
   };
 
   // Fetch logs based on time range
-  const fetchLogs = (direction: 'next' | 'prev') => {
+  const fetchLogs = (direction: "next" | "prev") => {
     setIsLoading(true);
     const utcStartDate = convertToUTC(startDateTime);
     const utcEndDate = convertToUTC(endDateTime);
 
-    logService.getLogs({
-      startDateTime: utcStartDate,
-      endDateTime: utcEndDate,
-      page: currentPage,
-      pageSize,
-      lastDateTime: direction === 'next' ? lastLog?.datetime : undefined,
-      lastPolicyId: direction === 'next' ? lastLog?.policyId : undefined,
-      direction,
-    })
+    logService
+      .getLogs({
+        startDateTime: utcStartDate,
+        endDateTime: utcEndDate,
+        page: currentPage,
+        pageSize,
+        lastDateTime: direction === "next" ? lastLog?.datetime : undefined,
+        lastPolicyId: direction === "next" ? lastLog?.policyId : undefined,
+        direction,
+      })
       .then((res) => {
         setLogs(res);
         setLastLog(res[res.length - 1] || null);
-        setCurrentPage(prev => direction === 'next' ? prev + 1 : prev - 1);
+        setCurrentPage((prev) => (direction === "next" ? prev + 1 : prev - 1));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -90,12 +93,13 @@ function Logs() {
 
       {error && <p className="text-danger">{error}</p>}
 
-      <div className="table-container">
-        <table className="table">
+      {/* Table for desktop */}
+      <div className="table-container d-none d-md-block">
+        <table className="table logs-table">
           <thead>
             <tr>
               <th>Category Names</th>
-              <th>Query name</th>
+              <th>Query Name</th>
               <th>Date & Time</th>
               <th>Application Name</th>
               <th>Policy ID</th>
@@ -103,11 +107,15 @@ function Logs() {
               <th>Resolver Decision</th>
             </tr>
           </thead>
-          {isLoading ? (
-            <div className="spinner-border"></div>
-          ) : (
-            <tbody>
-              {logs.map((log) => (
+          <tbody>
+            {isLoading ? (
+              <tr>
+                <td colSpan={7} className="text-center">
+                  <div className="spinner-border"></div>
+                </td>
+              </tr>
+            ) : (
+              logs.map((log) => (
                 <tr key={log.policyId}>
                   <td>{log.categoryNames.join(", ")}</td>
                   <td>{log.queryName}</td>
@@ -117,26 +125,62 @@ function Logs() {
                   <td>{log.policyName}</td>
                   <td>{log.resolverDecision.toString()}</td>
                 </tr>
-              ))}
-            </tbody>
-          )}
+              ))
+            )}
+          </tbody>
         </table>
-        <div>
-          <button 
-            className="btn btn-success"
-            onClick={() => fetchLogs('prev')} 
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <button 
-            className="btn btn-success"
-            onClick={() => fetchLogs('next')} 
-            disabled={logs.length < pageSize}
-          >
-            Next
-          </button>
-        </div>
+      </div>
+
+      {/* Cards for mobile */}
+      <div className="d-block d-md-none">
+        {isLoading ? (
+          <div className="spinner-border"></div>
+        ) : (
+          logs.map((log) => (
+            <div key={log.policyId} className="log-card">
+              <div className="log-card-item">
+                <strong>Category Names:</strong> {log.categoryNames.join(", ")}
+              </div>
+              <div className="log-card-item">
+                <strong>Query Name:</strong> {log.queryName}
+              </div>
+              <div className="log-card-item">
+                <strong>Date & Time:</strong> {log.datetime}
+              </div>
+              <div className="log-card-item">
+                <strong>Application Name:</strong> {log.matchedApplicationName}
+              </div>
+              <div className="log-card-item">
+                <strong>Policy ID:</strong> {log.policyId}
+              </div>
+              <div className="log-card-item">
+                <strong>Policy Name:</strong> {log.policyName}
+              </div>
+              <div className="log-card-item">
+                <strong>Resolver Decision:</strong>{" "}
+                {log.resolverDecision.toString()}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Pagination */}
+      <div className="mt-3">
+        <button
+          className="btn btn-success"
+          onClick={() => fetchLogs("prev")}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <button
+          className="btn btn-success ms-2"
+          onClick={() => fetchLogs("next")}
+          disabled={logs.length < pageSize}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
