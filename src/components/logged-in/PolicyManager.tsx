@@ -45,13 +45,6 @@ function PolicyManager() {
 
       {error && <p className="text-danger">{error}</p>}
 
-      <PolicyTable
-        policies={policies}
-        isLoading={isLoading}
-        categoryMap={categoryMap}
-        applicationMap={applicationMap}
-        onDelete={handleDelete}
-      />
       <PolicyForm
         categoryOptions={categoryOptions}
         applicationOptions={applicationOptions}
@@ -59,9 +52,15 @@ function PolicyManager() {
       />
       <br></br>
       <br></br>
+      <PolicyTable
+        policies={policies}
+        isLoading={isLoading}
+        categoryMap={categoryMap}
+        applicationMap={applicationMap}
+        onDelete={handleDelete}
+      />
+
       <PredefinedPolicyForm setPolicies={setPolicies} />
-
-
     </div>
   );
 }

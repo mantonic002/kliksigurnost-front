@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
-import "../../App.css";
+import "../../styles/components/SchedulePicker.css";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;
@@ -77,13 +77,13 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       >
         Schedule
       </button>
-      
+
       {isOpen && (
         <div className="modal-overlay">
           <div className="modal-container">
             <div className="modal-header">
               <h5>Select Schedule</h5>
-              <AiOutlineClose onClick={() => setIsOpen(false)}/> 
+              <AiOutlineClose onClick={() => setIsOpen(false)} />
             </div>
 
             <div className="time-slots-container">

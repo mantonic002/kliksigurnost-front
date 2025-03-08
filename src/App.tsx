@@ -1,7 +1,12 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
-import "./App.css";
-import Sidebar from "./components/logged-in/Sidebar";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
+import "./styles/global.css";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/logged-out/Login/Login";
@@ -55,13 +60,25 @@ const AppContent = () => {
       {isAuthenticated ? (
         <>
           <TopBar title="Klik Sigurnost" />
-          <Sidebar />
         </>
-      ) : <Navbar />}
+      ) : (
+        <Navbar />
+      )}
 
       <div className="Content">
         <Routes>
-          <Route path="/" element={<><Hero /><ProjectTabs /><MadeEasy /><Concerns /><TestimonialSlider /></>} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <ProjectTabs />
+                <MadeEasy />
+                <Concerns />
+                <TestimonialSlider />
+              </>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
@@ -69,7 +86,9 @@ const AppContent = () => {
           <Route element={<ProtectedRoute />}>
             {SidebarData.map((item, index) => {
               if (item.title === "Odjava") {
-                return <Route path={item.link} element={<Login />} key={index} />;
+                return (
+                  <Route path={item.link} element={<Login />} key={index} />
+                );
               }
               return (
                 <Route path={item.link} element={item.element} key={index} />
@@ -80,7 +99,7 @@ const AppContent = () => {
         <Footer />
       </div>
     </div>
-    );
+  );
 };
 
 export default App;

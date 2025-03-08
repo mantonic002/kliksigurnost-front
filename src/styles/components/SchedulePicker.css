@@ -1,0 +1,39 @@
+/* Schedule Picker Styles */
+.time-slots-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.time-label {
+  width: 100px;
+}
+
+.day-header {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.time-slot {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.time-slot.selected {
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.1);
+}
+
+.time-slot:hover {
+  background-color: #82b5f0;
+}
