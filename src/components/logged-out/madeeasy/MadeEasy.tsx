@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
+import '../../../styles/components/MadeEasy.css';
 
 import madeImg from "../../../../public/images/made3.jpg";
 

@@ -1,0 +1,103 @@
+/* ===== PROJECTS TABS ===== */
+.tabs-section {
+  padding: 70px 0;
+}
+
+.tabs-container {
+  padding: 30px;
+  background-color: #eff3f6 !important;
+  border-radius: 10px;
+}
+
+.tabs-list .nav-link {
+  background-color: #fff;
+  color: #333;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-size: 17px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.tabs-list .nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.tabs-list .nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.tab-icon {
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.tab-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.tab-details {
+  padding: 0 50px;
+}
+
+.tab-info {
+  margin-top: 100px;
+}
+
+.tab-info h3 {
+  font-size: 35px;
+}
+
+.tab-info p {
+  font-size: 18px;
+}
+
+.tab-img-area {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-image {
+  width: 280px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  .tab-details {
+    padding: 0;
+  }
+
+  .tabs-list .nav-link {
+    margin-right: 0;
+    padding: 20px 15px;
+    font-size: 20px;
+  }
+
+  .tab-info {
+    margin-top: 0;
+  }
+
+  .tab-info h3 {
+    font-size: 30px;
+  }
+
+  .tab-info p {
+    font-size: 17px;
+  }
+
+  .tab-image {
+    width: 240px;
+  }
+}

@@ -1,0 +1,17 @@
+/* ===== MAIN APP STRUCTURE ===== */
+.App {
+width: 100vw;
+height: 100vh;
+display: flex;
+overflow: hidden;
+background-color: var(--background-light);
+}
+
+.Content {
+flex-grow: 1;
+background-color: var(--background-light);
+margin-top: 60px;
+padding: 20px;
+overflow-y: auto;
+height: calc(100vh - 60px);
+}

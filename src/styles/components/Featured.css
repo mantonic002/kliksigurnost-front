@@ -1,0 +1,63 @@
+/* ===== FEATURED SECTION ===== */
+.featured-section {
+  background-color: #fff;
+  padding: 70px 15px;
+  text-align: center;
+  position: relative;
+}
+
+.featured-container {
+  background-color: #eff3f6;
+  padding: 60px 30px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.left-shape {
+  text-align: left;
+  position: absolute;
+  left: 0;
+  margin-top: -100px;
+  z-index: 1;
+  width: 100%;
+  pointer-events: none;
+}
+
+.left-shape img {
+  height: 200px;
+  width: auto;
+}
+
+.fechard-title {
+  position: relative;
+  z-index: 333;
+}
+
+.featured-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.chicago-font {
+  font-family: "Times New Roman", serif;
+  font-size: 20px;
+}
+
+.featured-text {
+  font-size: 17px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .featured-box {
+    margin-bottom: 0;
+  }
+
+  .featured-container {
+    padding: 40px 15px;
+  }
+
+  .left-shape img {
+    height: 150px;
+  }
+}

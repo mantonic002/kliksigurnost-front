@@ -1,6 +1,5 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +7,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
 import { useAuth } from "../../../contexts/AuthContext";
+
+import '../../../styles/components/Signup.css';
 
 const schema = z
   .object({
@@ -104,6 +105,11 @@ const Signup = () => {
                             </Form.Group>
                             {errors.confirmPassword && (
                                 <p className="text-danger">{errors.confirmPassword.message}</p>
+                            )}
+
+                            {/* Display the error message from the response */}
+                            {err && (
+                              <p className="text-danger">{err}</p>
                             )}
 
                             <Button className="signup-btn" type="submit">
