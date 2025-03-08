@@ -23,31 +23,35 @@ interface PredefinedPolicyFormProps {
   setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>;
 }
 
-export const PredefinedPolicyForm = ({ setPolicies }: PredefinedPolicyFormProps) => {
-  const [selectedPolicy, setSelectedPolicy] = useState<SelectOption | null>(null);
+export const PredefinedPolicyForm = ({
+  setPolicies,
+}: PredefinedPolicyFormProps) => {
+  const [selectedPolicy, setSelectedPolicy] = useState<SelectOption | null>(
+    null
+  );
 
-  const {
-    handleSubmit,
-    setValue,
-    reset,
-  } = useForm<PolicyFormData>({
+  const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
 
   // Handle policy selection
   const handlePolicyChange = (selectedOption: SelectOption | null) => {
     setSelectedPolicy(selectedOption);
-  
+
     if (selectedOption) {
-      const policy = predefinedPolicies.find((p) => p.name === selectedOption.label);
-  
+      const policy = predefinedPolicies.find(
+        (p) => p.name === selectedOption.label
+      );
+
       if (policy) {
         // Generate traffic strings for categories and applications
-        const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(" ")}})`;
+        const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
+          " "
+        )}})`;
         const trafficApplications = policy.applications
           .map((appId) => `any(app.ids[*] in {${appId}})`)
           .join(" or ");
-  
+
         // Set form values
         setValue("trafficCategories", trafficCategories);
         setValue("trafficApplications", trafficApplications);
@@ -89,9 +93,10 @@ export const PredefinedPolicyForm = ({ setPolicies }: PredefinedPolicyFormProps)
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-        <div className="mb-3">
+        <div className="inline-form">
           <label className="form-label">Predefined Policies:</label>
           <Select
+            className="form-control"
             name="predefinedPolicies"
             options={predefinedPolicies.map((policy, index) => ({
               value: index,
@@ -102,11 +107,11 @@ export const PredefinedPolicyForm = ({ setPolicies }: PredefinedPolicyFormProps)
             getOptionLabel={(e) => e.label}
             getOptionValue={(e) => String(e.value)}
           />
-        </div>
 
-        <button type="submit" className="btn btn-success">
-          Submit
-        </button>
+          <button type="submit" className="btn btn-success">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

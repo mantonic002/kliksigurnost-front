@@ -3,6 +3,7 @@ import { Log } from "../../models/Logs";
 import logService from "../../services/log-service";
 import { CanceledError } from "axios";
 import "../../styles/components/Logs.css";
+import { formatDate, utcToLocal } from "./Helpers";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -95,15 +96,15 @@ function Logs() {
 
       {/* Table for desktop */}
       <div className="table-container d-none d-md-block">
-        <table className="table logs-table">
+        <table className="logs-table">
           <thead>
             <tr>
-              <th>Category Names</th>
               <th>Query Name</th>
               <th>Date & Time</th>
               <th>Application Name</th>
-              <th>Policy ID</th>
-              <th>Policy Name</th>
+              <th>Category Names</th>
+              {/* <th>Policy ID</th>
+              <th>Policy Name</th> */}
               <th>Resolver Decision</th>
             </tr>
           </thead>
@@ -117,12 +118,12 @@ function Logs() {
             ) : (
               logs.map((log) => (
                 <tr key={log.policyId}>
-                  <td>{log.categoryNames.join(", ")}</td>
                   <td>{log.queryName}</td>
-                  <td>{log.datetime}</td>
+                  <td>{formatDate(log.datetime)}</td>
                   <td>{log.matchedApplicationName}</td>
-                  <td>{log.policyId}</td>
-                  <td>{log.policyName}</td>
+                  <td>{log.categoryNames.join(", ")}</td>
+                  {/* <td>{log.policyId}</td>
+                  <td>{log.policyName}</td> */}
                   <td>{log.resolverDecision.toString()}</td>
                 </tr>
               ))
@@ -139,23 +140,34 @@ function Logs() {
           logs.map((log) => (
             <div key={log.policyId} className="log-card">
               <div className="log-card-item">
-                <strong>Category Names:</strong> {log.categoryNames.join(", ")}
-              </div>
-              <div className="log-card-item">
                 <strong>Query Name:</strong> {log.queryName}
               </div>
               <div className="log-card-item">
-                <strong>Date & Time:</strong> {log.datetime}
+                <strong>Date & Time:</strong>{" "}
+                {formatDate(utcToLocal(log.datetime))}
               </div>
-              <div className="log-card-item">
-                <strong>Application Name:</strong> {log.matchedApplicationName}
-              </div>
-              <div className="log-card-item">
+
+              {log.matchedApplicationName && (
+                <div className="log-card-item">
+                  <strong>Application Name:</strong>{" "}
+                  {log.matchedApplicationName}
+                </div>
+              )}
+
+              {log.categoryNames.length > 1 && (
+                <div className="log-card-item">
+                  <strong>Category Names:</strong>{" "}
+                  {log.categoryNames.join(", ")}
+                </div>
+              )}
+
+              {/* <div className="log-card-item">
                 <strong>Policy ID:</strong> {log.policyId}
-              </div>
-              <div className="log-card-item">
+              </div> */}
+
+              {/* <div className="log-card-item">
                 <strong>Policy Name:</strong> {log.policyName}
-              </div>
+              </div> */}
               <div className="log-card-item">
                 <strong>Resolver Decision:</strong>{" "}
                 {log.resolverDecision.toString()}

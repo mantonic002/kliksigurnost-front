@@ -2,21 +2,21 @@
 .notification-badge {
   position: absolute;
   top: -5px;
-  right: -5px;
-  background-color: red;
-  color: white;
+  right: -2px;
+  background-color: var(--color-danger);
+  color: var(--color-light);
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
+  padding: 1px 4px;
+  font-size: 10px;
 }
 
 .notifications-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-light);
+  border: 1px solid var(--color-gray);
+  box-shadow: var(--shadow-md);
   z-index: 1000;
   width: 300px;
   max-height: 400px;
@@ -24,8 +24,8 @@
 }
 
 .notification-item {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray);
 }
 
 .notification-item:last-child {
@@ -37,12 +37,12 @@
 }
 
 .notification-date {
-  font-size: 0.8em;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
 }
 
 .userEmail {
-  margin-left: 20px;
+  margin-left: var(--spacing-md);
 }
 
 /* TopBar Styles */
@@ -50,9 +50,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 var(--spacing-md);
+  background-color: var(--color-light);
+  box-shadow: var(--shadow-sm);
   height: 60px;
   position: fixed;
   top: 0;
@@ -75,18 +75,18 @@
 .sidebar-toggle {
   background: none;
   border: none;
-  padding: 0 15px;
+  padding: 0 var(--spacing-md);
   cursor: pointer;
 }
 
 .Logo {
   flex: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .PageTitle {
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: var(--spacing-md);
 }
 
 /* Sidebar Styles */
@@ -99,17 +99,17 @@
 .sidebar-item {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .sidebar-item:hover {
-  background-color: #e6f0ff;
-  color: #007bff;
+  background-color: var(--color-light);
+  color: var(--color-primary);
 }
 
 .sidebar-icon {
-  margin-right: 15px;
+  margin-right: var(--spacing-md);
   font-size: 1.2rem;
 }

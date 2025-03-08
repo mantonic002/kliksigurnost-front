@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Device } from "../../models/Device";
 import deviceService from "../../services/device-service";
 import { CanceledError } from "axios";
+import { formatDate } from "./Helpers";
 
 function Devices() {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -43,7 +44,7 @@ function Devices() {
                 <strong>Model:</strong> {device.model}
               </div>
               <div className="card-item">
-                <strong>Last Seen:</strong> {device.lastSeenTime}
+                <strong>Last Seen:</strong> {formatDate(device.lastSeenTime)}
               </div>
               <div className="card-item">
                 <strong>Email:</strong> {device.email}

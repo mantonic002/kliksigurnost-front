@@ -2,26 +2,26 @@
 .time-slots-container {
   max-height: 400px;
   overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 .time-label {
-  width: 100px;
+  width: 10%;
 }
 
 .day-header {
   flex: 1;
   text-align: center;
   font-weight: bold;
-  padding-right: 10px;
+  padding-right: var(--spacing-md);
 }
 
 .time-slot {
   flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  background-color: #f8f9fa;
+  padding: 15px;
+  margin-right: 5px;
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-light);
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -29,9 +29,9 @@
 }
 
 .time-slot.selected {
-  background-color: #007bff;
-  color: white;
-  transform: scale(1.1);
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  transform: scale(1.02);
 }
 
 .time-slot:hover {
