@@ -15,7 +15,7 @@ const Sidebar = () => {
         {/* <li className="SidebarItemStatic">{email}</li> */}
         <li className="SidebarItem" onClick={() => setCollapsed(!collapsed)}>
           <div className="icon-container">
-              {collapsed ? <AiOutlineMenu /> : <AiOutlineClose />}
+            {collapsed ? <AiOutlineMenu /> : <AiOutlineClose />}
           </div>
           {!collapsed && <div className="title">Zatvori</div>}
         </li>

@@ -65,7 +65,6 @@ const AppContent = () => {
       {isAuthenticated ? (
         <>
           <TopBar title="Klik Sigurnost" />
-          <Sidebar />
         </>
       ) : (
         <Navbar />

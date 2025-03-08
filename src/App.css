@@ -160,7 +160,7 @@
   top: 60px;
   left: 0;
   z-index: 999;
-  transition: width 0.3s ease
+  transition: width 0.3s ease;
 }
 
 .Sidebar.collapsed {
@@ -214,15 +214,15 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .TopBar-element {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width:max-content;
+  width: max-content;
 }
 
 .TopBar.collapsed {
@@ -269,7 +269,6 @@
   background-color: #82b5f0;
 }
 
-
 /* Notification styles */
 .notification-badge {
   position: absolute;
@@ -315,4 +314,61 @@
 
 .userEmail {
   margin-left: 20px;
+}
+
+/* TopBar Styles */
+.TopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.Logo {
+  flex: 1;
+  text-align: center;
+}
+
+.PageTitle {
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+  background-color: #f8f9fa;
+}
+
+.sidebar-icon {
+  margin-right: 15px;
+  font-size: 1.2rem;
 }
