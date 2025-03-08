@@ -1,19 +1,53 @@
-/* General App Styles */
-.App {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  background-color: #f3f4f8;
+:root {
+  /* Colors */
+  --color-primary: #007bff;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  --color-light: #f8f9fa;
+  --color-gray: #b1b1b1;
+  --color-dark: #5a6168;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px var(--color-shadow);
+  --shadow-md: 0 4px 8px var(--color-shadow);
+  --shadow-lg: 0 6px 12px var(--color-shadow);
+
+  /* Font sizes */
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
 }
 
+/* General App Styles */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
+  background-color: var(--color-light);
+}
+
+/* Content takes up the remaining space */
 .Content {
-  flex-grow: 1;
-  background-color: #f3f4f8;
-  margin-top: 60px;
-  padding: 20px;
-  overflow-y: auto;
-  height: calc(100vh - 60px);
+  flex: 1; /* This makes the content take up the remaining space */
+  margin-top: 60px; /* Offset for the TopBar */
+  padding: var(--spacing-md);
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 /* Modal Styles */
@@ -24,7 +58,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 10001;
 }
 
 .modal-container {
@@ -32,10 +66,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
   z-index: 1000;
   width: 90%;
   max-width: 600px;
@@ -47,14 +81,14 @@
 }
 
 .modal-content p {
-  margin: 10px 0;
+  margin: var(--spacing-sm) 0;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
 }
 
 .modal-header h2 {
@@ -72,7 +106,7 @@
   flex: 30%;
   display: grid;
   place-items: center;
-  font-size: 24px;
+  font-size: var(--font-size-xl);
 }
 
 /* Action icon styles */
@@ -80,16 +114,16 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 24px; /* Larger size */
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xl);
 }
 
 .action-red {
-  color: red;
+  color: var(--color-danger);
 }
 
 .action-blue {
-  color: #007bff;
+  color: var(--color-primary);
 }
 
 /* Action icon wrapper */
@@ -99,7 +133,6 @@
   height: 24px;
 }
 
-/* Ensure both icons are perfectly aligned */
 .icon-wrapper .outlined,
 .icon-wrapper .filled {
   position: absolute;
@@ -130,29 +163,35 @@
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
-  padding-bottom: 16px;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--color-light);
+  border: 1px solid var(--color-dark);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
 }
 
 .card-item {
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-sm);
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
 }
 
+.card-item.actions {
+  width: fit-content;
+}
 .card-item:last-child {
   margin-bottom: 0;
 }
@@ -171,4 +210,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Global inline form styles */
+.inline-form {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-sm);
+}
+
+.inline-form .form-label {
+  margin-right: var(--spacing-xs);
+  font-weight: bold;
+}
+
+.inline-form .form-control {
+  flex: 1;
+  min-width: 200px;
+  border: none;
 }

@@ -57,14 +57,10 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        <>
-          <TopBar title="Klik Sigurnost" />
-        </>
-      ) : (
-        <Navbar />
-      )}
+      {/* TopBar is always at the top */}
+      {isAuthenticated ? <TopBar title="Klik Sigurnost" /> : <Navbar />}
 
+      {/* Content takes up the remaining space */}
       <div className="Content">
         <Routes>
           <Route
@@ -96,8 +92,10 @@ const AppContent = () => {
             })}
           </Route>
         </Routes>
-        <Footer />
       </div>
+
+      {/* Footer is at the bottom of the content or the page */}
+      <Footer />
     </div>
   );
 };

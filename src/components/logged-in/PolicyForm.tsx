@@ -46,18 +46,18 @@ export const PolicyForm = ({
 }: PolicyFormProps) => {
   const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
-  const [selectedApplications, setSelectedApplications] = useState<number[]>([]);
+  const [selectedApplications, setSelectedApplications] = useState<number[]>(
+    []
+  );
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const {
-    handleSubmit,
-    setValue,
-    reset,
-  } = useForm<PolicyFormData>({
+  const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
 
-  const updateSchedule = (newSchedule: { [key: string]: string[] | string }) => {
+  const updateSchedule = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
     setSchedule(newSchedule);
     setValue("schedule", newSchedule);
   };
@@ -65,25 +65,29 @@ export const PolicyForm = ({
   const handleCategoryChange = (selectedOptions: readonly SelectOption[]) => {
     const selectedIds = selectedOptions.map((option) => option.value);
     const updatedCategories = new Set(selectedIds);
-  
+
     categoryOptions.forEach((option) => {
       if (option.parentId && selectedIds.includes(option.parentId)) {
         updatedCategories.add(option.value);
       }
     });
-  
+
     const selectedCategoryArray = Array.from(updatedCategories);
     setSelectedCategories(selectedCategoryArray);
-  
+
     if (selectedCategoryArray.length > 0) {
-      const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(" ")}})`;
+      const trafficString = `any(dns.content_category[*] in {${selectedCategoryArray.join(
+        " "
+      )}})`;
       setValue("trafficCategories", trafficString);
     } else {
       setValue("trafficCategories", "");
     }
   };
 
-  const handleApplicationChange = (selectedOptions: readonly SelectOption[]) => {
+  const handleApplicationChange = (
+    selectedOptions: readonly SelectOption[]
+  ) => {
     const updatedApplications = new Set<number>();
     const updatedApplicationTypes = new Set<number>();
 
@@ -104,20 +108,31 @@ export const PolicyForm = ({
     const selectedApplicationTypesArray = Array.from(updatedApplicationTypes);
     const selectedApplicationsArray = Array.from(updatedApplications);
 
-    const selectedApplicationsNotInAppTypesArray = Array.from(updatedApplications).filter(
-      (appId) => {
-        const option = applicationOptions.find((option) => option.value === appId);
-        return option && option.parentId && !selectedApplicationTypesArray.includes(option.parentId);
-      }
-    );
+    const selectedApplicationsNotInAppTypesArray = Array.from(
+      updatedApplications
+    ).filter((appId) => {
+      const option = applicationOptions.find(
+        (option) => option.value === appId
+      );
+      return (
+        option &&
+        option.parentId &&
+        !selectedApplicationTypesArray.includes(option.parentId)
+      );
+    });
 
-    setSelectedApplications([...selectedApplicationsArray, ...selectedApplicationTypesArray]);
+    setSelectedApplications([
+      ...selectedApplicationsArray,
+      ...selectedApplicationTypesArray,
+    ]);
 
     let trafficString = "";
 
     const appsNotInTypes =
       selectedApplicationsNotInAppTypesArray.length > 0
-        ? `any(app.ids[*] in {${selectedApplicationsNotInAppTypesArray.join(" ")}})`
+        ? `any(app.ids[*] in {${selectedApplicationsNotInAppTypesArray.join(
+            " "
+          )}})`
         : "";
 
     const appTypes =
@@ -178,16 +193,23 @@ export const PolicyForm = ({
       },
       {} as Record<string, string>
     );
-  
+
     const isScheduleEmpty = Object.entries(formattedSchedule)
-    .filter(([key]) => key !== "time_zone")
-    .every(([_, value]) => value === "" || value === null);
-  
+      .filter(([key]) => key !== "time_zone")
+      .every(([_, value]) => value === "" || value === null);
+
     const formData = {
       ...data,
-      ...(isScheduleEmpty ? { schedule: undefined } : { schedule: { ...formattedSchedule, time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone } }),
+      ...(isScheduleEmpty
+        ? { schedule: undefined }
+        : {
+            schedule: {
+              ...formattedSchedule,
+              time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            },
+          }),
     };
-  
+
     const trafficString: string[] = [];
     if (formData.trafficCategories) {
       trafficString.push(formData.trafficCategories);
@@ -195,13 +217,13 @@ export const PolicyForm = ({
     if (formData.trafficApplications) {
       trafficString.push(formData.trafficApplications);
     }
-  
+
     const policy: Policy = {
       action: "block",
       traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
-  
+
     policyService
       .post<Policy>(policy)
       .then(() => {
@@ -220,7 +242,6 @@ export const PolicyForm = ({
         alert(error.message || "Failed to create policy");
       });
   };
-  
 
   return (
     <>
@@ -231,13 +252,13 @@ export const PolicyForm = ({
       >
         New policy
       </button>
-      {isFormOpen && 
-        <div className="modal-overlay">
-          <div className="modal-container">
+      {isFormOpen && (
+        <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h5>Create new policy</h5>
-              <AiOutlineClose onClick={() => setIsFormOpen(false)}/> 
-            </div>    
+              <AiOutlineClose onClick={() => setIsFormOpen(false)} />
+            </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <div className="mb-3">
                 <label className="form-label">Categories:</label>
@@ -278,7 +299,8 @@ export const PolicyForm = ({
               </button>
             </form>
           </div>
-        </div>}
-  </>
-  )
+        </div>
+      )}
+    </>
+  );
 };
