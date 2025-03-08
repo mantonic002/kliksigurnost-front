@@ -1,5 +1,5 @@
 export interface Appointment {
-    id?: number;
-    email?: string;
-    appointmentDateTime: string;
+  id?: number;
+  email?: string;
+  appointmentDateTime: string;
 }

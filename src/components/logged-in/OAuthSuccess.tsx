@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import authService from "../../services/auth-service";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const OAuthSuccess = () => {
   const { login } = useAuth();

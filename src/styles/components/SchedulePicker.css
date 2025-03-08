@@ -1,42 +1,42 @@
 /* ===== SCHEDULE PICKER ===== */
 .time-slots-container {
-max-height: 400px;
-overflow-y: auto;
-border: 1px solid var(--border-color);
-border-radius: var(--radius-sm);
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
 }
 
 .time-label {
-width: 100px;
-font-weight: 500;
+  width: 100px;
+  font-weight: 500;
 }
 
 .day-header {
-flex: 1;
-text-align: center;
-font-weight: bold;
-padding-right: 10px;
-color: var(--text-dark);
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  padding-right: 10px;
+  color: var(--text-dark);
 }
 
 .time-slot {
-flex: 1;
-padding: 8px;
-border: 1px solid var(--border-color);
-background-color: var(--background-light);
-text-align: center;
-cursor: pointer;
-transition: all var(--transition-fast);
-user-select: none;
-border-radius: var(--radius-sm);
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-light);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+  border-radius: var(--radius-sm);
 }
 
 .time-slot.selected {
-background-color: var(--primary-color);
-color: var(--white);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .time-slot:hover {
-background-color: #82b5f0;
-color: var(--white);
+  background-color: #82b5f0;
+  color: var(--white);
 }

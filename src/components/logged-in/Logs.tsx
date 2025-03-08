@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Log } from "../../models/Logs";
 import logService from "../../services/log-service";
 import { CanceledError } from "axios";
@@ -46,7 +46,7 @@ function Logs() {
   // UseEffect that triggers after startDateTime and endDateTime are set
   useEffect(() => {
     if (startDateTime && endDateTime) {
-      fetchLogs('next'); // Pass a default direction
+      fetchLogs("next"); // Pass a default direction
     }
   }, [startDateTime, endDateTime]);
 
@@ -57,24 +57,25 @@ function Logs() {
   };
 
   // Fetch logs based on time range
-  const fetchLogs = (direction: 'next' | 'prev') => {
+  const fetchLogs = (direction: "next" | "prev") => {
     setIsLoading(true);
     const utcStartDate = convertToUTC(startDateTime);
     const utcEndDate = convertToUTC(endDateTime);
 
-    logService.getLogs({
-      startDateTime: utcStartDate,
-      endDateTime: utcEndDate,
-      page: currentPage,
-      pageSize,
-      lastDateTime: direction === 'next' ? lastLog?.datetime : undefined,
-      lastPolicyId: direction === 'next' ? lastLog?.policyId : undefined,
-      direction,
-    })
+    logService
+      .getLogs({
+        startDateTime: utcStartDate,
+        endDateTime: utcEndDate,
+        page: currentPage,
+        pageSize,
+        lastDateTime: direction === "next" ? lastLog?.datetime : undefined,
+        lastPolicyId: direction === "next" ? lastLog?.policyId : undefined,
+        direction,
+      })
       .then((res) => {
         setLogs(res);
         setLastLog(res[res.length - 1] || null);
-        setCurrentPage(prev => direction === 'next' ? prev + 1 : prev - 1);
+        setCurrentPage((prev) => (direction === "next" ? prev + 1 : prev - 1));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -122,16 +123,16 @@ function Logs() {
           )}
         </table>
         <div>
-          <button 
+          <button
             className="btn btn-success"
-            onClick={() => fetchLogs('prev')} 
+            onClick={() => fetchLogs("prev")}
             disabled={currentPage === 1}
           >
             Previous
           </button>
-          <button 
+          <button
             className="btn btn-success"
-            onClick={() => fetchLogs('next')} 
+            onClick={() => fetchLogs("next")}
             disabled={logs.length < pageSize}
           >
             Next

@@ -27,14 +27,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     authService.isAuthenticated()
   );
 
-  const [email, setEmail] = useState<string>(
-    authService.getEmail()!
-  )
+  const [email, setEmail] = useState<string>(authService.getEmail()!);
 
   const login = () => {
     setIsAuthenticated(true);
     setEmail(authService.getEmail()!);
-  }
+  };
   const logout = () => {
     authService.logout();
     setIsAuthenticated(false);
@@ -42,7 +40,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{email, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ email, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

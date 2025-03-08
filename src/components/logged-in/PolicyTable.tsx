@@ -59,7 +59,10 @@ export const PolicyTable = ({
         placement="bottom"
         overlay={<Tooltip id="tooltip-categories">{categoryText}</Tooltip>}
       >
-        <span>{categoryNames.slice(0, 3).join(", ")}{categoryNames.length > 3 ? ", ..." : ""}</span>
+        <span>
+          {categoryNames.slice(0, 3).join(", ")}
+          {categoryNames.length > 3 ? ", ..." : ""}
+        </span>
       </OverlayTrigger>
     );
   };
@@ -71,7 +74,10 @@ export const PolicyTable = ({
         placement="bottom"
         overlay={<Tooltip id="tooltip-applications">{applicationText}</Tooltip>}
       >
-        <span>{applicationNames.slice(0, 3).join(", ")}{applicationNames.length > 3 ? ", ..." : ""}</span>
+        <span>
+          {applicationNames.slice(0, 3).join(", ")}
+          {applicationNames.length > 3 ? ", ..." : ""}
+        </span>
       </OverlayTrigger>
     );
   };
@@ -86,56 +92,59 @@ export const PolicyTable = ({
   };
 
   return (
-      <div className="table-container">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Action</th>
-                <th>Categories</th>
-                <th>Applications</th>
-                <th>Schedule</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            {isLoading ? (
-              <div className="spinner-border"></div>
-            ) : (
-            <tbody>
-                  <tr key="nebitno">
-                    <td>Podrazumevano</td>
-                    <td>Blok</td>
-                    <td>Virusi, pretnje, prevare</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-              {policies.map((policy) => {
-                const categoryIds = extractCategoryIds(policy.traffic);
-                const categoryNames = getCategoryNames(categoryIds);
-                const applicationIds = extractApplicationIds(policy.traffic);
-                const applicationNames = getApplicationNames(applicationIds);
-                const schedule = formatSchedule(policy.schedule);
+    <div className="table-container">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+            <th>Categories</th>
+            <th>Applications</th>
+            <th>Schedule</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        {isLoading ? (
+          <div className="spinner-border"></div>
+        ) : (
+          <tbody>
+            <tr key="nebitno">
+              <td>Podrazumevano</td>
+              <td>Blok</td>
+              <td>Virusi, pretnje, prevare</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            {policies.map((policy) => {
+              const categoryIds = extractCategoryIds(policy.traffic);
+              const categoryNames = getCategoryNames(categoryIds);
+              const applicationIds = extractApplicationIds(policy.traffic);
+              const applicationNames = getApplicationNames(applicationIds);
+              const schedule = formatSchedule(policy.schedule);
 
-                return (
-                  <tr key={policy.id}>
-                    <td>{policy.name}</td>
-                    <td>{policy.action}</td>
-                    <td>{renderCategoriesWithTooltip(categoryNames)}</td>
-                    <td>{renderApplicationsWithTooltip(applicationNames)}</td>
-                    <td>{schedule}</td>
-                    <td className="action">
-                      <div className="action-icon" onClick={() => handleDelete(policy.id!)}>
-                        <AiOutlineDelete className="action-red outlined" />
-                        <AiFillDelete className="action-red filled" />
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-            )}
-          </table>
-      </div>
+              return (
+                <tr key={policy.id}>
+                  <td>{policy.name}</td>
+                  <td>{policy.action}</td>
+                  <td>{renderCategoriesWithTooltip(categoryNames)}</td>
+                  <td>{renderApplicationsWithTooltip(applicationNames)}</td>
+                  <td>{schedule}</td>
+                  <td className="action">
+                    <div
+                      className="action-icon"
+                      onClick={() => handleDelete(policy.id!)}
+                    >
+                      <AiOutlineDelete className="action-red outlined" />
+                      <AiFillDelete className="action-red filled" />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        )}
+      </table>
+    </div>
   );
 };

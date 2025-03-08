@@ -51,30 +51,45 @@ function Login() {
         <Row className="signup-box">
           {/* Left Side */}
           <Col md={6} className="signup-left">
-              <h2>Dobrodošli na KlikSigurnost</h2>
-              <p>
-                  Alat koji roditelji širom regiona biraju za miran san i sigurnu budućnost svoje dece.
-              </p>
-              <Button onClick={() => navigate("/register")} variant="outline-light" className="signin-btn">
-                  Nemate nalog? Registrujte se.
-              </Button>
+            <h2>Dobrodošli na KlikSigurnost</h2>
+            <p>
+              Alat koji roditelji širom regiona biraju za miran san i sigurnu
+              budućnost svoje dece.
+            </p>
+            <Button
+              onClick={() => navigate("/register")}
+              variant="outline-light"
+              className="signin-btn"
+            >
+              Nemate nalog? Registrujte se.
+            </Button>
           </Col>
 
           {/* Right Side */}
           <Col md={6} className="signup-right">
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group controlId="email">
-                <Form.Control {...register("email")} type="email" placeholder="E-mail adresa" className="input-field" />
+                <Form.Control
+                  {...register("email")}
+                  type="email"
+                  placeholder="E-mail adresa"
+                  className="input-field"
+                />
                 {errors.email && (
                   <p className="text-danger">{errors.email.message}</p>
                 )}
               </Form.Group>
-  
+
               <Form.Group controlId="password">
-                <Form.Control {...register("password")} type="password" placeholder="Lozinka" className="input-field" />
+                <Form.Control
+                  {...register("password")}
+                  type="password"
+                  placeholder="Lozinka"
+                  className="input-field"
+                />
                 {errors.password && (
-                <p className="text-danger">{errors.password.message}</p>
-                )}                        
+                  <p className="text-danger">{errors.password.message}</p>
+                )}
               </Form.Group>
               {err && <p className="text-danger">Pogrešan email ili lozinka</p>}
 
@@ -85,15 +100,14 @@ function Login() {
 
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">
-                <FaFacebookF className="icon fb" />
-                <FaGoogle onClick={googleLogin} className="icon google" />
-                <FaLinkedinIn className="icon linkedin" />
+              <FaFacebookF className="icon fb" />
+              <FaGoogle onClick={googleLogin} className="icon google" />
+              <FaLinkedinIn className="icon linkedin" />
             </div>
           </Col>
         </Row>
       </Container>
     </section>
-      
   );
 }
 

@@ -1,50 +1,50 @@
 /* ===== SIDEBAR ===== */
 .Sidebar {
-height: calc(100vh - 60px);
-width: 250px;
-background-color: var(--white);
-position: sticky;
-top: 60px;
-left: 0;
-z-index: 999;
-transition: width var(--transition-medium);
+  height: calc(100vh - 60px);
+  width: 250px;
+  background-color: var(--white);
+  position: sticky;
+  top: 60px;
+  left: 0;
+  z-index: 999;
+  transition: width var(--transition-medium);
 }
 
 .Sidebar.collapsed {
-width: 80px;
+  width: 80px;
 }
 
 .SidebarList {
-padding: 0;
-width: 100%;
-list-style: none;
+  padding: 0;
+  width: 100%;
+  list-style: none;
 }
 
 .SidebarItem {
-display: flex;
-align-items: center;
-padding: 10px;
-transition: all var(--transition-medium);
-cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: all var(--transition-medium);
+  cursor: pointer;
 }
 
 .SidebarItem:hover {
-background-color: #e6f0ff;
-color: var(--primary-color);
+  background-color: #e6f0ff;
+  color: var(--primary-color);
 }
 
 .icon-container {
-flex: 30%;
-display: grid;
-place-items: center;
-font-size: 24px;
+  flex: 30%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
 }
 
 .title {
-flex: 70%;
-transition: opacity var(--transition-medium);
+  flex: 70%;
+  transition: opacity var(--transition-medium);
 }
 
 .Sidebar.collapsed .title {
-opacity: 0;
+  opacity: 0;
 }

@@ -77,13 +77,13 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       >
         Schedule
       </button>
-      
+
       {isOpen && (
         <div className="modal-overlay">
           <div className="modal-container">
             <div className="modal-header">
               <h5>Select Schedule</h5>
-              <AiOutlineClose onClick={() => setIsOpen(false)}/> 
+              <AiOutlineClose onClick={() => setIsOpen(false)} />
             </div>
 
             <div className="time-slots-container">

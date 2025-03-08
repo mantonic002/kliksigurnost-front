@@ -1,5 +1,5 @@
 export interface Notification {
-    id: string;
-    message: string;
-    date: string;
-  }
+  id: string;
+  message: string;
+  date: string;
+}

@@ -60,8 +60,6 @@ function PolicyManager() {
       <br></br>
       <br></br>
       <PredefinedPolicyForm setPolicies={setPolicies} />
-
-
     </div>
   );
 }

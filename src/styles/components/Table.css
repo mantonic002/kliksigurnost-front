@@ -1,72 +1,76 @@
 /* ===== TABLE COMPONENT ===== */
 .table-container {
-background-color: var(--white);
-border-radius: var(--radius-md);
-overflow: hidden;
-box-shadow: var(--shadow-md);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 .table-header {
-background-color: var(--background-light);
-padding: 10px 20px;
-font-weight: bold;
-border-bottom: 3px solid var(--border-color);
+  background-color: var(--background-light);
+  padding: 10px 20px;
+  font-weight: bold;
+  border-bottom: 3px solid var(--border-color);
 }
 
 .table {
-width: 100%;
-border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .table th {
-padding: 12px 16px;
-text-align: left;
-font-weight: 600;
-color: var(--text-dark);
-transition: background-color var(--transition-fast);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: background-color var(--transition-fast);
 }
 
 .table th:hover {
-background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .table td {
-padding: 12px 16px;
-border-bottom: 3px solid var(--background-light);
-background-color: var(--white);
-vertical-align: middle;
+  padding: 12px 16px;
+  border-bottom: 3px solid var(--background-light);
+  background-color: var(--white);
+  vertical-align: middle;
 }
 
 .action {
-display: flex;
-align-items: center;
-justify-content: center;
-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .action-icon {
-min-width: 30px;
-position: relative;
-display: inline-block;
+  min-width: 30px;
+  position: relative;
+  display: inline-block;
 }
 
 .action-icon .filled {
-opacity: 0;
-transition: opacity var(--transition-fast);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
 .action-icon .outlined {
-opacity: 1;
-transition: opacity var(--transition-fast);
+  opacity: 1;
+  transition: opacity var(--transition-fast);
 }
 
 .action-icon:hover .outlined {
-opacity: 0;
+  opacity: 0;
 }
 
 .action-icon:hover .filled {
-opacity: 1;
+  opacity: 1;
 }
 
-.action-red { color: var(--danger-color); }
-.action-blue { color: var(--primary-color); }
+.action-red {
+  color: var(--danger-color);
+}
+.action-blue {
+  color: var(--primary-color);
+}

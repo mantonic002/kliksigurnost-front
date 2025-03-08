@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
 import { useAuth } from "../../../contexts/AuthContext";
 
-import '../../../styles/components/Signup.css';
+import "../../../styles/components/Signup.css";
 
 const schema = z
   .object({
@@ -33,100 +33,116 @@ const schema = z
 type FormData = z.infer<typeof schema>;
 
 const Signup = () => {
+  const [err, setErr] = useState("");
+  let navigate = useNavigate();
+  const { login } = useAuth();
 
-      const [err, setErr] = useState("");
-      let navigate = useNavigate();
-      const { login } = useAuth();
-    
-      const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<FormData>({ resolver: zodResolver(schema) });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-      const googleLogin = () => {
-        window.location.href = "http://localhost:8080/api/auth/authenticate/google";
-      };
-    
-      const onSubmit = (data: FieldValues) => {
-        authService
-          .register(data.email, data.password)
-          .then(() => {
-            console.log(authService.getToken());
-            login();
-            navigate("/home");
-          })
-          .catch((error) => {
-            if (error.response && error.response.data) {
-              setErr(error.response.data.error || "Registration failed");
-            } else {
-              setErr("An unknown error occurred");
-            }
-            console.error("Registration error:", error);
-          });
-      };
-      
-    return (
-        <section className="signup-section">
-            <Container fluid className="signup-container">
-                <Row className="signup-box">
-                    {/* Left Side */}
-                    <Col md={6} className="signup-left">
-                        <h2>Dobrodošli na KlikSigurnost</h2>
-                        <p>
-                            Alat koji roditelji širom regiona biraju za miran san i sigurnu budućnost svoje dece.
-                        </p>
-                        <Button onClick={() => navigate("/login")} variant="outline-light" className="signin-btn">
-                            Imate nalog? Prijavite se.
-                        </Button>
-                    </Col>
+  const googleLogin = () => {
+    window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+  };
 
-                    {/* Right Side */}
-                    <Col md={6} className="signup-right">
-                        <h2 className="signup-title">Napravite nalog</h2>
-                        <Form onSubmit={handleSubmit(onSubmit)}>
-                            <Form.Group controlId="email">
-                                <Form.Control {...register("email")} type="email" placeholder="E-mail adresa" className="input-field" />
-                                {errors.email && (
-                                <p className="text-danger">{errors.email.message}</p>
-                                )}  
-                            </Form.Group>
+  const onSubmit = (data: FieldValues) => {
+    authService
+      .register(data.email, data.password)
+      .then(() => {
+        console.log(authService.getToken());
+        login();
+        navigate("/home");
+      })
+      .catch((error) => {
+        if (error.response && error.response.data) {
+          setErr(error.response.data.error || "Registration failed");
+        } else {
+          setErr("An unknown error occurred");
+        }
+        console.error("Registration error:", error);
+      });
+  };
 
+  return (
+    <section className="signup-section">
+      <Container fluid className="signup-container">
+        <Row className="signup-box">
+          {/* Left Side */}
+          <Col md={6} className="signup-left">
+            <h2>Dobrodošli na KlikSigurnost</h2>
+            <p>
+              Alat koji roditelji širom regiona biraju za miran san i sigurnu
+              budućnost svoje dece.
+            </p>
+            <Button
+              onClick={() => navigate("/login")}
+              variant="outline-light"
+              className="signin-btn"
+            >
+              Imate nalog? Prijavite se.
+            </Button>
+          </Col>
 
-                            <Form.Group controlId="password">
-                                <Form.Control {...register("password")} type="password" placeholder="Lozinka" className="input-field" />
-                                {errors.password && (
-                                <p className="text-danger">{errors.password.message}</p>
-                                )}                        
-                            </Form.Group>
+          {/* Right Side */}
+          <Col md={6} className="signup-right">
+            <h2 className="signup-title">Napravite nalog</h2>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form.Group controlId="email">
+                <Form.Control
+                  {...register("email")}
+                  type="email"
+                  placeholder="E-mail adresa"
+                  className="input-field"
+                />
+                {errors.email && (
+                  <p className="text-danger">{errors.email.message}</p>
+                )}
+              </Form.Group>
 
-                            <Form.Group controlId="confirmPassword">
-                                <Form.Control {...register("confirmPassword")} type="password" placeholder="Ponovite lozinku" className="input-field" />
-                            </Form.Group>
-                            {errors.confirmPassword && (
-                                <p className="text-danger">{errors.confirmPassword.message}</p>
-                            )}
+              <Form.Group controlId="password">
+                <Form.Control
+                  {...register("password")}
+                  type="password"
+                  placeholder="Lozinka"
+                  className="input-field"
+                />
+                {errors.password && (
+                  <p className="text-danger">{errors.password.message}</p>
+                )}
+              </Form.Group>
 
-                            {/* Display the error message from the response */}
-                            {err && (
-                              <p className="text-danger">{err}</p>
-                            )}
+              <Form.Group controlId="confirmPassword">
+                <Form.Control
+                  {...register("confirmPassword")}
+                  type="password"
+                  placeholder="Ponovite lozinku"
+                  className="input-field"
+                />
+              </Form.Group>
+              {errors.confirmPassword && (
+                <p className="text-danger">{errors.confirmPassword.message}</p>
+              )}
 
-                            <Button className="signup-btn" type="submit">
-                                Registracija
-                            </Button>
-                        </Form>
-                        <p className="or-text">Možete se registrovati i pomoću:</p>
-                        <div className="social-icons">
-                            <FaFacebookF className="icon fb" />
-                            <FaGoogle onClick={googleLogin} className="icon google" />
-                            <FaLinkedinIn className="icon linkedin" />
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </section>
-    );
+              {/* Display the error message from the response */}
+              {err && <p className="text-danger">{err}</p>}
+
+              <Button className="signup-btn" type="submit">
+                Registracija
+              </Button>
+            </Form>
+            <p className="or-text">Možete se registrovati i pomoću:</p>
+            <div className="social-icons">
+              <FaFacebookF className="icon fb" />
+              <FaGoogle onClick={googleLogin} className="icon google" />
+              <FaLinkedinIn className="icon linkedin" />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
 };
 
 export default Signup;
