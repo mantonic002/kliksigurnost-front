@@ -4,97 +4,114 @@ import logService from "../../services/log-service";
 import { CanceledError } from "axios";
 import "../../styles/components/Logs.css";
 import { formatDate, utcToLocal } from "./Helpers";
+import React from "react";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [lastLog, setLastLog] = useState<Log | null>(null);
   const [pageSize] = useState(25);
+  const [dateRange, setDateRange] = useState({ start: "", end: "" });
+  const [resolverDecision, setResolverDecision] = useState<10 | 9 | null>(null);
+  const [hasNextPage, setHasNextPage] = useState(true);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [logQueue, setLogQueue] = useState<Log[]>([]);
 
-  // Date filter state
-  const [startDateTime, setStartDateTime] = useState<string>("");
-  const [endDateTime, setEndDateTime] = useState<string>("");
+  const formatDate = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;
+  };
 
-  // Function to initialize start and end date to default values
-  function resetStartAndEndDateTime() {
+  const resetStartAndEndDateTime = () => {
     const now = new Date();
-
     const tenDaysAgo = new Date(now);
     tenDaysAgo.setDate(now.getDate() - 10);
-
-    // Format both dates in the required format (YYYY-MM-DDTHH:mm)
-    const formatDate = (date: Date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed
-      const day = String(date.getDate()).padStart(2, "0");
-      const hours = String(date.getHours()).padStart(2, "0");
-      const minutes = String(date.getMinutes()).padStart(2, "0");
-
-      return `${year}-${month}-${day}T${hours}:${minutes}`;
-    };
-
-    // Set the default start and end date times
-    setStartDateTime(formatDate(tenDaysAgo));
-    setEndDateTime(formatDate(now));
-  }
+    setDateRange({ start: formatDate(tenDaysAgo), end: formatDate(now) });
+  };
 
   useEffect(() => {
-    // Initialize start and end date only once
     resetStartAndEndDateTime();
   }, []);
 
-  // UseEffect that triggers after startDateTime and endDateTime are set
   useEffect(() => {
-    if (startDateTime && endDateTime) {
-      fetchLogs("next"); // Pass a default direction
+    if (dateRange.start && dateRange.end) {
+      fetchLogs();
     }
-  }, [startDateTime, endDateTime]);
+  }, [
+    dateRange.start,
+    dateRange.end,
+    resolverDecision,
+    direction,
+    currentPage,
+  ]);
 
-  // Convert local time to UTC format for API request
-  const convertToUTC = (localDate: string) => {
-    const date = new Date(localDate);
-    return date.toISOString(); // This automatically converts to UTC format
+  const fetchLogs = async () => {
+    setIsLoading(true);
+    try {
+      const response = await logService.getLogs({
+        startDateTime: dateRange.start,
+        endDateTime: dateRange.end,
+        pageSize,
+        lastDateTime: lastLog?.datetime,
+        lastPolicyId: lastLog?.policyId,
+        resolverDecision: resolverDecision || undefined,
+      });
+      setLogs(response);
+      setHasNextPage(response.length === pageSize);
+    } catch (error) {
+      if (error instanceof CanceledError) return;
+      setError("Failed to fetch logs. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // Fetch logs based on time range
-  const fetchLogs = (direction: "next" | "prev") => {
-    setIsLoading(true);
-    const utcStartDate = convertToUTC(startDateTime);
-    const utcEndDate = convertToUTC(endDateTime);
+  const handleResolverDecisionChange = (value: string) => {
+    const decision = value === "allowed" ? 10 : value === "blocked" ? 9 : null;
+    setCurrentPage(1);
+    setLastLog(null);
+    setLogQueue([]);
+    setResolverDecision(decision);
+  };
 
-    logService
-      .getLogs({
-        startDateTime: utcStartDate,
-        endDateTime: utcEndDate,
-        page: currentPage,
-        pageSize,
-        lastDateTime: direction === "next" ? lastLog?.datetime : undefined,
-        lastPolicyId: direction === "next" ? lastLog?.policyId : undefined,
-        direction,
-      })
-      .then((res) => {
-        setLogs(res);
-        setLastLog(res[res.length - 1] || null);
-        setCurrentPage((prev) => (direction === "next" ? prev + 1 : prev - 1));
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        if (error instanceof CanceledError) return;
-        setError(error.message || "Failed to fetch logs");
-        setIsLoading(false);
-      });
+  const handlePagination = (newDirection: "next" | "prev") => {
+    if (newDirection === "next") {
+      // Add the first log of the current page to the queue
+      if (logs.length > 0) {
+        setLogQueue((prevQueue) => [...prevQueue, logs[0]]);
+      }
+      setCurrentPage((prev) => prev + 1);
+      setLastLog(logs[logs.length - 1] || null);
+    } else if (newDirection === "prev" && currentPage > 1) {
+      // Pop the last log from the queue and use it as lastLog
+      const previousLog = logQueue[logQueue.length - 1];
+      setLogQueue((prevQueue) => prevQueue.slice(0, -1));
+      setCurrentPage((prev) => prev - 1);
+      setLastLog(previousLog || null);
+    }
+    setDirection(newDirection);
   };
 
   return (
     <div className="container">
       <h3 className="mb-4">Logs</h3>
-
+      <div className="mb-3">
+        <select
+          className="form-select"
+          onChange={(e) => handleResolverDecisionChange(e.target.value)}
+        >
+          <option value="">All</option>
+          <option value="allowed">Allowed</option>
+          <option value="blocked">Blocked</option>
+        </select>
+      </div>
       {error && <p className="text-danger">{error}</p>}
-
-      {/* Table for desktop */}
       <div className="table-container d-none d-md-block">
         <table className="logs-table">
           <thead>
@@ -103,8 +120,6 @@ function Logs() {
               <th>Date & Time</th>
               <th>Application Name</th>
               <th>Category Names</th>
-              {/* <th>Policy ID</th>
-              <th>Policy Name</th> */}
               <th>Resolver Decision</th>
             </tr>
           </thead>
@@ -116,86 +131,75 @@ function Logs() {
                 </td>
               </tr>
             ) : (
-              logs.map((log) => (
-                <tr key={log.policyId}>
-                  <td>{log.queryName}</td>
-                  <td>{formatDate(log.datetime)}</td>
-                  <td>{log.matchedApplicationName}</td>
-                  <td>{log.categoryNames.join(", ")}</td>
-                  {/* <td>{log.policyId}</td>
-                  <td>{log.policyName}</td> */}
-                  <td>{log.resolverDecision.toString()}</td>
-                </tr>
-              ))
+              logs.map((log) => <LogRow key={log.policyId} log={log} />)
             )}
           </tbody>
         </table>
       </div>
-
-      {/* Cards for mobile */}
       <div className="d-block d-md-none">
         {isLoading ? (
           <div className="spinner-border"></div>
         ) : (
           logs.map((log) => (
             <div key={log.policyId} className="log-card">
-              <div className="log-card-item">
-                <strong>Query Name:</strong> {log.queryName}
-              </div>
-              <div className="log-card-item">
-                <strong>Date & Time:</strong>{" "}
-                {formatDate(utcToLocal(log.datetime))}
-              </div>
-
-              {log.matchedApplicationName && (
-                <div className="log-card-item">
-                  <strong>Application Name:</strong>{" "}
-                  {log.matchedApplicationName}
-                </div>
-              )}
-
-              {log.categoryNames.length > 1 && (
-                <div className="log-card-item">
-                  <strong>Category Names:</strong>{" "}
-                  {log.categoryNames.join(", ")}
-                </div>
-              )}
-
-              {/* <div className="log-card-item">
-                <strong>Policy ID:</strong> {log.policyId}
-              </div> */}
-
-              {/* <div className="log-card-item">
-                <strong>Policy Name:</strong> {log.policyName}
-              </div> */}
-              <div className="log-card-item">
-                <strong>Resolver Decision:</strong>{" "}
-                {log.resolverDecision.toString()}
-              </div>
+              <LogItem log={log} />
             </div>
           ))
         )}
       </div>
-
-      {/* Pagination */}
-      <div className="mt-3">
+      <div className="mt-3 d-flex align-items-center justify-content-center">
         <button
-          className="btn btn-success"
-          onClick={() => fetchLogs("prev")}
-          disabled={currentPage === 1}
+          className="btn btn-success me-2"
+          onClick={() => handlePagination("prev")}
+          disabled={logQueue.length == 0}
         >
-          Previous
+          &lt;
         </button>
+        <span className="mx-2">Page {currentPage}</span>
         <button
           className="btn btn-success ms-2"
-          onClick={() => fetchLogs("next")}
-          disabled={logs.length < pageSize}
+          onClick={() => handlePagination("next")}
+          disabled={!hasNextPage}
         >
-          Next
+          &gt;
         </button>
       </div>
     </div>
   );
 }
+
+const LogRow = React.memo(({ log }: { log: Log }) => (
+  <tr>
+    <td>{log.queryName}</td>
+    <td>{formatDate(log.datetime)}</td>
+    <td>{log.matchedApplicationName}</td>
+    <td>{log.categoryNames.join(", ")}</td>
+    <td>{log.resolverDecision.toString()}</td>
+  </tr>
+));
+
+const LogItem = React.memo(({ log }: { log: Log }) => (
+  <>
+    <div className="log-card-item">
+      <strong>Query Name:</strong> {log.queryName}
+    </div>
+    <div className="log-card-item">
+      <strong>Date & Time:</strong> {formatDate(utcToLocal(log.datetime))}
+    </div>
+    {log.matchedApplicationName && (
+      <div className="log-card-item">
+        <strong>Application Name:</strong> {log.matchedApplicationName}
+      </div>
+    )}
+    {log.categoryNames.length > 1 && (
+      <div className="log-card-item">
+        <strong>Category Names:</strong> {log.categoryNames.join(", ")}
+      </div>
+    )}
+    <div className="log-card-item">
+      <strong>Resolver Decision:</strong> {log.resolverDecision.toString()}
+    </div>
+  </>
+));
 
 export default Logs;
