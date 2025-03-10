@@ -1,0 +1,169 @@
+/* Custom styles for the NavDropdown title */
+.custom-dropdown-title, .navbar .dropdown-toggle {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold !important;
+    color: #343a40  !important;
+    background: none !important;  /* Removes Bootstrap background */
+    border: none !important;
+  }
+  
+  /* Custom styles for dropdown items */
+  .custom-dropdown-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem; /* Bigger text */
+    padding: 16px 20px; /* Bigger padding for better spacing */
+    transition: background 0.3s ease-in-out;
+    min-height: 50px; /* Ensures enough height per item */
+  }
+  
+  .dropdown-icon {
+    width: 32px; /* Bigger icons */
+    height: 32px;
+    margin-right: 15px;
+    border-radius: 50%; /* Keep it modern */
+  }
+
+  /* Hover effect - Change text color */
+  .custom-dropdown-item:hover {
+    color: black !important;
+    background-color: #f8f9fa !important;
+  }
+  
+  /* Custom styles for Nav.Link items */
+  .custom-nav-link {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold !important;
+    color: #343a40  !important;/*#495057*/
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hover effect - Change text color */
+  .custom-nav-link:hover {
+  /*  color: darkgreen !important;*/
+  }
+  
+  /* Create the underline effect with rounded ends */
+  .custom-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;  /* Adjust position of the underline */
+    width: 0;
+    height: 4px;  /* Make the underline thicker */
+    background-color: #007bff !important;  /* Blue color matching the buttons */
+    border-radius: 10px;  /* Rounded corners for the underline */
+    transition: width 0.3s ease-in-out;
+    color: black !important;
+  }
+  
+  /* Expand the underline on hover */
+  .custom-nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .custom-dropdown-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 4px;
+    background-color: #007bff !important;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+    color: black !important;
+  }
+  
+  /* Expand the underline on hover */
+  .custom-dropdown-title:hover::after {
+    width: 100%;
+    color: black !important;
+  }
+
+  
+/* ... your existing styles remain above ... */
+
+/* ============= MEDIA QUERY FOR SMALL SCREENS ============= */
+@media (max-width: 992px) {
+    /* Make the navbar fixed at the top with a min height so toggler + brand fit */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+      background-color: #fff;
+      min-height: 70px; /* adjust if your logo is taller */
+    }
+  
+    /* Burger toggler on the left */
+    .navbar-toggler {
+      position: absolute !important;
+      top: 15px;
+      left: 10px;
+      z-index: 1070;
+    }
+  
+    /* Brand/logo on the right */
+    .navbar-brand {
+      position: absolute !important;
+      top: 0px;
+      right: 10px;
+      z-index: 1060;
+    }
+  
+    /* Make the collapsed menu appear below toggler + brand */
+    .navbar-collapse {
+      margin-top: 60px !important; /* increase if your brand is taller */
+      background-color: #fff;
+    }
+
+    .button-group {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.5rem !important; /* small gap between buttons */
+        margin: 0 auto !important; /* helps center if container width is constrained */
+        margin-top: 10px !important;
+      }
+    
+      /* Override widths/padding to make buttons smaller */
+      .button-group .btn {
+        width: auto !important;    /* override w-100, etc. */
+        font-size: 0.8rem !important;
+        padding: 0.25rem 0.5rem !important;
+      }
+      .navbar-nav > * {
+        border-bottom: 1px solid #ccc;  /* Border color */
+        border-top: 1px solid #ccc;
+        border-radius: 0px;          /* Rounded corners */
+        padding: 0.5rem;             /* Internal spacing */
+        background-color: #fff;      /* Background color */
+      }
+      .special {
+        border-top: 0px;
+      }
+      
+      /* Make the entire area clickable */
+      .navbar-nav > * a {
+        display: block;
+        width: 100%;
+      }
+
+  }
+  
+  
+  @media (min-width: 992px) {
+    .btn-desktop-small {
+      /* Slightly smaller on big screens */
+      font-size: 0.85rem !important;
+      padding: 0.4rem 0.75rem !important;
+    }
+    .navbar-nav {
+    display: flex;    /* Ensure flex layout */
+    gap: 1.5rem;      /* Increase or decrease as needed */
+  }
+
+  }

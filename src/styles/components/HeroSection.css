@@ -67,8 +67,13 @@
   }
 
   .hero-content {
-    padding: 50px 0;
+    padding: 0px 0;
+    
   }
+  .hero-content .row {
+    align-items: center;
+    height: 100%;
+}
 
   .hero-image {
     max-width: 200px;

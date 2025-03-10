@@ -26,7 +26,8 @@ import Hero from "./components/logged-out/Hero/Hero";
 import MadeEasy from "./components/logged-out/madeeasy/MadeEasy";
 import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
 import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
-import Navbar from "./components/logged-out/Navbar/Navbar";
+import Navigation from "./Navigation";
+import PodesavanjePremaUzrastu from "./components/logged-out/Blog/PodesavanjePremaUzrastu";
 
 function App() {
   return (
@@ -67,7 +68,7 @@ const AppContent = () => {
           <TopBar title="Klik Sigurnost" />
         </>
       ) : (
-        <Navbar />
+        <Navigation />
       )}
 
       <div className="Content">
@@ -87,6 +88,78 @@ const AppContent = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
+          <Route 
+            path="/vodic" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/zastoks" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/rizici" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/razgovor" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/pravila" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/podesavanje" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/sajtovi" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/fore" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/kontakt" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
 
           <Route element={<ProtectedRoute />}>
             {SidebarData.map((item, index) => {

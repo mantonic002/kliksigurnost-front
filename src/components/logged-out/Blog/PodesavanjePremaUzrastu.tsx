@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Image, Badge, ListGroup } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import featuredImage from "../../logo_final2.png"; // Replace with your actual image path
+import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 
 const PodesavanjePremaUzrastu = () => {
   return (
