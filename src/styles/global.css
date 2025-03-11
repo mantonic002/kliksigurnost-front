@@ -1,8 +1,12 @@
 :root {
   /* Colors */
   --color-primary: #007bff;
-  --color-success: #28a745;
-  --color-danger: #dc3545;
+  --color-success-light: #ccffcc;
+  --color-success: #66ff66;
+  --color-success-dark: #008000;
+  --color-danger-light: #ffcccc;
+  --color-danger: #d14545;
+  --color-danger-dark: #990000;
   --color-warning: #ffc107;
   --color-info: #17a2b8;
   --color-light: #f8f9fa;
@@ -38,16 +42,16 @@
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
+  min-height: 100vh;
   background-color: var(--color-light);
 }
 
 /* Content takes up the remaining space */
 .Content {
-  flex: 1; /* This makes the content take up the remaining space */
-  margin-top: 60px; /* Offset for the TopBar */
+  flex: 1;
+  margin-top: 60px;
   padding: var(--spacing-md);
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  overflow-y: auto;
 }
 
 /* Modal Styles */
@@ -116,6 +120,11 @@
   align-items: center;
   gap: var(--spacing-sm);
   font-size: var(--font-size-xl);
+}
+
+.action-icon:not(.disabled):hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .action-red {
@@ -230,4 +239,40 @@
   flex: 1;
   min-width: 200px;
   border: none;
+}
+
+/* Danger (Red) */
+.text-danger-alert {
+  background-color: var(--color-danger-light);
+  border: 2px solid var(--color-danger);
+  color: var(--color-danger-dark);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-weight: 500;
+  font-size: var(--font-size-md);
+  width: fit-content;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Success (Green) */
+.text-success-alert {
+  background-color: var(--color-success-light);
+  border: 2px solid var(--color-success-dark);
+  color: var(--color-success-dark);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-weight: 500;
+  font-size: var(--font-size-md);
+  width: fit-content;
+  margin-bottom: var(--spacing-sm);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.text-muted {
+  color: var(--color-gray) !important;
 }

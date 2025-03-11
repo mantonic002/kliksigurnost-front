@@ -90,14 +90,15 @@ export const PolicyTable = ({
             className="card"
             onClick={() => handleCardClick(policy)}
           >
+            {policy.action == "block" && (
+              <div className="text-danger-alert">Blokirano</div>
+            )}
+            {policy.action == "allow" && (
+              <div className="text-success-alert">Dozvoljeno</div>
+            )}
             {policy.name && (
               <div className="card-item">
                 <strong>Name:</strong> {policy.name}
-              </div>
-            )}
-            {policy.action && (
-              <div className="card-item">
-                <strong>Action:</strong> {policy.action}
               </div>
             )}
             {categoryNames.length > 0 && (
@@ -144,10 +145,11 @@ export const PolicyTable = ({
               </button>
             </div>
             <div className="modal-content">
-              {selectedPolicy.action && (
-                <p>
-                  <strong>Action:</strong> {selectedPolicy.action}
-                </p>
+              {selectedPolicy.action == "block" && (
+                <div className="text-danger-alert">Blokirano</div>
+              )}
+              {selectedPolicy.action == "allow" && (
+                <div className="text-success-alert">Dozvoljeno</div>
               )}
               {selectedPolicy.traffic && (
                 <>
