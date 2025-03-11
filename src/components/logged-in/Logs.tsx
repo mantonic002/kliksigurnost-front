@@ -5,6 +5,12 @@ import { CanceledError } from "axios";
 import "../../styles/components/Logs.css";
 import { formatDate, utcToLocal } from "./Helpers";
 import React from "react";
+import {
+  AiFillCaretLeft,
+  AiFillCaretRight,
+  AiOutlineCaretLeft,
+  AiOutlineCaretRight,
+} from "react-icons/ai";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -148,21 +154,51 @@ function Logs() {
         )}
       </div>
       <div className="mt-3 d-flex align-items-center justify-content-center">
-        <button
-          className="btn btn-success me-2"
-          onClick={() => handlePagination("prev")}
-          disabled={logQueue.length == 0}
+        {/* Left Arrow */}
+        <div
+          className={`action-icon ${logQueue.length === 0 ? "disabled" : ""}`}
+          onClick={
+            logQueue.length === 0 ? undefined : () => handlePagination("prev")
+          }
         >
-          &lt;
-        </button>
+          <div className="icon-wrapper">
+            <AiOutlineCaretLeft
+              size={25}
+              className={`action-blue outlined ${
+                logQueue.length === 0 ? "text-muted" : ""
+              }`}
+            />
+            <AiFillCaretLeft
+              size={25}
+              className={`action-blue filled ${
+                logQueue.length === 0 ? "text-muted" : ""
+              }`}
+            />
+          </div>
+        </div>
+
         <span className="mx-2">Page {currentPage}</span>
-        <button
-          className="btn btn-success ms-2"
-          onClick={() => handlePagination("next")}
-          disabled={!hasNextPage}
+
+        {/* Right Arrow */}
+        <div
+          className={`action-icon ${!hasNextPage ? "disabled" : ""}`}
+          onClick={!hasNextPage ? undefined : () => handlePagination("next")}
         >
-          &gt;
-        </button>
+          <div className="icon-wrapper">
+            <AiOutlineCaretRight
+              size={25}
+              className={`action-blue outlined ${
+                !hasNextPage ? "text-muted" : ""
+              }`}
+            />
+            <AiFillCaretRight
+              size={25}
+              className={`action-blue filled ${
+                !hasNextPage ? "text-muted" : ""
+              }`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -174,12 +210,27 @@ const LogRow = React.memo(({ log }: { log: Log }) => (
     <td>{formatDate(log.datetime)}</td>
     <td>{log.matchedApplicationName}</td>
     <td>{log.categoryNames.join(", ")}</td>
-    <td>{log.resolverDecision.toString()}</td>
+    <td>
+      {log.resolverDecision == 9 && (
+        <div className="text-danger-alert">Blokirano</div>
+      )}
+      {log.resolverDecision == 10 && (
+        <div className="text-success-alert">Dozvoljeno</div>
+      )}
+    </td>
   </tr>
 ));
 
 const LogItem = React.memo(({ log }: { log: Log }) => (
   <>
+    <div className="log-card-item">
+      {log.resolverDecision == 9 && (
+        <div className="text-danger-alert">Blokirano</div>
+      )}
+      {log.resolverDecision == 10 && (
+        <div className="text-success-alert">Dozvoljeno</div>
+      )}
+    </div>
     <div className="log-card-item">
       <strong>Query Name:</strong> {log.queryName}
     </div>
@@ -196,9 +247,6 @@ const LogItem = React.memo(({ log }: { log: Log }) => (
         <strong>Category Names:</strong> {log.categoryNames.join(", ")}
       </div>
     )}
-    <div className="log-card-item">
-      <strong>Resolver Decision:</strong> {log.resolverDecision.toString()}
-    </div>
   </>
 ));
 

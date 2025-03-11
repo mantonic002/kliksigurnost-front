@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
-import { useAuth } from "../../../contexts/AuthContext";
 
 const schema = z
   .object({
@@ -35,7 +34,6 @@ const Signup = () => {
   const [err, setErr] = useState("");
   const [success, setSuccess] = useState("");
   let navigate = useNavigate();
-  const { login } = useAuth();
 
   const {
     register,
@@ -44,7 +42,7 @@ const Signup = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const googleLogin = () => {
-    window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   const onSubmit = (data: FieldValues) => {
