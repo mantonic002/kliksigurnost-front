@@ -39,6 +39,8 @@
 .section-title {
   font-weight: bold;
   font-size: 30px;
+  position: relative;
+  z-index: 2;
 }
 
 .underline-border {
