@@ -43,7 +43,7 @@ function PolicyManager() {
     <div className="container">
       <h3 className="mb-4">Cloudflare Policies</h3>
 
-      {error && <p className="text-danger">{error}</p>}
+      {error && <div className="text-danger-alert">{error}</div>}
 
       <PolicyForm
         categoryOptions={categoryOptions}

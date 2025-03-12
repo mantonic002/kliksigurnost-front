@@ -252,6 +252,7 @@
   font-size: var(--font-size-md);
   width: fit-content;
   margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
 }
 
 /* Success (Green) */
@@ -265,6 +266,7 @@
   font-size: var(--font-size-md);
   width: fit-content;
   margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
 }
 
 .disabled {

@@ -12,6 +12,7 @@ const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [err, setErr] = useState("");
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -62,7 +63,8 @@ const AppointmentForm = () => {
         navigate("/home");
       })
       .catch((error) => {
-        console.error("Failed to schedule appointment:", error);
+        setErr(error.response.data);
+        console.log(error.response.data);
       });
   };
 
@@ -101,6 +103,7 @@ const AppointmentForm = () => {
           );
         })}
       </div>
+
       <form onSubmit={handleSubmit}>
         <div className="inline-form">
           <label className="form-label">Date and Time:</label>
@@ -125,6 +128,8 @@ const AppointmentForm = () => {
           </button>
         </div>
       </form>
+
+      {err && <div className="text-danger-alert">{err}</div>}
     </div>
   );
 };

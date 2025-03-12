@@ -50,6 +50,7 @@ const Signup = () => {
       .register(data.email, data.password)
       .then((res) => {
         setSuccess(res.data.message);
+        setErr("");
       })
       .catch((error) => {
         if (error.response && error.response.data) {
@@ -126,8 +127,8 @@ const Signup = () => {
               </Button>
             </Form>
 
-            {err && <p className="text-danger">{err}</p>}
-            {success && <p className="text-success">{success}</p>}
+            {err && <div className="text-danger-alert">{err}</div>}
+            {success && <div className="text-success-alert">{success}</div>}
 
             <p className="or-text">Možete se registrovati i pomoću:</p>
             <div className="social-icons">

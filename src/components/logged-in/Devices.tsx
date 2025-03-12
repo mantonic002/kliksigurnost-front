@@ -29,7 +29,7 @@ function Devices() {
     <div className="container">
       <h3 className="mb-4">Devices</h3>
 
-      {error && <p className="text-danger">{error}</p>}
+      {error && <div className="text-danger-alert">{error}</div>}
 
       <div className="card-container">
         {isLoading ? (
