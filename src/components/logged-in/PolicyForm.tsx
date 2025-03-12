@@ -245,7 +245,7 @@ export const PolicyForm = ({
   };
 
   return (
-    <>
+    <div>
       <button
         type="button"
         className="btn btn-primary"
@@ -302,6 +302,6 @@ export const PolicyForm = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

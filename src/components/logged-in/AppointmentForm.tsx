@@ -79,7 +79,7 @@ const AppointmentForm = () => {
   const availableSlotDates = availableSlots.map((slot) => new Date(slot));
 
   return (
-    <div>
+    <div className="container">
       {/* List of appointments */}
       <div className="appointment-list">
         {appointments.map((appointment) => {
