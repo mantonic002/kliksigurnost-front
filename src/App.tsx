@@ -84,6 +84,7 @@ const AppContent = () => {
                 <MadeEasy />
                 <Concerns />
                 <TestimonialSlider />
+                <Signup />
               </>
             }
           />
