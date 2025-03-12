@@ -1,12 +1,13 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
+
+import "../../../styles/components/Signup.css";
 
 const schema = z
   .object({

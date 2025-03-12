@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Row, Col, Image, Badge, ListGroup} from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import featuredImage from '../../logo_final2.png';
+import featuredImage from '../../../logo_final2.png';
+import "../../../styles/components/Blog.css";
+import psiholog from "../../../../public/images/psiholog2.png"
 
 const ZastoKlikSigurnost = () => {
   return (
     <section className="blog-section">
-    <Container className="mt-5">
+    <Container className="mt-5 blogContainer">
       {/* Blog Header */}
       <Row className="justify-content-center">
         <Col lg={8} className="text-center">
@@ -19,10 +21,21 @@ const ZastoKlikSigurnost = () => {
       {/* Author Section */}
       <Row className="mt-3">
         <Col lg={8} className="d-flex ">
-          <FaUserCircle size={50} className="me-2 text-secondary" />
+        <img
+          src={psiholog} // Replace with actual image URL
+          alt="psiholog"
+          style={{
+            width: "50px",
+            height: "50px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginRight: "8px",
+            border: "1px solid #ccc"
+          }}
+        />
           <div>
-            <h6 className="mb-0 fw-bold">Johnn Doe</h6>
-            <p className="text-muted small">Diplomirani psiholog</p>
+            <h6 className="mb-0 fw-bold">Maja Despotović</h6>
+            <p className="text-muted small">MA psiholog</p>
           </div>
         </Col>
       </Row>

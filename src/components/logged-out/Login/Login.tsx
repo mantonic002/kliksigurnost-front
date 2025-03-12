@@ -103,7 +103,7 @@ function Login() {
               </Button>
             </Form>
 
-            <p className="or-text">Možete se registrovati i pomoću:</p>
+            <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">
               <FaFacebookF className="icon fb" />
               <FaGoogle onClick={googleLogin} className="icon google" />

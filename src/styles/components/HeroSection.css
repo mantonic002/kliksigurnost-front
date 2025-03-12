@@ -1,0 +1,110 @@
+/* ===== Hero Section Styles ===== */
+.hero-section {
+  position: relative;
+  background: url("../../../public/images/ai-family.webp") no-repeat center center/cover;
+  padding: 100px 0 80px 0 !important;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  margin-top: 80px;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.highlight {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(2rem, 6vw, 6rem);
+}
+
+.highlight-2 {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(2rem, 6vw, 6rem);
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.platforms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-section {
+    padding: 80px 0;
+    height: 110vh;
+    margin-top: 70px;
+  }
+  .hero-first{
+    margin-bottom: 15px;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-content {
+    padding: 0px 0;
+  }
+
+  .platforms {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .hero-btn {
+    font-size: 17px;
+    padding: 9px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+  .main-title{
+    margin-bottom: 10px;
+  }
+  .hero-title .highlight, .highlight-2 {
+    font-size: 2rem;
+    padding-bottom: 30px;
+  }
+}

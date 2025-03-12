@@ -1,0 +1,75 @@
+/* ===== SIGNUP SECTION ===== */
+.signup-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.signup-box {
+  width: 85%;
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.signup-left {
+  background: linear-gradient(120deg, #3366ff, #3399ff);
+  color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.signup-right {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.signin-btn {
+  background: transparent;
+  border: 2px solid white;
+  padding: 12px;
+  border-radius: 25px;
+  color: white;
+  margin-top: 25px;
+  width: 100%;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.social-icons .icon {
+  font-size: 22px;
+  margin: 0 12px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+  width: 45px;
+  height: 45px;
+}
+
+.icon.fb {
+  background: #1877f2;
+}
+.icon.google {
+  background: #db4437;
+}
+.icon.linkedin {
+  background: #0a66c2;
+}

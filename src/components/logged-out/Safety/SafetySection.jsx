@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Import Autoplay module
 import "swiper/css";
 import "swiper/css/autoplay";
+import '../../../styles/components/Safety.css';
 import saftyImg from "../../../public/images/happy_family_brush.png";
 
 const brands = [

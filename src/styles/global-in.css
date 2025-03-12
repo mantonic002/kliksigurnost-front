@@ -49,8 +49,8 @@
 /* Content takes up the remaining space */
 .Content {
   flex: 1;
-  margin-top: 60px;
-  padding: var(--spacing-md);
+  /*margin-top: 60px;
+  padding: var(--spacing-md);*/
   overflow-y: auto;
 }
 

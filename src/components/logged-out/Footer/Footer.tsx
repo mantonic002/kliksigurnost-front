@@ -30,7 +30,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="KlikSigurnost Logo"
-              width={50}
+              width={80}
               className="mb-2"
             />
           </Col>

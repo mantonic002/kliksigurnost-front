@@ -1,88 +1,131 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Nav, Row, Col, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaShieldAlt, FaChartBar, FaClock, FaPhoneAlt, FaMapMarkerAlt, FaWifi, FaBookOpen, FaLock } from "react-icons/fa";
-
+import "../../../styles/components/ProjectsTabs.css";
+import {
+  FaShieldAlt,
+  FaChartBar,
+  FaClock,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaWifi,
+  FaBookOpen,
+  FaLock,
+} from "react-icons/fa";
 
 const tabData = [
   {
     title: "Automatsko filtriranje neprimerenog sadržaja",
-    content: "KlikSigurnost automatski blokira sadržaje poput pornografije, sajtova za kockanje, nasilja, govora mržnje i sajtova koji promovišu povređivanje/samopovređivanje.",
+    content:
+      "KlikSigurnost automatski blokira sadržaje poput pornografije, sajtova za kockanje, nasilja, govora mržnje i sajtova koji promovišu povređivanje/samopovređivanje.",
     icon: <FaShieldAlt />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Praćenje lokacije deteta",
-    content: "KlikSigurnost omogućava roditeljima da u realnom vremenu prate lokaciju deteta na mapi putem intuitivne aplikacije.",
+    content:
+      "KlikSigurnost omogućava roditeljima da u realnom vremenu prate lokaciju deteta na mapi putem intuitivne aplikacije.",
     icon: <FaMapMarkerAlt />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Selektivno filtriranje sadržaja i vremenska kontrola",
-    content: "KlikSigurnost omogućava roditeljima da precizno definišu koje vrste sadržaja su dostupne u određenim periodima dana. Možete blokirati društvene mreže tokom školskih sati, dozvoliti samo edukativne sajtove tokom učenja ili ograničiti pristup zabavnim aplikacijama pre spavanja.",
+    content:
+      "KlikSigurnost omogućava roditeljima da precizno definišu koje vrste sadržaja su dostupne u određenim periodima dana. Možete blokirati društvene mreže tokom školskih sati, dozvoliti samo edukativne sajtove tokom učenja ili ograničiti pristup zabavnim aplikacijama pre spavanja.",
     icon: <FaShieldAlt />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Praćenje aktivnosti",
-    content: "Roditelji mogu pratiti koje sajtove njihova deca posećuju i dobiti detaljne izveštaje kako bi prepoznali potencijalne probleme na vreme.",
+    content:
+      "Roditelji mogu pratiti koje sajtove njihova deca posećuju i dobiti detaljne izveštaje kako bi prepoznali potencijalne probleme na vreme.",
     icon: <FaChartBar />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Obezbeđivanje celokupne kućne mreže",
-    content: "KlikSigurnost pruža mogućnost zaštite cele kućne mreže, blokirajući neprimerene sadržaje i pretnje za sve uređaje povezane na vaš Wi-Fi, uključujući telefone, tablete, računare i pametne televizore.",
+    content:
+      "KlikSigurnost pruža mogućnost zaštite cele kućne mreže, blokirajući neprimerene sadržaje i pretnje za sve uređaje povezane na vaš Wi-Fi, uključujući telefone, tablete, računare i pametne televizore.",
     icon: <FaWifi />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Vremenska ograničenja",
-    content: "Roditelji mogu ograničiti vreme koje deca provode online, što pomaže u održavanju balansa između digitalnih i stvarnih aktivnosti.",
+    content:
+      "Roditelji mogu ograničiti vreme koje deca provode online, što pomaže u održavanju balansa između digitalnih i stvarnih aktivnosti.",
     icon: <FaClock />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Sigurnost tokom učenja",
-    content: "Alat omogućava roditeljima da deci dozvole pristup samo edukativnim sajtovima tokom časa ili domaćeg zadatka, osiguravajući fokus na važne aktivnosti.",
+    content:
+      "Alat omogućava roditeljima da deci dozvole pristup samo edukativnim sajtovima tokom časa ili domaćeg zadatka, osiguravajući fokus na važne aktivnosti.",
     icon: <FaBookOpen />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Podrška na srpskom jeziku",
-    content: "KlikSigurnost pruža tehničku podršku na srpskom jeziku putem poziva, online sastanka ili e-maila, čime roditeljima olakšava svaku nedoumicu ili tehnički izazov.",
+    content:
+      "KlikSigurnost pruža tehničku podršku na srpskom jeziku putem poziva, online sastanka ili e-maila, čime roditeljima olakšava svaku nedoumicu ili tehnički izazov.",
     icon: <FaPhoneAlt />,
-    image: "../../../../public/images/phone1.png"
+    image: "../../../../public/images/phone1.png",
   },
   {
     title: "Transparentnost i privatnost",
-    content: "KlikSigurnost ne prikuplja podatke dece za marketinške svrhe, što osigurava potpunu privatnost korisnika.",
+    content:
+      "KlikSigurnost ne prikuplja podatke dece za marketinške svrhe, što osigurava potpunu privatnost korisnika.",
     icon: <FaLock />,
-    image: "../../../../public/images/phone1.png"
-  }
+    image: "../../../../public/images/phone1.png",
+  },
 ];
 
 const ProjectTabs = () => {
-    const [activeTab, setActiveTab] = useState(tabData[0].title);
+  const [activeTab, setActiveTab] = useState(tabData[0].title);
+  const tabRefs = useRef({}); // Store refs for buttons
+
+  const handleTabClick = (title) => {
+    if (window.innerWidth < 768) {
+      // On small screens, toggle the active tab
+      setActiveTab((prevTab) => (prevTab === title ? "" : title));
+    } else {
+      // On large screens, keep the behavior as it is
+      setActiveTab(title);
+    }
   
-    return (
-      <section className="tabs-section">
-        <Container className="tabs-container">
+    // Scroll adjustment for small screens
+    setTimeout(() => {
+      const element = tabRefs.current[title];
+      if (element && window.innerWidth < 768) {
+        const yOffset = -90; // Adjust for fixed navbar
+        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  return (
+    <section className="tabs-section">
+      <Container className="tabs-container">
         <div className="title-area made-title text-center">
-            <h2 className="section-title">KlikSigurnost je posvećen pružanju praktičnih i efikasnih alata za roditelje kako bi deca bila sigurna dok koriste internet. Evo šta naša aplikacija nudi:</h2>
-            <p>Klik na alat da otkrijete šta nudi</p>
-            <div className="border-area">
-                <div className="underline-border"></div>
-            </div>
+          <h2 className="section-title">
+            KlikSigurnost je posvećen pružanju praktičnih i efikasnih alata za
+            roditelje kako bi deca bila sigurna dok koriste internet.
+          </h2>
+          <p>Klik na alat da otkrijete šta nudi</p>
+          <div className="border-area">
+            <div className="underline-border"></div>
+          </div>
         </div>
         <Row>
-          <Col md={4} className="tabs-list">
+          {/* Sidebar navigation for larger screens */}
+          <Col md={4} className="tabs-list d-none d-md-block">
             <Nav variant="pills" className="flex-column">
               {tabData.map((tab) => (
                 <Nav.Item key={tab.title}>
                   <Nav.Link
                     eventKey={tab.title}
                     active={activeTab === tab.title}
-                    onClick={() => setActiveTab(tab.title)}
+                    onClick={() => handleTabClick(tab.title)}
                   >
                     <span className="tab-icon">{tab.icon}</span> {tab.title}
                   </Nav.Link>
@@ -90,7 +133,9 @@ const ProjectTabs = () => {
               ))}
             </Nav>
           </Col>
-          <Col md={8} className="tab-content">
+
+          {/* Content display for large screens */}
+          <Col md={8} className="tab-content d-none d-md-block">
             {tabData.map(
               (tab) =>
                 tab.title === activeTab && (
@@ -98,13 +143,17 @@ const ProjectTabs = () => {
                     <Row>
                       <Col lg={6}>
                         <div className="tab-img-area">
-                            <img src={tab.image} alt={tab.title} className="tab-image" />
+                          <img
+                            src={tab.image}
+                            alt={tab.title}
+                            className="tab-image"
+                          />
                         </div>
                       </Col>
                       <Col lg={6}>
                         <div className="tab-info">
-                            <h3>{tab.title}</h3>
-                            <p>{tab.content}</p>
+                          <h3>{tab.title}</h3>
+                          <p>{tab.content}</p>
                         </div>
                       </Col>
                     </Row>
@@ -112,10 +161,50 @@ const ProjectTabs = () => {
                 )
             )}
           </Col>
+
+          {/* Content display for small screens */}
+          <Col xs={12} className="d-md-none">
+            <Nav variant="pills" className="flex-column">
+              {tabData.map((tab) => (
+                <Nav.Item key={tab.title} ref={(el) => (tabRefs.current[tab.title] = el)}>
+                  <Nav.Link
+                    eventKey={tab.title}
+                    active={activeTab === tab.title}
+                    onClick={() => handleTabClick(tab.title)}
+                    className="w-100 text-start py-3 px-4 border rounded shadow-sm bg-white text-dark" // Restores button styling
+                  >
+                    <span className="tab-icon me-2">{tab.icon}</span> {tab.title}
+                  </Nav.Link>
+                  {/* Show content below clicked button */}
+                  {tab.title === activeTab && (
+                    <div className="tab-details mt-3 px-3">
+                      <Row>
+                        <Col xs={12} className="text-center">
+                          <div className="tab-img-area">
+                            <img
+                              src={tab.image}
+                              alt={tab.title}
+                              className="tab-image"
+                            />
+                          </div>
+                        </Col>
+                        <Col xs={12}>
+                          <div className="tab-info mt-2 text-center">
+                            <h3>{tab.title}</h3>
+                            <p>{tab.content}</p>
+                          </div>
+                        </Col>
+                      </Row>
+                    </div>
+                  )}
+                </Nav.Item>
+              ))}
+            </Nav>
+          </Col>
         </Row>
       </Container>
-      </section>
-    );
+    </section>
+  );
 };
 
 export default ProjectTabs;

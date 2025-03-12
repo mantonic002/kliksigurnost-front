@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavDropdown, Container } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa"; // Import the arrow icon
 
-
 interface DropdownProps {
   isMobile: Boolean;
 }
@@ -37,24 +36,44 @@ const CustomDropdown = ({ isMobile }: DropdownProps) => {
         {/* Responsive for Mobile */}
         {isMobile ? (
           <>
-            <NavDropdown.Item href="#" className="py-2">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#" className="py-2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#" className="py-2">Somethingbg</NavDropdown.Item>
-            <NavDropdown.Item href="#" className="py-2">Separated link</NavDropdown.Item>
+            <NavDropdown.Item href="#" className="py-2">
+              Action
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="py-2">
+              Another action
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="py-2">
+              Somethingbg
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="py-2">
+              Separated link
+            </NavDropdown.Item>
           </>
         ) : (
           <Container fluid className="dropdown-menu-container bg-white">
-            <NavDropdown.Item href="#action/3.1" className="custom-dropdown-item">
+            <NavDropdown.Item
+              href="#action/3.1"
+              className="custom-dropdown-item"
+            >
               Action
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2" className="custom-dropdown-item">
+            <NavDropdown.Item
+              href="#action/3.2"
+              className="custom-dropdown-item"
+            >
               Another action
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3" className="custom-dropdown-item">
+            <NavDropdown.Item
+              href="#action/3.3"
+              className="custom-dropdown-item"
+            >
               Somethingbg
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4" className="custom-dropdown-item">
+            <NavDropdown.Item
+              href="#action/3.4"
+              className="custom-dropdown-item"
+            >
               Separated link
             </NavDropdown.Item>
           </Container>

@@ -6,7 +6,11 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import "./styles/global.css";
+import "./styles/global-in.css";
+import "./styles/global-out.css";
+import "./styles/layouts/Modal.css";
+import "./styles/layouts/Sidebar.css";
+import "./styles/layouts/TopBar.css";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/logged-out/Login/Login";
@@ -21,7 +25,11 @@ import Hero from "./components/logged-out/Hero/Hero";
 import MadeEasy from "./components/logged-out/madeeasy/MadeEasy";
 import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
 import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
-import Navbar from "./components/logged-out/Navbar/Navbar";
+import Navigation from "./Navigation";
+import PodesavanjePremaUzrastu from "./components/logged-out/Blog/PodesavanjePremaUzrastu";
+import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom"
+import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici"
+import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
 
 function App() {
   return (
@@ -57,9 +65,13 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      {/* TopBar is always at the top */}
-      {isAuthenticated ? <TopBar title="Klik Sigurnost" /> : <Navbar />}
-
+      {isAuthenticated ? (
+        <>
+          <TopBar title="Klik Sigurnost" />
+        </>
+      ) : (
+        <Navigation />
+      )}
       {/* Content takes up the remaining space */}
       <div className="Content">
         <Routes>
@@ -78,6 +90,78 @@ const AppContent = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
+          <Route 
+            path="/vodic" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/zastoks" 
+            element={
+              <>
+              <ZastoKlikSigurnost/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/rizici" 
+            element={
+              <>
+              <SkriveniRizici/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/razgovor" 
+            element={
+              <>
+              <RazgovorSaDecom/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/pravila" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/podesavanje" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/sajtovi" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/saveti/fore" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
+          <Route 
+            path="/kontakt" 
+            element={
+              <>
+              <PodesavanjePremaUzrastu/>
+              </>
+            } 
+          />
 
           <Route element={<ProtectedRoute />}>
             {SidebarData.map((item, index) => {
