@@ -49,8 +49,7 @@
 /* Content takes up the remaining space */
 .Content {
   flex: 1;
-  /*margin-top: 60px;
-  padding: var(--spacing-md);*/
+  margin-top: 80px;
   overflow-y: auto;
 }
 
@@ -193,9 +192,9 @@
 
 .card-item {
   margin-bottom: var(--spacing-sm);
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-item.actions {
@@ -265,8 +264,12 @@
   font-weight: 500;
   font-size: var(--font-size-md);
   width: fit-content;
-  margin-bottom: var(--spacing-sm);
-  margin-top: var(--spacing-sm);
+  margin: var(--spacing-sm);
+}
+
+/* Utility class for centering */
+.center-alert {
+  margin: var(--spacing-sm) auto;
 }
 
 .disabled {

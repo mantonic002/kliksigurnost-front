@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
 
 import "../../../styles/components/Signup.css";
+import "../../../styles/components/Forms.css";
 
 const schema = z
   .object({
@@ -128,8 +129,10 @@ const Signup = () => {
               </Button>
             </Form>
 
-            {err && <div className="text-danger-alert">{err}</div>}
-            {success && <div className="text-success-alert">{success}</div>}
+            {err && <div className="text-danger-alert center-alert">{err}</div>}
+            {success && (
+              <div className="text-success-alert center-alert">{success}</div>
+            )}
 
             <p className="or-text">Možete se registrovati i pomoću:</p>
             <div className="social-icons">

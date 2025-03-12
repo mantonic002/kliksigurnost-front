@@ -8,6 +8,9 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
+import "../../../styles/components/Signup.css";
+import "../../../styles/components/Forms.css";
+
 const schema = z.object({
   email: z.string().email({ message: "Email nije validan" }),
   password: z
@@ -67,6 +70,7 @@ function Login() {
 
           {/* Right Side */}
           <Col md={6} className="signup-right">
+            <h2 className="signup-title">Prijavite se</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group controlId="email">
                 <Form.Control
@@ -92,16 +96,16 @@ function Login() {
                 )}
               </Form.Group>
 
-              {err && (
-                <div className="text-danger-alert">
-                  Pogrešan email ili lozinka
-                </div>
-              )}
-
               <Button className="signup-btn" type="submit">
                 Prijava
               </Button>
             </Form>
+
+            {err && (
+              <div className="text-danger-alert center-alert">
+                Pogrešan email ili lozinka
+              </div>
+            )}
 
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">
