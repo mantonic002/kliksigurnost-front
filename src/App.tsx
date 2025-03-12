@@ -28,6 +28,9 @@ import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
 import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
 import Navigation from "./Navigation";
 import PodesavanjePremaUzrastu from "./components/logged-out/Blog/PodesavanjePremaUzrastu";
+import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom"
+import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici"
+import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
 
 function App() {
   return (
@@ -100,7 +103,7 @@ const AppContent = () => {
             path="/saveti/zastoks" 
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+              <ZastoKlikSigurnost/>
               </>
             } 
           />
@@ -108,7 +111,7 @@ const AppContent = () => {
             path="/saveti/rizici" 
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+              <SkriveniRizici/>
               </>
             } 
           />
@@ -116,7 +119,7 @@ const AppContent = () => {
             path="/saveti/razgovor" 
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+              <RazgovorSaDecom/>
               </>
             } 
           />

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Image, Badge, ListGroup } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
+import "../../../styles/components/Blog.css";
 
 const PodesavanjePremaUzrastu = () => {
   return (
@@ -11,7 +12,7 @@ const PodesavanjePremaUzrastu = () => {
         <Row className="justify-content-center">
           <Col lg={8} className="text-center">
             <h1 className="fw-bold">
-              Kako podesiti KlikSigurnost prema starosti deteta
+              Kako podesiti KlikSigurnost prema uzrastu deteta
             </h1>
           </Col>
         </Row>
