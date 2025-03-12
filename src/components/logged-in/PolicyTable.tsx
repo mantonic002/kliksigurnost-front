@@ -1,4 +1,4 @@
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useState } from "react";
 import policyService from "../../services/policy-service";
 import { Policy, Schedule } from "../../models/Policy";
 import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
@@ -18,6 +18,8 @@ export const PolicyTable = ({
   applicationMap,
   onDelete,
 }: PolicyTableProps) => {
+  const [selectedPolicy, setSelectedPolicy] = useState<Policy | null>(null);
+
   const extractCategoryIds = (traffic: string): number[] => {
     const match = traffic.match(/{([^}]+)}/);
     return match ? match[1].split(" ").map(Number) : [];
@@ -42,7 +44,7 @@ export const PolicyTable = ({
   };
 
   const formatSchedule = (schedule: Schedule | undefined): string => {
-    if (!schedule) return "No schedule";
+    if (!schedule) return "";
     return Object.entries(schedule)
       .map(([day, timeRanges]) => {
         if (day === "time_zone" || timeRanges === null) return null;
@@ -50,36 +52,6 @@ export const PolicyTable = ({
       })
       .filter(Boolean)
       .join(" | ");
-  };
-
-  const renderCategoriesWithTooltip = (categoryNames: string[]) => {
-    const categoryText = categoryNames.join(", ");
-    return (
-      <OverlayTrigger
-        placement="bottom"
-        overlay={<Tooltip id="tooltip-categories">{categoryText}</Tooltip>}
-      >
-        <span>
-          {categoryNames.slice(0, 3).join(", ")}
-          {categoryNames.length > 3 ? ", ..." : ""}
-        </span>
-      </OverlayTrigger>
-    );
-  };
-
-  const renderApplicationsWithTooltip = (applicationNames: string[]) => {
-    const applicationText = applicationNames.join(", ");
-    return (
-      <OverlayTrigger
-        placement="bottom"
-        overlay={<Tooltip id="tooltip-applications">{applicationText}</Tooltip>}
-      >
-        <span>
-          {applicationNames.slice(0, 3).join(", ")}
-          {applicationNames.length > 3 ? ", ..." : ""}
-        </span>
-      </OverlayTrigger>
-    );
   };
 
   const handleDelete = async (policyId: string) => {
@@ -91,60 +63,120 @@ export const PolicyTable = ({
     }
   };
 
-  return (
-    <div className="table-container">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Action</th>
-            <th>Categories</th>
-            <th>Applications</th>
-            <th>Schedule</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        {isLoading ? (
-          <div className="spinner-border"></div>
-        ) : (
-          <tbody>
-            <tr key="nebitno">
-              <td>Podrazumevano</td>
-              <td>Blok</td>
-              <td>Virusi, pretnje, prevare</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            {policies.map((policy) => {
-              const categoryIds = extractCategoryIds(policy.traffic);
-              const categoryNames = getCategoryNames(categoryIds);
-              const applicationIds = extractApplicationIds(policy.traffic);
-              const applicationNames = getApplicationNames(applicationIds);
-              const schedule = formatSchedule(policy.schedule);
+  const handleCardClick = (policy: Policy) => {
+    setSelectedPolicy(policy);
+  };
 
-              return (
-                <tr key={policy.id}>
-                  <td>{policy.name}</td>
-                  <td>{policy.action}</td>
-                  <td>{renderCategoriesWithTooltip(categoryNames)}</td>
-                  <td>{renderApplicationsWithTooltip(applicationNames)}</td>
-                  <td>{schedule}</td>
-                  <td className="action">
-                    <div
-                      className="action-icon"
-                      onClick={() => handleDelete(policy.id!)}
-                    >
-                      <AiOutlineDelete className="action-red outlined" />
-                      <AiFillDelete className="action-red filled" />
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        )}
-      </table>
+  const closeModal = () => {
+    setSelectedPolicy(null);
+  };
+
+  if (isLoading) {
+    return <div className="spinner-border"></div>;
+  }
+
+  return (
+    <div className="card-container">
+      {policies.map((policy) => {
+        const categoryIds = extractCategoryIds(policy.traffic);
+        const categoryNames = getCategoryNames(categoryIds);
+        const applicationIds = extractApplicationIds(policy.traffic);
+        const applicationNames = getApplicationNames(applicationIds);
+        const schedule = formatSchedule(policy.schedule);
+
+        return (
+          <div
+            key={policy.id}
+            className="card"
+            onClick={() => handleCardClick(policy)}
+          >
+            {policy.action == "block" && (
+              <div className="text-danger-alert">Blokirano</div>
+            )}
+            {policy.action == "allow" && (
+              <div className="text-success-alert">Dozvoljeno</div>
+            )}
+            {policy.name && (
+              <div className="card-item">
+                <strong>Name:</strong> {policy.name}
+              </div>
+            )}
+            {categoryNames.length > 0 && (
+              <div className="card-item">
+                <strong>Categories:</strong> {categoryNames.join(", ")}
+              </div>
+            )}
+            {applicationNames.length > 0 && (
+              <div className="card-item">
+                <strong>Applications:</strong> {applicationNames.join(", ")}
+              </div>
+            )}
+            {schedule && (
+              <div className="card-item">
+                <strong>Schedule:</strong> {schedule}
+              </div>
+            )}
+            <div className="card-item actions">
+              <div
+                className="action-icon"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click event
+                  handleDelete(policy.id!);
+                }}
+              >
+                <div className="icon-wrapper">
+                  <AiOutlineDelete className="action-red outlined" size={24} />
+                  <AiFillDelete className="action-red filled" size={24} />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Modal for detailed view */}
+      {selectedPolicy && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>{selectedPolicy.name}</h2>
+              <button className="modal-close-button" onClick={closeModal}>
+                &times;
+              </button>
+            </div>
+            <div className="modal-content">
+              {selectedPolicy.action == "block" && (
+                <div className="text-danger-alert">Blokirano</div>
+              )}
+              {selectedPolicy.action == "allow" && (
+                <div className="text-success-alert">Dozvoljeno</div>
+              )}
+              {selectedPolicy.traffic && (
+                <>
+                  <p>
+                    <strong>Categories:</strong>{" "}
+                    {getCategoryNames(
+                      extractCategoryIds(selectedPolicy.traffic)
+                    ).join(", ")}
+                  </p>
+                  <p>
+                    <strong>Applications:</strong>{" "}
+                    {getApplicationNames(
+                      extractApplicationIds(selectedPolicy.traffic)
+                    ).join(", ")}
+                  </p>
+                </>
+              )}
+              {selectedPolicy.schedule && (
+                <p>
+                  <strong>Schedule:</strong>{" "}
+                  {formatSchedule(selectedPolicy.schedule)}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

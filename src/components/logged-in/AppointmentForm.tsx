@@ -5,19 +5,15 @@ import AppointmentService from "../../services/AppointmentService";
 import { useNavigate } from "react-router-dom";
 import { Appointment } from "../../models/Appointment";
 import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
+import "../../styles/components/Appointment.css";
+import { formatDate, utcToLocal } from "./Helpers";
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [err, setErr] = useState("");
   let navigate = useNavigate();
-
-  const utcToLocal = (time: string) => {
-    const utcDate = new Date(time);
-    return new Date(
-      utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
-    ).toString();
-  };
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -67,7 +63,8 @@ const AppointmentForm = () => {
         navigate("/home");
       })
       .catch((error) => {
-        console.error("Failed to schedule appointment:", error);
+        setErr(error.response.data);
+        console.log(error.response.data);
       });
   };
 
@@ -83,37 +80,32 @@ const AppointmentForm = () => {
 
   return (
     <div>
-      <div className="table-container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {appointments.map((appointment) => {
-              const date = utcToLocal(appointment.appointmentDateTime);
+      {/* List of appointments */}
+      <div className="appointment-list">
+        {appointments.map((appointment) => {
+          const formattedDate = formatDate(
+            utcToLocal(appointment.appointmentDateTime)
+          );
 
-              return (
-                <tr key={appointment.id}>
-                  <td>{date}</td>
-                  <td className="action">
-                    <div
-                      className="action-icon"
-                      onClick={() => handleDelete(appointment.id!)}
-                    >
-                      <AiOutlineDelete className="action-red outlined" />
-                      <AiFillDelete className="action-red filled" />
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+          return (
+            <div key={appointment.id} className="appointment-item">
+              <span>{formattedDate}</span>
+              <div
+                className="action-icon"
+                onClick={() => handleDelete(appointment.id!)}
+              >
+                <div className="icon-wrapper">
+                  <AiOutlineDelete className="action-red outlined" />
+                  <AiFillDelete className="action-red filled" />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
+
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="inline-form">
           <label className="form-label">Date and Time:</label>
           <DatePicker
             className="form-control"
@@ -131,11 +123,13 @@ const AppointmentForm = () => {
             }}
             required
           />
+          <button type="submit" className="btn btn-primary">
+            Schedule Appointment
+          </button>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Schedule Appointment
-        </button>
       </form>
+
+      {err && <div className="text-danger-alert">{err}</div>}
     </div>
   );
 };

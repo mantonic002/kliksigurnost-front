@@ -29,7 +29,7 @@ function Login() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const googleLogin = () => {
-    window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   const onSubmit = (data: FieldValues) => {
@@ -91,7 +91,12 @@ function Login() {
                   <p className="text-danger">{errors.password.message}</p>
                 )}
               </Form.Group>
-              {err && <p className="text-danger">Pogrešan email ili lozinka</p>}
+
+              {err && (
+                <div className="text-danger-alert">
+                  Pogrešan email ili lozinka
+                </div>
+              )}
 
               <Button className="signup-btn" type="submit">
                 Prijava

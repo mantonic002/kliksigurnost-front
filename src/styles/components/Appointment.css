@@ -1,0 +1,21 @@
+/* Appointment list styles */
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-light);
+}
+
+.appointment-item span {
+  font-size: var(--font-size-md);
+}

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Device } from "../../models/Device";
 import deviceService from "../../services/device-service";
 import { CanceledError } from "axios";
+import { formatDate } from "./Helpers";
 
 function Devices() {
   const [devices, setDevices] = useState<Device[]>([]);
-  const [isLoading, setIsLoading] = useState(false); // isLoading deleted, add later if needed
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Fetch devices on component mount
@@ -19,7 +20,7 @@ function Devices() {
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        setError(error.message || "Failed to fetch policies");
+        setError(error.message || "Failed to fetch devices");
         setIsLoading(false);
       });
   }, []);
@@ -28,33 +29,29 @@ function Devices() {
     <div className="container">
       <h3 className="mb-4">Devices</h3>
 
-      {error && <p className="text-danger">{error}</p>}
+      {error && <div className="text-danger-alert">{error}</div>}
 
-      <div className="table-container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Manufacturer</th>
-              <th>Model</th>
-              <th>Last Seen</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          {isLoading ? (
-            <div className="spinner-border"></div>
-          ) : (
-            <tbody>
-              {devices.map((device) => (
-                <tr key={device.id}>
-                  <td>{device.manufacturer}</td>
-                  <td>{device.model}</td>
-                  <td>{device.lastSeenTime}</td>
-                  <td>{device.email}</td>
-                </tr>
-              ))}
-            </tbody>
-          )}
-        </table>
+      <div className="card-container">
+        {isLoading ? (
+          <div className="spinner-border"></div>
+        ) : (
+          devices.map((device) => (
+            <div key={device.id} className="card">
+              <div className="card-item">
+                <strong>Manufacturer:</strong> {device.manufacturer}
+              </div>
+              <div className="card-item">
+                <strong>Model:</strong> {device.model}
+              </div>
+              <div className="card-item">
+                <strong>Last Seen:</strong> {formatDate(device.lastSeenTime)}
+              </div>
+              <div className="card-item">
+                <strong>Email:</strong> {device.email}
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

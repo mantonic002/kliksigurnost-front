@@ -8,6 +8,7 @@ import logo from "../../../public/images/logo_final2.png";
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from "react-bootstrap";
 import { SidebarData } from "./SidebarData";
+import "../../styles/components/TopBar.css";
 
 interface TopBarProps {
   title: string;
@@ -66,7 +67,7 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
 
   const handleNavigation = (link: string) => {
     handleSidebarClose();
-    if (link === "logout") {
+    if (link === "/logout") {
       logout();
       navigate("/login");
       window.location.reload();
@@ -92,15 +93,14 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
         />
       </div>
 
-      {/* Page Title */}
-      {/* <div className="PageTitle">{title}</div> */}
-
       {/* Notifications and User Email */}
       <div className="TopBar-element">
-        <div className="action-icon mb-3" onClick={openNotifications}>
-          <AiOutlineBell size={25} className="action-blue outlined" />
-          <AiFillBell size={25} className="action-blue filled" />
-          <span className="notification-badge">{notificationCount}</span>
+        <div className="action-icon" onClick={openNotifications}>
+          <div className="icon-wrapper">
+            <AiOutlineBell size={25} className="action-blue outlined" />
+            <AiFillBell size={25} className="action-blue filled" />
+            <span className="notification-badge">{notificationCount}</span>
+          </div>
         </div>
         {isDropdownOpen && (
           <div className="notifications-dropdown">
@@ -140,13 +140,7 @@ const TopBar: React.FC<TopBarProps> = ({ title }) => {
                   key={index}
                   className="sidebar-item"
                   onClick={() => {
-                    if (item.title === "Odjava") {
-                      logout();
-                      navigate("/");
-                      window.location.reload();
-                    } else {
-                      handleNavigation(item.link);
-                    }
+                    handleNavigation(item.link);
                   }}
                 >
                   <div className="sidebar-icon">{item.iconOutline}</div>

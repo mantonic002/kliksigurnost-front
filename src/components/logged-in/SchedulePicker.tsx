@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useSchedule } from "./useSchedule";
-import "../../App.css";
+import "../../styles/components/SchedulePicker.css";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;

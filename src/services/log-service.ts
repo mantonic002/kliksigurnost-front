@@ -5,14 +5,13 @@ class LogService {
   async getLogs(params: {
     startDateTime: string;
     endDateTime: string;
-    page: number;
     pageSize: number;
     lastDateTime?: string;
     lastPolicyId?: string;
-    direction: 'next' | 'prev';
+    resolverDecision?: number;
   }): Promise<Log[]> {
-    const response = await apiClient.get('/policies/userLogs', {
-      params: { ...params }
+    const response = await apiClient.get("/policies/userLogs", {
+      params: { ...params },
     });
     return response.data;
   }

@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth-service";
-import { useAuth } from "../../../contexts/AuthContext";
 
 import "../../../styles/components/Signup.css";
 
@@ -34,8 +33,8 @@ type FormData = z.infer<typeof schema>;
 
 const Signup = () => {
   const [err, setErr] = useState("");
+  const [success, setSuccess] = useState("");
   let navigate = useNavigate();
-  const { login } = useAuth();
 
   const {
     register,
@@ -44,16 +43,15 @@ const Signup = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const googleLogin = () => {
-    window.location.href = "http://localhost:8080/api/auth/authenticate/google";
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   const onSubmit = (data: FieldValues) => {
     authService
       .register(data.email, data.password)
-      .then(() => {
-        console.log(authService.getToken());
-        login();
-        navigate("/home");
+      .then((res) => {
+        setSuccess(res.data.message);
+        setErr("");
       })
       .catch((error) => {
         if (error.response && error.response.data) {
@@ -125,13 +123,14 @@ const Signup = () => {
                 <p className="text-danger">{errors.confirmPassword.message}</p>
               )}
 
-              {/* Display the error message from the response */}
-              {err && <p className="text-danger">{err}</p>}
-
               <Button className="signup-btn" type="submit">
                 Registracija
               </Button>
             </Form>
+
+            {err && <div className="text-danger-alert">{err}</div>}
+            {success && <div className="text-success-alert">{success}</div>}
+
             <p className="or-text">Možete se registrovati i pomoću:</p>
             <div className="social-icons">
               <FaFacebookF className="icon fb" />

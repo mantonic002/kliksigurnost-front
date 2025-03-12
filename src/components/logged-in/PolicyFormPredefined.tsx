@@ -93,9 +93,10 @@ export const PredefinedPolicyForm = ({
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-        <div className="mb-3">
+        <div className="inline-form">
           <label className="form-label">Predefined Policies:</label>
           <Select
+            className="form-control"
             name="predefinedPolicies"
             options={predefinedPolicies.map((policy, index) => ({
               value: index,
@@ -106,11 +107,11 @@ export const PredefinedPolicyForm = ({
             getOptionLabel={(e) => e.label}
             getOptionValue={(e) => String(e.value)}
           />
-        </div>
 
-        <button type="submit" className="btn btn-success">
-          Submit
-        </button>
+          <button type="submit" className="btn btn-success">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

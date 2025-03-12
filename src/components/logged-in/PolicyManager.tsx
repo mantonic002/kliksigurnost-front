@@ -43,15 +43,8 @@ function PolicyManager() {
     <div className="container">
       <h3 className="mb-4">Cloudflare Policies</h3>
 
-      {error && <p className="text-danger">{error}</p>}
+      {error && <div className="text-danger-alert">{error}</div>}
 
-      <PolicyTable
-        policies={policies}
-        isLoading={isLoading}
-        categoryMap={categoryMap}
-        applicationMap={applicationMap}
-        onDelete={handleDelete}
-      />
       <PolicyForm
         categoryOptions={categoryOptions}
         applicationOptions={applicationOptions}
@@ -59,6 +52,14 @@ function PolicyManager() {
       />
       <br></br>
       <br></br>
+      <PolicyTable
+        policies={policies}
+        isLoading={isLoading}
+        categoryMap={categoryMap}
+        applicationMap={applicationMap}
+        onDelete={handleDelete}
+      />
+
       <PredefinedPolicyForm setPolicies={setPolicies} />
     </div>
   );

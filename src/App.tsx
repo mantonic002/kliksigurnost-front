@@ -6,12 +6,11 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import "./styles/global.css";
-import "./styles/layouts/AppLayout.css";
+import "./styles/global-in.css";
+import "./styles/global-out.css";
 import "./styles/layouts/Modal.css";
 import "./styles/layouts/Sidebar.css";
 import "./styles/layouts/TopBar.css";
-import Sidebar from "./components/logged-in/Sidebar";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/logged-out/Login/Login";
@@ -73,7 +72,7 @@ const AppContent = () => {
       ) : (
         <Navigation />
       )}
-
+      {/* Content takes up the remaining space */}
       <div className="Content">
         <Routes>
           <Route
@@ -177,8 +176,10 @@ const AppContent = () => {
             })}
           </Route>
         </Routes>
-        <Footer />
       </div>
+
+      {/* Footer is at the bottom of the content or the page */}
+      <Footer />
     </div>
   );
 };

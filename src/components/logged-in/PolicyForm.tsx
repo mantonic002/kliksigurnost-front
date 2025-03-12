@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { AiOutlineClose } from "react-icons/ai";
+import { FaPlus } from "react-icons/fa";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -250,11 +251,11 @@ export const PolicyForm = ({
         className="btn btn-primary"
         onClick={() => setIsFormOpen(!isFormOpen)}
       >
-        New policy
+        <FaPlus className="mb-1" /> New policy
       </button>
       {isFormOpen && (
-        <div className="modal-overlay">
-          <div className="modal-container">
+        <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h5>Create new policy</h5>
               <AiOutlineClose onClick={() => setIsFormOpen(false)} />

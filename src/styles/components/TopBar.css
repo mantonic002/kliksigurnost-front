@@ -1,0 +1,115 @@
+/* Notification styles */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -2px;
+  background-color: var(--color-danger);
+  color: var(--color-light);
+  border-radius: 50%;
+  padding: 1px 4px;
+  font-size: 10px;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-light);
+  border: 1px solid var(--color-gray);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-message {
+  font-weight: bold;
+}
+
+.notification-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+}
+
+.userEmail {
+  margin-left: var(--spacing-md);
+}
+
+/* TopBar Styles */
+.TopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-md);
+  background-color: var(--color-light);
+  box-shadow: var(--shadow-sm);
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.TopBar-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+}
+
+.TopBar.collapsed {
+  left: 60px;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  padding: 0 var(--spacing-md);
+  cursor: pointer;
+}
+
+.Logo {
+  flex: 1;
+  text-align: left;
+}
+
+.PageTitle {
+  font-weight: 600;
+  margin-left: var(--spacing-md);
+}
+
+/* Sidebar Styles */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+}
+
+.sidebar-icon {
+  margin-right: var(--spacing-md);
+  font-size: 1.2rem;
+}
