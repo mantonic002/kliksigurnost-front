@@ -117,7 +117,8 @@ function Logs() {
           <option value="blocked">Blocked</option>
         </select>
       </div>
-      {error && <p className="text-danger">{error}</p>}
+      {error && <div className="text-danger-alert">{error}</div>}
+
       <div className="table-container d-none d-md-block">
         <table className="logs-table">
           <thead>
