@@ -35,6 +35,7 @@ type FormData = z.infer<typeof schema>;
 const Signup = () => {
   const [err, setErr] = useState("");
   const [success, setSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
 
   const {
@@ -48,6 +49,7 @@ const Signup = () => {
   };
 
   const onSubmit = (data: FieldValues) => {
+    setIsLoading(true);
     authService
       .register(data.email, data.password)
       .then((res) => {
@@ -61,6 +63,9 @@ const Signup = () => {
           setErr("An unknown error occurred");
         }
         console.error("Registration error:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -125,7 +130,11 @@ const Signup = () => {
               )}
 
               <Button className="signup-btn" type="submit">
-                Registracija
+                {isLoading ? (
+                  <div className="spinner-border"></div>
+                ) : (
+                  <>Registracija</>
+                )}
               </Button>
             </Form>
 

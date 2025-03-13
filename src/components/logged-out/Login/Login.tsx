@@ -23,6 +23,7 @@ type FormData = z.infer<typeof schema>;
 function Login() {
   const [err, setErr] = useState("");
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
 
   const {
@@ -36,6 +37,7 @@ function Login() {
   };
 
   const onSubmit = (data: FieldValues) => {
+    setIsLoading(true);
     authService
       .login(data.email, data.password)
       .then(() => {
@@ -45,6 +47,9 @@ function Login() {
       .catch((error) => {
         setErr(error.message);
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -97,7 +102,11 @@ function Login() {
               </Form.Group>
 
               <Button className="signup-btn" type="submit">
-                Prijava
+                {isLoading ? (
+                  <div className="spinner-border"></div>
+                ) : (
+                  <>Prijava</>
+                )}
               </Button>
             </Form>
 

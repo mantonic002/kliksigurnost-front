@@ -51,6 +51,7 @@ export const PolicyForm = ({
     []
   );
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
@@ -183,6 +184,7 @@ export const PolicyForm = ({
   };
 
   const onSubmit = (data: PolicyFormData) => {
+    setIsLoading(true);
     const formattedSchedule = Object.entries(data.schedule || {}).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
@@ -241,6 +243,9 @@ export const PolicyForm = ({
       })
       .catch((error: any) => {
         alert(error.message || "Failed to create policy");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -296,7 +301,11 @@ export const PolicyForm = ({
               <SchedulePicker onChange={updateSchedule} />
 
               <button type="submit" className="btn btn-success">
-                Submit
+                {isLoading ? (
+                  <div className="spinner-border"></div>
+                ) : (
+                  <>Submit</>
+                )}
               </button>
             </form>
           </div>

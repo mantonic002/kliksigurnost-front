@@ -173,6 +173,7 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--spacing-md);
   padding-bottom: var(--spacing-md);
+  margin: var(--spacing-md) 0;
 }
 
 .card {
@@ -183,6 +184,17 @@
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  max-width: fit-content;
+}
+
+.card-disabled {
+  background: var(--color-gray);
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+  opacity: 0.6;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .card:hover {
@@ -195,6 +207,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-item-overflow {
+  margin-bottom: var(--spacing-sm);
 }
 
 .card-item.actions {

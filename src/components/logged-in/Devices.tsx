@@ -32,6 +32,17 @@ function Devices() {
       {error && <div className="text-danger-alert">{error}</div>}
 
       <div className="card-container">
+        <div className="card card-disabled">
+          <div className="card-item-overflow">
+            <strong>
+              Dodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
+            </strong>
+          </div>
+          <div className="card-item-overflow">
+            Trenutno je moguće povezati novi uredjaj, ali na svaki uredjaj se
+            primenjuju ista pravila
+          </div>
+        </div>
         {isLoading ? (
           <div className="spinner-border"></div>
         ) : (
