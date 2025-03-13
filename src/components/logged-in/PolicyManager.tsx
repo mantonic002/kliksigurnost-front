@@ -50,8 +50,6 @@ function PolicyManager() {
         applicationOptions={applicationOptions}
         setPolicies={setPolicies}
       />
-      <br></br>
-      <br></br>
       <PolicyTable
         policies={policies}
         isLoading={isLoading}

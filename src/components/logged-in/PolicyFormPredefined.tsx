@@ -30,6 +30,8 @@ export const PredefinedPolicyForm = ({
     null
   );
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
@@ -61,6 +63,7 @@ export const PredefinedPolicyForm = ({
 
   // Handle form submission
   const onSubmit = (data: PolicyFormData) => {
+    setIsLoading(true);
     const trafficString: string[] = [];
     if (data.trafficCategories) {
       trafficString.push(data.trafficCategories);
@@ -87,6 +90,9 @@ export const PredefinedPolicyForm = ({
       })
       .catch((error: any) => {
         alert(error.message || "Failed to create policy");
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -109,7 +115,7 @@ export const PredefinedPolicyForm = ({
           />
 
           <button type="submit" className="btn btn-success">
-            Submit
+            {isLoading ? <div className="spinner-border"></div> : <>Submit</>}
           </button>
         </div>
       </form>
