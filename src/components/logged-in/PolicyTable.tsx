@@ -19,6 +19,8 @@ export const PolicyTable = ({
   onDelete,
 }: PolicyTableProps) => {
   const [selectedPolicy, setSelectedPolicy] = useState<Policy | null>(null);
+  const [deletingPolicyLoading, setdeletingPolicyLoading] =
+    useState<String>("");
 
   const extractCategoryIds = (traffic: string): number[] => {
     const match = traffic.match(/{([^}]+)}/);
@@ -55,6 +57,7 @@ export const PolicyTable = ({
   };
 
   const handleDelete = async (policyId: string) => {
+    setdeletingPolicyLoading(policyId);
     try {
       await policyService.delete(policyId);
       onDelete(policyId);
@@ -77,61 +80,80 @@ export const PolicyTable = ({
 
   return (
     <div className="card-container">
-      {policies.map((policy) => {
-        const categoryIds = extractCategoryIds(policy.traffic);
-        const categoryNames = getCategoryNames(categoryIds);
-        const applicationIds = extractApplicationIds(policy.traffic);
-        const applicationNames = getApplicationNames(applicationIds);
-        const schedule = formatSchedule(policy.schedule);
+      {/* Default policy */}
+      <div className="card card-disabled">
+        <div className="text-danger-alert">Blokirano</div>
 
-        return (
-          <div
-            key={policy.id}
-            className="card"
-            onClick={() => handleCardClick(policy)}
-          >
-            {policy.action == "block" && (
-              <div className="text-danger-alert">Blokirano</div>
-            )}
-            {policy.action == "allow" && (
-              <div className="text-success-alert">Dozvoljeno</div>
-            )}
-            {policy.name && (
-              <div className="card-item">
-                <strong>Name:</strong> {policy.name}
-              </div>
-            )}
-            {categoryNames.length > 0 && (
-              <div className="card-item">
-                <strong>Categories:</strong> {categoryNames.join(", ")}
-              </div>
-            )}
-            {applicationNames.length > 0 && (
-              <div className="card-item">
-                <strong>Applications:</strong> {applicationNames.join(", ")}
-              </div>
-            )}
-            {schedule && (
-              <div className="card-item">
-                <strong>Schedule:</strong> {schedule}
-              </div>
-            )}
-            <div className="card-item actions">
-              <div
-                className="action-icon"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent card click event
-                  handleDelete(policy.id!);
-                }}
-              >
-                <div className="icon-wrapper">
-                  <AiOutlineDelete className="action-red outlined" size={24} />
-                  <AiFillDelete className="action-red filled" size={24} />
+        <div className="card-item-overflow">
+          <strong>Name:</strong> Virusi i pretnje
+        </div>
+        <div className="card-item-overflow">
+          <strong>Categories:</strong> Virusi, Online prevare, Ostale pretnje
+        </div>
+      </div>
+
+      {/* Other policies  */}
+      {policies.map((policy) => {
+        if (policy.action == "block") {
+          const categoryIds = extractCategoryIds(policy.traffic);
+          const categoryNames = getCategoryNames(categoryIds);
+          const applicationIds = extractApplicationIds(policy.traffic);
+          const applicationNames = getApplicationNames(applicationIds);
+          const schedule = formatSchedule(policy.schedule);
+
+          return (
+            <div
+              key={policy.id}
+              className="card"
+              onClick={() => handleCardClick(policy)}
+            >
+              {policy.action == "block" && (
+                <div className="text-danger-alert">Blokirano</div>
+              )}
+              {policy.name && (
+                <div className="card-item">
+                  <strong>Name:</strong> {policy.name}
+                </div>
+              )}
+              {categoryNames.length > 0 && (
+                <div className="card-item">
+                  <strong>Categories:</strong> {categoryNames.join(", ")}
+                </div>
+              )}
+              {applicationNames.length > 0 && (
+                <div className="card-item">
+                  <strong>Applications:</strong> {applicationNames.join(", ")}
+                </div>
+              )}
+              {schedule && (
+                <div className="card-item">
+                  <strong>Schedule:</strong> {schedule}
+                </div>
+              )}
+              <div className="card-item actions">
+                <div
+                  className="action-icon"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(policy.id!);
+                  }}
+                >
+                  {policy.id !== deletingPolicyLoading ? (
+                    <div className="icon-wrapper">
+                      <AiOutlineDelete
+                        className="action-red outlined"
+                        size={24}
+                      />
+                      <AiFillDelete className="action-red filled" size={24} />
+                    </div>
+                  ) : (
+                    <div className="action-red spinner-border"></div>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-        );
+          );
+        }
       })}
 
       {/* Modal for detailed view */}

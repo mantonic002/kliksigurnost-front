@@ -8,6 +8,9 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
+import "../../../styles/components/Signup.css";
+import "../../../styles/components/Forms.css";
+
 const schema = z.object({
   email: z.string().email({ message: "Email nije validan" }),
   password: z
@@ -20,6 +23,7 @@ type FormData = z.infer<typeof schema>;
 function Login() {
   const [err, setErr] = useState("");
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
 
   const {
@@ -33,6 +37,7 @@ function Login() {
   };
 
   const onSubmit = (data: FieldValues) => {
+    setIsLoading(true);
     authService
       .login(data.email, data.password)
       .then(() => {
@@ -42,6 +47,9 @@ function Login() {
       .catch((error) => {
         setErr(error.message);
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -67,6 +75,7 @@ function Login() {
 
           {/* Right Side */}
           <Col md={6} className="signup-right">
+            <h2 className="signup-title">Prijavite se</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group controlId="email">
                 <Form.Control
@@ -92,16 +101,20 @@ function Login() {
                 )}
               </Form.Group>
 
-              {err && (
-                <div className="text-danger-alert">
-                  Pogrešan email ili lozinka
-                </div>
-              )}
-
               <Button className="signup-btn" type="submit">
-                Prijava
+                {isLoading ? (
+                  <div className="spinner-border"></div>
+                ) : (
+                  <>Prijava</>
+                )}
               </Button>
             </Form>
+
+            {err && (
+              <div className="text-danger-alert center-alert">
+                Pogrešan email ili lozinka
+              </div>
+            )}
 
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { AiFillBell, AiOutlineBell, AiOutlineMenu } from "react-icons/ai";
 import { Notification } from "../../models/Notification";
@@ -10,11 +10,7 @@ import { Offcanvas } from "react-bootstrap";
 import { SidebarData } from "./SidebarData";
 import "../../styles/components/TopBar.css";
 
-interface TopBarProps {
-  title: string;
-}
-
-const TopBar: React.FC<TopBarProps> = ({ title }) => {
+const TopBar = () => {
   const { email, logout } = useAuth();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

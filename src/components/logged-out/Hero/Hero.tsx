@@ -21,9 +21,9 @@ const HeroSection = () => {
                   za miran san roditelja i sigurnu budućnost dece.
                 </h1>
                 <p className="hero-subtitle">
-                  Za roditelje na Balkanu koji žele da osiguraju bezbedno iskustvo
-                  na internetu za svoju decu, KlikSigurnost nudi sveobuhvatnu
-                  roditeljsku kontrolu i praćenje lokacije.
+                  Za roditelje na Balkanu koji žele da osiguraju bezbedno
+                  iskustvo na internetu za svoju decu, KlikSigurnost nudi
+                  sveobuhvatnu roditeljsku kontrolu i praćenje lokacije.
                 </p>
                 <Button variant="primary" className="hero-btn">
                   Besplatna registracija!
@@ -51,9 +51,9 @@ const HeroSection = () => {
                   za miran san roditelja i sigurnu budućnost dece.
                 </h1>
                 <p className="hero-subtitle">
-                  Za roditelje na Balkanu koji žele da osiguraju bezbedno iskustvo
-                  na internetu za svoju decu, KlikSigurnost nudi sveobuhvatnu
-                  roditeljsku kontrolu i praćenje lokacije.
+                  Za roditelje na Balkanu koji žele da osiguraju bezbedno
+                  iskustvo na internetu za svoju decu, KlikSigurnost nudi
+                  sveobuhvatnu roditeljsku kontrolu i praćenje lokacije.
                 </p>
                 <Button variant="primary" className="hero-btn">
                   Besplatna registracija!

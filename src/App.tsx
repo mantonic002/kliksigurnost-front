@@ -8,9 +8,6 @@ import {
 } from "react-router-dom";
 import "./styles/global-in.css";
 import "./styles/global-out.css";
-import "./styles/layouts/Modal.css";
-import "./styles/layouts/Sidebar.css";
-import "./styles/layouts/TopBar.css";
 import { SidebarData } from "./components/logged-in/SidebarData";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Login from "./components/logged-out/Login/Login";
@@ -27,8 +24,8 @@ import ProjectTabs from "./components/logged-out/tabsproject/ProjectsTabs";
 import TestimonialSlider from "./components/logged-out/Testimonial/Testimonial";
 import Navigation from "./Navigation";
 import PodesavanjePremaUzrastu from "./components/logged-out/Blog/PodesavanjePremaUzrastu";
-import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom"
-import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici"
+import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom";
+import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici";
 import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
 
 function App() {
@@ -67,7 +64,7 @@ const AppContent = () => {
     <div className="App">
       {isAuthenticated ? (
         <>
-          <TopBar title="Klik Sigurnost" />
+          <TopBar />
         </>
       ) : (
         <Navigation />
@@ -91,77 +88,77 @@ const AppContent = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
-          <Route 
-            path="/vodic" 
+          <Route
+            path="/vodic"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/zastoks" 
+          <Route
+            path="/saveti/zastoks"
             element={
               <>
-              <ZastoKlikSigurnost/>
+                <ZastoKlikSigurnost />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/rizici" 
+          <Route
+            path="/saveti/rizici"
             element={
               <>
-              <SkriveniRizici/>
+                <SkriveniRizici />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/razgovor" 
+          <Route
+            path="/saveti/razgovor"
             element={
               <>
-              <RazgovorSaDecom/>
+                <RazgovorSaDecom />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/pravila" 
+          <Route
+            path="/saveti/pravila"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/podesavanje" 
+          <Route
+            path="/saveti/podesavanje"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/sajtovi" 
+          <Route
+            path="/saveti/sajtovi"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/saveti/fore" 
+          <Route
+            path="/saveti/fore"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
-          <Route 
-            path="/kontakt" 
+          <Route
+            path="/kontakt"
             element={
               <>
-              <PodesavanjePremaUzrastu/>
+                <PodesavanjePremaUzrastu />
               </>
-            } 
+            }
           />
 
           <Route element={<ProtectedRoute />}>
@@ -179,7 +176,6 @@ const AppContent = () => {
         </Routes>
       </div>
 
-      {/* Footer is at the bottom of the content or the page */}
       <Footer />
     </div>
   );

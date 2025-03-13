@@ -49,8 +49,7 @@
 /* Content takes up the remaining space */
 .Content {
   flex: 1;
-  /*margin-top: 60px;
-  padding: var(--spacing-md);*/
+  margin-top: 80px;
   overflow-y: auto;
 }
 
@@ -174,6 +173,7 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--spacing-md);
   padding-bottom: var(--spacing-md);
+  margin: var(--spacing-md) 0;
 }
 
 .card {
@@ -184,6 +184,17 @@
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  max-width: fit-content;
+}
+
+.card-disabled {
+  background: var(--color-gray);
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+  opacity: 0.6;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .card:hover {
@@ -193,9 +204,13 @@
 
 .card-item {
   margin-bottom: var(--spacing-sm);
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-item-overflow {
+  margin-bottom: var(--spacing-sm);
 }
 
 .card-item.actions {
@@ -265,8 +280,12 @@
   font-weight: 500;
   font-size: var(--font-size-md);
   width: fit-content;
-  margin-bottom: var(--spacing-sm);
-  margin-top: var(--spacing-sm);
+  margin: var(--spacing-sm);
+}
+
+/* Utility class for centering */
+.center-alert {
+  margin: var(--spacing-sm) auto;
 }
 
 .disabled {
