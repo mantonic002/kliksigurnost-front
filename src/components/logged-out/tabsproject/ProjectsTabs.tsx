@@ -111,7 +111,7 @@ const ProjectTabs = () => {
             KlikSigurnost je posvećen pružanju praktičnih i efikasnih alata za
             roditelje kako bi deca bila sigurna dok koriste internet.
           </h2>
-          <p>Klik na alat da otkrijete šta nudi</p>
+          <p>Kliknite na alat da otkrijete šta nudi</p>
           <div className="border-area">
             <div className="underline-border"></div>
           </div>

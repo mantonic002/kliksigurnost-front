@@ -41,6 +41,17 @@
   font-weight: bold;
   font-size: clamp(2rem, 6vw, 6rem);
 }
+.highlight3 {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+.highlight4 {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: bold;
+}
 .hero-subtitle {
   font-size: 1.2rem;
   margin-bottom: 20px;
