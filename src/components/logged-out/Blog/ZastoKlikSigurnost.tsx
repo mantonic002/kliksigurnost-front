@@ -1,6 +1,4 @@
-import React from "react";
 import { Container, Row, Col, Image, Badge, ListGroup} from "react-bootstrap";
-import { FaUserCircle } from "react-icons/fa";
 import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
 import psiholog from "../../../../public/images/psiholog2.png"

@@ -1,7 +1,5 @@
-import { Container, Row, Col, Button, Card, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
 import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
-import heroImage from "../../../../public/images/happy_family_brush.png"; // Make sure to replace with the correct image path
-import { FaShieldAlt, FaMapMarkerAlt, FaChartBar, FaWifi, FaClock, FaBookOpen, FaPhoneAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/HeroSection.css";
 import { BsCheckCircleFill } from "react-icons/bs";
@@ -35,7 +33,7 @@ const HeroSection = () => {
                   </div>
                   za miran san roditelja i sigurnu budućnost dece.
                 </h1>
-                <p className="hero-subtitle">
+                <p className="hero-subtitle fw-bold">
                   Za roditelje na Balkanu koji žele da osiguraju bezbedno
                   iskustvo na internetu za svoju decu, KlikSigurnost nudi
                   sveobuhvatnu roditeljsku kontrolu i praćenje lokacije.

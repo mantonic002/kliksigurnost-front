@@ -81,9 +81,9 @@ const tabData = [
 
 const ProjectTabs = () => {
   const [activeTab, setActiveTab] = useState(tabData[0].title);
-  const tabRefs = useRef({}); // Store refs for buttons
+  const tabRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  const handleTabClick = (title) => {
+  const handleTabClick = (title: string) => {
     if (window.innerWidth < 768) {
       // On small screens, toggle the active tab
       setActiveTab((prevTab) => (prevTab === title ? "" : title));
@@ -166,7 +166,10 @@ const ProjectTabs = () => {
           <Col xs={12} className="d-md-none">
             <Nav variant="pills" className="flex-column">
               {tabData.map((tab) => (
-                <Nav.Item key={tab.title} ref={(el) => (tabRefs.current[tab.title] = el)}>
+                <Nav.Item
+                key={tab.title}
+                ref={(el: HTMLDivElement | null) => (tabRefs.current[tab.title] = el)}
+              >
                   <Nav.Link
                     eventKey={tab.title}
                     active={activeTab === tab.title}

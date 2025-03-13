@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { NavDropdown, Container } from "react-bootstrap";
 import { FaChevronDown } from "react-icons/fa"; // Import the arrow icon
+import { useState } from 'react';
 
 interface DropdownProps {
   isMobile: Boolean;

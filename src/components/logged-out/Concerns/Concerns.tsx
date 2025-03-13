@@ -1,20 +1,18 @@
-import React, { useState } from "react";
 import { Container, Row, Col, Accordion } from "react-bootstrap";
 import {
   FaShieldAlt,
   FaChartBar,
   FaClock,
-  FaCalendarAlt,
-  FaPhoneAlt,
   FaMapMarkerAlt,
-  FaBell,
-  FaWifi,
   FaBookOpen,
   FaLock,
+  FaWifi,
+  FaPhoneAlt
 } from "react-icons/fa";
 import studyImage from "../../../../public/images/happy_family_brush.png"; // Replace with actual image path
 import { AccordionEventKey } from "react-bootstrap/esm/AccordionContext";
 import "../../../styles/components/Concerns.css";
+import { useState } from 'react';
 
 const concernsData = [
   {
@@ -77,7 +75,7 @@ const Concerns = () => {
   const [activeKey, setActiveKey] = useState<AccordionEventKey | null>();
 
   const toggleAccordion = (key: AccordionEventKey) => {
-    setActiveKey((prevKey) => (prevKey === key ? null : key));
+    setActiveKey((prevKey: AccordionEventKey | null) => (prevKey === key ? null : key));
   };
 
   return (
