@@ -1,11 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { FaQuoteLeft } from "react-icons/fa";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/Testimonials.css";
+import "../../../styles/components/swiper-bundle.min.css";
 import { Container } from "react-bootstrap";
 import leftShape from "../../../../public/images/brush.png";
 
