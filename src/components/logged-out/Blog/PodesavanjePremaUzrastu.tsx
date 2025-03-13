@@ -45,15 +45,35 @@ const PodesavanjePremaUzrastu = () => {
 
         {/* Article Content */}
         <Row className="justify-content-center mt-4">
-          <Col lg={8}>
+          <Col lg={12}>
             <br />
+            <p>Pravilno podešavanje KlikSigurnost alata prema uzrastu vašeg deteta osigurava da ono ima bezbedno i prilagođeno internet iskustvo. Evo kako korak po korak podesiti filtere i ograničenja u zavisnosti od godina deteta:</p>
+            <br/>
             <h2>1. Deca uzrasta do 7 godina (predškolski uzrast)</h2>
-            <p>U ovom periodu, dete bi trebalo da ima strogo kontrolisan pristup internetu.</p>
+            <p>U ovom periodu, dete bi trebalo da ima strogo kontrolisan pristup internetu, isključivo na uređajima pod nadzorom roditelja.</p>
             <ListGroup variant="flush">
               <ListGroup.Item>❌ <b>Blokirati sav sadržaj osim proverenih edukativnih sajtova</b></ListGroup.Item>
+              <ul>
+                <li>Omogućiti pristup samo specifičnim sajtovima kao što su YouTube Kids, edukativne platforme i interaktivne igre za najmlađe.</li>
+                <li>Koristiti opciju „Dozvoljene stranice“ i ručno uneti samo bezbedne sajtove.</li>
+              </ul>
+              <br/>
               <ListGroup.Item>✅ <b>Postaviti vremenska ograničenja</b> (30–60 min dnevno, blokada posle 19h)</ListGroup.Item>
+              <ul>
+                <li>Omogućiti korišćenje interneta samo u unapred određenim terminima, npr. 30–60 minuta dnevno.</li>
+                <li>Blokirati pristup internetu posle 19h kako bi se izbegao negativan uticaj na san.</li>
+              </ul>
+              <br/>
               <ListGroup.Item>❌ <b>Blokirati društvene mreže</b> i aplikacije za interakciju</ListGroup.Item>
+              <ul>
+                <li>Onemogućiti pristup svim društvenim mrežama i aplikacijama koje omogućavaju interakciju sa nepoznatim osobama.</li>
+              </ul>
+              <br/>
               <ListGroup.Item>✅ <b>Omogućiti roditeljski nadzor</b> i izveštaje o aktivnostima</ListGroup.Item>
+              <ul>
+                <li>Aktivirati detaljne izveštaje o aktivnostima kako biste mogli da vidite koje sajtove dete pokušava da poseti.</li>
+              </ul>
+              <br/>
             </ListGroup>
             <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
 
