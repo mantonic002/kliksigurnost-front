@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import leftShape from "../../../public/images/brush.png";
+import leftShape from "/images/brush.png";
 
 
 const FeaturedComponent = () => {

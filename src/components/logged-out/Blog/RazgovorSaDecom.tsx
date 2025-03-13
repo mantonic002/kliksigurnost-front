@@ -1,7 +1,7 @@
 import { Container, Row, Col, Image, Badge } from "react-bootstrap";
 import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
-import psiholog from "../../../../public/images/psiholog2.png"
+import psiholog from "/images/psiholog2.png"
 
 const BizBlog = () => {
   return (

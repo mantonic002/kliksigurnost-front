@@ -9,7 +9,7 @@ import {
   FaWifi,
   FaPhoneAlt
 } from "react-icons/fa";
-import studyImage from "../../../../public/images/happy_family_brush.png"; // Replace with actual image path
+import studyImage from "/images/happy_family_brush.png"; // Replace with actual image path
 import { AccordionEventKey } from "react-bootstrap/esm/AccordionContext";
 import "../../../styles/components/Concerns.css";
 import { useState } from 'react';

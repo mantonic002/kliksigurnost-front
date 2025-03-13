@@ -6,17 +6,17 @@ import { Autoplay } from "swiper/modules"; // Import Autoplay module
 import "swiper/css";
 import "swiper/css/autoplay";
 import '../../../styles/components/Safety.css';
-import saftyImg from "../../../public/images/happy_family_brush.png";
+import saftyImg from "/images/happy_family_brush.png";
 
 const brands = [
-    "../../../public/images/clients-1.png",
-    "../../../public/images/clients-2.png",
-    "../../../public/images/clients-3.png",
-    "../../../public/images/clients-4.png",
-    "../../../public/images/clients-5.png",
-    "../../../public/images/clients-6.png",
-    "../../../public/images/clients-7.png",
-    "../../../public/images/clients-8.png"
+    "/images/clients-1.png",
+    "/images/clients-2.png",
+    "/public/images/clients-3.png",
+    "/public/images/clients-4.png",
+    "/public/images/clients-5.png",
+    "/public/images/clients-6.png",
+    "/public/images/clients-7.png",
+    "/public/images/clients-8.png"
 ];
 
 const SafetySection = () => {

@@ -4,7 +4,7 @@ import { AiFillBell, AiOutlineBell, AiOutlineMenu } from "react-icons/ai";
 import { Notification } from "../../models/Notification";
 import notificationService from "../../services/notification-service";
 import { CanceledError } from "axios";
-import logo from "../../../public/images/logo_final2.png";
+import logo from "/images/logo_final2.png";
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from "react-bootstrap";
 import { SidebarData } from "./SidebarData";
