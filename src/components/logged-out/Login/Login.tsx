@@ -36,6 +36,11 @@ function Login() {
     window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
+  const facebookLogin = () => {
+    window.location.href =
+      "http://localhost:8080/oauth2/authorization/facebook";
+  };
+
   const onSubmit = (data: FieldValues) => {
     setIsLoading(true);
     authService
@@ -118,7 +123,7 @@ function Login() {
 
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">
-              <FaFacebookF className="icon fb" />
+              <FaFacebookF onClick={facebookLogin} className="icon fb" />
               <FaGoogle onClick={googleLogin} className="icon google" />
               <FaLinkedinIn className="icon linkedin" />
             </div>
