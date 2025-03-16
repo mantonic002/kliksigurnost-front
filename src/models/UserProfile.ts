@@ -12,7 +12,7 @@ export interface UserProfile {
   authProvider: string;
 }
 
-interface CloudflareAccount {
+export interface CloudflareAccount {
   accountId: string;
   email: string;
   authorizationToken: string;

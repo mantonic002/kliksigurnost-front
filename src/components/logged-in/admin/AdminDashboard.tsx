@@ -30,11 +30,8 @@ const AdminDashboard = () => {
         <Tab eventKey="users" title="Users">
           <AdminUsers />
         </Tab>
-        <Tab eventKey="policies" title="Policies">
-          {/* <AdminPolicies /> */}
-        </Tab>
         <Tab eventKey="accounts" title="Cloudflare Accounts">
-          {/* <AdminAccounts /> */}
+          <AdminAccounts />
         </Tab>
         <Tab eventKey="appointments" title="Appointments">
           {/* <AdminAppointments /> */}
