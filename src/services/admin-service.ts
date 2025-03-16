@@ -1,3 +1,4 @@
+import { Appointment } from "../models/Appointment";
 import { CloudflareAccount, UserProfile } from "../models/UserProfile";
 import apiClient from "./api-client";
 
@@ -23,5 +24,24 @@ class AdminService {
       throw error;
     }
   }
+
+  async getAppointments(params: {
+    start: string;
+    end: string;
+  }): Promise<Appointment[]> {
+    try {
+      const response = await apiClient.get<Appointment[]>(
+        "/admin/appointments",
+        {
+          params: { ...params },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
+
 export default new AdminService();
