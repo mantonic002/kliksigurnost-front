@@ -1,7 +1,16 @@
+import { UserProfile } from "../models/UserProfile";
 import apiClient from "./api-client";
 
-const getAllUsers = () => {
-  return apiClient.get("/admin/users");
-};
+class AdminService {
+  // Method to fetch devices
+  async getAllUsers(): Promise<UserProfile[]> {
+    try {
+      const response = await apiClient.get<UserProfile[]>("/admin/users");
 
-export default { getAllUsers };
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+}
+export default new AdminService();

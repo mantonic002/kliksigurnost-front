@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs, Container, Spinner, Alert } from "react-bootstrap";
 import adminService from "../../../services/admin-service";
+import AdminUsers from "./AdminUsers";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
       <h2>Admin Dashboard</h2>
       <Tabs defaultActiveKey="users" className="mb-3">
         <Tab eventKey="users" title="Users">
-          {/* <AdminUsers /> */}
+          <AdminUsers />
         </Tab>
         <Tab eventKey="policies" title="Policies">
           {/* <AdminPolicies /> */}
