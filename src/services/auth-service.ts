@@ -56,6 +56,19 @@ class AuthService {
     return localStorage.getItem("email");
   }
 
+  getRole() {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        return decoded.role || "USER";
+      } catch (error) {
+        return "USER";
+      }
+    }
+    return "USER";
+  }
+
   setEmailFromToken() {
     const token = this.getToken();
     if (token) {

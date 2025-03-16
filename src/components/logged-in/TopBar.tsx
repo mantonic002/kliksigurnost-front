@@ -7,11 +7,11 @@ import { CanceledError } from "axios";
 import logo from "/images/logo_final2.png";
 import { useNavigate } from "react-router-dom";
 import { Offcanvas } from "react-bootstrap";
-import { SidebarData } from "./SidebarData";
+import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import "../../styles/components/TopBar.css";
 
 const TopBar = () => {
-  const { email, logout } = useAuth();
+  const { email, logout, role } = useAuth();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -23,7 +23,7 @@ const TopBar = () => {
 
   useEffect(() => {
     fetchNotificationCount();
-  }, []);
+  });
 
   useEffect(() => {
     if (isDropdownOpen) {
@@ -130,20 +130,38 @@ const TopBar = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <nav className="sidebar-nav">
-            <ul>
-              {SidebarData.map((item, index) => (
-                <li
-                  key={index}
-                  className="sidebar-item"
-                  onClick={() => {
-                    handleNavigation(item.link);
-                  }}
-                >
-                  <div className="sidebar-icon">{item.iconOutline}</div>
-                  <span>{item.title}</span>
-                </li>
-              ))}
-            </ul>
+            {role !== "ADMIN" && (
+              <ul>
+                {SidebarData.map((item, index) => (
+                  <li
+                    key={index}
+                    className="sidebar-item"
+                    onClick={() => {
+                      handleNavigation(item.link);
+                    }}
+                  >
+                    <div className="sidebar-icon">{item.iconOutline}</div>
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {role === "ADMIN" && (
+              <ul>
+                {SidebarDataAdmin.map((item, index) => (
+                  <li
+                    key={index}
+                    className="sidebar-item"
+                    onClick={() => {
+                      handleNavigation(item.link);
+                    }}
+                  >
+                    <div className="sidebar-icon">{item.iconOutline}</div>
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </nav>
         </Offcanvas.Body>
       </Offcanvas>

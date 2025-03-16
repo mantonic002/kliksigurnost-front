@@ -27,6 +27,7 @@ import PodesavanjePremaUzrastu from "./components/logged-out/Blog/PodesavanjePre
 import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom";
 import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici";
 import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
+import AdminDashboard from "./components/logged-in/admin/AdminDashboard";
 
 function App() {
   return (
@@ -46,6 +47,17 @@ const ProtectedRoute = () => {
 
   if (!isAuthenticated || !isTokenValid) {
     return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
+};
+
+const AdminRoute = () => {
+  const { isAuthenticated, role } = useAuth();
+  const isTokenValid = authService.isAuthenticated();
+
+  if (!isAuthenticated || !isTokenValid || role !== "ADMIN") {
+    return <Navigate to="/" replace />;
   }
 
   return <Outlet />;
@@ -72,6 +84,9 @@ const AppContent = () => {
       {/* Content takes up the remaining space */}
       <div className="Content">
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Signup />} />
+          <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route
             path="/"
             element={
@@ -85,9 +100,6 @@ const AppContent = () => {
               </>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Signup />} />
-          <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route
             path="/vodic"
             element={
@@ -161,6 +173,12 @@ const AppContent = () => {
             }
           />
 
+          {/* Admin routes */}
+          <Route element={<AdminRoute />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Route>
+
+          {/* Loged in user routes */}
           <Route element={<ProtectedRoute />}>
             {SidebarData.map((item, index) => {
               if (item.title === "Odjava") {
