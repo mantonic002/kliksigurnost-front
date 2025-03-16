@@ -1,4 +1,4 @@
-import { UserProfile } from "../models/UserProfile";
+import { CloudflareAccount, UserProfile } from "../models/UserProfile";
 import apiClient from "./api-client";
 
 class AdminService {
@@ -12,9 +12,11 @@ class AdminService {
     }
   }
 
-  async getAllAccounts(): Promise<UserProfile[]> {
+  async getAllAccounts(): Promise<CloudflareAccount[]> {
     try {
-      const response = await apiClient.get<UserProfile[]>("/admin/users");
+      const response = await apiClient.get<CloudflareAccount[]>(
+        "/admin/accounts"
+      );
 
       return response.data;
     } catch (error) {

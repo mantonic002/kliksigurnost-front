@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Tab, Tabs, Container, Spinner, Alert } from "react-bootstrap";
 import adminService from "../../../services/admin-service";
 import AdminUsers from "./AdminUsers";
+import AdminAccounts from "./AdminAccounts";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
