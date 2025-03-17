@@ -34,7 +34,10 @@ const Home = () => {
           <br/>
           <br/>
           <p className="regular-text">
-            Ako nakon gledanja videa imate bilo kakva pitanja ili nedoumice, naš tim tehničke podrške je tu da vam pomogne. Slobodno zakažite sastanak – rado ćemo vas voditi kroz svaki korak!
+            Ako nakon gledanja videa imate bilo kakva pitanja ili nedoumice, naš tim tehničke podrške je tu da vam pomogne. 
+          </p>  
+          <p className="regular-text">
+            Slobodno zakažite sastanak – rado ćemo vas voditi kroz svaki korak!
           </p>
           </div>
         </Col>
