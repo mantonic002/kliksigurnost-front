@@ -42,6 +42,29 @@ class AdminService {
       throw error;
     }
   }
+
+  async setupAccount(data: {
+    accountId: string;
+    email: string;
+    authorizationToken: string;
+  }): Promise<void> {
+    try {
+      await apiClient.post("/admin/accounts/setup", data);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async switchUserLock(userId: number): Promise<UserProfile> {
+    try {
+      const response = await apiClient.put<UserProfile>(
+        `/admin/users/lock/${userId}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new AdminService();

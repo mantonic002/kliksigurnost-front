@@ -5,7 +5,7 @@ import authService from "../../../services/auth-service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
 import "../../../styles/components/Signup.css";
@@ -106,6 +106,12 @@ function Login() {
                 )}
               </Form.Group>
 
+              {err && (
+                <Alert variant="danger" className="my-2">
+                  Pogrešan email ili lozinka
+                </Alert>
+              )}
+
               <Button className="signup-btn" type="submit">
                 {isLoading ? (
                   <div className="spinner-border"></div>
@@ -114,12 +120,6 @@ function Login() {
                 )}
               </Button>
             </Form>
-
-            {err && (
-              <div className="text-danger-alert center-alert">
-                Pogrešan email ili lozinka
-              </div>
-            )}
 
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">

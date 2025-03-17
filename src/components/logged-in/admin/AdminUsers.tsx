@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Table, Spinner, Alert } from "react-bootstrap";
+import { Table, Spinner, Alert, Dropdown } from "react-bootstrap";
 import adminService from "../../../services/admin-service";
 import { UserProfile } from "../../../models/UserProfile";
-import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck, AiOutlineClose, AiOutlineLock } from "react-icons/ai";
 import { AdminPolicies } from "./AdminPolicies";
 import React from "react";
 
@@ -11,6 +11,7 @@ const AdminUsers = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [openUserPolicies, setOpenUserPolicies] = useState<number>(-1);
+  const [lockingUserId, setLockingUserId] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -25,6 +26,22 @@ const AdminUsers = () => {
     };
     fetchUsers();
   }, []);
+
+  const handleLockUser = async (userId: number) => {
+    setLockingUserId(userId);
+    try {
+      const updatedUser = await adminService.switchUserLock(userId);
+      setUsers(
+        users.map((user) =>
+          user.id === userId ? { ...user, locked: updatedUser.locked } : user
+        )
+      );
+    } catch (err) {
+      setError("Failed to toggle user lock status");
+    } finally {
+      setLockingUserId(null);
+    }
+  };
 
   if (loading) return <Spinner animation="border" />;
   if (error) return <Alert variant="danger">{error}</Alert>;
@@ -42,6 +59,7 @@ const AdminUsers = () => {
             <th>Is setup</th>
             <th>Enabled</th>
             <th>Locked</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -66,11 +84,33 @@ const AdminUsers = () => {
                   {user.enabled ? <AiOutlineCheck /> : <AiOutlineClose />}
                 </td>
                 <td>{user.locked ? <AiOutlineCheck /> : <AiOutlineClose />}</td>
+                <td onClick={(e) => e.stopPropagation()}>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="link" id="dropdown-actions">
+                      actions
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        onClick={() => handleLockUser(user.id)}
+                        disabled={lockingUserId === user.id}
+                      >
+                        {lockingUserId === user.id ? (
+                          <Spinner size="sm" animation="border" />
+                        ) : (
+                          <>
+                            <AiOutlineLock />
+                            {user.locked ? "Unlock" : "Lock"} User
+                          </>
+                        )}
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </td>
               </tr>
 
               {openUserPolicies === user.id && (
                 <tr>
-                  <td colSpan={8} style={{ padding: 0 }}>
+                  <td colSpan={9} style={{ padding: 0 }}>
                     <div className="p-3" style={{ backgroundColor: "#f8f9fa" }}>
                       <AdminPolicies
                         policies={user.policies}
@@ -87,4 +127,5 @@ const AdminUsers = () => {
     </div>
   );
 };
+
 export default AdminUsers;

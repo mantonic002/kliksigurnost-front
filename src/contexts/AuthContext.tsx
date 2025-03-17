@@ -34,11 +34,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = () => {
     setIsAuthenticated(true);
     setEmail(authService.getEmail()!);
+    setRole(authService.getRole()!);
   };
   const logout = () => {
     authService.logout();
     setIsAuthenticated(false);
     setEmail("");
+    setRole("");
   };
 
   return (
