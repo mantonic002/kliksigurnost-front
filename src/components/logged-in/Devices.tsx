@@ -33,7 +33,7 @@ function Devices() {
         <div className="card card-disabled">
           <div className="card-item-overflow">
             <strong>
-              Dodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
+              Doodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
             </strong>
           </div>
           <div className="card-item-overflow">

@@ -1,0 +1,136 @@
+
+.home-container {
+    padding: 50px 0;
+    background-color: #f4f7fb;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  
+  .home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2a3d66;
+  }
+    
+  .title2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2a3d66;
+  }
+  .home-subtitle {
+    font-size: 1.2rem;
+    color: #5a6a8b;
+    margin-top: 20px;
+  }
+  
+  .home-btn {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .home-btn:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  .video-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .video-content {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .regular-text {
+    text-align: left;
+    color: black;
+    font-size: 24px;
+  }
+  .bubble-box {
+    background-color: white; /* Svetlo plava pastelna nijansa */
+    padding: 20px;
+    border-radius: 15px; /* Zaobljene ivice */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blaga senka */
+    display: inline-block;
+    max-width: 90%;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #2a3d66;
+    margin: 20px auto;
+  }
+
+  
+/* Stil za video */
+.video-wrapper {
+  padding: 15px; /* Ostavlja prostor unutar okvira */
+  max-width: 100%;
+}
+
+.video-content {
+  width: 100%; /* Video se prilagođava širini oblačića */
+  border-radius: 10px; /* Zaobljene ivice za video */
+  max-width: 100%;
+}
+  
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+
+}
+
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;  /* Kvadratna dimenzija */
+  height: 200px; /* Isto kao širina */
+  border-radius: 12px; /* Blago zaobljeni uglovi za moderan izgled */
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  border: none;
+  flex-direction: column; /* Ikonica iznad teksta */
+  flex: 1 0 30%; /* Svako dugme zauzima 30% širine, a zatim prelazi na sledeći red kada prostor nestane */
+  max-width: 200px; /* Ovaj limitira širinu svakog dugmeta */
+  margin-bottom: 10px; /* Razmak između redova */
+}
+
+.nav-button i {
+  font-size: 24px; /* Povećana veličina ikonica */
+  margin-bottom: 5px; /* Razmak između ikonice i teksta */
+}
+
+.nav-button:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+
+.nav-button .icon {
+  font-size: 2rem; /* Povećaj ovu vrednost po potrebi */
+}
+
