@@ -9,6 +9,9 @@ import { z } from "zod";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const schema = z.object({
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
@@ -230,19 +233,32 @@ export const PolicyForm = ({
     policyService
       .post<Policy>(policy)
       .then(() => {
-        const { req } = policyService.getAll<Policy>();
-        return req;
-      })
-      .then((res) => {
-        setPolicies(res.data);
+        setNewPolicies();
         reset();
         setSchedule({});
         setSelectedCategories([]);
         setSelectedApplications([]);
         setIsFormOpen(false);
+        toast.success("Policy created successfully!");
       })
-      .catch((error: any) => {
-        alert(error.message || "Failed to create policy");
+      .catch((error) => {
+        toast.error(error.response?.data || "Failed to create policy");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const setNewPolicies = () => {
+    const { req } = policyService.getAll<Policy>();
+    req
+      .then((res) => {
+        setPolicies(res.data);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message || "Failed to load policies");
       })
       .finally(() => {
         setIsLoading(false);

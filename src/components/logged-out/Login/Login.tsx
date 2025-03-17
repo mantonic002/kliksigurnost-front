@@ -5,11 +5,12 @@ import authService from "../../../services/auth-service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
 import "../../../styles/components/Signup.css";
 import "../../../styles/components/Forms.css";
+import { toast } from "react-toastify";
 
 const schema = z.object({
   email: z.string().email({ message: "Email nije validan" }),
@@ -21,7 +22,6 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 function Login() {
-  const [err, setErr] = useState("");
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -49,9 +49,8 @@ function Login() {
         login();
         navigate("/home");
       })
-      .catch((error) => {
-        setErr(error.message);
-        console.log(err);
+      .catch((_) => {
+        toast.error("Pogrešan email ili lozinka");
       })
       .finally(() => {
         setIsLoading(false);
@@ -105,12 +104,6 @@ function Login() {
                   <p className="text-danger">{errors.password.message}</p>
                 )}
               </Form.Group>
-
-              {err && (
-                <Alert variant="danger" className="my-2">
-                  Pogrešan email ili lozinka
-                </Alert>
-              )}
 
               <Button className="signup-btn" type="submit">
                 {isLoading ? (

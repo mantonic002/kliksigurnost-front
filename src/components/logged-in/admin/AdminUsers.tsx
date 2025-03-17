@@ -55,7 +55,7 @@ const AdminUsers = () => {
             <th>Email</th>
             <th>Role</th>
             <th>Auth Provider</th>
-            <th>Cloudflare account</th>
+            <th>Organization</th>
             <th>Is setup</th>
             <th>Enabled</th>
             <th>Locked</th>
@@ -76,7 +76,7 @@ const AdminUsers = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>{user.authProvider}</td>
-                <td>{user.cloudflareAccount?.accountId}</td>
+                <td>{user.organizationName}</td>
                 <td>
                   {user.isSetUp ? <AiOutlineCheck /> : <AiOutlineClose />}
                 </td>

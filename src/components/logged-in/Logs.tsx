@@ -11,11 +11,11 @@ import {
   AiOutlineCaretLeft,
   AiOutlineCaretRight,
 } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [lastLog, setLastLog] = useState<Log | null>(null);
   const [pageSize] = useState(25);
@@ -72,7 +72,7 @@ function Logs() {
       setHasNextPage(response.length === pageSize);
     } catch (error) {
       if (error instanceof CanceledError) return;
-      setError("Failed to fetch logs. Please try again.");
+      toast.error("Failed to fetch logs. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -117,7 +117,6 @@ function Logs() {
           <option value="blocked">Blocked</option>
         </select>
       </div>
-      {error && <div className="text-danger-alert">{error}</div>}
 
       <div className="table-container d-none d-md-block">
         <table className="logs-table">

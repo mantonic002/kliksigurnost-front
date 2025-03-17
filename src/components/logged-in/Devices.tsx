@@ -3,11 +3,11 @@ import { Device } from "../../models/Device";
 import deviceService from "../../services/device-service";
 import { CanceledError } from "axios";
 import { formatDate } from "./Helpers";
+import { toast } from "react-toastify";
 
 function Devices() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   // Fetch devices on component mount
   useEffect(() => {
@@ -20,7 +20,7 @@ function Devices() {
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        setError(error.message || "Failed to fetch devices");
+        toast.error(error.message || "Failed to fetch devices");
         setIsLoading(false);
       });
   }, []);
@@ -28,8 +28,6 @@ function Devices() {
   return (
     <div className="container">
       <h3 className="mb-4">Devices</h3>
-
-      {error && <div className="text-danger-alert">{error}</div>}
 
       <div className="card-container">
         <div className="card card-disabled">

@@ -11,6 +11,7 @@ const AdminAccounts = () => {
   const [formData, setFormData] = useState({
     accountId: "",
     email: "",
+    organizationName: "",
     authToken: "",
   });
   const [formError, setFormError] = useState("");
@@ -53,7 +54,12 @@ const AdminAccounts = () => {
       });
 
       setFormSuccess("Account setup successfully!");
-      setFormData({ accountId: "", email: "", authToken: "" });
+      setFormData({
+        accountId: "",
+        email: "",
+        organizationName: "",
+        authToken: "",
+      });
       // Refresh accounts list
       const response = await adminService.getAllAccounts();
       setAccs(response);
@@ -93,6 +99,19 @@ const AdminAccounts = () => {
                 type="email"
                 name="email"
                 value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+          </Col>
+
+          <Col md={4}>
+            <Form.Group controlId="organizationName" className="mb-3">
+              <Form.Label>Organization</Form.Label>
+              <Form.Control
+                type="text"
+                name="organizationName"
+                value={formData.organizationName}
                 onChange={handleInputChange}
                 required
               />
@@ -149,6 +168,7 @@ const AdminAccounts = () => {
           <tr>
             <th>ID</th>
             <th>Email</th>
+            <th>Organization</th>
             <th>AuthToken</th>
             <th>EnrollmentApplicationId</th>
             <th>EnrollmentPolicyId</th>
@@ -161,6 +181,7 @@ const AdminAccounts = () => {
               <tr>
                 <td>{acc.accountId}</td>
                 <td>{acc.email}</td>
+                <td>{acc.organizationName}</td>
                 <td>{acc.authorizationToken}</td>
                 <td>{acc.enrollmentApplicationId}</td>
                 <td>{acc.enrollmentPolicyId}</td>
