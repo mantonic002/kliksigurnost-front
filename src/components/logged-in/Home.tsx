@@ -58,7 +58,7 @@ const Home = () => {
       </Row>
 
       <Row className="justify-content-center mt-4">
-        <Col md={4} className="text-center">
+        <Col md={8} className="text-center">
           <div className="button-container">
             {SidebarData.map((item, index) => (
               <Button
