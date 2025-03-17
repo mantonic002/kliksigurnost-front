@@ -26,7 +26,7 @@ function Devices() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       <h3 className="mb-4">Devices</h3>
 
       <div className="card-container">

@@ -40,7 +40,7 @@ function PolicyManager() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       <h3 className="mb-4">Cloudflare Policies</h3>
 
       <PolicyForm

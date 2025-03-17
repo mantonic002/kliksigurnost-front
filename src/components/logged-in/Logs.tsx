@@ -105,7 +105,7 @@ function Logs() {
   };
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       <h3 className="mb-4">Logs</h3>
       <div className="mb-3">
         <select

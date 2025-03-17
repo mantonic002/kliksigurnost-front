@@ -54,10 +54,10 @@ const ProtectedRoute = () => {
 };
 
 const AdminRoute = () => {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, profile } = useAuth();
   const isTokenValid = authService.isAuthenticated();
 
-  if (!isAuthenticated || !isTokenValid || role !== "ADMIN") {
+  if (!isAuthenticated || !isTokenValid || profile?.role !== "ADMIN") {
     return <Navigate to="/" replace />;
   }
 

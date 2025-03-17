@@ -1,7 +1,19 @@
+import { UserProfile } from "../models/UserProfile";
 import apiClient from "./api-client";
 import { jwtDecode } from "jwt-decode";
 
 class AuthService {
+  async getProfile(): Promise<UserProfile> {
+    try {
+      const response = await apiClient.get("/auth/me");
+      localStorage.setItem("profile", JSON.stringify(response.data));
+      return response.data;
+    } catch (error) {
+      this.logout();
+      throw error;
+    }
+  }
+
   async register(email: string, password: string) {
     try {
       const response = await apiClient.post("/auth/register", {
@@ -23,7 +35,8 @@ class AuthService {
       if (response.data.token && response.data.refreshToken) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("refreshToken", response.data.refreshToken);
-        this.setEmailFromToken();
+        const profile = await this.getProfile();
+        localStorage.setItem("profile", JSON.stringify(profile));
       }
       return response;
     } catch (error) {
@@ -31,12 +44,18 @@ class AuthService {
     }
   }
 
-  loginGoogle(token: string, refreshToken: string) {
+  async loginGoogle(token: string, refreshToken: string) {
     if (token && refreshToken) {
       localStorage.setItem("token", token);
       localStorage.setItem("refreshToken", refreshToken);
-      this.setEmailFromToken();
+      const profile = await this.getProfile();
+      localStorage.setItem("profile", JSON.stringify(profile));
     }
+  }
+
+  getProfileFromStorage(): UserProfile | null {
+    const profile = localStorage.getItem("profile");
+    return profile ? JSON.parse(profile) : null;
   }
 
   logout() {

@@ -41,20 +41,17 @@ function Login() {
       "http://localhost:8080/oauth2/authorization/facebook";
   };
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = async (data: FieldValues) => {
     setIsLoading(true);
-    authService
-      .login(data.email, data.password)
-      .then(() => {
-        login();
-        navigate("/home");
-      })
-      .catch((_) => {
-        toast.error("Pogrešan email ili lozinka");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    try {
+      await authService.login(data.email, data.password);
+      await login();
+      navigate("/home");
+    } catch (_) {
+      toast.error("Pogrešan email ili lozinka");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

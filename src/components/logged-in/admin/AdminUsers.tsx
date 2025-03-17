@@ -47,7 +47,7 @@ const AdminUsers = () => {
   if (error) return <Alert variant="danger">{error}</Alert>;
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       <Table striped bordered hover>
         <thead>
           <tr>
