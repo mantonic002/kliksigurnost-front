@@ -3,6 +3,7 @@ import {
   AiFillMobile,
   AiFillSliders,
   AiOutlineBarChart,
+  AiOutlineCodepen,
   AiOutlineCustomerService,
   AiOutlineHome,
   AiOutlineLogout,
@@ -14,6 +15,7 @@ import Policies from "./PolicyManager";
 import Logs from "./Logs";
 import Devices from "./Devices";
 import AppointmentForm from "./AppointmentForm";
+import AdminDashboard from "./admin/AdminDashboard";
 
 interface SidebarItem {
   title: string;
@@ -57,6 +59,21 @@ export const SidebarData: SidebarItem[] = [
     iconOutline: <AiOutlineCustomerService />,
     element: <AppointmentForm />,
     link: "/support",
+  },
+  {
+    title: "Odjava",
+    iconOutline: <AiOutlineLogout />,
+    element: <></>,
+    link: "/logout",
+  },
+];
+
+export const SidebarDataAdmin: SidebarItem[] = [
+  {
+    title: "Admin",
+    iconOutline: <AiOutlineCodepen />,
+    element: <AdminDashboard />,
+    link: "/admin",
   },
   {
     title: "Odjava",

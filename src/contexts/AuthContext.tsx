@@ -3,6 +3,7 @@ import authService from "../services/auth-service";
 
 interface AuthContextType {
   email: string;
+  role: string;
   isAuthenticated: boolean;
   login: () => void;
   logout: () => void;
@@ -28,19 +29,24 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   );
 
   const [email, setEmail] = useState<string>(authService.getEmail()!);
+  const [role, setRole] = useState<string>(authService.getRole()!);
 
   const login = () => {
     setIsAuthenticated(true);
     setEmail(authService.getEmail()!);
+    setRole(authService.getRole()!);
   };
   const logout = () => {
     authService.logout();
     setIsAuthenticated(false);
     setEmail("");
+    setRole("");
   };
 
   return (
-    <AuthContext.Provider value={{ email, isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ email, role, isAuthenticated, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

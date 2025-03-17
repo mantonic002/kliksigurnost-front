@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -129,6 +129,17 @@ const Signup = () => {
                 <p className="text-danger">{errors.confirmPassword.message}</p>
               )}
 
+              {err && (
+                <Alert variant="danger" className="my-2">
+                  {err}
+                </Alert>
+              )}
+              {success && (
+                <Alert variant="success" className="my-2">
+                  {success}
+                </Alert>
+              )}
+
               <Button className="signup-btn" type="submit">
                 {isLoading ? (
                   <div className="spinner-border"></div>
@@ -137,11 +148,6 @@ const Signup = () => {
                 )}
               </Button>
             </Form>
-
-            {err && <div className="text-danger-alert center-alert">{err}</div>}
-            {success && (
-              <div className="text-success-alert center-alert">{success}</div>
-            )}
 
             <p className="or-text">Možete se registrovati i pomoću:</p>
             <div className="social-icons">
