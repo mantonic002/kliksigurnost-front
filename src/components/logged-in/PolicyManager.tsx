@@ -7,10 +7,10 @@ import { PolicyForm } from "./PolicyForm";
 import { useCategories } from "./useCategories";
 import { useApplications } from "./useApplications";
 import { PredefinedPolicyForm } from "./PolicyFormPredefined";
+import { toast } from "react-toastify";
 
 function PolicyManager() {
   const [policies, setPolicies] = useState<Policy[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { categoryOptions, categoryMap } = useCategories();
@@ -32,7 +32,7 @@ function PolicyManager() {
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        setError(error.message || "Failed to fetch policies");
+        toast.error(error.message || "Failed to fetch policies");
         setIsLoading(false);
       });
 
@@ -40,10 +40,8 @@ function PolicyManager() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       <h3 className="mb-4">Cloudflare Policies</h3>
-
-      {error && <div className="text-danger-alert">{error}</div>}
 
       <PolicyForm
         categoryOptions={categoryOptions}

@@ -11,7 +11,7 @@ import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import "../../styles/components/TopBar.css";
 
 const TopBar = () => {
-  const { email, logout, role } = useAuth();
+  const { profile, logout } = useAuth();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -114,7 +114,7 @@ const TopBar = () => {
             )}
           </div>
         )}
-        <div className="userEmail">{email}</div>
+        <div className="userEmail">{profile?.email}</div>
       </div>
 
       {/* Sidebar Offcanvas */}
@@ -130,7 +130,7 @@ const TopBar = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <nav className="sidebar-nav">
-            {role !== "ADMIN" && (
+            {profile?.role !== "ADMIN" && (
               <ul>
                 {SidebarData.map((item, index) => (
                   <li
@@ -146,7 +146,7 @@ const TopBar = () => {
                 ))}
               </ul>
             )}
-            {role === "ADMIN" && (
+            {profile?.role === "ADMIN" && (
               <ul>
                 {SidebarDataAdmin.map((item, index) => (
                   <li

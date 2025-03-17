@@ -7,12 +7,12 @@ import { Appointment } from "../../models/Appointment";
 import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
 import "../../styles/components/Appointment.css";
 import { formatDate, utcToLocal } from "./Helpers";
+import { toast } from "react-toastify";
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [err, setErr] = useState("");
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const AppointmentForm = () => {
         navigate("/home");
       })
       .catch((error) => {
-        setErr(error.response.data);
+        toast.error(error.response.data);
         console.log(error.response.data);
       });
   };
@@ -79,7 +79,7 @@ const AppointmentForm = () => {
   const availableSlotDates = availableSlots.map((slot) => new Date(slot));
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       {/* List of appointments */}
       <div className="appointment-list">
         {appointments.map((appointment) => {
@@ -128,8 +128,6 @@ const AppointmentForm = () => {
           </button>
         </div>
       </form>
-
-      {err && <div className="text-danger-alert">{err}</div>}
     </div>
   );
 };

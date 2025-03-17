@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -9,6 +9,7 @@ import authService from "../../../services/auth-service";
 
 import "../../../styles/components/Signup.css";
 import "../../../styles/components/Forms.css";
+import { toast } from "react-toastify";
 
 const schema = z
   .object({
@@ -33,8 +34,6 @@ const schema = z
 type FormData = z.infer<typeof schema>;
 
 const Signup = () => {
-  const [err, setErr] = useState("");
-  const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
 
@@ -53,14 +52,13 @@ const Signup = () => {
     authService
       .register(data.email, data.password)
       .then((res) => {
-        setSuccess(res.data.message);
-        setErr("");
+        toast.success(res.data.message);
       })
       .catch((error) => {
         if (error.response && error.response.data) {
-          setErr(error.response.data.error || "Registration failed");
+          toast.error(error.response.data.error || "Registration failed");
         } else {
-          setErr("An unknown error occurred");
+          toast.error("An unknown error occurred");
         }
         console.error("Registration error:", error);
       })
@@ -127,17 +125,6 @@ const Signup = () => {
               </Form.Group>
               {errors.confirmPassword && (
                 <p className="text-danger">{errors.confirmPassword.message}</p>
-              )}
-
-              {err && (
-                <Alert variant="danger" className="my-2">
-                  {err}
-                </Alert>
-              )}
-              {success && (
-                <Alert variant="success" className="my-2">
-                  {success}
-                </Alert>
               )}
 
               <Button className="signup-btn" type="submit">

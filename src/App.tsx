@@ -28,6 +28,7 @@ import RazgovorSaDecom from "./components/logged-out/Blog/RazgovorSaDecom";
 import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici";
 import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
 import AdminDashboard from "./components/logged-in/admin/AdminDashboard";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -53,10 +54,10 @@ const ProtectedRoute = () => {
 };
 
 const AdminRoute = () => {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, profile } = useAuth();
   const isTokenValid = authService.isAuthenticated();
 
-  if (!isAuthenticated || !isTokenValid || role !== "ADMIN") {
+  if (!isAuthenticated || !isTokenValid || profile?.role !== "ADMIN") {
     return <Navigate to="/" replace />;
   }
 
@@ -195,6 +196,18 @@ const AppContent = () => {
       </div>
 
       <Footer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

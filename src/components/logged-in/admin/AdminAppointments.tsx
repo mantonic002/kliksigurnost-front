@@ -36,7 +36,7 @@ const AdminAppointment = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container  mt-4">
       {/* List of appointments */}
       <div className="appointment-list">
         {appointments.map((appointment) => {

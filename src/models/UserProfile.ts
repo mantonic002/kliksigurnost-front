@@ -4,7 +4,7 @@ export interface UserProfile {
   id: number;
   email: string;
   isSetUp: Boolean;
-  cloudflareAccount: CloudflareAccount;
+  organizationName: string;
   policies: Policy[];
   role: string;
   locked: Boolean;
@@ -15,6 +15,7 @@ export interface UserProfile {
 export interface CloudflareAccount {
   accountId: string;
   email: string;
+  organizationName: string;
   authorizationToken: string;
   enrollmentApplicationId: string;
   enrollmentPolicyId: string;

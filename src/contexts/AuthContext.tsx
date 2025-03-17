@@ -1,11 +1,17 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import authService from "../services/auth-service";
+import { UserProfile } from "../models/UserProfile";
 
 interface AuthContextType {
-  email: string;
-  role: string;
+  profile: UserProfile | null;
   isAuthenticated: boolean;
-  login: () => void;
+  login: () => Promise<void>;
   logout: () => void;
 }
 
@@ -23,29 +29,56 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+// AuthContext.tsx
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     authService.isAuthenticated()
   );
+  const [profile, setProfile] = useState<UserProfile | null>(
+    authService.getProfileFromStorage()
+  );
 
-  const [email, setEmail] = useState<string>(authService.getEmail()!);
-  const [role, setRole] = useState<string>(authService.getRole()!);
-
-  const login = () => {
-    setIsAuthenticated(true);
-    setEmail(authService.getEmail()!);
-    setRole(authService.getRole()!);
+  const login = async () => {
+    try {
+      const profile = await authService.getProfile();
+      setProfile(profile);
+      setIsAuthenticated(true);
+    } catch (error) {
+      logout();
+      throw error; // Propagate the error
+    }
   };
+
   const logout = () => {
     authService.logout();
     setIsAuthenticated(false);
-    setEmail("");
-    setRole("");
+    setProfile(null);
   };
+
+  // Add useEffect to check auth state on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (authService.isAuthenticated()) {
+        try {
+          const profile = await authService.getProfile();
+          setProfile(profile);
+          setIsAuthenticated(true);
+        } catch (error) {
+          logout();
+        }
+      }
+    };
+    checkAuth();
+  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ email, role, isAuthenticated, login, logout }}
+      value={{
+        profile,
+        isAuthenticated,
+        login,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -9,21 +9,25 @@ const OAuthSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const accessToken = Cookies.get("access_token");
-    const refreshToken = Cookies.get("refresh_token");
+    const handleAuth = async () => {
+      const accessToken = Cookies.get("access_token");
+      const refreshToken = Cookies.get("refresh_token");
 
-    if (accessToken && refreshToken) {
-      authService.loginGoogle(accessToken, refreshToken);
+      if (accessToken && refreshToken) {
+        try {
+          await authService.loginGoogle(accessToken, refreshToken);
+          await login();
 
-      login();
+          Cookies.remove("access_token");
+          Cookies.remove("refresh_token");
+          navigate("/home");
+        } catch (error) {
+          navigate("/login");
+        }
+      }
+    };
 
-      // Clear cookies (optional, depending on your security requirements)
-      Cookies.remove("access_token");
-      Cookies.remove("refresh_token");
-
-      // Redirect to the desired page
-      navigate("/home");
-    }
+    handleAuth();
   }, [login, navigate]);
 
   return null;

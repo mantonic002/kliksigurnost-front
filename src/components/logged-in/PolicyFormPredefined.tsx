@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import predefinedPolicies from "../../data/predefined-policies.json";
+import { toast } from "react-toastify";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -80,15 +81,28 @@ export const PredefinedPolicyForm = ({
     policyService
       .post<Policy>(policy)
       .then(() => {
-        const { req } = policyService.getAll<Policy>();
-        return req;
+        setNewPolicies();
+        setSelectedPolicy(null);
+        reset();
+        toast.success("Policy created successfully!");
       })
+      .catch((error) => {
+        toast.error(error.response?.data || "Failed to create policy");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const setNewPolicies = () => {
+    const { req } = policyService.getAll<Policy>();
+    req
       .then((res) => {
         setPolicies(res.data);
-        reset();
-        setSelectedPolicy(null);
+        console.log(res);
       })
-      .catch((error: any) => {
+      .catch((error) => {
+        console.log(error);
         alert(error.message || "Failed to create policy");
       })
       .finally(() => {
