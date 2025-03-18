@@ -5,13 +5,13 @@ import { CanceledError } from "axios";
 import "../../styles/components/Logs.css";
 import { formatDate, utcToLocal } from "./Helpers";
 import React from "react";
-import {
-  AiFillCaretLeft,
-  AiFillCaretRight,
-  AiOutlineCaretLeft,
-  AiOutlineCaretRight,
-} from "react-icons/ai";
 import { toast } from "react-toastify";
+import {
+  BsCaretLeft,
+  BsCaretLeftFill,
+  BsCaretRight,
+  BsCaretRightFill,
+} from "react-icons/bs";
 
 function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -162,13 +162,13 @@ function Logs() {
           }
         >
           <div className="icon-wrapper">
-            <AiOutlineCaretLeft
+            <BsCaretLeft
               size={25}
               className={`action-blue outlined ${
                 logQueue.length === 0 ? "text-muted" : ""
               }`}
             />
-            <AiFillCaretLeft
+            <BsCaretLeftFill
               size={25}
               className={`action-blue filled ${
                 logQueue.length === 0 ? "text-muted" : ""
@@ -185,13 +185,13 @@ function Logs() {
           onClick={!hasNextPage ? undefined : () => handlePagination("next")}
         >
           <div className="icon-wrapper">
-            <AiOutlineCaretRight
+            <BsCaretRight
               size={25}
               className={`action-blue outlined ${
                 !hasNextPage ? "text-muted" : ""
               }`}
             />
-            <AiFillCaretRight
+            <BsCaretRightFill
               size={25}
               className={`action-blue filled ${
                 !hasNextPage ? "text-muted" : ""
