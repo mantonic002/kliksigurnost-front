@@ -19,6 +19,7 @@ import {
   BsPinMap,
   BsPinMapFill,
 } from "react-icons/bs";
+import GpsTracking from "./GpsTracking";
 
 interface SidebarItem {
   title: string;
@@ -62,7 +63,7 @@ export const SidebarData: SidebarItem[] = [
     title: "GPS lokacija",
     iconOutline: <BsPinMap />,
     iconFilled: <BsPinMapFill />,
-    element: <Logs />,
+    element: <GpsTracking />,
     link: "/lokacija",
   },
   {
