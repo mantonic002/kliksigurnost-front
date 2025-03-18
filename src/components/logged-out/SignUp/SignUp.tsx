@@ -79,7 +79,7 @@ const Signup = () => {
               budućnost svoje dece.
             </p>
             <Button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/prijava")}
               variant="outline-light"
               className="signin-btn"
             >

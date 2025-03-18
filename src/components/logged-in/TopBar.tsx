@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Offcanvas } from "react-bootstrap";
 import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import "../../styles/components/TopBar.css";
-import { BsBell, BsBellFill, BsList, BsMenuUp } from "react-icons/bs";
+import { BsBell, BsBellFill, BsList } from "react-icons/bs";
 
 const TopBar = () => {
   const { profile, logout } = useAuth();
@@ -63,9 +63,9 @@ const TopBar = () => {
 
   const handleNavigation = (link: string) => {
     handleSidebarClose();
-    if (link === "/logout") {
+    if (link === "/odjava") {
       logout();
-      navigate("/login");
+      navigate("/prijava");
       window.location.reload();
     } else {
       navigate(link);

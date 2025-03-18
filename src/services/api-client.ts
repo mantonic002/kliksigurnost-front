@@ -34,12 +34,16 @@ apiClient.interceptors.response.use(
       if (refreshToken) {
         try {
           // Make the refresh request using authClient (which doesn't have Authorization headers)
-          const response = await authClient.post("/auth/refresh", { refreshToken });
+          const response = await authClient.post("/auth/refresh", {
+            refreshToken,
+          });
           const newAccessToken = response.data.token;
           localStorage.setItem("token", newAccessToken);
 
           // Update the authorization header for future requests
-          apiClient.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;
+          apiClient.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${newAccessToken}`;
           originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
           return apiClient(originalRequest);
@@ -47,7 +51,7 @@ apiClient.interceptors.response.use(
           // Handle refresh token failure (e.g., logout the user)
           localStorage.removeItem("token");
           localStorage.removeItem("refreshToken");
-          window.location.href = "/login";
+          window.location.href = "/prijava";
         }
       }
     }

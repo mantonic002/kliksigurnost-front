@@ -20,9 +20,9 @@ const OAuthSuccess = () => {
 
           Cookies.remove("access_token");
           Cookies.remove("refresh_token");
-          navigate("/home");
+          navigate("/pocetna");
         } catch (error) {
-          navigate("/login");
+          navigate("/prijava");
         }
       }
     };

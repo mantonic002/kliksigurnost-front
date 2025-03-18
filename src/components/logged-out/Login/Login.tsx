@@ -46,7 +46,7 @@ function Login() {
     try {
       await authService.login(data.email, data.password);
       await login();
-      navigate("/home");
+      navigate("/pocetna");
     } catch (_) {
       toast.error("Pogrešan email ili lozinka");
     } finally {
@@ -66,7 +66,7 @@ function Login() {
               budućnost svoje dece.
             </p>
             <Button
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/registracija")}
               variant="outline-light"
               className="signin-btn"
             >

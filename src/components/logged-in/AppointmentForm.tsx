@@ -60,7 +60,7 @@ const AppointmentForm = () => {
 
     AppointmentService.createAppointment(appointment)
       .then(() => {
-        navigate("/home");
+        navigate("/pocetna");
       })
       .catch((error) => {
         toast.error(error.response.data);
