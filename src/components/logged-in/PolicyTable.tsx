@@ -1,7 +1,7 @@
 import { useState } from "react";
 import policyService from "../../services/policy-service";
 import { Policy, Schedule } from "../../models/Policy";
-import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
+import { BsFillTrashFill, BsTrash } from "react-icons/bs";
 
 interface PolicyTableProps {
   policies: Policy[];
@@ -140,11 +140,11 @@ export const PolicyTable = ({
                 >
                   {policy.id !== deletingPolicyLoading ? (
                     <div className="icon-wrapper">
-                      <AiOutlineDelete
-                        className="action-red outlined"
+                      <BsTrash className="action-red outlined" size={24} />
+                      <BsFillTrashFill
+                        className="action-red filled"
                         size={24}
                       />
-                      <AiFillDelete className="action-red filled" size={24} />
                     </div>
                   ) : (
                     <div className="action-red spinner-border"></div>

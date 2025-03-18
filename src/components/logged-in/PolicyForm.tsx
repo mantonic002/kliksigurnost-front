@@ -6,11 +6,11 @@ import policyService from "../../services/policy-service";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { AiOutlineClose } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BsXLg } from "react-icons/bs";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -279,7 +279,7 @@ export const PolicyForm = ({
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h5>Create new policy</h5>
-              <AiOutlineClose onClick={() => setIsFormOpen(false)} />
+              <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <div className="mb-3">

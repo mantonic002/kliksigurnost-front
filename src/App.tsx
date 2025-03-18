@@ -47,7 +47,7 @@ const ProtectedRoute = () => {
   const isTokenValid = authService.isAuthenticated();
 
   if (!isAuthenticated || !isTokenValid) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/prijava" replace />;
   }
 
   return <Outlet />;
@@ -85,8 +85,8 @@ const AppContent = () => {
       {/* Content takes up the remaining space */}
       <div className="Content">
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Signup />} />
+          <Route path="/prijava" element={<Login />} />
+          <Route path="/registracija" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
           <Route
             path="/"

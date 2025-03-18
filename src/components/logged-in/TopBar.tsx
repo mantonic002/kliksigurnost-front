@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { AiFillBell, AiOutlineBell, AiOutlineMenu } from "react-icons/ai";
 import { Notification } from "../../models/Notification";
 import notificationService from "../../services/notification-service";
 import { CanceledError } from "axios";
@@ -9,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Offcanvas } from "react-bootstrap";
 import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import "../../styles/components/TopBar.css";
+import { BsBell, BsBellFill, BsList } from "react-icons/bs";
 
 const TopBar = () => {
   const { profile, logout } = useAuth();
@@ -63,9 +63,9 @@ const TopBar = () => {
 
   const handleNavigation = (link: string) => {
     handleSidebarClose();
-    if (link === "/logout") {
+    if (link === "/odjava") {
       logout();
-      navigate("/login");
+      navigate("/prijava");
       window.location.reload();
     } else {
       navigate(link);
@@ -76,7 +76,7 @@ const TopBar = () => {
     <div className="TopBar">
       {/* Hamburger Menu Button */}
       <button className="sidebar-toggle" onClick={handleSidebarToggle}>
-        <AiOutlineMenu size={24} />
+        <BsList size={24} />
       </button>
 
       {/* Logo */}
@@ -93,8 +93,8 @@ const TopBar = () => {
       <div className="TopBar-element">
         <div className="action-icon" onClick={openNotifications}>
           <div className="icon-wrapper">
-            <AiOutlineBell size={25} className="action-blue outlined" />
-            <AiFillBell size={25} className="action-blue filled" />
+            <BsBell size={25} className="action-blue outlined" />
+            <BsBellFill size={25} className="action-blue filled" />
             <span className="notification-badge">{notificationCount}</span>
           </div>
         </div>

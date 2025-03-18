@@ -1,21 +1,24 @@
-import {
-  AiFillHome,
-  AiFillMobile,
-  AiFillSliders,
-  AiOutlineBarChart,
-  AiOutlineCodepen,
-  AiOutlineCustomerService,
-  AiOutlineHome,
-  AiOutlineLogout,
-  AiOutlineMobile,
-  AiOutlineSliders,
-} from "react-icons/ai";
 import Home from "./Home";
 import Policies from "./PolicyManager";
 import Logs from "./Logs";
 import Devices from "./Devices";
 import AppointmentForm from "./AppointmentForm";
 import AdminDashboard from "./admin/AdminDashboard";
+import {
+  BsActivity,
+  BsBarChartLine,
+  BsBarChartLineFill,
+  BsBoxArrowLeft,
+  BsFileRuled,
+  BsFileRuledFill,
+  BsHeadset,
+  BsHouse,
+  BsHouseFill,
+  BsPhone,
+  BsPhoneFill,
+  BsPinMap,
+  BsPinMapFill,
+} from "react-icons/bs";
 
 interface SidebarItem {
   title: string;
@@ -29,56 +32,64 @@ interface SidebarItem {
 export const SidebarData: SidebarItem[] = [
   {
     title: "Početna",
-    iconOutline: <AiOutlineHome />,
-    iconFilled: <AiFillHome />,
+    iconOutline: <BsHouse />,
+    iconFilled: <BsHouseFill />,
     element: <Home />,
-    link: "/home",
+    link: "/pocetna",
   },
   {
     title: "Pravila",
-    iconOutline: <AiOutlineSliders />,
-    iconFilled: <AiFillSliders />,
+    iconOutline: <BsFileRuled />,
+    iconFilled: <BsFileRuledFill />,
     element: <Policies />,
-    link: "/policies",
+    link: "/pravila",
   },
   {
     title: "Uredjaji",
-    iconOutline: <AiOutlineMobile />,
-    iconFilled: <AiFillMobile />,
+    iconOutline: <BsPhone />,
+    iconFilled: <BsPhoneFill />,
     element: <Devices />,
-    link: "/devices",
+    link: "/uredjaji",
   },
   {
     title: "Praćenje",
-    iconOutline: <AiOutlineBarChart />,
+    iconOutline: <BsBarChartLine />,
+    iconFilled: <BsBarChartLineFill />,
     element: <Logs />,
-    link: "/logs",
+    link: "/pracenje",
+  },
+  {
+    title: "GPS lokacija",
+    iconOutline: <BsPinMap />,
+    iconFilled: <BsPinMapFill />,
+    element: <Logs />,
+    link: "/lokacija",
   },
   {
     title: "Korisnička podrška",
-    iconOutline: <AiOutlineCustomerService />,
+    iconOutline: <BsHeadset />,
     element: <AppointmentForm />,
-    link: "/support",
+    link: "/podrska",
   },
   {
     title: "Odjava",
-    iconOutline: <AiOutlineLogout />,
+    iconOutline: <BsBoxArrowLeft />,
     element: <></>,
-    link: "/logout",
+    link: "/odjava",
   },
 ];
 
 export const SidebarDataAdmin: SidebarItem[] = [
   {
     title: "Admin",
-    iconOutline: <AiOutlineCodepen />,
+    iconOutline: <BsActivity />,
     element: <AdminDashboard />,
     link: "/admin",
   },
   {
     title: "Odjava",
-    iconOutline: <AiOutlineLogout />,
+    iconOutline: <BsBoxArrowLeft />,
     element: <></>,
-    link: "/logout",
+    link: "/odjava",
   },
 ];

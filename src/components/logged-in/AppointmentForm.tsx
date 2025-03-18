@@ -4,10 +4,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import AppointmentService from "../../services/AppointmentService";
 import { useNavigate } from "react-router-dom";
 import { Appointment } from "../../models/Appointment";
-import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
 import "../../styles/components/Appointment.css";
 import { formatDate, utcToLocal } from "./Helpers";
 import { toast } from "react-toastify";
+import { BsFillTrashFill, BsTrash } from "react-icons/bs";
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -60,7 +60,7 @@ const AppointmentForm = () => {
 
     AppointmentService.createAppointment(appointment)
       .then(() => {
-        navigate("/home");
+        navigate("/pocetna");
       })
       .catch((error) => {
         toast.error(error.response.data);
@@ -95,8 +95,8 @@ const AppointmentForm = () => {
                 onClick={() => handleDelete(appointment.id!)}
               >
                 <div className="icon-wrapper">
-                  <AiOutlineDelete className="action-red outlined" />
-                  <AiFillDelete className="action-red filled" />
+                  <BsTrash className="action-red outlined" />
+                  <BsFillTrashFill className="action-red filled" />
                 </div>
               </div>
             </div>

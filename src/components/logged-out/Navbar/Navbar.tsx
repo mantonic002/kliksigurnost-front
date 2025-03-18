@@ -2,7 +2,7 @@ import { Navbar, Nav, Button, Container, Offcanvas } from "react-bootstrap";
 import logo from "/images/logo_final2.png";
 import CustomDropdown from "./Dropdown";
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState } from "react";
 
 const NavigationBar = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
@@ -43,14 +43,14 @@ const NavigationBar = () => {
         {/* Buttons */}
         <div className="d-none d-lg-flex">
           <Button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/registracija")}
             variant="outline-primary"
             className="me-2 px-3"
           >
             Registracija in
           </Button>
           <Button
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/prijava")}
             variant="primary"
             className="px-3"
           >
@@ -96,14 +96,14 @@ const NavigationBar = () => {
                 Kontakt
               </Nav.Link>
               <Button
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("/registracija")}
                 variant="outline-primary"
                 className="me-2 px-4"
               >
                 Registracija in
               </Button>
               <Button
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/prijava")}
                 variant="primary"
                 className="px-4"
               >

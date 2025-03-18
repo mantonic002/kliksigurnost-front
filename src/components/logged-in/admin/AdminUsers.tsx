@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Table, Spinner, Alert, Dropdown } from "react-bootstrap";
 import adminService from "../../../services/admin-service";
 import { UserProfile } from "../../../models/UserProfile";
-import { AiOutlineCheck, AiOutlineClose, AiOutlineLock } from "react-icons/ai";
 import { AdminPolicies } from "./AdminPolicies";
 import React from "react";
+import { BsCheck, BsLock, BsXLg } from "react-icons/bs";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState<UserProfile[]>([]);
@@ -77,13 +77,9 @@ const AdminUsers = () => {
                 <td>{user.role}</td>
                 <td>{user.authProvider}</td>
                 <td>{user.organizationName}</td>
-                <td>
-                  {user.isSetUp ? <AiOutlineCheck /> : <AiOutlineClose />}
-                </td>
-                <td>
-                  {user.enabled ? <AiOutlineCheck /> : <AiOutlineClose />}
-                </td>
-                <td>{user.locked ? <AiOutlineCheck /> : <AiOutlineClose />}</td>
+                <td>{user.isSetUp ? <BsCheck /> : <BsXLg />}</td>
+                <td>{user.enabled ? <BsCheck /> : <BsXLg />}</td>
+                <td>{user.locked ? <BsCheck /> : <BsXLg />}</td>
                 <td onClick={(e) => e.stopPropagation()}>
                   <Dropdown>
                     <Dropdown.Toggle variant="link" id="dropdown-actions">
@@ -98,7 +94,7 @@ const AdminUsers = () => {
                           <Spinner size="sm" animation="border" />
                         ) : (
                           <>
-                            <AiOutlineLock />
+                            <BsLock />
                             {user.locked ? "Unlock" : "Lock"} User
                           </>
                         )}
