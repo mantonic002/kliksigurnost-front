@@ -4,6 +4,8 @@ import deviceService from "../../services/device-service";
 import { CanceledError } from "axios";
 import { formatDate } from "./Helpers";
 import { toast } from "react-toastify";
+import { Alert } from "react-bootstrap";
+import { BsInfoCircleFill } from "react-icons/bs";
 
 function Devices() {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -30,17 +32,19 @@ function Devices() {
       <h3 className="mb-4">Devices</h3>
 
       <div className="card-container">
-        <div className="card card-disabled">
+        <Alert className="card card-disabled">
           <div className="card-item-overflow">
+            <BsInfoCircleFill size={30} className="me-2" />
             <strong>
-              Doodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
+              Dodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
             </strong>
           </div>
+          <hr />
           <div className="card-item-overflow">
             Trenutno je moguće povezati novi uredjaj, ali na svaki uredjaj se
             primenjuju ista pravila
           </div>
-        </div>
+        </Alert>
         {isLoading ? (
           <div className="spinner-border"></div>
         ) : (
