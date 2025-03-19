@@ -29,6 +29,8 @@ import SkriveniRizici from "./components/logged-out/Blog/SkriveniRizici";
 import ZastoKlikSigurnost from "./components/logged-out/Blog/ZastoKlikSigurnost";
 import AdminDashboard from "./components/logged-in/admin/AdminDashboard";
 import { ToastContainer } from "react-toastify";
+import ForgottenPassword from "./components/logged-out/ForgottenPassword/ForgottenPassword";
+import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
 
 function App() {
   return (
@@ -88,6 +90,8 @@ const AppContent = () => {
           <Route path="/prijava" element={<Login />} />
           <Route path="/registracija" element={<Signup />} />
           <Route path="/oauth-success" element={<OAuthSuccess />} />
+          <Route path="/zaboravljena-lozinka" element={<ForgottenPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/"
             element={

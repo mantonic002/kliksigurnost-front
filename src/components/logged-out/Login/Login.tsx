@@ -110,7 +110,10 @@ function Login() {
                 )}
               </Button>
             </Form>
-
+            <a href="/zaboravljena-lozinka">
+              {" "}
+              Zaboravili ste lozinku? Promenite je ovde.
+            </a>
             <p className="or-text">Možete se prijaviti i pomoću:</p>
             <div className="social-icons">
               <FaFacebookF onClick={facebookLogin} className="icon fb" />
