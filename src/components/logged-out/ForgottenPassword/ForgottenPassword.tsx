@@ -45,49 +45,31 @@ function ForgottenPassword() {
   return (
     <section className="signup-section">
       <Container fluid className="signup-container">
-        <Row className="signup-box">
-          {/* Left Side */}
-          <Col md={6} className="signup-left">
-            <h2>Dobrodošli na KlikSigurnost</h2>
-            <p>
-              Alat koji roditelji širom regiona biraju za miran san i sigurnu
-              budućnost svoje dece.
-            </p>
-            <Button
-              onClick={() => navigate("/registracija")}
-              variant="outline-light"
-              className="signin-btn"
-            >
-              Nemate nalog? Registrujte se.
+        {/* Right Side */}
+        <Col md={6} className="signup-right">
+          <h2 className="signup-title">Zaboravljena lozinka</h2>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group controlId="email">
+              <Form.Control
+                {...register("email")}
+                type="email"
+                placeholder="E-mail adresa"
+                className="input-field"
+              />
+              {errors.email && (
+                <p className="text-danger">{errors.email.message}</p>
+              )}
+            </Form.Group>
+
+            <Button className="signup-btn" type="submit">
+              {isLoading ? (
+                <div className="spinner-border"></div>
+              ) : (
+                <>Potvrdi</>
+              )}
             </Button>
-          </Col>
-
-          {/* Right Side */}
-          <Col md={6} className="signup-right">
-            <h2 className="signup-title">Zaboravljena lozinka</h2>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <Form.Group controlId="email">
-                <Form.Control
-                  {...register("email")}
-                  type="email"
-                  placeholder="E-mail adresa"
-                  className="input-field"
-                />
-                {errors.email && (
-                  <p className="text-danger">{errors.email.message}</p>
-                )}
-              </Form.Group>
-
-              <Button className="signup-btn" type="submit">
-                {isLoading ? (
-                  <div className="spinner-border"></div>
-                ) : (
-                  <>Potvrdi</>
-                )}
-              </Button>
-            </Form>
-          </Col>
-        </Row>
+          </Form>
+        </Col>
       </Container>
     </section>
   );

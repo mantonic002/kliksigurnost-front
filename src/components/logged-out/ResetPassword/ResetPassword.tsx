@@ -63,50 +63,42 @@ function ResetPassword() {
   return (
     <section className="signup-section">
       <Container fluid className="signup-container">
-        <Row className="signup-box">
-          <Col md={6} className="signup-left">
-            {/* Your left side content */}
-          </Col>
+        <Col md={6} className="signup-right">
+          <h2 className="signup-title">Resetuj Lozinku</h2>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group controlId="password">
+              <Form.Control
+                {...register("password")}
+                type="password"
+                placeholder="Nova lozinka"
+                className="input-field"
+              />
+              {errors.password && (
+                <p className="text-danger">{errors.password.message}</p>
+              )}
+            </Form.Group>
 
-          <Col md={6} className="signup-right">
-            <h2 className="signup-title">Resetuj Lozinku</h2>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <Form.Group controlId="password">
-                <Form.Control
-                  {...register("password")}
-                  type="password"
-                  placeholder="Nova lozinka"
-                  className="input-field"
-                />
-                {errors.password && (
-                  <p className="text-danger">{errors.password.message}</p>
-                )}
-              </Form.Group>
+            <Form.Group controlId="confirmPassword">
+              <Form.Control
+                {...register("confirmPassword")}
+                type="password"
+                placeholder="Potvrdi novu lozinku"
+                className="input-field"
+              />
+              {errors.confirmPassword && (
+                <p className="text-danger">{errors.confirmPassword.message}</p>
+              )}
+            </Form.Group>
 
-              <Form.Group controlId="confirmPassword">
-                <Form.Control
-                  {...register("confirmPassword")}
-                  type="password"
-                  placeholder="Potvrdi novu lozinku"
-                  className="input-field"
-                />
-                {errors.confirmPassword && (
-                  <p className="text-danger">
-                    {errors.confirmPassword.message}
-                  </p>
-                )}
-              </Form.Group>
-
-              <Button className="signup-btn" type="submit">
-                {isLoading ? (
-                  <div className="spinner-border"></div>
-                ) : (
-                  <>Promeni Lozinku</>
-                )}
-              </Button>
-            </Form>
-          </Col>
-        </Row>
+            <Button className="signup-btn" type="submit">
+              {isLoading ? (
+                <div className="spinner-border"></div>
+              ) : (
+                <>Promeni Lozinku</>
+              )}
+            </Button>
+          </Form>
+        </Col>
       </Container>
     </section>
   );
