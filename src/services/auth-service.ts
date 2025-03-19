@@ -44,6 +44,29 @@ class AuthService {
     }
   }
 
+  async forgotPassword(email: string) {
+    try {
+      const response = await apiClient.post("/auth/forgot-password", {
+        email,
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async resetPassword(token: string, newPassword: string) {
+    try {
+      const response = await apiClient.post("/auth/reset-password", {
+        token,
+        newPassword,
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async loginGoogle(token: string, refreshToken: string) {
     if (token && refreshToken) {
       localStorage.setItem("token", token);

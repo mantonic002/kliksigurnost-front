@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 
 import "../../../styles/components/Signup.css";
 import "../../../styles/components/Forms.css";
@@ -14,17 +13,13 @@ import { toast } from "react-toastify";
 
 const schema = z.object({
   email: z.string().email({ message: "Email nije validan" }),
-  password: z
-    .string()
-    .min(5, { message: "Lozinka mora biti duža od 6 karaktera" }),
 });
 
 type FormData = z.infer<typeof schema>;
 
-function Login() {
+function ForgottenPassword() {
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
 
   const {
     register,
@@ -32,23 +27,16 @@ function Login() {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const googleLogin = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
-  };
-
-  const facebookLogin = () => {
-    window.location.href =
-      "http://localhost:8080/oauth2/authorization/facebook";
-  };
-
   const onSubmit = async (data: FieldValues) => {
     setIsLoading(true);
     try {
-      await authService.login(data.email, data.password);
-      await login();
-      navigate("/pocetna");
-    } catch (_) {
-      toast.error("Pogrešan email ili lozinka");
+      await authService.forgotPassword(data.email);
+      toast.success(
+        "Ako uneti mail postoji, poslali smo link za promjenu lozinke"
+      );
+      navigate("/");
+    } catch (error: any) {
+      toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -76,7 +64,7 @@ function Login() {
 
           {/* Right Side */}
           <Col md={6} className="signup-right">
-            <h2 className="signup-title">Prijavite se</h2>
+            <h2 className="signup-title">Zaboravljena lozinka</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group controlId="email">
                 <Form.Control
@@ -90,36 +78,14 @@ function Login() {
                 )}
               </Form.Group>
 
-              <Form.Group controlId="password">
-                <Form.Control
-                  {...register("password")}
-                  type="password"
-                  placeholder="Lozinka"
-                  className="input-field"
-                />
-                {errors.password && (
-                  <p className="text-danger">{errors.password.message}</p>
-                )}
-              </Form.Group>
-
               <Button className="signup-btn" type="submit">
                 {isLoading ? (
                   <div className="spinner-border"></div>
                 ) : (
-                  <>Prijava</>
+                  <>Potvrdi</>
                 )}
               </Button>
             </Form>
-            <a href="/zaboravljena-lozinka">
-              {" "}
-              Zaboravili ste lozinku? Promenite je ovde.
-            </a>
-            <p className="or-text">Možete se prijaviti i pomoću:</p>
-            <div className="social-icons">
-              <FaFacebookF onClick={facebookLogin} className="icon fb" />
-              <FaGoogle onClick={googleLogin} className="icon google" />
-              <FaLinkedinIn className="icon linkedin" />
-            </div>
           </Col>
         </Row>
       </Container>
@@ -127,4 +93,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgottenPassword;
