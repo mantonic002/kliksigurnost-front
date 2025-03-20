@@ -31,6 +31,7 @@ import AdminDashboard from "./components/logged-in/admin/AdminDashboard";
 import { ToastContainer } from "react-toastify";
 import ForgottenPassword from "./components/logged-out/ForgottenPassword/ForgottenPassword";
 import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
+import Pravila from "./components/logged-out/Blog/Pravila";
 
 function App() {
   return (
@@ -141,7 +142,7 @@ const AppContent = () => {
             path="/saveti/pravila"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <Pravila />
               </>
             }
           />
