@@ -45,6 +45,9 @@ const PodesavanjePremaUzrastu = () => {
         {/* Article Content */}
         <Row className="justify-content-center mt-4">
           <Col lg={12}>
+          <br/>
+            <p><b>Nakon što završite besplatnu registraciju, dobićete pristup detaljnom video vodiču koji vas korak po korak vodi kroz podešavanje KlikSigurnosti. 
+              Takođe, u tekstu ispod možete pronaći naše preporuke prilagođene uzrastu vašeg deteta, kako biste osigurali bezbedno i prilagođeno online okruženje.</b></p>
             <br />
             <p>Pravilno podešavanje KlikSigurnost alata prema uzrastu vašeg deteta osigurava da ono ima bezbedno i prilagođeno internet iskustvo. Evo kako korak po korak podesiti filtere i ograničenja u zavisnosti od godina deteta:</p>
             <br/>
