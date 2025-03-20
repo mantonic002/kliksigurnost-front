@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../../../services/auth-service";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form} from "react-bootstrap";
 import "../../../styles/components/Forms.css";
 import { toast } from "react-toastify";
 

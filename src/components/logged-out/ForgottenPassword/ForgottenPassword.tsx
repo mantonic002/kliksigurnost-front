@@ -4,8 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import authService from "../../../services/auth-service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../contexts/AuthContext";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form} from "react-bootstrap";
 
 import "../../../styles/components/Signup.css";
 import "../../../styles/components/Forms.css";
