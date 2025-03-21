@@ -81,7 +81,7 @@ function Navigation() {
               className="custom-dropdown-item"
             >
               <img src={logo} alt="" className="dropdown-icon" />
-              10 osnovnih pravila u vašem domu
+              10 osnovnih pravila u Vašem domu
             </NavDropdown.Item>
             <NavDropdown.Item
               as={Link}
