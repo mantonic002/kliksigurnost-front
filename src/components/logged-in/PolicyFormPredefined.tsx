@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import predefinedPolicies from "../../data/predefined-policies.json";
 import { toast } from "react-toastify";
+import { FaPlus } from "react-icons/fa";
+import { BsXLg } from "react-icons/bs";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -31,6 +33,7 @@ export const PredefinedPolicyForm = ({
     null
   );
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
@@ -84,6 +87,7 @@ export const PredefinedPolicyForm = ({
         setNewPolicies();
         setSelectedPolicy(null);
         reset();
+        setIsFormOpen(false);
         toast.success("Policy created successfully!");
       })
       .catch((error) => {
@@ -112,27 +116,48 @@ export const PredefinedPolicyForm = ({
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-        <div className="inline-form">
-          <label className="form-label">Predefined Policies:</label>
-          <Select
-            className="form-control"
-            name="predefinedPolicies"
-            options={predefinedPolicies.map((policy, index) => ({
-              value: index,
-              label: policy.name,
-            }))}
-            onChange={handlePolicyChange}
-            value={selectedPolicy}
-            getOptionLabel={(e) => e.label}
-            getOptionValue={(e) => String(e.value)}
-          />
+      <button
+        type="button"
+        className="btn btn-success"
+        onClick={() => setIsFormOpen(!isFormOpen)}
+      >
+        <FaPlus className="mb-1" /> Predefined policy
+      </button>
+      {isFormOpen && (
+        <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h5>Create new policy</h5>
+              <BsXLg onClick={() => setIsFormOpen(false)} />
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+              <div className="inline-form">
+                <label className="form-label">Predefined Policies:</label>
+                <Select
+                  className="form-control"
+                  name="predefinedPolicies"
+                  options={predefinedPolicies.map((policy, index) => ({
+                    value: index,
+                    label: policy.name,
+                  }))}
+                  onChange={handlePolicyChange}
+                  value={selectedPolicy}
+                  getOptionLabel={(e) => e.label}
+                  getOptionValue={(e) => String(e.value)}
+                />
 
-          <button type="submit" className="btn btn-success">
-            {isLoading ? <div className="spinner-border"></div> : <>Submit</>}
-          </button>
+                <button type="submit" className="btn btn-success">
+                  {isLoading ? (
+                    <div className="spinner-border"></div>
+                  ) : (
+                    <>Submit</>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      )}
     </div>
   );
 };
