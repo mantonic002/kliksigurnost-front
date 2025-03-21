@@ -31,6 +31,7 @@ import AdminDashboard from "./components/logged-in/admin/AdminDashboard";
 import { ToastContainer } from "react-toastify";
 import ForgottenPassword from "./components/logged-out/ForgottenPassword/ForgottenPassword";
 import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
+import Home from "./components/logged-in/Home";
 
 function App() {
   return (
@@ -95,14 +96,20 @@ const AppContent = () => {
           <Route
             path="/"
             element={
-              <>
-                <Hero />
-                <ProjectTabs />
-                <MadeEasy />
-                <Concerns />
-                <TestimonialSlider />
-                <Signup />
-              </>
+              isAuthenticated ? (
+                <>
+                  <Home />
+                </>
+              ) : (
+                <>
+                  <Hero />
+                  <ProjectTabs />
+                  <MadeEasy />
+                  <Concerns />
+                  <TestimonialSlider />
+                  <Signup />
+                </>
+              )
             }
           />
           <Route

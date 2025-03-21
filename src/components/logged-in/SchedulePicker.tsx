@@ -66,7 +66,8 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
 
   useEffect(() => {
     onChange(days);
-  }, [days, onChange]);
+    console.log("aa");
+  }, [days]);
 
   return (
     <div className="mb-3">

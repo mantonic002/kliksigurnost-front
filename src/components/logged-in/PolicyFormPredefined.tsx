@@ -127,12 +127,11 @@ export const PredefinedPolicyForm = ({
         <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5>Create new policy</h5>
+              <h5>Predefined policy</h5>
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <div className="inline-form">
-                <label className="form-label">Predefined Policies:</label>
                 <Select
                   className="form-control"
                   name="predefinedPolicies"
