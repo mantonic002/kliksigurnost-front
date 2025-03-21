@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSchedule } from "./useSchedule";
 import "../../styles/components/SchedulePicker.css";
-import { BsXLg } from "react-icons/bs";
+import { BsCalendar2Event, BsXLg } from "react-icons/bs";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;
@@ -66,7 +66,8 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
 
   useEffect(() => {
     onChange(days);
-  }, [days, onChange]);
+    console.log("aa");
+  }, [days]);
 
   return (
     <div className="mb-3">
@@ -75,7 +76,7 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
         className="btn btn-primary"
         onClick={() => setIsOpen(!isOpen)}
       >
-        Schedule
+        <BsCalendar2Event size={25} className="mr-2" /> Schedule
       </button>
 
       {isOpen && (

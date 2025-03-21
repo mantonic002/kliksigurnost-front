@@ -42,12 +42,15 @@ function PolicyManager() {
   return (
     <div className="container  mt-4">
       <h3 className="mb-4">Cloudflare Policies</h3>
+      <div className="inline-form">
+        <PolicyForm
+          categoryOptions={categoryOptions}
+          applicationOptions={applicationOptions}
+          setPolicies={setPolicies}
+        />
 
-      <PolicyForm
-        categoryOptions={categoryOptions}
-        applicationOptions={applicationOptions}
-        setPolicies={setPolicies}
-      />
+        <PredefinedPolicyForm setPolicies={setPolicies} />
+      </div>
       <PolicyTable
         policies={policies}
         isLoading={isLoading}
@@ -55,8 +58,6 @@ function PolicyManager() {
         applicationMap={applicationMap}
         onDelete={handleDelete}
       />
-
-      <PredefinedPolicyForm setPolicies={setPolicies} />
     </div>
   );
 }

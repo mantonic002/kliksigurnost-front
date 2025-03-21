@@ -56,6 +56,10 @@ export const PolicyForm = ({
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [formattedSchedule, setFormattedSchedule] = useState<
+    Record<string, string>
+  >({});
+
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
@@ -65,6 +69,20 @@ export const PolicyForm = ({
   }) => {
     setSchedule(newSchedule);
     setValue("schedule", newSchedule);
+
+    const formatted = Object.entries(newSchedule).reduce(
+      (acc: Record<string, string>, [day, timeSlots]) => {
+        if (day === "time_zone") {
+          acc[day] = timeSlots as string;
+        } else if (Array.isArray(timeSlots) && timeSlots.length > 0) {
+          acc[day] = formatTimeRanges(timeSlots);
+        }
+        return acc;
+      },
+      {}
+    );
+
+    setFormattedSchedule(formatted);
   };
 
   const handleCategoryChange = (selectedOptions: readonly SelectOption[]) => {
@@ -315,6 +333,19 @@ export const PolicyForm = ({
               </div>
 
               <SchedulePicker onChange={updateSchedule} />
+
+              {Object.keys(formattedSchedule).length > 0 && (
+                <div className="schedule-display">
+                  <h6>Selected Schedule:</h6>
+                  <ul>
+                    {Object.entries(formattedSchedule).map(([day, time]) => (
+                      <li key={day}>
+                        <strong>{day.toUpperCase()}:</strong> {time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <button type="submit" className="btn btn-success">
                 {isLoading ? (
