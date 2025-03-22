@@ -341,7 +341,10 @@ export const PolicyForm = ({
                   <ul>
                     {Object.entries(formattedSchedule).map(([day, time]) => (
                       <li key={day}>
-                        <strong>{day.toUpperCase()}:</strong> {time}
+                        {day !== "time_zone" && (
+                          <strong>{day.toUpperCase()}:</strong>
+                        )}
+                        {time}
                       </li>
                     ))}
                   </ul>
