@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useSchedule } from "./useSchedule";
 import "../../styles/components/SchedulePicker.css";
-import { BsCalendar2Event, BsXLg } from "react-icons/bs";
+import {
+  BsArrow90DegLeft,
+  BsCalendar2Event,
+  BsFloppy,
+  BsFloppyFill,
+  BsXLg,
+} from "react-icons/bs";
 
 interface SchedulePickerProps {
   onChange: (schedule: { [key: string]: string[] | string }) => void;
@@ -9,14 +15,35 @@ interface SchedulePickerProps {
 
 export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
   const { days, setDays } = useSchedule();
+  const [daysInitial, setDaysInitial] = useState(days);
   const [isOpen, setIsOpen] = useState(false);
-  const isDragging = useRef(false); // Use a ref for synchronous drag state
+  const isDragging = useRef(false);
 
-  const timeSlots = Array.from({ length: 48 }, (_, i) => {
+  const timeSlots = Array.from({ length: 49 }, (_, i) => {
     const hour = Math.floor(i / 2);
     const minute = i % 2 === 0 ? "00" : "30";
     return `${hour.toString().padStart(2, "0")}:${minute}`;
   });
+
+  // Handler for selecting/deselecting an entire day
+  const handleDayClick = (day: string) => {
+    setDays((prevDays) => {
+      const updatedDays = { ...prevDays };
+      if (Array.isArray(updatedDays[day])) {
+        // Check if all time slots are already selected
+        const allSelected = timeSlots.every((slot) =>
+          updatedDays[day].includes(slot)
+        );
+
+        if (allSelected) {
+          updatedDays[day] = [];
+        } else {
+          updatedDays[day] = [...timeSlots];
+        }
+      }
+      return updatedDays;
+    });
+  };
 
   const handleTimeSlotClick = (day: string, timeSlot: string) => {
     setDays((prevDays) => {
@@ -24,9 +51,11 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
       if (Array.isArray(updatedDays[day])) {
         const index = updatedDays[day].indexOf(timeSlot);
         if (index === -1) {
-          updatedDays[day].push(timeSlot);
+          updatedDays[day] = [...updatedDays[day], timeSlot];
         } else {
-          updatedDays[day].splice(index, 1);
+          updatedDays[day] = updatedDays[day].filter(
+            (slot) => slot !== timeSlot
+          );
         }
       }
       return updatedDays;
@@ -34,21 +63,20 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
   };
 
   const handleMouseDown = (day: string, timeSlot: string) => {
-    isDragging.current = true; // Set dragging state synchronously
-    handleTimeSlotClick(day, timeSlot); // Select the starting field
+    isDragging.current = true;
+    handleTimeSlotClick(day, timeSlot);
   };
 
   const handleMouseEnter = (day: string, timeSlot: string) => {
     if (isDragging.current) {
-      handleTimeSlotClick(day, timeSlot); // Select fields during drag
+      handleTimeSlotClick(day, timeSlot);
     }
   };
 
-  // Add global mouseUp listener
   useEffect(() => {
     const handleGlobalMouseUp = () => {
       if (isDragging.current) {
-        isDragging.current = false; // Reset dragging state
+        isDragging.current = false;
       }
     };
 
@@ -59,15 +87,24 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
     };
   }, []);
 
-  // Prevent default dragging behavior
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  useEffect(() => {
+  const handleClear = () => {
+    setDays(daysInitial);
+  };
+
+  const handleClose = () => {
+    setDays(daysInitial);
+    setIsOpen(false);
+  };
+
+  const handleSave = () => {
     onChange(days);
-    console.log("aa");
-  }, [days]);
+    setDaysInitial(days);
+    setIsOpen(false);
+  };
 
   return (
     <div className="mb-3">
@@ -84,7 +121,34 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
           <div className="modal-container">
             <div className="modal-header">
               <h5>Select Schedule</h5>
-              <BsXLg onClick={() => setIsOpen(false)} />
+              <div className="inline">
+                <div className="action-icon me-4" onClick={handleClear}>
+                  <div className="icon-wrapper">
+                    <BsArrow90DegLeft
+                      size={25}
+                      className="action-blue outlined"
+                    />
+                    <BsArrow90DegLeft
+                      size={25}
+                      className="action-blue filled"
+                    />
+                  </div>
+                </div>
+
+                <div className="action-icon me-4" onClick={handleSave}>
+                  <div className="icon-wrapper">
+                    <BsFloppy size={25} className="action-blue outlined" />
+                    <BsFloppyFill size={25} className="action-blue filled" />
+                  </div>
+                </div>
+
+                <div className="action-icon me-4" onClick={handleClose}>
+                  <div className="icon-wrapper">
+                    <BsXLg size={25} className="action-red outlined" />
+                    <BsXLg size={25} className="action-red filled" />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="time-slots-container">
@@ -93,7 +157,11 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
                 {Object.keys(days).map((day) => {
                   if (day === "time_zone") return null;
                   return (
-                    <div key={day} className="day-header">
+                    <div
+                      key={day}
+                      className="day-header"
+                      onClick={() => handleDayClick(day)} // Add click handler for entire day
+                    >
                       {day.charAt(0).toUpperCase() + day.slice(1)}
                     </div>
                   );

@@ -9,6 +9,7 @@ import predefinedPolicies from "../../data/predefined-policies.json";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
+import { useRequest } from "../../services/useRequest";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -34,11 +35,12 @@ export const PredefinedPolicyForm = ({
   );
 
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
+
+  const { isLoading, sendRequest } = useRequest();
 
   // Handle policy selection
   const handlePolicyChange = (selectedOption: SelectOption | null) => {
@@ -67,7 +69,6 @@ export const PredefinedPolicyForm = ({
 
   // Handle form submission
   const onSubmit = (data: PolicyFormData) => {
-    setIsLoading(true);
     const trafficString: string[] = [];
     if (data.trafficCategories) {
       trafficString.push(data.trafficCategories);
@@ -81,21 +82,15 @@ export const PredefinedPolicyForm = ({
       traffic: trafficString.join(" or "),
     };
 
-    policyService
-      .post<Policy>(policy)
-      .then(() => {
-        setNewPolicies();
-        setSelectedPolicy(null);
-        reset();
-        setIsFormOpen(false);
-        toast.success("Policy created successfully!");
-      })
-      .catch((error) => {
-        toast.error(error.response?.data || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    sendRequest(async () => {
+      await policyService.post<Policy>(policy);
+      setNewPolicies();
+      reset();
+      setSelectedPolicy(null);
+      reset();
+      setIsFormOpen(false);
+      toast.success("Policy created successfully!");
+    });
   };
 
   const setNewPolicies = () => {
@@ -103,14 +98,10 @@ export const PredefinedPolicyForm = ({
     req
       .then((res) => {
         setPolicies(res.data);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
-        alert(error.message || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
+        alert(error.message || "Failed to load policies");
       });
   };
 
@@ -145,7 +136,11 @@ export const PredefinedPolicyForm = ({
                   getOptionValue={(e) => String(e.value)}
                 />
 
-                <button type="submit" className="btn btn-success">
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  disabled={isLoading}
+                >
                   {isLoading ? (
                     <div className="spinner-border"></div>
                   ) : (
