@@ -7,10 +7,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FaPlus } from "react-icons/fa";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BsXLg } from "react-icons/bs";
+import { useRequest } from "../../services/useRequest";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -54,8 +54,6 @@ export const PolicyForm = ({
     []
   );
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
   const [formattedSchedule, setFormattedSchedule] = useState<
     Record<string, string>
   >({});
@@ -63,6 +61,8 @@ export const PolicyForm = ({
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
+
+  const { isLoading, sendRequest } = useRequest();
 
   const updateSchedule = (newSchedule: {
     [key: string]: string[] | string;
@@ -205,7 +205,6 @@ export const PolicyForm = ({
   };
 
   const onSubmit = (data: PolicyFormData) => {
-    setIsLoading(true);
     const formattedSchedule = Object.entries(data.schedule || {}).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
@@ -248,23 +247,16 @@ export const PolicyForm = ({
       schedule: formData.schedule,
     };
 
-    policyService
-      .post<Policy>(policy)
-      .then(() => {
-        setNewPolicies();
-        reset();
-        setSchedule({});
-        setSelectedCategories([]);
-        setSelectedApplications([]);
-        setIsFormOpen(false);
-        toast.success("Policy created successfully!");
-      })
-      .catch((error) => {
-        toast.error(error.response?.data || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    sendRequest(async () => {
+      await policyService.post<Policy>(policy);
+      setNewPolicies();
+      reset();
+      setSchedule({});
+      setSelectedCategories([]);
+      setSelectedApplications([]);
+      setIsFormOpen(false);
+      toast.success("Policy created successfully!");
+    });
   };
 
   const setNewPolicies = () => {
@@ -276,9 +268,6 @@ export const PolicyForm = ({
       .catch((error) => {
         console.log(error);
         toast.error(error.message || "Failed to load policies");
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   };
 
@@ -354,7 +343,11 @@ export const PolicyForm = ({
                 </div>
               )}
 
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={isLoading}
+              >
                 {isLoading ? (
                   <div className="spinner-border"></div>
                 ) : (
