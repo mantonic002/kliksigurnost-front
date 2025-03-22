@@ -5,13 +5,13 @@ interface Days {
 }
 
 export const defDays: Days = {
-  mon: [],
-  tue: [],
-  wed: [],
-  thu: [],
-  fri: [],
-  sat: [],
-  sun: [],
+  pon: [],
+  uto: [],
+  sre: [],
+  čet: [],
+  pet: [],
+  sub: [],
+  ned: [],
   time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 };
 
