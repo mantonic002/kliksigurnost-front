@@ -103,7 +103,6 @@ export const PredefinedPolicyForm = ({
     req
       .then((res) => {
         setPolicies(res.data);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import { SchedulePicker } from "./SchedulePicker";
 import { Policy } from "../../models/Policy";
@@ -272,7 +272,6 @@ export const PolicyForm = ({
     req
       .then((res) => {
         setPolicies(res.data);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -282,6 +281,14 @@ export const PolicyForm = ({
         setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (!isFormOpen) {
+      reset();
+      setSchedule({});
+      setFormattedSchedule({});
+    }
+  }, [isFormOpen]);
 
   return (
     <div>
