@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import categoriesData from "../../data/content-categories.json";
+import categoriesData from "../../data/content-categories-srb.json";
 
 export const useCategories = () => {
   const { categoryOptions, categoryMap } = useMemo(() => {

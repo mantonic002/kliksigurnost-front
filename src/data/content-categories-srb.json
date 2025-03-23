@@ -1,0 +1,1277 @@
+{
+    "categories": [
+      {
+        "name": "Teme za odrasle",
+        "id": 2,
+        "description": "Sajtovi koji se odnose na pornografiju, golotinju, seksualnost i druge teme za odrasle.",
+        "class": "free",
+        "subcategories": [
+          {
+            "name": "Teme za odrasle",
+            "id": 67,
+            "description": "Sajtovi koji se odnose na teme za odrasle koje nisu uključene u druge kategorije kao što su pornografija i golotinja.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Golotinja",
+            "id": 125,
+            "description": "Sajtovi koji prikazuju golotinju.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Pornografija",
+            "id": 133,
+            "description": "Sajtovi koji prikazuju pornografiju.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ]
+      },
+      {
+        "name": "Biznis i ekonomija",
+        "id": 3,
+        "description": "Sajtovi koji se odnose na biznis, ekonomiju, finansije, obrazovanje, nauku i tehnologiju.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Biznis",
+            "id": 75,
+            "description": "Sajtovi koji se odnose na biznis.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kriptovalute",
+            "id": 183,
+            "description": "Sajtovi koji se odnose na različite vrste online valuta (kao što je Bitcoin), kako ih koristiti i vesti o promenama njihove vrednosti.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Ekonomija i finansije",
+            "id": 89,
+            "description": "Sajtovi koji se odnose na ekonomiju i finansije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Obrazovanje",
+        "id": 6,
+        "description": "Sajtovi koji se odnose na obrazovni sadržaj, a nisu uključeni u druge kategorije kao što su nauka, tehnologija ili obrazovne institucije.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Obrazovanje",
+            "id": 90,
+            "description": "Sajtovi koji se odnose na obrazovni sadržaj, a nisu uključeni u druge kategorije kao što su nauka, tehnologija ili obrazovne institucije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Obrazovne institucije",
+            "id": 91,
+            "description": "Sajtovi koji se odnose na obrazovne institucije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Nauka",
+            "id": 144,
+            "description": "Sajtovi koji se odnose na naučne teme kao što su biologija, hemija, fizika, geografija, botanika itd.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Svemir i astronomija",
+            "id": 150,
+            "description": "Sajtovi koji se odnose na svemir i astronomiju.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Zabava",
+        "id": 7,
+        "description": "Sajtovi koji se odnose na zabavu, a nisu uključeni u druge kategorije kao što su stripovi, audio streaming, video streaming itd.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Umetnost",
+            "id": 70,
+            "description": "Sajtovi koji sadrže informacije o umetnosti i zanatstvu.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Audio streaming",
+            "id": 74,
+            "description": "Sajtovi koji nude streaming ili preuzimanje audio sadržaja.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Crtani filmovi i anime",
+            "id": 76,
+            "description": "Sajtovi koji sadrže informacije, slike i vesti o crtanim filmovima i animeu.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Stripovi",
+            "id": 79,
+            "description": "Sajtovi koji se odnose na stripove.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Zabava",
+            "id": 92,
+            "description": "Sajtovi koji se odnose na zabavu, a nisu uključeni u druge kategorije kao što su stripovi, audio streaming, video streaming itd.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Lepa umetnost",
+            "id": 96,
+            "description": "Sajtovi koji se odnose na lepu umetnost.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Igre",
+            "id": 100,
+            "description": "Sajtovi koji se odnose na igre.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kućni video/DVD",
+            "id": 106,
+            "description": "Sajtovi gde ljudi mogu kupiti DVD-ove.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Humor",
+            "id": 107,
+            "description": "Sajtovi koji hostuju humoristički sadržaj.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Časopisi",
+            "id": 116,
+            "description": "Sajtovi koji nude ili promovišu digitalne časopise.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Filmovi",
+            "id": 120,
+            "description": "Sajtovi koji sadrže informacije i vesti o filmovima.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Muzika",
+            "id": 121,
+            "description": "Sajtovi koji sadrže informacije i vesti o muzici, bendovima, koncertima i fanovima.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Vesti i mediji",
+            "id": 122,
+            "description": "Sajtovi koji se odnose na vesti i medije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Paranormalno",
+            "id": 127,
+            "description": "Sajtovi koji se odnose na paranormalne aktivnosti i fenomene.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Radio",
+            "id": 139,
+            "description": "Sajtovi koji nude streaming ili preuzimanje radio programa.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Televizija",
+            "id": 156,
+            "description": "Sajtovi koji se odnose na televizijske vesti i programe.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Video streaming",
+            "id": 164,
+            "description": "Sajtovi koji nude streaming ili preuzimanje video sadržaja.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Kockanje",
+        "id": 8,
+        "description": "Sajtovi koji omogućavaju online kockanje.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Kockanje",
+            "id": 99,
+            "description": "Sajtovi koji omogućavaju online kockanje.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Vlada i politika",
+        "id": 9,
+        "description": "Sajtovi koji se odnose na vladu i politiku.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Vlada",
+            "id": 101,
+            "description": "Sajtovi koji se odnose na vladu.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Politika, zagovaranje i vladine teme",
+            "id": 137,
+            "description": "Sajtovi koji se odnose na politiku, imigraciju, pravna pitanja koja nisu uključena u kategoriju Vlada.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Zdravlje",
+        "id": 10,
+        "description": "Sajtovi koji sadrže informacije o zdravlju i fitnesu.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Zdravlje i fitnes",
+            "id": 103,
+            "description": "Sajtovi koji se odnose na zdravlje i fitnes.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Seksualno obrazovanje",
+            "id": 146,
+            "description": "Sajtovi koji se odnose na seksualno obrazovanje.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Informacione tehnologije",
+        "id": 11,
+        "description": "Sajtovi koji se odnose na informacionu tehnologiju.",
+        "class": "premium",
+        "subcategories": null,
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Internet komunikacija",
+        "id": 12,
+        "description": "Sajtovi koji se koriste za komunikaciju, kao što su čet, mejl itd.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Čet",
+            "id": 77,
+            "description": "Sajtovi gde korisnici mogu da četuju u realnom vremenu, a nisu uključeni u druge kategorije kao što je instant messaging.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Forumi",
+            "id": 98,
+            "description": "Sajtovi sa online forumima.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Informaciona bezbednost",
+            "id": 108,
+            "description": "Sajtovi koji se odnose na informacionu bezbednost.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Dopisivanje",
+            "id": 110,
+            "description": "Sajtovi koji omogućavaju instant messaging funkcije kao što su čet aplikacije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Internet telefonija i VOIP",
+            "id": 111,
+            "description": "Sajtovi koji omogućavaju telefonske pozive putem interneta.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Poruke",
+            "id": 118,
+            "description": "Sajtovi koji omogućavaju slanje poruka, a nisu uključeni u kategoriju Instant messaging.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "P2P",
+            "id": 126,
+            "description": "Sajtovi koji pružaju klijentski softver za omogućavanje peer-to-peer deljenja i transfera fajlova.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Lični blogovi",
+            "id": 129,
+            "description": "Sajtovi koji hostuju lične blogove.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Deljenje fotografija",
+            "id": 172,
+            "description": "Sajtovi koji se koriste za deljenje fotografija.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Veb mejl",
+            "id": 168,
+            "description": "Sajtovi koji pružaju naloge e-pošte.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Pretraga poslova i karijera",
+        "id": 13,
+        "description": "Sajtovi koji omogućavaju pretragu poslova i karijera.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Pretraga poslova i karijera",
+            "id": 113,
+            "description": "Sajtovi koji omogućavaju pretragu poslova i karijera.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Vojska i oružje",
+        "id": 33,
+        "description": "Sajtovi koji se odnose na vojsku ili oružje.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Vojska",
+            "id": 179,
+            "description": "Sajtovi koje sponzorišu ili se odnose na oružane snage. Uključujući i zvanične sajtove nacionalnih oružanih snaga, kao i sajtove koji nisu povezani sa zvaničnim nacionalnim oružanim snagama i istorijom vojske.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Oružje",
+            "id": 166,
+            "description": "Sajtovi koji se odnose na oružje.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Upitni sadržaji",
+        "id": 17,
+        "description": "Sajtovi koji se odnose na hakovanje, piratstvo, vulgarnost i druge upitne aktivnosti.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Obmanjujući oglasi",
+            "id": 85,
+            "description": "Sajtovi koji lažiraju klikove, prikaze, konverzije za oglase.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Droga",
+            "id": 87,
+            "description": "Sajtovi koji se odnose na upotrebu i promociju ilegalnih droga ili ilegalnu upotrebu propisanih lekova.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Hakovanje",
+            "id": 102,
+            "description": "Sajtovi koji promovišu neovlašćeni pristup putem hakovanja.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Militantnost, mržnja i ekstremizam",
+            "id": 157,
+            "description": "Sajtovi koji sadrže govor mržnje i ekstremizam.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Vulgarnost",
+            "id": 135,
+            "description": "Sajtovi koji sadrže vulgarnost, ali nisu uključeni u kategorije kao što su teme za odrasle.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Upitne aktivnosti",
+            "id": 138,
+            "description": "Sajtovi koji se odnose na upitne informacije i slike.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Školsko varanje (prepisivanje)",
+            "id": 180,
+            "description": "Sajtovi koji nude sadržaj ili usluge za omogućavanje učenika da varaju u školi i na ispitima, uključujući odgovore na testove, unapred napisane eseje i usluge za pisanje eseja i domaćih zadataka.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Nepouzdane informacije",
+            "id": 162,
+            "description": "Sajtovi koji mogu sadržati lažne informacije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Nekretnine",
+        "id": 18,
+        "description": "Sajtovi koji se odnose na nekretnine.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Nekretnine",
+            "id": 140,
+            "description": "Sajtovi koji se odnose na nekretnine.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Religija",
+        "id": 19,
+        "description": "Sajtovi koji se odnose na religiju, alternativnu religiju, religijske učenja, religijske grupe i spiritualnost.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Religija",
+            "id": 142,
+            "description": "Sajtovi koji se odnose na religiju, alternativnu religiju, religijske učenja, religijske grupe i spiritualnost.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Bezbednosni rizici",
+        "id": 32,
+        "description": "Sajtovi koji nisu potvrđeni kao zlonamerni, ali imaju veću verovatnoću da sadrže bezbednosne pretnje.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Novi domeni",
+            "id": 169,
+            "description": "Domeni koji su nedavno registrovani.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Novo viđeni domeni",
+            "id": 177,
+            "description": "Domeni koji su nedavno prvi put razrešeni.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Parkirani i na prodaju domeni",
+            "id": 128,
+            "description": "Domeni koji su parkirani ili na prodaju. Ovi domeni mogu biti zlonamerni.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Bezbednosne pretnje",
+        "id": 21,
+        "description": "Sajtovi koji sadrže bezbednosne pretnje kao što su malware, phishing, kriptominiranje i druge bezbednosne pretnje.",
+        "class": "free",
+        "subcategories": [
+          {
+            "name": "Anonimizatori",
+            "id": 68,
+            "description": "Sajtovi koji omogućavaju korisnicima da surfuju internetom anonimno.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Ugradnja brenda",
+            "id": 178,
+            "description": "Ugradnja spoljnih imena brendova.",
+            "class": "free",
+            "subcategories": null,
+            "beta": true,
+            "deprecated": false
+          },
+          {
+            "name": "Komandno i kontrolno & Botnet",
+            "id": 80,
+            "description": "Sajtovi koji su upitani od strane kompromitovanih uređaja za ekstrakciju informacija ili potencijalno inficiranje drugih uređaja u mreži.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kriptominiranje",
+            "id": 83,
+            "description": "Sajtovi koji miniraju kriptovalute koristeći korisničke računarske resurse.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "DGA domeni",
+            "id": 176,
+            "description": "Domeni koji su detektovani kao generisani algoritmima viđenim u malware-u.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "DNS tuneliranje",
+            "id": 175,
+            "description": "Domeni sa detektovanom DNS tunelirajućom aktivnošću.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Malware",
+            "id": 117,
+            "description": "Sajtovi koji hostuju zlonamerni sadržaj i druge kompromitovane sajtove.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Phishing",
+            "id": 131,
+            "description": "Domeni koji su poznati po krađi ličnih informacija.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Privatne IP adrese",
+            "id": 134,
+            "description": "Domeni koji se razrešavaju na privatne IP adrese.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Spam",
+            "id": 151,
+            "description": "Sajtovi koji su poznati po ciljanju korisnika neželjenim nagradnim igrama, anketama i reklamama.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Spyware",
+            "id": 153,
+            "description": "Sajtovi koji su poznati po distribuciji ili sadržaju koda koji prikazuje neželjene reklame ili prikuplja korisničke informacije bez znanja korisnika.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Kupovina i aukcije",
+        "id": 22,
+        "description": "Sajtovi koji se odnose na e-trgovinu, kupone, kupovinu, aukcije i prodavnice.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Aukcije i prodavnice",
+            "id": 73,
+            "description": "Sajtovi koji omogućavaju online aukcije i prodavnice.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kuponi",
+            "id": 82,
+            "description": "Sajtovi koji sadrže informacije o kupovima i ponudama.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "E-trgovina",
+            "id": 88,
+            "description": "Sajtovi gde možete kupiti proizvode online.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kupovina",
+            "id": 148,
+            "description": "Sajtovi koji pružaju informacije o kupovini.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Društvo i porodica",
+        "id": 23,
+        "description": "Sajtovi koji se odnose na društvo i životni stil.",
+        "class": "premium",
+        "subcategories": null,
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Društvo i životni stil",
+        "id": 24,
+        "description": "Sajtovi koji se odnose na životni stil, a nisu uključeni u druge kategorije kao što su moda, hrana i piće itd.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Alkohol",
+            "id": 181,
+            "description": "Sajtovi koji se odnose na alkoholna pića, uključujući pivo, vino, liker i koktele.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Umetnost i zanatstvo",
+            "id": 71,
+            "description": "Sajtovi koji sadrže informacije o umetnosti i zanatstvu.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Astrologija",
+            "id": 72,
+            "description": "Sajtovi koji se odnose na astrologiju.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Telesna umetnost",
+            "id": 173,
+            "description": "Sajtovi koji prikazuju slike telesne umetnosti.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Odeća",
+            "id": 78,
+            "description": "Sajtovi koji prikazuju ili prodaju odeću.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Upoznavanje i veze",
+            "id": 84,
+            "description": "Sajtovi koji pružaju društveno umrežavanje za odrasle, uključujući online usluge za upoznavanje.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Digitalne razglednice",
+            "id": 86,
+            "description": "Sajtovi koji se odnose na digitalne razglednice.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Moda",
+            "id": 94,
+            "description": "Sajtovi koji se odnose na informacije i vesti o modi i modnim dodacima.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Hrana i piće",
+            "id": 97,
+            "description": "Sajtovi koji se odnose na restorane, barove, taverne i pubove; uključujući vodiče i recenzije restorana.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Hobiji i interesi",
+            "id": 104,
+            "description": "Sajtovi koji se odnose na opšte hobije i interese.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Dom i bašta",
+            "id": 105,
+            "description": "Sajtovi koji se odnose na dom i baštu.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Životni stil",
+            "id": 114,
+            "description": "Sajtovi koji se odnose na životni stil, a nisu uključeni u druge kategorije kao što su moda, hrana i piće itd.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Donji veš i bikini",
+            "id": 174,
+            "description": "Sajtovi koji prikazuju slike donjeg veša i bikini.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Roditeljstvo",
+            "id": 93,
+            "description": "Sajtovi koji se odnose na porodicu i roditeljstvo.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Ljubimci",
+            "id": 130,
+            "description": "Sajtovi koji se odnose na ljubimce.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Fotografija",
+            "id": 132,
+            "description": "Sajtovi koji sadrže informacije, vesti i slike o fotografiji.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Profesionalno umrežavanje",
+            "id": 136,
+            "description": "Sajtovi koji omogućavaju ljudima da formiraju profesionalne veze.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Seksualnost",
+            "id": 147,
+            "description": "Sajtovi koji se odnose na umetničke seksualne izraze.",
+            "class": "free",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Društvene mreže",
+            "id": 149,
+            "description": "Sajtovi koji omogućavaju interakciju i umrežavanje između ljudi.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Kupaći kostimi",
+            "id": 154,
+            "description": "Sajtovi koji prikazuju slike kupaćih kostima.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Duvan",
+            "id": 158,
+            "description": "Sajtovi o upotrebi duvana i srodnih proizvoda i reklama.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Sport",
+        "id": 25,
+        "description": "Sajtovi koji se odnose na sport i rekreaciju.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Sport",
+            "id": 152,
+            "description": "Sajtovi koji se odnose na sport i rekreaciju.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Tehnologija",
+        "id": 26,
+        "description": "Sajtovi koji se odnose na tehnologiju, a nisu uključeni u kategoriju nauke.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "API-ji",
+            "id": 69,
+            "description": "Domeni koji su API endpointi.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Veštačka inteligencija",
+            "id": 184,
+            "description": "Sajtovi koji se odnose na AI algoritme, modele mašinskog učenja, AI aplikacije u različitim industrijama i najnovija dostignuća u ovoj oblasti.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Sadržajni serveri",
+            "id": 81,
+            "description": "Domeni koji serviraju sadržaj.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Deljenje fajlova",
+            "id": 95,
+            "description": "Sajtovi koji omogućavaju deljenje fajlova između korisnika.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Informaciona tehnologija",
+            "id": 109,
+            "description": "Sajtovi koji se odnose na informacionu tehnologiju.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Vesti, portal i pretraga",
+            "id": 123,
+            "description": "Sajtovi koji su agregatori vesti.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Pretraživači",
+            "id": 145,
+            "description": "Sajtovi koji omogućavaju korisnicima da pretražuju sadržaj koristeći ključne reči.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Tehnologija",
+            "id": 155,
+            "description": "Sajtovi koji se odnose na tehnologiju, a nisu uključeni u kategoriju nauke.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Prevodilac",
+            "id": 159,
+            "description": "Sajtovi koji omogućavaju prevode.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Putovanja",
+        "id": 27,
+        "description": "Sajtovi koji sadrže informacije o listinzima, rezervacijama, uslugama za putovanja.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Putovanja",
+            "id": 160,
+            "description": "Sajtovi koji sadrže informacije o listinzima, rezervacijama i uslugama za putovanja.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Vozila",
+        "id": 28,
+        "description": "Sajtovi koji se odnose na vozila, automobile, uključujući vesti, recenzije i druge informacije za hobiste.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Vozila",
+            "id": 163,
+            "description": "Sajtovi koji se odnose na vozila, automobile, uključujući vesti, recenzije i druge informacije za hobiste.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Nasilje",
+        "id": 29,
+        "description": "Sajtovi koji prikazuju ili promovišu nasilan sadržaj.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Nasilje",
+            "id": 165,
+            "description": "Sajtovi koji prikazuju ili promovišu nasilan sadržaj.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Vreme",
+        "id": 30,
+        "description": "Sajtovi koji se odnose na vreme.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Vreme",
+            "id": 167,
+            "description": "Sajtovi koji se odnose na vreme.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      },
+      {
+        "name": "Razno",
+        "id": 15,
+        "description": "Sajtovi koji nisu uključeni u navedene bezbednosne i sadržajne kategorije.",
+        "class": "premium",
+        "subcategories": [
+          {
+            "name": "Login ekrani",
+            "id": 115,
+            "description": "Sajtovi koji prikazuju login ekrane, a nisu uključeni u druge kategorije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Razno",
+            "id": 119,
+            "description": "Razni domeni koji ne spadaju u druge kategorije.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Sajtovi bez sadržaja",
+            "id": 124,
+            "description": "Sajtovi koji nemaju sadržaj.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Preusmeravajuči sajtovi",
+            "id": 141,
+            "description": "Domeni koji preusmeravaju na druge sajtove.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          },
+          {
+            "name": "Nedostupni sajtovi",
+            "id": 161,
+            "description": "Domeni koji se razrešavaju na nedostupne IP adrese.",
+            "class": "premium",
+            "subcategories": null,
+            "beta": false,
+            "deprecated": false
+          }
+        ],
+        "beta": false,
+        "deprecated": false
+      }
+    ]
+  }
