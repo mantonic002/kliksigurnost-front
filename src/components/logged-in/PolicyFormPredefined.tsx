@@ -89,7 +89,7 @@ export const PredefinedPolicyForm = ({
       setSelectedPolicy(null);
       reset();
       setIsFormOpen(false);
-      toast.success("Policy created successfully!");
+      toast.success("Pravilo uspešno kreirano!");
     });
   };
 
@@ -101,7 +101,10 @@ export const PredefinedPolicyForm = ({
       })
       .catch((error) => {
         console.log(error);
-        alert(error.message || "Failed to load policies");
+        alert(
+          error.message ||
+            "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
+        );
       });
   };
 
@@ -112,13 +115,13 @@ export const PredefinedPolicyForm = ({
         className="btn btn-success"
         onClick={() => setIsFormOpen(!isFormOpen)}
       >
-        <FaPlus className="mb-1" /> Predefined policy
+        <FaPlus className="mb-1" /> Predefinisana pravila
       </button>
       {isFormOpen && (
         <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5>Predefined policy</h5>
+              <h5>Izaberite predefinisano pravilo</h5>
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
@@ -132,6 +135,7 @@ export const PredefinedPolicyForm = ({
                   }))}
                   onChange={handlePolicyChange}
                   value={selectedPolicy}
+                  placeholder="Izaberite"
                   getOptionLabel={(e) => e.label}
                   getOptionValue={(e) => String(e.value)}
                 />
@@ -144,7 +148,7 @@ export const PredefinedPolicyForm = ({
                   {isLoading ? (
                     <div className="spinner-border"></div>
                   ) : (
-                    <>Submit</>
+                    <>Sačuvaj</>
                   )}
                 </button>
               </div>

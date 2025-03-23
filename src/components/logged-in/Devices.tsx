@@ -22,14 +22,14 @@ function Devices() {
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        toast.error(error.message || "Failed to fetch devices");
+        toast.error(error.message || "Neuspešno dobavljanje uređaja");
         setIsLoading(false);
       });
   }, []);
 
   return (
     <div className="container  mt-4">
-      <h3 className="mb-4">Devices</h3>
+      <h3 className="mb-4">Uređaji</h3>
 
       <div className="card-container">
         <Alert className="card card-disabled">
@@ -51,13 +51,14 @@ function Devices() {
           devices.map((device) => (
             <div key={device.id} className="card">
               <div className="card-item">
-                <strong>Manufacturer:</strong> {device.manufacturer}
+                <strong>Proizvođač:</strong> {device.manufacturer}
               </div>
               <div className="card-item">
                 <strong>Model:</strong> {device.model}
               </div>
               <div className="card-item">
-                <strong>Last Seen:</strong> {formatDate(device.lastSeenTime)}
+                <strong>Zadnji put viđen:</strong>{" "}
+                {formatDate(device.lastSeenTime)}
               </div>
               <div className="card-item">
                 <strong>Email:</strong> {device.email}

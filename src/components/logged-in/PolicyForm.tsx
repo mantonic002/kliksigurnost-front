@@ -255,7 +255,7 @@ export const PolicyForm = ({
       setSelectedCategories([]);
       setSelectedApplications([]);
       setIsFormOpen(false);
-      toast.success("Policy created successfully!");
+      toast.success("Pravilo uspešno kreirano!");
     });
   };
 
@@ -267,7 +267,10 @@ export const PolicyForm = ({
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message || "Failed to load policies");
+        toast.error(
+          error.message ||
+            "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
+        );
       });
   };
 
@@ -286,23 +289,24 @@ export const PolicyForm = ({
         className="btn btn-primary"
         onClick={() => setIsFormOpen(!isFormOpen)}
       >
-        <FaPlus className="mb-1" /> New policy
+        <FaPlus className="mb-1" /> Novo pravilo
       </button>
       {isFormOpen && (
         <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5>Create new policy</h5>
+              <h5>Kreirajte novo pravilo</h5>
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <div className="mb-3">
-                <label className="form-label">Categories:</label>
+                <label className="form-label">Kategorije:</label>
                 <Select
                   isMulti
                   name="categories"
                   options={categoryOptions}
                   onChange={handleCategoryChange}
+                  placeholder="Izaberite"
                   closeMenuOnSelect={false}
                   value={categoryOptions.filter((option) =>
                     selectedCategories.includes(option.value)
@@ -313,12 +317,13 @@ export const PolicyForm = ({
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Applications:</label>
+                <label className="form-label">Aplikacije:</label>
                 <Select
                   isMulti
                   name="applications"
                   options={applicationOptions}
                   onChange={handleApplicationChange}
+                  placeholder="Izaberite"
                   closeMenuOnSelect={false}
                   value={applicationOptions.filter((option) =>
                     selectedApplications.includes(option.value)
@@ -332,11 +337,14 @@ export const PolicyForm = ({
 
               {Object.keys(formattedSchedule).length > 0 && (
                 <div className="schedule-display">
-                  <h6>Selected Schedule:</h6>
+                  <h6>Izabrani raspored:</h6>
                   <ul>
                     {Object.entries(formattedSchedule).map(([day, time]) => (
                       <li key={day}>
-                        <strong>{day.toUpperCase()}:</strong> {time}
+                        {day !== "time_zone" && (
+                          <strong>{day.toUpperCase()}:</strong>
+                        )}
+                        {time}
                       </li>
                     ))}
                   </ul>
@@ -351,7 +359,7 @@ export const PolicyForm = ({
                 {isLoading ? (
                   <div className="spinner-border"></div>
                 ) : (
-                  <>Submit</>
+                  <>Sačuvaj</>
                 )}
               </button>
             </form>

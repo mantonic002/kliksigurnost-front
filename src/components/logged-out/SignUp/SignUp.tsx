@@ -136,7 +136,7 @@ const Signup = () => {
               </Button>
             </Form>
 
-            <p className="or-text">Možete se registrovati i pomoću:</p>
+            <p className="or-text mt-4">Možete se registrovati i pomoću:</p>
             <div className="social-icons">
               <FaFacebookF className="icon fb" />
               <FaGoogle onClick={googleLogin} className="icon google" />

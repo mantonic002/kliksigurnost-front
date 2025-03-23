@@ -30,7 +30,6 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
     setDays((prevDays) => {
       const updatedDays = { ...prevDays };
       if (Array.isArray(updatedDays[day])) {
-        // Check if all time slots are already selected
         const allSelected = timeSlots.every((slot) =>
           updatedDays[day].includes(slot)
         );
@@ -113,16 +112,20 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
         className="btn btn-primary"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <BsCalendar2Event size={25} className="mr-2" /> Schedule
+        <BsCalendar2Event size={25} className="mr-2" /> Raspored
       </button>
 
       {isOpen && (
         <div className="modal-overlay">
           <div className="modal-container">
             <div className="modal-header">
-              <h5>Select Schedule</h5>
+              <h5>Izaberite raspored</h5>
               <div className="inline">
-                <div className="action-icon me-4" onClick={handleClear}>
+                <div
+                  className="action-icon me-4"
+                  onClick={handleClear}
+                  title="Vrati"
+                >
                   <div className="icon-wrapper">
                     <BsArrow90DegLeft
                       size={25}
@@ -135,14 +138,22 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
                   </div>
                 </div>
 
-                <div className="action-icon me-4" onClick={handleSave}>
+                <div
+                  className="action-icon me-4"
+                  onClick={handleSave}
+                  title="Sačuvaj"
+                >
                   <div className="icon-wrapper">
                     <BsFloppy size={25} className="action-blue outlined" />
                     <BsFloppyFill size={25} className="action-blue filled" />
                   </div>
                 </div>
 
-                <div className="action-icon me-4" onClick={handleClose}>
+                <div
+                  className="action-icon me-4"
+                  onClick={handleClose}
+                  title="Zatvori"
+                >
                   <div className="icon-wrapper">
                     <BsXLg size={25} className="action-red outlined" />
                     <BsXLg size={25} className="action-red filled" />
@@ -151,16 +162,26 @@ export const SchedulePicker = ({ onChange }: SchedulePickerProps) => {
               </div>
             </div>
 
+            <p className="disabled small">
+              (Kliknite na naziv dana da izaberete celi dan.)
+            </p>
+
             <div className="time-slots-container">
               <div className="d-flex">
                 <div className="time-label"></div>
                 {Object.keys(days).map((day) => {
                   if (day === "time_zone") return null;
+                  const isSelected = timeSlots.every((slot) =>
+                    days[day].includes(slot)
+                  );
                   return (
                     <div
                       key={day}
-                      className="day-header"
-                      onClick={() => handleDayClick(day)} // Add click handler for entire day
+                      className={`day-header ${
+                        isSelected ? "selected-day" : ""
+                      }`}
+                      onClick={() => handleDayClick(day)}
+                      title="Kliknite da izaberete celi dan"
                     >
                       {day.charAt(0).toUpperCase() + day.slice(1)}
                     </div>

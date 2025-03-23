@@ -50,7 +50,7 @@ const AppointmentForm = () => {
     e.preventDefault();
 
     if (!selectedDate) {
-      alert("Please select a date and time.");
+      alert("Molimo izaberite datum i vreme.");
       return;
     }
 
@@ -76,6 +76,7 @@ const AppointmentForm = () => {
 
   return (
     <div className="container mt-4">
+      {appointments.length > 0 && <strong>Vaši termini:</strong>}
       {/* List of appointments */}
       <div className="appointment-list">
         {appointments.map((appointment) => {
@@ -101,8 +102,9 @@ const AppointmentForm = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
+        <strong>Zakažite termin:</strong>
         <div className="inline-form">
-          <label className="form-label">Date and Time:</label>
+          <label className="form-label">Datum i vreme:</label>
           <DatePicker
             className="form-control"
             selected={selectedDate}
@@ -120,7 +122,7 @@ const AppointmentForm = () => {
             required
           />
           <button type="submit" className="btn btn-primary">
-            Schedule Appointment
+            Zakažite termin
           </button>
         </div>
       </form>

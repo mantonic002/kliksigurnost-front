@@ -72,7 +72,7 @@ function Logs() {
       setHasNextPage(response.length === pageSize);
     } catch (error) {
       if (error instanceof CanceledError) return;
-      toast.error("Failed to fetch logs. Please try again.");
+      toast.error("Neuspešno dobavljanje logova. Molimo pokušajte kasnije");
     } finally {
       setIsLoading(false);
     }
@@ -112,9 +112,9 @@ function Logs() {
           className="form-select"
           onChange={(e) => handleResolverDecisionChange(e.target.value)}
         >
-          <option value="">All</option>
-          <option value="allowed">Allowed</option>
-          <option value="blocked">Blocked</option>
+          <option value="">Sve</option>
+          <option value="allowed">Dozvoljeno</option>
+          <option value="blocked">Blokirano</option>
         </select>
       </div>
 
@@ -122,11 +122,11 @@ function Logs() {
         <table className="logs-table">
           <thead>
             <tr>
-              <th>Query Name</th>
-              <th>Date & Time</th>
-              <th>Application Name</th>
-              <th>Category Names</th>
-              <th>Resolver Decision</th>
+              <th>Link</th>
+              <th>Datum i vreme</th>
+              <th>Ime aplikacije</th>
+              <th>Ime kategorija</th>
+              <th>Dozvoljeno/Blokirano</th>
             </tr>
           </thead>
           <tbody>
@@ -177,7 +177,7 @@ function Logs() {
           </div>
         </div>
 
-        <span className="mx-2">Page {currentPage}</span>
+        <span className="mx-2">Stranica {currentPage}</span>
 
         {/* Right Arrow */}
         <div
@@ -232,19 +232,19 @@ const LogItem = React.memo(({ log }: { log: Log }) => (
       )}
     </div>
     <div className="log-card-item">
-      <strong>Query Name:</strong> {log.queryName}
+      <strong>Link:</strong> {log.queryName}
     </div>
     <div className="log-card-item">
-      <strong>Date & Time:</strong> {formatDate(utcToLocal(log.datetime))}
+      <strong>Datum i vreme:</strong> {formatDate(utcToLocal(log.datetime))}
     </div>
     {log.matchedApplicationName && (
       <div className="log-card-item">
-        <strong>Application Name:</strong> {log.matchedApplicationName}
+        <strong>Ime aplikacije:</strong> {log.matchedApplicationName}
       </div>
     )}
     {log.categoryNames.length > 1 && (
       <div className="log-card-item">
-        <strong>Category Names:</strong> {log.categoryNames.join(", ")}
+        <strong>Ime kategorija:</strong> {log.categoryNames.join(", ")}
       </div>
     )}
   </>
