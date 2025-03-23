@@ -43,12 +43,21 @@ interface PolicyFormProps {
   setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>;
 }
 
+const dayNameMapping: Record<string, string> = {
+  pon: "mon",
+  uto: "tue",
+  sre: "wed",
+  čet: "thu",
+  pet: "fri",
+  sub: "sat",
+  ned: "sun",
+};
+
 export const PolicyForm = ({
   categoryOptions,
   applicationOptions,
   setPolicies,
 }: PolicyFormProps) => {
-  const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<number[]>(
     []
@@ -64,12 +73,24 @@ export const PolicyForm = ({
 
   const { isLoading, sendRequest } = useRequest();
 
-  const updateSchedule = (newSchedule: {
+  const updateScheduleForm = (newSchedule: {
     [key: string]: string[] | string;
   }) => {
-    setSchedule(newSchedule);
-    setValue("schedule", newSchedule);
+    // Convert Serbian day names to English
+    const convertedSchedule = Object.entries(newSchedule).reduce(
+      (acc: Record<string, string[] | string>, [day, timeSlots]) => {
+        const englishDay = dayNameMapping[day] || day; // Convert to English or keep as-is (e.g., time_zone)
+        acc[englishDay] = timeSlots;
+        return acc;
+      },
+      {} as Record<string, string[] | string>
+    );
+    setValue("schedule", convertedSchedule);
+  };
 
+  const updateScheduleDisplay = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
     const formatted = Object.entries(newSchedule).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
@@ -83,6 +104,13 @@ export const PolicyForm = ({
     );
 
     setFormattedSchedule(formatted);
+  };
+
+  const updateSchedule = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
+    updateScheduleForm(newSchedule);
+    updateScheduleDisplay(newSchedule);
   };
 
   const handleCategoryChange = (selectedOptions: readonly SelectOption[]) => {
@@ -205,7 +233,8 @@ export const PolicyForm = ({
   };
 
   const onSubmit = (data: PolicyFormData) => {
-    const formattedSchedule = Object.entries(data.schedule || {}).reduce(
+    // Format the schedule for the backend
+    const formattedScheduleReq = Object.entries(data.schedule || {}).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
           acc[day] = timeSlots as string;
@@ -217,22 +246,25 @@ export const PolicyForm = ({
       {} as Record<string, string>
     );
 
-    const isScheduleEmpty = Object.entries(formattedSchedule)
+    // Check if the schedule is empty (excluding time_zone)
+    const isScheduleEmpty = Object.entries(formattedScheduleReq)
       .filter(([key]) => key !== "time_zone")
       .every(([_, value]) => value === "" || value === null);
 
+    // Prepare the final form data
     const formData = {
       ...data,
       ...(isScheduleEmpty
         ? { schedule: undefined }
         : {
             schedule: {
-              ...formattedSchedule,
+              ...formattedScheduleReq,
               time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             },
           }),
     };
 
+    // Build the traffic string
     const trafficString: string[] = [];
     if (formData.trafficCategories) {
       trafficString.push(formData.trafficCategories);
@@ -241,17 +273,18 @@ export const PolicyForm = ({
       trafficString.push(formData.trafficApplications);
     }
 
+    // Create the policy object
     const policy: Policy = {
       action: "block",
       traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
 
+    // Send the request
     sendRequest(async () => {
       await policyService.post<Policy>(policy);
       setNewPolicies();
       reset();
-      setSchedule({});
       setSelectedCategories([]);
       setSelectedApplications([]);
       setIsFormOpen(false);
@@ -277,7 +310,6 @@ export const PolicyForm = ({
   useEffect(() => {
     if (!isFormOpen) {
       reset();
-      setSchedule({});
       setFormattedSchedule({});
     }
   }, [isFormOpen]);
