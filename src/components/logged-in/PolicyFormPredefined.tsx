@@ -8,10 +8,12 @@ import { z } from "zod";
 import predefinedPolicies from "../../data/predefined-policies.json";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa";
-import { BsXLg } from "react-icons/bs";
+import { BsInfoCircleFill, BsXLg } from "react-icons/bs";
 import { useRequest } from "../../services/useRequest";
+import { Alert } from "react-bootstrap";
 
 const schema = z.object({
+  action: z.string(),
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
 });
@@ -50,8 +52,7 @@ export const PredefinedPolicyForm = ({
       const policy = predefinedPolicies.find(
         (p) => p.name === selectedOption.label
       );
-
-      if (policy) {
+      if (policy && policy.name !== "Youtube") {
         // Generate traffic strings for categories and applications
         const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
           " "
@@ -63,6 +64,9 @@ export const PredefinedPolicyForm = ({
         // Set form values
         setValue("trafficCategories", trafficCategories);
         setValue("trafficApplications", trafficApplications);
+        setValue("action", "block");
+      } else {
+        setValue("action", "ytrestricted");
       }
     }
   };
@@ -78,7 +82,7 @@ export const PredefinedPolicyForm = ({
     }
 
     const policy: Policy = {
-      action: "block",
+      action: data.action,
       traffic: trafficString.join(" or "),
     };
 
@@ -153,6 +157,22 @@ export const PredefinedPolicyForm = ({
                 </button>
               </div>
             </form>
+            <Alert>
+              <BsInfoCircleFill size={30} className="me-2" />
+              <strong>YouTube pravilo</strong>
+
+              <p>
+                Ovo pravilo ograničava prikaz sadržaja YouTube-a na video snimke
+                koji su označeni kao pogodni za sve uzraste. Blokira video
+                zapise sa eksplicitnim jezikom, nasiljem, odraslim sadržajem i
+                slično.
+                <hr></hr>
+                <div className="disabled small">
+                  Ovo pravilo je trenutno u testnoj fazi, pa u retkim
+                  slučajevima možda neće raditi kao što je planirano.
+                </div>
+              </p>
+            </Alert>
           </div>
         </div>
       )}
