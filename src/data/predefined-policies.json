@@ -1,8 +1,13 @@
 [
     {
-    "name": "Block Porn and Malware",
-    "categories": [2, 21],
-    "applications": [505]
+        "name": "Youtube",
+        "categories": [],
+        "applications": []
+    },
+    {
+        "name": "Sadrzaj za odrasle, virusi i pretnje",
+        "categories": [2, 21],
+        "applications": [505]
     }
 ]
   
