@@ -34,6 +34,8 @@ import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
 import Home from "./components/logged-in/Home";
 import Pravila from "./components/logged-out/Blog/Pravila";
 import Contact from "./components/logged-out/Contact/Contact"
+import Privacy  from "./components/logged-out/Terms/Privacy";
+import Terms from "./components/logged-out/Terms/Terms";
 
 function App() {
   return (
@@ -186,7 +188,21 @@ const AppContent = () => {
               </>
             }
           />
-
+          <Route
+            path="/uslovi"
+            element={
+              <>
+                <Terms />
+              </>
+            }
+          />          <Route
+          path="/privatnost"
+          element={
+            <>
+              <Privacy />
+            </>
+          }
+        />
           {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />
