@@ -32,6 +32,7 @@ import { ToastContainer } from "react-toastify";
 import ForgottenPassword from "./components/logged-out/ForgottenPassword/ForgottenPassword";
 import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
 import Pravila from "./components/logged-out/Blog/Pravila";
+import Contact from "./components/logged-out/Contact/Contact"
 
 function App() {
   return (
@@ -174,7 +175,7 @@ const AppContent = () => {
             path="/kontakt"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <Contact />
               </>
             }
           />
