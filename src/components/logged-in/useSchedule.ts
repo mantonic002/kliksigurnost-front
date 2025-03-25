@@ -4,18 +4,18 @@ interface Days {
   [key: string]: string[] | string;
 }
 
-export const useSchedule = () => {
-  const defDays: Days = {
-    mon: [],
-    tue: [],
-    wed: [],
-    thu: [],
-    fri: [],
-    sat: [],
-    sun: [],
-    time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  };
+export const defDays: Days = {
+  pon: [],
+  uto: [],
+  sre: [],
+  čet: [],
+  pet: [],
+  sub: [],
+  ned: [],
+  time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+};
 
+export const useSchedule = () => {
   const [days, setDays] = useState(defDays);
 
   return {

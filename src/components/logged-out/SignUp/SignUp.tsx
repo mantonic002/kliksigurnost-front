@@ -44,7 +44,15 @@ const Signup = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const googleLogin = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/oauth2/authorization/google`;
+  };
+
+  const facebookLogin = () => {
+    window.location.href = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/oauth2/authorization/facebook`;
   };
 
   const onSubmit = (data: FieldValues) => {
@@ -136,9 +144,9 @@ const Signup = () => {
               </Button>
             </Form>
 
-            <p className="or-text">Možete se registrovati i pomoću:</p>
+            <p className="or-text mt-4">Možete se registrovati i pomoću:</p>
             <div className="social-icons">
-              <FaFacebookF className="icon fb" />
+              <FaFacebookF onClick={facebookLogin} className="icon fb" />
               <FaGoogle onClick={googleLogin} className="icon google" />
               <FaLinkedinIn className="icon linkedin" />
             </div>

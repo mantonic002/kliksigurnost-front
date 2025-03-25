@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import { SchedulePicker } from "./SchedulePicker";
 import { Policy } from "../../models/Policy";
@@ -7,10 +7,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FaPlus } from "react-icons/fa";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BsXLg } from "react-icons/bs";
+import { useRequest } from "../../services/useRequest";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -43,28 +43,74 @@ interface PolicyFormProps {
   setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>;
 }
 
+const dayNameMapping: Record<string, string> = {
+  pon: "mon",
+  uto: "tue",
+  sre: "wed",
+  čet: "thu",
+  pet: "fri",
+  sub: "sat",
+  ned: "sun",
+};
+
 export const PolicyForm = ({
   categoryOptions,
   applicationOptions,
   setPolicies,
 }: PolicyFormProps) => {
-  const [_, setSchedule] = useState<{ [key: string]: string[] | string }>({});
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [selectedApplications, setSelectedApplications] = useState<number[]>(
     []
   );
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [formattedSchedule, setFormattedSchedule] = useState<
+    Record<string, string>
+  >({});
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
 
+  const { isLoading, sendRequest } = useRequest();
+
+  const updateScheduleForm = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
+    // Convert Serbian day names to English
+    const convertedSchedule = Object.entries(newSchedule).reduce(
+      (acc: Record<string, string[] | string>, [day, timeSlots]) => {
+        const englishDay = dayNameMapping[day] || day; // Convert to English or keep as-is (e.g., time_zone)
+        acc[englishDay] = timeSlots;
+        return acc;
+      },
+      {} as Record<string, string[] | string>
+    );
+    setValue("schedule", convertedSchedule);
+  };
+
+  const updateScheduleDisplay = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
+    const formatted = Object.entries(newSchedule).reduce(
+      (acc: Record<string, string>, [day, timeSlots]) => {
+        if (day === "time_zone") {
+          acc[day] = timeSlots as string;
+        } else if (Array.isArray(timeSlots) && timeSlots.length > 0) {
+          acc[day] = formatTimeRanges(timeSlots);
+        }
+        return acc;
+      },
+      {}
+    );
+
+    setFormattedSchedule(formatted);
+  };
+
   const updateSchedule = (newSchedule: {
     [key: string]: string[] | string;
   }) => {
-    setSchedule(newSchedule);
-    setValue("schedule", newSchedule);
+    updateScheduleForm(newSchedule);
+    updateScheduleDisplay(newSchedule);
   };
 
   const handleCategoryChange = (selectedOptions: readonly SelectOption[]) => {
@@ -187,8 +233,8 @@ export const PolicyForm = ({
   };
 
   const onSubmit = (data: PolicyFormData) => {
-    setIsLoading(true);
-    const formattedSchedule = Object.entries(data.schedule || {}).reduce(
+    // Format the schedule for the backend
+    const formattedScheduleReq = Object.entries(data.schedule || {}).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
           acc[day] = timeSlots as string;
@@ -200,22 +246,25 @@ export const PolicyForm = ({
       {} as Record<string, string>
     );
 
-    const isScheduleEmpty = Object.entries(formattedSchedule)
+    // Check if the schedule is empty (excluding time_zone)
+    const isScheduleEmpty = Object.entries(formattedScheduleReq)
       .filter(([key]) => key !== "time_zone")
       .every(([_, value]) => value === "" || value === null);
 
+    // Prepare the final form data
     const formData = {
       ...data,
       ...(isScheduleEmpty
         ? { schedule: undefined }
         : {
             schedule: {
-              ...formattedSchedule,
+              ...formattedScheduleReq,
               time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             },
           }),
     };
 
+    // Build the traffic string
     const trafficString: string[] = [];
     if (formData.trafficCategories) {
       trafficString.push(formData.trafficCategories);
@@ -224,29 +273,23 @@ export const PolicyForm = ({
       trafficString.push(formData.trafficApplications);
     }
 
+    // Create the policy object
     const policy: Policy = {
       action: "block",
       traffic: trafficString.join(" or "),
       schedule: formData.schedule,
     };
 
-    policyService
-      .post<Policy>(policy)
-      .then(() => {
-        setNewPolicies();
-        reset();
-        setSchedule({});
-        setSelectedCategories([]);
-        setSelectedApplications([]);
-        setIsFormOpen(false);
-        toast.success("Policy created successfully!");
-      })
-      .catch((error) => {
-        toast.error(error.response?.data || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // Send the request
+    sendRequest(async () => {
+      await policyService.post<Policy>(policy);
+      setNewPolicies();
+      reset();
+      setSelectedCategories([]);
+      setSelectedApplications([]);
+      setIsFormOpen(false);
+      toast.success("Pravilo uspešno kreirano!");
+    });
   };
 
   const setNewPolicies = () => {
@@ -254,16 +297,22 @@ export const PolicyForm = ({
     req
       .then((res) => {
         setPolicies(res.data);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message || "Failed to load policies");
-      })
-      .finally(() => {
-        setIsLoading(false);
+        toast.error(
+          error.message ||
+            "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
+        );
       });
   };
+
+  useEffect(() => {
+    if (!isFormOpen) {
+      reset();
+      setFormattedSchedule({});
+    }
+  }, [isFormOpen]);
 
   return (
     <div>
@@ -272,23 +321,24 @@ export const PolicyForm = ({
         className="btn btn-primary"
         onClick={() => setIsFormOpen(!isFormOpen)}
       >
-        <FaPlus className="mb-1" /> New policy
+        <FaPlus className="mb-1" /> Novo pravilo
       </button>
       {isFormOpen && (
         <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5>Create new policy</h5>
+              <h5>Kreirajte novo pravilo</h5>
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
               <div className="mb-3">
-                <label className="form-label">Categories:</label>
+                <label className="form-label">Kategorije:</label>
                 <Select
                   isMulti
                   name="categories"
                   options={categoryOptions}
                   onChange={handleCategoryChange}
+                  placeholder="Izaberite"
                   closeMenuOnSelect={false}
                   value={categoryOptions.filter((option) =>
                     selectedCategories.includes(option.value)
@@ -299,12 +349,13 @@ export const PolicyForm = ({
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Applications:</label>
+                <label className="form-label">Aplikacije:</label>
                 <Select
                   isMulti
                   name="applications"
                   options={applicationOptions}
                   onChange={handleApplicationChange}
+                  placeholder="Izaberite"
                   closeMenuOnSelect={false}
                   value={applicationOptions.filter((option) =>
                     selectedApplications.includes(option.value)
@@ -316,11 +367,31 @@ export const PolicyForm = ({
 
               <SchedulePicker onChange={updateSchedule} />
 
-              <button type="submit" className="btn btn-success">
+              {Object.keys(formattedSchedule).length > 0 && (
+                <div className="schedule-display">
+                  <h6>Izabrani raspored:</h6>
+                  <ul>
+                    {Object.entries(formattedSchedule).map(([day, time]) => (
+                      <li key={day}>
+                        {day !== "time_zone" && (
+                          <strong>{day.toUpperCase()}:</strong>
+                        )}
+                        {time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={isLoading}
+              >
                 {isLoading ? (
                   <div className="spinner-border"></div>
                 ) : (
-                  <>Submit</>
+                  <>Sačuvaj</>
                 )}
               </button>
             </form>

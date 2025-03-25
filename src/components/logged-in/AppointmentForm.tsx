@@ -2,29 +2,29 @@ import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AppointmentService from "../../services/AppointmentService";
-import { useNavigate } from "react-router-dom";
 import { Appointment } from "../../models/Appointment";
 import "../../styles/components/Appointment.css";
 import { formatDate, utcToLocal } from "./Helpers";
-import { toast } from "react-toastify";
 import { BsFillTrashFill, BsTrash } from "react-icons/bs";
+import { useRequest } from "../../services/useRequest";
 
 const AppointmentForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  let navigate = useNavigate();
+  const { sendRequest } = useRequest();
+
+  const fetchAppointments = async () => {
+    AppointmentService.getAppointments()
+      .then((res) => {
+        setAppointments(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
-    const fetchAppointments = async () => {
-      AppointmentService.getAppointments()
-        .then((res) => {
-          setAppointments(res);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
     fetchAppointments();
   }, []);
 
@@ -50,7 +50,7 @@ const AppointmentForm = () => {
     e.preventDefault();
 
     if (!selectedDate) {
-      alert("Please select a date and time.");
+      alert("Molimo izaberite datum i vreme.");
       return;
     }
 
@@ -58,14 +58,10 @@ const AppointmentForm = () => {
       appointmentDateTime: selectedDate.toISOString(),
     };
 
-    AppointmentService.createAppointment(appointment)
-      .then(() => {
-        navigate("/pocetna");
-      })
-      .catch((error) => {
-        toast.error(error.response.data);
-        console.log(error.response.data);
-      });
+    sendRequest(async () => {
+      await AppointmentService.createAppointment(appointment);
+      fetchAppointments();
+    });
   };
 
   const handleDelete = async (appointmentId: number) => {
@@ -80,6 +76,7 @@ const AppointmentForm = () => {
 
   return (
     <div className="container mt-4">
+      {appointments.length > 0 && <strong>Vaši termini:</strong>}
       {/* List of appointments */}
       <div className="appointment-list">
         {appointments.map((appointment) => {
@@ -105,8 +102,9 @@ const AppointmentForm = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
+        <strong>Zakažite termin:</strong>
         <div className="inline-form">
-          <label className="form-label">Date and Time:</label>
+          <label className="form-label">Datum i vreme:</label>
           <DatePicker
             className="form-control"
             selected={selectedDate}
@@ -124,7 +122,7 @@ const AppointmentForm = () => {
             required
           />
           <button type="submit" className="btn btn-primary">
-            Schedule Appointment
+            Zakažite termin
           </button>
         </div>
       </form>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import policyService from "../../services/policy-service";
 import { Policy, Schedule } from "../../models/Policy";
-import { BsFillTrashFill, BsTrash } from "react-icons/bs";
+import { BsFillTrashFill, BsInfoCircleFill, BsTrash } from "react-icons/bs";
+import { Alert } from "react-bootstrap";
 
 interface PolicyTableProps {
   policies: Policy[];
@@ -62,7 +63,7 @@ export const PolicyTable = ({
       await policyService.delete(policyId);
       onDelete(policyId);
     } catch (error) {
-      console.error("Failed to delete policy:", error);
+      console.error("Greška pri brisanju pravila:", error);
     }
   };
 
@@ -85,16 +86,16 @@ export const PolicyTable = ({
         <div className="text-danger-alert">Blokirano</div>
 
         <div className="card-item-overflow">
-          <strong>Name:</strong> Virusi i pretnje
+          <strong>Naziv:</strong> Virusi i pretnje
         </div>
         <div className="card-item-overflow">
-          <strong>Categories:</strong> Virusi, Online prevare, Ostale pretnje
+          <strong>Kategorije:</strong> Virusi, Online prevare, Ostale pretnje
         </div>
       </div>
 
       {/* Other policies  */}
       {policies.map((policy) => {
-        if (policy.action == "block") {
+        if (policy.action != "allow") {
           const categoryIds = extractCategoryIds(policy.traffic);
           const categoryNames = getCategoryNames(categoryIds);
           const applicationIds = extractApplicationIds(policy.traffic);
@@ -110,25 +111,39 @@ export const PolicyTable = ({
               {policy.action == "block" && (
                 <div className="text-danger-alert">Blokirano</div>
               )}
+              {policy.action == "ytrestricted" && (
+                <div className="text-danger-alert">Youtube</div>
+              )}
               {policy.name && (
                 <div className="card-item">
-                  <strong>Name:</strong> {policy.name}
+                  <strong>Naziv:</strong> {policy.name}
                 </div>
               )}
               {categoryNames.length > 0 && (
                 <div className="card-item">
-                  <strong>Categories:</strong> {categoryNames.join(", ")}
+                  <strong>Kategorije:</strong> {categoryNames.join(", ")}
                 </div>
               )}
               {applicationNames.length > 0 && (
                 <div className="card-item">
-                  <strong>Applications:</strong> {applicationNames.join(", ")}
+                  <strong>Aplikacije:</strong> {applicationNames.join(", ")}
                 </div>
               )}
               {schedule && (
                 <div className="card-item">
-                  <strong>Schedule:</strong> {schedule}
+                  <strong>Raspored:</strong> {schedule}
                 </div>
+              )}
+
+              {policy.action == "ytrestricted" && (
+                <>
+                  <div className="card-item">
+                    <strong>Kategorije:</strong> Youtube, ograničen mod
+                  </div>
+                  <div className="card-item">
+                    <strong>Aplikacije:</strong> Youtube, Youtube Music
+                  </div>
+                </>
               )}
               <div className="card-item actions">
                 <div
@@ -176,13 +191,13 @@ export const PolicyTable = ({
               {selectedPolicy.traffic && (
                 <>
                   <p>
-                    <strong>Categories:</strong>{" "}
+                    <strong>Kategorije:</strong>{" "}
                     {getCategoryNames(
                       extractCategoryIds(selectedPolicy.traffic)
                     ).join(", ")}
                   </p>
                   <p>
-                    <strong>Applications:</strong>{" "}
+                    <strong>Aplikacije:</strong>{" "}
                     {getApplicationNames(
                       extractApplicationIds(selectedPolicy.traffic)
                     ).join(", ")}
@@ -191,9 +206,36 @@ export const PolicyTable = ({
               )}
               {selectedPolicy.schedule && (
                 <p>
-                  <strong>Schedule:</strong>{" "}
+                  <strong>Raspored:</strong>{" "}
                   {formatSchedule(selectedPolicy.schedule)}
                 </p>
+              )}
+              {selectedPolicy.action == "ytrestricted" && (
+                <>
+                  <div className="text-danger-alert">Youtube</div>
+                  <div className="card-item">
+                    <strong>Kategorije:</strong> Youtube, ograničen mod
+                  </div>
+                  <div className="card-item">
+                    <strong>Aplikacije:</strong> Youtube, Youtube Music
+                  </div>
+                  <Alert>
+                    <BsInfoCircleFill size={30} className="me-2" />
+                    <strong>Ograničeni režim YouTube-a</strong>
+
+                    <p>
+                      Ovo pravilo ograničava prikaz sadržaja YouTube-a na video
+                      snimke koji su označeni kao pogodni za sve uzraste.
+                      Blokira video zapise sa eksplicitnim jezikom, nasiljem,
+                      odraslim sadržajem i slično.
+                      <hr></hr>
+                      <div className="disabled small">
+                        Ovo pravilo je trenutno u testnoj fazi, pa u retkim
+                        slučajevima možda neće raditi kao što je planirano.
+                      </div>
+                    </p>
+                  </Alert>
+                </>
               )}
             </div>
           </div>

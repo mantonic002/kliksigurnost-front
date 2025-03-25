@@ -32,7 +32,10 @@ function PolicyManager() {
       })
       .catch((error: any) => {
         if (error instanceof CanceledError) return;
-        toast.error(error.message || "Failed to fetch policies");
+        toast.error(
+          error.message ||
+            "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
+        );
         setIsLoading(false);
       });
 
@@ -41,13 +44,16 @@ function PolicyManager() {
 
   return (
     <div className="container  mt-4">
-      <h3 className="mb-4">Cloudflare Policies</h3>
+      <h3 className="mb-4">Vaša pravila</h3>
+      <div className="inline-form">
+        <PolicyForm
+          categoryOptions={categoryOptions}
+          applicationOptions={applicationOptions}
+          setPolicies={setPolicies}
+        />
 
-      <PolicyForm
-        categoryOptions={categoryOptions}
-        applicationOptions={applicationOptions}
-        setPolicies={setPolicies}
-      />
+        <PredefinedPolicyForm setPolicies={setPolicies} />
+      </div>
       <PolicyTable
         policies={policies}
         isLoading={isLoading}
@@ -55,8 +61,6 @@ function PolicyManager() {
         applicationMap={applicationMap}
         onDelete={handleDelete}
       />
-
-      <PredefinedPolicyForm setPolicies={setPolicies} />
     </div>
   );
 }

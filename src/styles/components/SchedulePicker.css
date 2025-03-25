@@ -16,6 +16,20 @@
   padding-right: var(--spacing-md);
 }
 
+.day-header:hover {
+  cursor: pointer;
+  color: #82b5f0;
+}
+
+.selected-day {
+  color: var(--color-primary);
+}
+
+.instruction-text {
+  font-size: 0.8em;
+  color: #666;
+}
+
 .time-slot {
   flex: 1;
   padding: 15px;

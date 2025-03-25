@@ -7,8 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import predefinedPolicies from "../../data/predefined-policies.json";
 import { toast } from "react-toastify";
+import { FaPlus } from "react-icons/fa";
+import { BsInfoCircleFill, BsXLg } from "react-icons/bs";
+import { useRequest } from "../../services/useRequest";
+import { Alert } from "react-bootstrap";
 
 const schema = z.object({
+  action: z.string(),
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
 });
@@ -31,11 +36,13 @@ export const PredefinedPolicyForm = ({
     null
   );
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
   });
+
+  const { isLoading, sendRequest } = useRequest();
 
   // Handle policy selection
   const handlePolicyChange = (selectedOption: SelectOption | null) => {
@@ -45,8 +52,7 @@ export const PredefinedPolicyForm = ({
       const policy = predefinedPolicies.find(
         (p) => p.name === selectedOption.label
       );
-
-      if (policy) {
+      if (policy && policy.name !== "Youtube") {
         // Generate traffic strings for categories and applications
         const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
           " "
@@ -58,13 +64,15 @@ export const PredefinedPolicyForm = ({
         // Set form values
         setValue("trafficCategories", trafficCategories);
         setValue("trafficApplications", trafficApplications);
+        setValue("action", "block");
+      } else {
+        setValue("action", "ytrestricted");
       }
     }
   };
 
   // Handle form submission
   const onSubmit = (data: PolicyFormData) => {
-    setIsLoading(true);
     const trafficString: string[] = [];
     if (data.trafficCategories) {
       trafficString.push(data.trafficCategories);
@@ -74,24 +82,19 @@ export const PredefinedPolicyForm = ({
     }
 
     const policy: Policy = {
-      action: "block",
+      action: data.action,
       traffic: trafficString.join(" or "),
     };
 
-    policyService
-      .post<Policy>(policy)
-      .then(() => {
-        setNewPolicies();
-        setSelectedPolicy(null);
-        reset();
-        toast.success("Policy created successfully!");
-      })
-      .catch((error) => {
-        toast.error(error.response?.data || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    sendRequest(async () => {
+      await policyService.post<Policy>(policy);
+      setNewPolicies();
+      reset();
+      setSelectedPolicy(null);
+      reset();
+      setIsFormOpen(false);
+      toast.success("Pravilo uspešno kreirano!");
+    });
   };
 
   const setNewPolicies = () => {
@@ -99,40 +102,80 @@ export const PredefinedPolicyForm = ({
     req
       .then((res) => {
         setPolicies(res.data);
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
-        alert(error.message || "Failed to create policy");
-      })
-      .finally(() => {
-        setIsLoading(false);
+        alert(
+          error.message ||
+            "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
+        );
       });
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-        <div className="inline-form">
-          <label className="form-label">Predefined Policies:</label>
-          <Select
-            className="form-control"
-            name="predefinedPolicies"
-            options={predefinedPolicies.map((policy, index) => ({
-              value: index,
-              label: policy.name,
-            }))}
-            onChange={handlePolicyChange}
-            value={selectedPolicy}
-            getOptionLabel={(e) => e.label}
-            getOptionValue={(e) => String(e.value)}
-          />
+      <button
+        type="button"
+        className="btn btn-success"
+        onClick={() => setIsFormOpen(!isFormOpen)}
+      >
+        <FaPlus className="mb-1" /> Predefinisana pravila
+      </button>
+      {isFormOpen && (
+        <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h5>Izaberite predefinisano pravilo</h5>
+              <BsXLg onClick={() => setIsFormOpen(false)} />
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
+              <div className="inline-form">
+                <Select
+                  className="form-control"
+                  name="predefinedPolicies"
+                  options={predefinedPolicies.map((policy, index) => ({
+                    value: index,
+                    label: policy.name,
+                  }))}
+                  onChange={handlePolicyChange}
+                  value={selectedPolicy}
+                  placeholder="Izaberite"
+                  getOptionLabel={(e) => e.label}
+                  getOptionValue={(e) => String(e.value)}
+                />
 
-          <button type="submit" className="btn btn-success">
-            {isLoading ? <div className="spinner-border"></div> : <>Submit</>}
-          </button>
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="spinner-border"></div>
+                  ) : (
+                    <>Sačuvaj</>
+                  )}
+                </button>
+              </div>
+            </form>
+            <Alert>
+              <BsInfoCircleFill size={30} className="me-2" />
+              <strong>YouTube pravilo</strong>
+
+              <p>
+                Ovo pravilo ograničava prikaz sadržaja YouTube-a na video snimke
+                koji su označeni kao pogodni za sve uzraste. Blokira video
+                zapise sa eksplicitnim jezikom, nasiljem, odraslim sadržajem i
+                slično.
+                <hr></hr>
+                <div className="disabled small">
+                  Ovo pravilo je trenutno u testnoj fazi, pa u retkim
+                  slučajevima možda neće raditi kao što je planirano.
+                </div>
+              </p>
+            </Alert>
+          </div>
         </div>
-      </form>
+      )}
     </div>
   );
 };

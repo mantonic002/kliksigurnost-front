@@ -1,12 +1,12 @@
 import axios, { CanceledError } from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api`,
 });
 
 // Separate instance for auth-related requests to avoid sending the expired token
 const authClient = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api`,
 });
 
 // Add request interceptor to set the Authorization header
