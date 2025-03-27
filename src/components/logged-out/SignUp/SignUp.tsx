@@ -134,7 +134,16 @@ const Signup = () => {
               {errors.confirmPassword && (
                 <p className="text-danger">{errors.confirmPassword.message}</p>
               )}
-
+              <p>
+                Klikom na dugme <strong>„Registracija“</strong> potvrđujete da ste pročitali i saglasni ste sa{" "}
+                <a href="/privatnost" target="_blank" rel="noopener noreferrer">
+                  Politikom privatnosti
+                </a>{" "}
+                i{" "}
+                <a href="/uslovi" target="_blank" rel="noopener noreferrer">
+                  Uslovima korišćenja
+                </a>.
+              </p>
               <Button className="signup-btn" type="submit">
                 {isLoading ? (
                   <div className="spinner-border"></div>
