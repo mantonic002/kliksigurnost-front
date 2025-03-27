@@ -36,6 +36,7 @@ import Pravila from "./components/logged-out/Blog/Pravila";
 import Contact from "./components/logged-out/Contact/Contact"
 import Privacy  from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
+import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
 
 function App() {
   return (
@@ -168,7 +169,7 @@ const AppContent = () => {
             path="/saveti/sajtovi"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <EdukativniSajtovi />
               </>
             }
           />
