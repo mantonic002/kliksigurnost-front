@@ -37,6 +37,7 @@ import Contact from "./components/logged-out/Contact/Contact"
 import Privacy  from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
+import Trikovi from "./components/logged-out/Blog/Trikovi";
 
 function App() {
   return (
@@ -174,10 +175,10 @@ const AppContent = () => {
             }
           />
           <Route
-            path="/saveti/fore"
+            path="/saveti/trikovi"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <Trikovi />
               </>
             }
           />

@@ -101,11 +101,11 @@ function Navigation() {
             </NavDropdown.Item>
             <NavDropdown.Item
               as={Link}
-              to="/saveti/fore"
+              to="/saveti/trikovi"
               className="custom-dropdown-item"
             >
               <img src={logo} alt="" className="dropdown-icon" />
-              Fore i fazoni za roditelje
+              Mudri načini da budete u toku
             </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link
