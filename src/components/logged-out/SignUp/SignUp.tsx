@@ -86,6 +86,11 @@ const Signup = () => {
               Alat koji roditelji širom regiona biraju za miran san i sigurnu
               budućnost svoje dece.
             </p>
+            <p><strong>Probna verzija traje 7 dana i potpuno je besplatna. 
+              Nakon isteka probnog perioda, ukoliko odlučite da nastavite sa 
+              korištenjem usluge, zatražićemo da unesete podatke vaše 
+              kartice kako bismo omogućili nesmetano plaćanje pretplate 
+              od 478 RSD mesečno. Pretplatu je moguće otkazati u svakom momentu.</strong></p>
             <Button
               onClick={() => navigate("/prijava")}
               variant="outline-light"
@@ -141,7 +146,7 @@ const Signup = () => {
                 </a>{" "}
                 i{" "}
                 <a href="/uslovi" target="_blank" rel="noopener noreferrer">
-                  Uslovima korišćenja
+                  Uslovima korištenja
                 </a>.
               </p>
               <Button className="signup-btn" type="submit">
