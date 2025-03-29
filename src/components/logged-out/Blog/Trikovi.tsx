@@ -2,8 +2,11 @@ import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 import "../../../styles/components/Blog.css";
+import { useNavigate } from 'react-router-dom';
 
 const Trikovi = () => {
+
+  const navigate = useNavigate();
   return (
     <section className="blog-section">
       <Container className="mt-5">
