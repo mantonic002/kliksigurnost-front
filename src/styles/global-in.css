@@ -38,6 +38,10 @@
   --font-size-xl: 20px;
 }
 
+body {
+  background-color: var(--color-light);
+}
+
 /* General App Styles */
 .App {
   display: flex;
@@ -51,6 +55,7 @@
   flex: 1;
   margin-top: 80px;
   overflow-y: auto;
+  background-color: var(--color-light);
 }
 
 @media screen and (max-width: 991px) {

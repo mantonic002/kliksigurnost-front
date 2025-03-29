@@ -1,0 +1,28 @@
+:root {
+  --scale-factor: 0.9;
+}
+
+/* Remove the body selector and replace with: */
+.logged-out {
+  zoom: var(--scale-factor);
+  -moz-transform: scale(var(--scale-factor));
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(var(--scale-factor));
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(var(--scale-factor));
+  -webkit-transform-origin: 0 0;
+  width: calc(100% / var(--scale-factor));
+  height: 100vh;
+}
+
+/* Ensure logged-in state has no scaling */
+.logged-in {
+  zoom: 1;
+  transform: none;
+  width: 100%;
+  height: 100%;
+}
+
+.logged-out .Content {
+  min-height: 100%;
+}

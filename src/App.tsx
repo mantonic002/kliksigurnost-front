@@ -33,7 +33,8 @@ import ForgottenPassword from "./components/logged-out/ForgottenPassword/Forgott
 import ResetPassword from "./components/logged-out/ResetPassword/ResetPassword";
 import Home from "./components/logged-in/Home";
 import Pravila from "./components/logged-out/Blog/Pravila";
-import Contact from "./components/logged-out/Contact/Contact"
+import Contact from "./components/logged-out/Contact/Contact";
+import FooterLoggedIn from "./components/logged-in/FooterLoggedIn";
 import Privacy  from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
@@ -83,7 +84,7 @@ const AppContent = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className={`App ${isAuthenticated ? "logged-in" : "logged-out"}`}>
       {isAuthenticated ? (
         <>
           <TopBar />
@@ -226,7 +227,8 @@ const AppContent = () => {
         </Routes>
       </div>
 
-      <Footer />
+      {isAuthenticated && <FooterLoggedIn />}
+      {!isAuthenticated && <Footer />}
 
       <ToastContainer
         position="top-right"
