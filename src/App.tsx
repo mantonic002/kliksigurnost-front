@@ -35,6 +35,10 @@ import Home from "./components/logged-in/Home";
 import Pravila from "./components/logged-out/Blog/Pravila";
 import Contact from "./components/logged-out/Contact/Contact";
 import FooterLoggedIn from "./components/logged-in/FooterLoggedIn";
+import Privacy  from "./components/logged-out/Terms/Privacy";
+import Terms from "./components/logged-out/Terms/Terms";
+import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
+import Trikovi from "./components/logged-out/Blog/Trikovi";
 
 function App() {
   return (
@@ -167,15 +171,15 @@ const AppContent = () => {
             path="/saveti/sajtovi"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <EdukativniSajtovi />
               </>
             }
           />
           <Route
-            path="/saveti/fore"
+            path="/saveti/trikovi"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <Trikovi />
               </>
             }
           />
@@ -187,7 +191,21 @@ const AppContent = () => {
               </>
             }
           />
-
+          <Route
+            path="/uslovi"
+            element={
+              <>
+                <Terms />
+              </>
+            }
+          />          <Route
+          path="/privatnost"
+          element={
+            <>
+              <Privacy />
+            </>
+          }
+        />
           {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />

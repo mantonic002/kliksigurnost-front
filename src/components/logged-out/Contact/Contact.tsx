@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 const Contact = () => {
