@@ -38,6 +38,7 @@ import Privacy  from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
 import Trikovi from "./components/logged-out/Blog/Trikovi";
+import Brisanje from "./components/logged-out/Terms/Brisanje";
 
 function App() {
   return (
@@ -205,6 +206,14 @@ const AppContent = () => {
             </>
           }
         />
+        <Route
+            path="/brisanje"
+            element={
+              <>
+                <Brisanje />
+              </>
+            }
+          />
           {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />
