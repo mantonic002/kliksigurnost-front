@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
 import { FaWindows, FaApple, FaAndroid, FaLinux } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,7 +20,7 @@ const features = [
 
 const HeroSection = () => {
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateHeroHeight = () => {
       const heroFirst = document.querySelector(".hero-first") as HTMLElement;
       if (heroFirst) {
@@ -30,14 +30,20 @@ const HeroSection = () => {
         );
       }
     };
-
-    window.onload = () => {
+  
+    // Ensure the DOM is fully loaded and parsed
+    if (document.readyState === "complete") {
       updateHeroHeight();
-    };
+    } else {
+      window.addEventListener("load", updateHeroHeight);
+    }
+  
+    // Run on resize to keep the height updated
     window.addEventListener("resize", updateHeroHeight);
-
+  
+    // Clean up resize event listener on component unmount
     return () => window.removeEventListener("resize", updateHeroHeight);
-  }, []);
+  }, []); // Empty dependency array ensures it runs only once when component mounts
 
   return (
     <section className="hero-section">
