@@ -29,17 +29,11 @@ const HeroSection = () => {
           `${heroFirst.clientHeight}px`
         );
       }
-
-      const height = document.querySelector(".give-height") as HTMLElement;
-      if (height) {
-        document.documentElement.style.setProperty(
-          "--hero-half-height",
-          `${height.clientHeight}px`
-        );
-      }
     };
 
-    updateHeroHeight();
+    window.onload = () => {
+      updateHeroHeight();
+    };
     window.addEventListener("resize", updateHeroHeight);
 
     return () => window.removeEventListener("resize", updateHeroHeight);

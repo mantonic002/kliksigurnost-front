@@ -90,7 +90,7 @@ const Signup = () => {
               Nakon isteka probnog perioda, ukoliko odlučite da nastavite sa 
               korištenjem usluge, zatražićemo da unesete podatke vaše 
               kartice kako bismo omogućili nesmetano plaćanje pretplate 
-              od 478 RSD mesečno. Pretplatu je moguće otkazati u svakom momentu.</strong></p>
+              od 478 RSD mesečno. Pretplatu je moguće otkazati u svakom trenutku.</strong></p>
             <Button
               onClick={() => navigate("/prijava")}
               variant="outline-light"

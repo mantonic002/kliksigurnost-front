@@ -81,7 +81,7 @@
 @media screen and (max-width: 991px) {
   .hero-section {
     padding: 80px 0;
-    height: calc(2.3 * var(--hero-first-height));
+    height: calc(3 * (var(--hero-first-height)));
   }
   .hero-first {
     margin-bottom: 15px;
