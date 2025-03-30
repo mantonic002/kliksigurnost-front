@@ -1,13 +1,13 @@
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Accordion, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import {
   FaShieldAlt,
-  FaChartBar,
-  FaClock,
-  FaMapMarkerAlt,
-  FaBookOpen,
-  FaLock,
-  FaWifi,
-  FaPhoneAlt
+  FaExclamationTriangle,
+  FaComments,
+  FaHome,
+  FaCog,
+  FaGraduationCap,
+  FaLightbulb,
 } from "react-icons/fa";
 import studyImage from "/images/happy_family_brush.png"; // Replace with actual image path
 import { AccordionEventKey } from "react-bootstrap/esm/AccordionContext";
@@ -16,58 +16,53 @@ import { useState } from 'react';
 
 const concernsData = [
   {
-    title: "Automatsko filtriranje neprimerenog sadržaja",
+    title: "Zašto KlikSigurnost",
     icon: <FaShieldAlt />,
     content:
-      "KlikSigurnost automatski blokira sadržaje poput pornografije, sajtova za kockanje, nasilja, govora mržnje i sajtova koji promovišu povređivanje/samopovređivanje.",
+      "Detaljan opis kako KlikSigurnost pomaže roditeljima da zaštite decu od digitalnih opasnosti kroz filtriranje sadržaja, praćenje aktivnosti i postavljanje vremenskih ograničenja, dok istovremeno omogućava sigurno istraživanje interneta.",
+    path: "/saveti/zastoks",
   },
   {
-    title: "Praćenje lokacije deteta",
-    icon: <FaMapMarkerAlt />,
+    title: "Skriveni Rizici digitalnog sveta",
+    icon: <FaExclamationTriangle />,
     content:
-      "KlikSigurnost omogućava roditeljima da u realnom vremenu prate lokaciju deteta na mapi putem intuitivne aplikacije.",
+      "U ovom članku su istaknuti rizici s kojima se deca suočavaju na internetu, kao što su sajber maltretiranje, pristup pornografiji i seksualna eksploatacija a zatim objašnjenja kako KlikSigurnost nudi efikasne alate za zaštitu dece, uz pružanje sigurnog digitalnog okruženja kroz filtriranje sadržaja, praćenje aktivnosti i postavljanje vremenskih ograničenja.",
+      path: "/saveti/rizici",
   },
   {
-    title: "Selektivno filtriranje sadržaja i vremenska kontrola",
-    icon: <FaShieldAlt />,
+    title: "Razgovor sa decom o sigurnosti na internetu",
+    icon: <FaComments />,
     content:
-      "KlikSigurnost omogućava roditeljima da precizno definišu koje vrste sadržaja su dostupne u određenim periodima dana. Možete blokirati društvene mreže tokom školskih sati, dozvoliti samo edukativne sajtove tokom učenja ili ograničiti pristup zabavnim aplikacijama pre spavanja.",
+      "Predlozi za otvoren razgovor sa decom o bezbednosti na internetu, uvođenju alata poput KlikSigurnosti, i načina da zaštitite svoju decu od digitalnih opasnosti kroz preventivne mere i tehnologiju.",
+      path: "/saveti/razgovor",
   },
   {
-    title: "Praćenje aktivnosti",
-    icon: <FaChartBar />,
+    title: "10 osnovnih pravila u Vašem domu",
+    icon: <FaHome />,
     content:
-      "Roditelji mogu pratiti koje sajtove njihova deca posećuju i dobiti detaljne izveštaje kako bi prepoznali potencijalne probleme na vreme.",
+      "Postavljanjem jasnih pravila, korišćenjem alata poput KlikSigurnosti i aktivnim učešćem u digitalnom životu deteta, roditelji mogu stvoriti sigurno okruženje na internetu koje omogućava deci da istražuju i uživaju u svim prednostima digitalnog sveta bez rizika.",
+      path: "/saveti/pravila",
   },
   {
-    title: "Obezbeđivanje celokupne kućne mreže",
-    icon: <FaWifi />,
+    title: "Podešavanje KlikSigurnost alata prema uzrastu",
+    icon: <FaCog />,
     content:
-      "KlikSigurnost pruža mogućnost zaštite cele kućne mreže, blokirajući neprimerene sadržaje i pretnje za sve uređaje povezane na vaš Wi-Fi, uključujući telefone, tablete, računare i pametne televizore.",
+      "Pravilnim podešavanjem KlikSigurnost alata prema starosnom uzrastu deteta, roditelji mogu osigurati bezbedno i kontrolisano internet iskustvo, prilagođeno potrebama i fazama razvoja svog deteta",
+      path: "/saveti/podesavanje",
   },
   {
-    title: "Vremenska ograničenja",
-    icon: <FaClock />,
+    title: "Preporuke za edukativne sajtove na srpskom",
+    icon: <FaGraduationCap />,
     content:
-      "Roditelji mogu ograničiti vreme koje deca provode online, što pomaže u održavanju balansa između digitalnih i stvarnih aktivnosti.",
+      "Korišćenjem preporučenih edukativnih sajtova i aplikacija, roditelji mogu obezbediti deci sigurno i kvalitetno online iskustvo koje podstiče učenje i razvoj.",
+    path: "/saveti/sajtovi",
   },
   {
-    title: "Sigurnost tokom učenja",
-    icon: <FaBookOpen />,
+    title: "Mudri načini da budete u toku",
+    icon: <FaLightbulb />,
     content:
-      "Alat omogućava roditeljima da deci dozvole pristup samo edukativnim sajtovima tokom časa ili domaćeg zadatka, osiguravajući fokus na važne aktivnosti.",
-  },
-  {
-    title: "Podrška na srpskom jeziku",
-    icon: <FaPhoneAlt />,
-    content:
-      "KlikSigurnost pruža tehničku podršku na srpskom jeziku putem poziva, online sastanka ili e-maila, čime roditeljima olakšava svaku nedoumicu ili tehnički izazov.",
-  },
-  {
-    title: "Transparentnost i privatnost",
-    icon: <FaLock />,
-    content:
-      "KlikSigurnost ne prikuplja podatke dece za marketinške svrhe, što osigurava potpunu privatnost korisnika.",
+      "KlikSigurnost vam pomaže da pratite i kontrolišete internet aktivnosti vašeg deteta, sprečavajući neželjeni sadržaj i omogućavajući zdravo digitalno okruženje kroz jasno postavljene granice i automatske kontrole.",
+      path: "/saveti/trikovi",
   },
 ];
 
@@ -83,11 +78,10 @@ const Concerns = () => {
       <Container>
         <div className="title-area made-title text-center">
           <h2 className="section-title">
-            We’re here to help with your concerns
+            Korisni saveti
           </h2>
           <p>
-            Whatever their age and needs, Qustodio’s parental control tools help
-            reduce the risks your kids face online.
+            Na našem blogu možete pronaći dragocene informacije i savete kako da se nosite sa izazovima roditeljstva u digitalnom dobu.
           </p>
           <div className="border-area">
             <div className="underline-border"></div>
@@ -109,7 +103,7 @@ const Concerns = () => {
           <Col lg={8}>
             <Row>
               <Col lg={6}>
-                {concernsData.slice(0, 5).map((concern, index) => (
+                {concernsData.slice(0, 4).map((concern, index) => (
                   <Accordion
                     key={index}
                     className="concern-item"
@@ -121,26 +115,42 @@ const Concerns = () => {
                         <span className="concern-icon">{concern.icon}</span>{" "}
                         {concern.title}
                       </Accordion.Header>
-                      <Accordion.Body>{concern.content}</Accordion.Body>
+                      <Accordion.Body>{concern.content}
+                        <br/>
+                        <br/>
+                        <Link to={concern.path}>
+                          <Button variant="primary" className="learn-btn">
+                            Pročitajte ceo tekst
+                          </Button>
+                        </Link>
+                      </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                 ))}
               </Col>
 
               <Col lg={6}>
-                {concernsData.slice(5).map((concern, index) => (
+                {concernsData.slice(4).map((concern, index) => (
                   <Accordion
-                    key={index + 5}
+                    key={index + 4}
                     className="concern-item"
                     activeKey={activeKey}
                     onSelect={toggleAccordion}
                   >
-                    <Accordion.Item eventKey={(index + 5).toString()}>
+                    <Accordion.Item eventKey={(index + 4).toString()}>
                       <Accordion.Header>
                         <span className="concern-icon">{concern.icon}</span>{" "}
                         {concern.title}
                       </Accordion.Header>
-                      <Accordion.Body>{concern.content}</Accordion.Body>
+                      <Accordion.Body>{concern.content}
+                        <br/>
+                        <br/>
+                        <Link to={concern.path}>
+                          <Button variant="primary" className="learn-btn">
+                            Pročitajte ceo tekst
+                          </Button>
+                        </Link>
+                      </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                 ))}
