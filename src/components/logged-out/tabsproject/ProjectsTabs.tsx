@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Nav, Row, Col, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/ProjectsTabs.css";
@@ -80,8 +80,14 @@ const tabData = [
 ];
 
 const ProjectTabs = () => {
-  const [activeTab, setActiveTab] = useState(tabData[0].title);
+  const [activeTab, setActiveTab] = useState<string>("");
   const tabRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setActiveTab(tabData[0].title);
+    }
+  }, []);
 
   const handleTabClick = (title: string) => {
     if (window.innerWidth < 768) {

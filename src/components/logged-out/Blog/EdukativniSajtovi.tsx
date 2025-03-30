@@ -1,7 +1,7 @@
 import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
-import { FaUserCircle } from "react-icons/fa";
 import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 import "../../../styles/components/Blog.css";
+import psiholog from "/images/psiholog2.png"
 
 const EdukativniSajtovi = () => {
   return (
@@ -16,16 +16,27 @@ const EdukativniSajtovi = () => {
           </Col>
         </Row>
 
-        {/* Author Section */}
-        <Row className="mt-3">
-          <Col lg={8} className="d-flex">
-            <FaUserCircle size={50} className="me-2 text-secondary" />
-            <div>
-              <h6 className="mb-0 fw-bold">KlikSigurnost Tim</h6>
-              <p className="text-muted small">Internet Sigurnost za Decu</p>
-            </div>
-          </Col>
-        </Row>
+		{/* Author Section */}
+    <Row className="mt-3">
+        <Col lg={8} className="d-flex ">
+        <img
+          src={psiholog} // Replace with actual image URL
+          alt="psiholog"
+          style={{
+            width: "50px",
+            height: "50px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginRight: "8px",
+            border: "1px solid #ccc"
+          }}
+        />
+          <div>
+            <h6 className="mb-0 fw-bold">Maja Despotović</h6>
+            <p className="text-muted small">MA psiholog</p>
+          </div>
+        </Col>
+      </Row>
 
         {/* Category Tags */}
         <Row className="mt-3">

@@ -1,7 +1,7 @@
 import { Container, Row, Col, Image, Badge, ListGroup} from "react-bootstrap";
 import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
-import psiholog from "/images/psiholog2.png"
+import mico from "/images/mico.png"
 
 const ZastoKlikSigurnost = () => {
   return (
@@ -16,12 +16,12 @@ const ZastoKlikSigurnost = () => {
         </Col>
       </Row>
 
-      {/* Author Section */}
-      <Row className="mt-3">
+		{/* Author Section */}
+    <Row className="mt-3">
         <Col lg={8} className="d-flex ">
         <img
-          src={psiholog} // Replace with actual image URL
-          alt="psiholog"
+          src={mico} // Replace with actual image URL
+          alt="KlikSigurnost"
           style={{
             width: "50px",
             height: "50px",
@@ -32,8 +32,8 @@ const ZastoKlikSigurnost = () => {
           }}
         />
           <div>
-            <h6 className="mb-0 fw-bold">Maja Despotović</h6>
-            <p className="text-muted small">MA psiholog</p>
+            <h6 className="mb-0 fw-bold">Mićo Antonić</h6>
+            <p className="text-muted small">KlikSigurnost tim</p>
           </div>
         </Col>
       </Row>

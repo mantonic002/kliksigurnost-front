@@ -1,9 +1,35 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { FaUserPlus, FaUsersCog, FaClock, FaShieldAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "../../../styles/components/MadeEasy.css";
 
 import madeImg from "/images/made3.jpg";
 
 const MadeEasy = () => {
+
+  const steps = [
+    {
+      icon: <FaUserPlus className="step-icon" />,
+      title: "Registracija",
+      description: "Registrujte se i kreirajte porodični nalog.",
+    },
+    {
+      icon: <FaUsersCog className="step-icon" />,
+      title: "Podešavanje profila",
+      description: "Podesite profile za svako dete, prilagođavajući filtere.",
+    },
+    {
+      icon: <FaClock className="step-icon" />,
+      title: "Vremenska ograničenja",
+      description: "Definišite vremenska ograničenja i dozvoljene sadržaje.",
+    },
+    {
+      icon: <FaShieldAlt className="step-icon" />,
+      title: "Aktiviranje zaštite",
+      description: "Aktivirajte zaštitu na svim uređajima koje vaše dete koristi.",
+    },
+  ];
+
   return (
     <section className="made-easy-section section-bg">
       <Container>
@@ -26,22 +52,25 @@ const MadeEasy = () => {
           {/* Right Section with Text */}
           <Col lg={6} className="text-center text-lg-start">
             <div className="made-text">
-              <h3 className="section-subtitle">
-                Jednostavno podešavanje u nekoliko koraka:
-              </h3>
-              <p className="section-text">
-                - Registrujte se i kreirajte porodični nalog.
-                <br />
-                - Podesite profile za svako dete, prilagođavajući filtere.
-                <br />
-                - Definišete vremenska ograničenja i dozvoljene sadržaje.
-                <br />
-                - Aktivirate zaštitu na svim uređajima koje vaše dete koristi.
-                <br />
-              </p>
-              <Button variant="primary" className="learn-btn">
-                Saznajte više
-              </Button>
+      <h3 className="section-subtitle text-center">
+        Jednostavno podešavanje u 4 koraka:
+      </h3>
+      <ul className="setup-list">
+        {steps.map((step, index) => (
+          <li key={index} className="setup-list-item">
+            <span className="step-icon-container">{step.icon}</span>
+            <div>
+              <strong className="moje">{index + 1}. {step.title}</strong>
+              <p>{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <Link to="/vodic">
+        <Button variant="primary" className="learn-btn">
+          Detaljan vodič
+        </Button>
+      </Link>
             </div>
           </Col>
         </Row>
@@ -68,9 +97,11 @@ const MadeEasy = () => {
                 pitanja, stupite u kontakt sa našim timom tehničke podrške putem
                 poziva ili online zakazanog sastanaka.
               </p>
-              <Button variant="primary" className="learn-btn">
-                Forma za zakazivanje sastanka
-              </Button>
+              <Link to="/prijava">
+                <Button variant="primary" className="learn-btn">
+                  Zakažite sastanak!
+                </Button>
+              </Link>
             </div>
           </Col>
         </Row>
