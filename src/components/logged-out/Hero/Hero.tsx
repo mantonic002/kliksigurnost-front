@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
-import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
+import { FaWindows, FaApple, FaAndroid, FaLinux } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/HeroSection.css";
 import { BsCheckCircleFill } from "react-icons/bs";
@@ -75,6 +75,7 @@ const HeroSection = () => {
                     <FaAndroid className="platform-icon" />
                     <FaWindows className="platform-icon" />
                     <FaApple className="platform-icon" />
+                    <FaLinux className="platform-icon" />
                   </div>
                 </div>
               </div>
