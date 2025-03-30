@@ -53,7 +53,7 @@ const MadeEasy = () => {
           <Col lg={6} className="text-center text-lg-start">
             <div className="made-text">
       <h3 className="section-subtitle text-center">
-        Jednostavno podešavanje u nekoliko koraka:
+        Jednostavno podešavanje u četiri koraka:
       </h3>
       <ul className="setup-list">
         {steps.map((step, index) => (
