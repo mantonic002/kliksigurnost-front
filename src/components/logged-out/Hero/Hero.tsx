@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
 import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,6 +19,32 @@ const features = [
 ];
 
 const HeroSection = () => {
+
+  useEffect(() => {
+    const updateHeroHeight = () => {
+      const heroFirst = document.querySelector(".hero-first") as HTMLElement;
+      if (heroFirst) {
+        document.documentElement.style.setProperty(
+          "--hero-first-height",
+          `${heroFirst.clientHeight}px`
+        );
+      }
+
+      const height = document.querySelector(".give-height") as HTMLElement;
+      if (height) {
+        document.documentElement.style.setProperty(
+          "--hero-half-height",
+          `${height.clientHeight}px`
+        );
+      }
+    };
+
+    updateHeroHeight();
+    window.addEventListener("resize", updateHeroHeight);
+
+    return () => window.removeEventListener("resize", updateHeroHeight);
+  }, []);
+
   return (
     <section className="hero-section">
       <div className="hero-overlay">
@@ -25,7 +52,7 @@ const HeroSection = () => {
           <Row className="align-items-center hero-content">
             {/* Left Content */}
             <Col lg={6} md={12} className="text-center text-lg-start">
-              <div className="text-white hero-first">
+              <div className="text-white hero-first listen-height">
                 <h1 className="hero-title">
                   <div className="main-title">
                     <span className="highlight">Klik</span>
@@ -53,7 +80,7 @@ const HeroSection = () => {
               </div>
             </Col>
             <Col lg={6} md={12} className="text-center text-lg-start">
-      <div className="text-white hero-first">
+      <div className="text-white hero-first give-height">
         <ListGroup variant="flush">
           {features.map((feature, index) => (
             <ListGroup.Item key={index} className="d-flex align-items-center bg-transparent border-0 text-light fs-5 fw-bold py-2">
