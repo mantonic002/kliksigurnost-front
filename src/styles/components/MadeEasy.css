@@ -77,29 +77,101 @@
   box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
 }
 
-@media (max-width: 991px) {
-  .sec-content {
-    padding: 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Lista koraka */
+.setup-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* Stavke liste - ikonice i tekst poravnati */
+.setup-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Smanjen razmak između ikonice i teksta */
+  margin-bottom: 15px;
+}
+
+/* Kontejner za ikonu - Obezbeđuje istu širinu */
+.step-icon-container {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: #007bff1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Obezbeđuje da se veličina ne menja */
+}
+
+/* Ikonica */
+.step-icon {
+  font-size: 20px;
+  color: #007bff;
+}
+
+/* Tekst kontejner */
+.step-text-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Naslov */
+.step-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Opis */
+.step-description {
+  font-size: 14px;
+  color: #555;
+  margin: 3px 0 0;
+}
+
+/* 📱 Responsivnost - Prilagođavanje na malim ekranima */
+@media (max-width: 768px) {
+  .setup-list-item {
+    gap: 8px; /* Smanjuje razmak između ikone i teksta */
   }
 
-  .main-image {
-    width: 100%;
-    height: 100%;
+  .step-icon-container {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
   }
 
-  .section-subtitle {
-    margin-top: 0;
+  .step-icon {
+    font-size: 16px;
   }
 
-  .section-text {
-    margin: 10px 0 15px 0;
+  .step-title {
+    font-size: 15px;
   }
 
-  .sec-content .col-lg-6 {
-    margin: 0;
+  .step-description {
+    font-size: 13px;
   }
 
-  .image-box {
-    margin-top: 20px;
+  .moje {
+    text-align: left;
   }
 }
