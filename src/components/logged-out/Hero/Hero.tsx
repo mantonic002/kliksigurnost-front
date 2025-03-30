@@ -85,9 +85,12 @@ const HeroSection = () => {
         <ListGroup variant="flush">
           {features.map((feature, index) => (
             <ListGroup.Item key={index} className="d-flex align-items-center bg-transparent border-0 text-light fs-5 fw-bold py-2">
-              <BsCheckCircleFill className="text-success me-2 fs-4" />
-              {feature}
+              <BsCheckCircleFill className="text-success me-2 fs-4" style={{ flexShrink: 0 }} />
+              <div className="d-flex flex-column w-100 text-start">
+                {feature}
+              </div>
             </ListGroup.Item>
+
           ))}
         </ListGroup>
       </div>
