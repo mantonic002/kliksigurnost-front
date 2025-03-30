@@ -1,8 +1,8 @@
 import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
-import { FaUserCircle } from "react-icons/fa";
 import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 import "../../../styles/components/Blog.css";
 import { useNavigate } from 'react-router-dom';
+import mico from "/images/mico.png"
 
 const Trikovi = () => {
 
@@ -19,16 +19,27 @@ const Trikovi = () => {
           </Col>
         </Row>
 
-        {/* Author Section */}
-        <Row className="mt-3">
-          <Col lg={8} className="d-flex">
-            <FaUserCircle size={50} className="me-2 text-secondary" />
-            <div>
-              <h6 className="mb-0 fw-bold">KlikSigurnost Tim</h6>
-              <p className="text-muted small">Internet Sigurnost za Decu</p>
-            </div>
-          </Col>
-        </Row>
+		{/* Author Section */}
+    <Row className="mt-3">
+        <Col lg={8} className="d-flex ">
+        <img
+          src={mico} // Replace with actual image URL
+          alt="KlikSigurnost"
+          style={{
+            width: "50px",
+            height: "50px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginRight: "8px",
+            border: "1px solid #ccc"
+          }}
+        />
+          <div>
+            <h6 className="mb-0 fw-bold">Mićo Antonić</h6>
+            <p className="text-muted small">KlikSigurnost tim</p>
+          </div>
+        </Col>
+      </Row>
 
         {/* Category Tags */}
         <Row className="mt-3">

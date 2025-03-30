@@ -97,7 +97,7 @@ const MadeEasy = () => {
                 pitanja, stupite u kontakt sa našim timom tehničke podrške putem
                 poziva ili online zakazanog sastanaka.
               </p>
-              <Link to="/kontakt">
+              <Link to="/prijava">
                 <Button variant="primary" className="learn-btn">
                   Zakažite sastanak!
                 </Button>
