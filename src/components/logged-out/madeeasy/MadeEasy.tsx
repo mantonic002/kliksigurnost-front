@@ -2,7 +2,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaUserPlus, FaUsersCog, FaClock, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../../styles/components/MadeEasy.css";
-
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import madeImg from "/images/made3.jpg";
 
 const MadeEasy = () => {
@@ -29,6 +30,13 @@ const MadeEasy = () => {
       description: "Aktivirajte zaštitu na svim uređajima koje vaše dete koristi.",
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+      navigate("/prijava");
+      toast.error("Zakazivanje sastanka je dostupno samo prijavljenim korisnicima. Molimo Vas da se prijavite.");
+  };
 
   return (
     <section className="made-easy-section section-bg">
@@ -97,11 +105,9 @@ const MadeEasy = () => {
                 pitanja, stupite u kontakt sa našim timom tehničke podrške putem
                 poziva ili online zakazanog sastanaka.
               </p>
-              <Link to="/prijava">
-                <Button variant="primary" className="learn-btn">
-                  Zakažite sastanak!
-                </Button>
-              </Link>
+              <Button variant="primary" className="learn-btn" onClick={handleClick}>
+                Zakažite sastanak!
+              </Button>
             </div>
           </Col>
         </Row>
