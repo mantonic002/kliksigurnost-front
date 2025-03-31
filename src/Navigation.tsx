@@ -137,14 +137,20 @@ function Navigation() {
         </Nav>
         <div className="d-flex flex-column align-items-end gap-1 me-4 button-group">
           <Button
-            onClick={() => navigate("/registracija")}
+            onClick={() => {
+              handleNavClick();
+              navigate("/registracija");
+            }}
             variant="primary"
             className="w-100 btn-desktop-small"
           >
             Registracija
           </Button>
           <Button
-            onClick={() => navigate("/prijava")}
+            onClick={() => {
+              handleNavClick();
+              navigate("/prijava");
+            }}
             variant="outline-primary"
             className="w-100 btn-desktop-small"
           >
