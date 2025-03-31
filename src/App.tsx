@@ -39,6 +39,7 @@ import Privacy  from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
 import Trikovi from "./components/logged-out/Blog/Trikovi";
+import ScrollToTop from "./components/utils/ScrollToTop";
 
 function App() {
   return (
@@ -94,6 +95,7 @@ const AppContent = () => {
       )}
       {/* Content takes up the remaining space */}
       <div className="Content">
+        <ScrollToTop />
         <Routes>
           <Route path="/prijava" element={<Login />} />
           <Route path="/registracija" element={<Signup />} />
