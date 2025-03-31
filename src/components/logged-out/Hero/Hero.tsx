@@ -4,6 +4,7 @@ import { FaWindows, FaApple, FaAndroid, FaLinux } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/HeroSection.css";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 
 const features = [
@@ -65,9 +66,11 @@ const HeroSection = () => {
                   iskustvo na internetu za svoju decu, KlikSigurnost nudi
                   sveobuhvatnu roditeljsku kontrolu i praćenje lokacije.
                 </p>
-                <Button variant="primary" className="hero-btn">
-                  Besplatna registracija!
-                </Button>
+                <Link to="/registracija">
+                  <Button variant="primary" className="hero-btn">
+                    Besplatna registracija!
+                  </Button>
+                </Link>
                 {/* Available Platforms */}
                 <div className="platforms-area">
                   <div className="platforms mt-4">
