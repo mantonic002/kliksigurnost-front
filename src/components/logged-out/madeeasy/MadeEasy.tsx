@@ -1,12 +1,67 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaUserPlus, FaUsersCog, FaClock, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../../styles/components/MadeEasy.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import madeImg from "/images/made3.jpg";
+import wheel from "/images/settings_wheel.png"
+import phone from "/images/call.png"
 
 const MadeEasy = () => {
+
+  const [isWheelInView, setIsWheelInView] = useState(false);
+  const [isPhoneInView, setIsPhoneInView] = useState(false);
+
+  const wheelRef = useRef<HTMLDivElement | null>(null);
+  const phoneRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const wheelObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          // Start animation for the settings wheel when it comes into view
+          setIsWheelInView(true);
+
+          // Reset animation after it finishes (10 seconds)
+          setTimeout(() => setIsWheelInView(false), 10000); // Adjust timeout to match the animation duration
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const phoneObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          // Start animation for the phone icon when it comes into view
+          setIsPhoneInView(true);
+
+          // Reset animation after it finishes (1 second)
+          setTimeout(() => setIsPhoneInView(false), 1000); // Adjust timeout to match the shake animation duration
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (wheelRef.current) {
+      wheelObserver.observe(wheelRef.current); // Observe the settings wheel
+    }
+
+    if (phoneRef.current) {
+      phoneObserver.observe(phoneRef.current); // Observe the phone icon
+    }
+
+    return () => {
+      if (wheelRef.current) {
+        wheelObserver.unobserve(wheelRef.current);
+      }
+      if (phoneRef.current) {
+        phoneObserver.unobserve(phoneRef.current);
+      }
+    };
+  }, []);
 
   const steps = [
     {
@@ -52,9 +107,9 @@ const MadeEasy = () => {
         <Row className="align-items-center sec-content">
           {/* Left Section with Image */}
           <Col lg={6} className="position-relative text-center text-lg-start">
-            <div className="image-box">
-              <img src={madeImg} alt="Shield Icon" className="main-image" />
-            </div>
+          <div className="settings-wheel-container" ref={wheelRef}>
+            <img src={wheel} alt="Settings Wheel" className={`rotating-wheel ${isWheelInView ? 'rotate-animation' : ''}`} />
+          </div>
           </Col>
 
           {/* Right Section with Text */}
@@ -91,9 +146,9 @@ const MadeEasy = () => {
             lg={6}
             className="position-relative text-center text-lg-start order-1 order-lg-2"
           >
-            <div className="image-box">
-              <img src={madeImg} alt="Shield Icon" className="main-image" />
-            </div>
+          <div className="settings-wheel-container" ref={phoneRef}>
+            <img src={phone} alt="korisnicka podrska" className={`phone-icon ${isPhoneInView ? 'shake-animation' : ''}`} />
+          </div>
           </Col>
 
           {/* Right Section with Text - Moves down on small screens */}

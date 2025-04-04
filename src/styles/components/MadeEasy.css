@@ -182,3 +182,89 @@
     text-align: left;
   }
 }
+
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust height as needed */
+  width: 200px; /* Adjust width as needed */
+ 
+}
+
+.settings-wheel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.rotating-wheel {
+  width: 200px;
+  height: 200px;
+}
+
+.phone-icon {
+  width: 200px;
+  height: 200px;
+
+}
+
+/* Animation for the rotating wheel */
+.rotate-animation {
+  animation: rotate 2s linear 1; /* Rotate only once (1 iteration) */
+}
+
+@keyframes rotate {
+
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(270deg);
+  }
+  50% {
+    transform: rotate(330deg);
+  }
+  75% {
+    transform: rotate(345deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate2 {
+
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+/* Animation for the shaking phone */
+.shake-animation {
+  animation: rotate2 0.4s linear; /* Shake only once (1 iteration) */
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
