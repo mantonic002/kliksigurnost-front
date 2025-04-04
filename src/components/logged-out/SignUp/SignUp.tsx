@@ -1,5 +1,5 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -158,11 +158,12 @@ const Signup = () => {
               </Button>
             </Form>
 
-            <p className="or-text mt-4">Možete se registrovati i pomoću:</p>
-            <div className="social-icons">
-              <FaFacebookF onClick={facebookLogin} className="icon fb" />
-              <FaGoogle onClick={googleLogin} className="icon google" />
-              <FaLinkedinIn className="icon linkedin" />
+            <p className="or-text mt-4">Ili se možete automatski registrovati pomoću:</p>
+            <div className="social-icons d-flex justify-content-center">
+              <Button onClick={googleLogin} className="d-flex align-items-center gap-2 google-button px-4 py-2" variant="light">
+                <FaGoogle />
+                Registracija pomoću Google naloga
+              </Button>
             </div>
           </Col>
         </Row>

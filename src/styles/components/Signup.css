@@ -74,3 +74,17 @@
 .icon.linkedin {
   background: #0a66c2;
 }
+
+.google-button {
+  background-color: #db4437 !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.google-button:hover {
+  background-color: #c23321 !important;
+  color: white !important;
+}

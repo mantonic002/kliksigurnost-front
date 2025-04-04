@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import {  FaGoogle } from "react-icons/fa";
 
 import "../../../styles/components/Signup.css";
 import "../../../styles/components/Forms.css";
@@ -115,11 +115,13 @@ function Login() {
             </Form>
 
             <p className="or-text mt-4">Možete se prijaviti i pomoću:</p>
-            <div className="social-icons">
-              <FaFacebookF onClick={facebookLogin} className="icon fb" />
-              <FaGoogle onClick={googleLogin} className="icon google" />
-              <FaLinkedinIn className="icon linkedin" />
+            <div className="social-icons d-flex justify-content-center">
+              <Button onClick={googleLogin} className="d-flex align-items-center gap-2 google-button px-4 py-2" variant="light">
+                <FaGoogle />
+                Prijava pomoću Google naloga
+              </Button>
             </div>
+
 
             <a href="/zaboravljena-lozinka" className="mt-4">
               {" "}
