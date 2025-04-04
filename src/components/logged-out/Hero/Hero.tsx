@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 
 const features = [
-  "Automatsko filtriranje sadržaja",
+  "Automatsko filtriranje neprimerenog sadržaja",
   "Praćenje lokacije deteta",
-  "Vremenska kontrola",
+  "Roditelji sami podešavaju šta će blokirati u kojem periodu",
   "Praćenje aktivnosti",
   "Obezbeđivanje celokupne kućne mreže",
   "Vremenska ograničenja",
