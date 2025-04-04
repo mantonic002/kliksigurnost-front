@@ -3,6 +3,7 @@ import "../../../styles/components/Contact.css";
 
 const Contact = () => {
   return (
+    <section className="contact-section">
     <Container className="mt-3 mb-3 d-flex justify-content-center">
       <Row className="justify-content-center w-100">
         <Col md={12} lg={8} xl={6}> {/* Controls the max width */}
@@ -50,6 +51,7 @@ const Contact = () => {
         </Col>
       </Row>
     </Container>
+    </section>
   );
 };
 
