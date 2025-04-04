@@ -16,10 +16,9 @@ const Contact = () => {
                 <p><strong>Telefon:</strong> +381 60 123 4567</p>
                 <p><strong>Viber:</strong> +381 60 123 4567</p>
                 <p><strong>WhatsApp:</strong> +381 60 123 4567</p>
-                <br/>
               </div>
               <hr className="my-4 border-0 border-top border-secondary" />
-              <br/><br/>
+              <br/>
               <h5 className="mb-3">Pošaljite nam poruku:</h5>
               <br/>
               <Form>
@@ -47,6 +46,7 @@ const Contact = () => {
                   <Button variant="primary" type="submit">
                     Pošalji poruku
                   </Button>
+                  <hr className="my-4 border-0 border-top border-secondary" />
                 </div>
               </Form>
             </Card.Body>

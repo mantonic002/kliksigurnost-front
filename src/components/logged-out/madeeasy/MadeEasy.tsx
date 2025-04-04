@@ -59,7 +59,7 @@ const MadeEasy = () => {
 
           {/* Right Section with Text */}
           <Col lg={6} className="text-center text-lg-start">
-            <div className="made-text">
+            <div className="made-text w-100 text-center">
       <h3 className="section-subtitle text-center">
         Jednostavno podešavanje u 4 koraka:
       </h3>
@@ -68,7 +68,7 @@ const MadeEasy = () => {
           <li key={index} className="setup-list-item">
             <span className="step-icon-container">{step.icon}</span>
             <div>
-              <strong className="moje">{index + 1}. {step.title}</strong>
+              <strong className="moje">{step.title}</strong>
               <p>{step.description}</p>
             </div>
           </li>
