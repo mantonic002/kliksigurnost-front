@@ -3,24 +3,21 @@ import "../../../styles/components/Contact.css";
 
 const Contact = () => {
   return (
-    <Container className="mt-3 mb-3 custom-card">
-      <Row className="justify-content-center custom-card">
-        <Col md={12} lg={12} className="custom-card">
+    <Container className="mt-3 mb-3 d-flex justify-content-center">
+      <Row className="justify-content-center w-100">
+        <Col md={12} lg={8} xl={6}> {/* Controls the max width */}
           <Card className="shadow-lg p-4 custom-card">
             <Card.Body>
               <h2 className="text-center mb-4">Kontaktirajte nas</h2>
               <h5 className="mb-3">Imate pitanja? Rado ćemo vam pomoći:</h5>
               <div className="mb-4">
-                <br/>
                 <p><strong>Email:</strong> podrska@kliksigurnost.com</p>
                 <p><strong>Telefon:</strong> +381 60 123 4567</p>
                 <p><strong>Viber:</strong> +381 60 123 4567</p>
                 <p><strong>WhatsApp:</strong> +381 60 123 4567</p>
               </div>
               <hr className="my-4 border-0 border-top border-secondary" />
-              <br/>
               <h5 className="mb-3">Pošaljite nam poruku:</h5>
-              <br/>
               <Form>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label><strong>Ime i prezime:</strong></Form.Label>
@@ -46,7 +43,6 @@ const Contact = () => {
                   <Button variant="primary" type="submit">
                     Pošalji poruku
                   </Button>
-                  <hr className="my-4 border-0 border-top border-secondary" />
                 </div>
               </Form>
             </Card.Body>
