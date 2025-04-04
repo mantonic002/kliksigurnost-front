@@ -10,7 +10,7 @@ const Privacy = () => {
 <p>Poslednje ažuriranje: 2025-03-25</p>
 
 <p> KlikSigurnost (“mi,” “naš,” ili “nas”) posvećen je zaštiti vaše privatnosti. Ova Politika privatnosti objašnjava kako se vaši lični podaci prikupljaju, koriste i otkrivaju od strane KlikSigurnosti.</p>
-<p>Ova Politika privatnosti se primenjuje na našu veb stranicu i povezane poddomene (zajedno, našu “uslugu”), kao i našu aplikaciju, KlikSigurnost. Pristupanjem ili korišćenjem naše usluge, potvrđujete da ste pročitali, razumeli i saglasni ste sa prikupljanjem, čuvanjem, upotrebom i otkrivanjem vaših ličnih podataka kako je opisano u ovoj Politici privatnosti i našim Uslovima korišćenja. Ova Politika privatnosti je kreirana uz pomoć <a href="https://termify.io" target="_blank">Termify</a>.</p>
+<p>Ova Politika privatnosti se primenjuje na našu veb stranicu i povezane poddomene (zajedno, našu “uslugu”), kao i našu aplikaciju, KlikSigurnost. Pristupanjem ili korišćenjem naše usluge, potvrđujete da ste pročitali, razumeli i saglasni ste sa prikupljanjem, čuvanjem, upotrebom i otkrivanjem vaših ličnih podataka kako je opisano u ovoj Politici privatnosti i našim Uslovima korišćenja.</p>
 
 <h1>Definicije i ključni termini</h1>
 <p>Kako bi objasnili stvari što je moguće jasnije u ovoj Politici privatnosti, svaki put kada se spomenu ovi termini, strogo su definisani kao:

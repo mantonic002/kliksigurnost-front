@@ -11,7 +11,7 @@ const Terms = () => {
 <h1>Opšti uslovi</h1>
 <p>Pristupanjem i izvršavanjem porudžbine kod KlikSigurnost potvrđujete da se slažete sa uslovima korišćenja navedenim u nastavku. Ovi uslovi se odnose na celu veb stranicu i bilo koju e-poštu ili drugi vid komunikacije između vas i KlikSigurnost.</p>
 <p>Ni pod kakvim okolnostima tim KlikSigurnost neće biti odgovoran za bilo kakvu direktnu, indirektnu, specijalnu, slučajnu ili posledičnu štetu, uključujući, ali ne ograničavajući se na, gubitak podataka ili profita, nastalu korišćenjem ili nemogućnošću korišćenja materijala na ovom sajtu, čak i ako je tim KlikSigurnost ili ovlašćeni predstavnik bio obavešten o mogućnosti takve štete. Ako korišćenje materijala sa ovog sajta rezultira potrebom za servisiranjem, popravkom ili korekcijom opreme ili podataka, preuzimate sve troškove na sebe.</p>
-<p>KlikSigurnost neće biti odgovoran za bilo kakav ishod koji može nastati tokom korišćenja naših resursa. Zadržavamo pravo da promenimo cene i revidiramo politiku korišćenja resursa u bilo kom trenutku. Ovi Uslovi korišćenja su kreirani pomoću <a href="https://termify.io" target="_blank">Termify</a>.</p>
+<p>KlikSigurnost neće biti odgovoran za bilo kakav ishod koji može nastati tokom korišćenja naših resursa. Zadržavamo pravo da promenimo cene i revidiramo politiku korišćenja resursa u bilo kom trenutku.</p>
 
 <h1>Licenca</h1>
 <p>KlikSigurnost vam dodeljuje opozivu, neekskluzivnu, neprenosivu, ograničenu licencu za preuzimanje, instalaciju i korišćenje veb sajta/aplikacije u skladu sa uslovima ovog ugovora.</p>
