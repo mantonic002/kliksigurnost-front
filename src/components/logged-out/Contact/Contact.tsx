@@ -10,10 +10,10 @@ const Contact = () => {
               <h2 className="text-center mb-4">Kontaktirajte nas</h2>
               <p className="text-center">Imate pitanja? Rado ćemo vam pomoći!</p>
               <div className="mb-4 text-center">
-                <p><strong>Email:</strong> kontakt@kliksigurnost.com</p>
+                <p><strong>Email:</strong> podrska@kliksigurnost.com</p>
                 <p><strong>Telefon:</strong> +381 60 123 4567</p>
               </div>
-              <h5 className="mb-3">Zakažite sastanak</h5>
+              <h5 className="mb-3">Pošaljite nam poruku:</h5>
               <Form>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Ime i prezime</Form.Label>
@@ -37,7 +37,7 @@ const Contact = () => {
 
                 <div className="text-center">
                   <Button variant="primary" type="submit">
-                    Pošalji zahtev
+                    Pošalji poruku
                   </Button>
                 </div>
               </Form>

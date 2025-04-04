@@ -190,7 +190,7 @@ const Privacy = () => {
 <p>Ne prodajemo lične podatke naših korisnika.</p>
 <p>Za više informacija o ovim pravima, kontaktirajte nas.</p>
 <h1>Kontaktirajte nas</h1>
-<p>Ne oklevajte da nas kontaktirate ako imate bilo kakvih pitanja: kliksigurnost.com@gmail.com</p>
+<p>Ne oklevajte da nas kontaktirate ako imate bilo kakvih pitanja: podrska@kliksigurnost.com</p>
 
 
 

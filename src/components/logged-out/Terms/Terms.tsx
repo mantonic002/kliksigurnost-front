@@ -112,7 +112,7 @@ const Terms = () => {
 <p>Ovo se odnosi na svaki spor OSIM ako nije u vezi sa zahtevima za zabranu ili pravičnu nadoknadu koja se odnosi na sprovođenje ili validnost vaših ili intelektualnih prava KlikSigurnost-a. Pojam „spor“ označava bilo koji spor, tužbu ili drugu kontroverzu između vas i KlikSigurnost-a u vezi sa Uslugama ili ovim ugovorom, bilo da se odnosi na ugovor, garanciju, delikt, zakon, propis, uredbu ili bilo koju drugu pravnu ili pravičnu osnovu. „Spor“ će se tumačiti u najširem mogućem smislu koji zakon dozvoljava.</p>
 
 <h1>Obaveštenje o sporu</h1>
-<p>U slučaju spora, vi ili KlikSigurnost morate dostaviti drugoj strani Obaveštenje o sporu, koje je pisana izjava koja sadrži ime, adresu i kontakt informacije strane koja ga podnosi, činjenice koje dovode do spora i traženo rešenje. Morate poslati Obaveštenje o sporu putem e-pošte na: kliksigurnost.com@gmail.com . KlikSigurnost će poslati Obaveštenje o sporu vama putem pošte na vašu adresu ako je imamo, ili na vašu e-adresu. Vi i KlikSigurnost ćete pokušati da rešite bilo koji spor neformalnim pregovorima u roku od šezdeset (60) dana od datuma slanja Obaveštenja o sporu. Nakon šezdeset (60) dana, vi ili KlikSigurnost možete započeti arbitražu.</p>
+<p>U slučaju spora, vi ili KlikSigurnost morate dostaviti drugoj strani Obaveštenje o sporu, koje je pisana izjava koja sadrži ime, adresu i kontakt informacije strane koja ga podnosi, činjenice koje dovode do spora i traženo rešenje. Morate poslati Obaveštenje o sporu putem e-pošte na: podrska@kliksigurnost.com . KlikSigurnost će poslati Obaveštenje o sporu vama putem pošte na vašu adresu ako je imamo, ili na vašu e-adresu. Vi i KlikSigurnost ćete pokušati da rešite bilo koji spor neformalnim pregovorima u roku od šezdeset (60) dana od datuma slanja Obaveštenja o sporu. Nakon šezdeset (60) dana, vi ili KlikSigurnost možete započeti arbitražu.</p>
 
 <h1>Obavezujuća arbitraža</h1>
 <p>Ako vi i KlikSigurnost ne rešite spor neformalnim pregovorima, svaki drugi pokušaj rešavanja spora će biti isključivo sproveden putem obavezujuće arbitraže kako je opisano u ovom odeljku. Odričete se prava na sudsko rešavanje spora pred sudijom ili porotom. Spor će biti rešen obavezujućom arbitražom u skladu sa pravilima komercijalne arbitraže Američke arbitražne asocijacije. Svaka strana može zatražiti privremenu ili preliminarnu zabranu od bilo kojeg nadležnog suda, ukoliko je to potrebno radi zaštite prava ili imovine te strane do završetka arbitraže. Sve pravne, računovodstvene i druge troškove, naknade i izdatke snosi strana koja nije uspela u sporu.</p>
@@ -133,12 +133,12 @@ const Terms = () => {
 <p>KlikSigurnost ne preuzima odgovornost za bilo kakav sadržaj, kod ili bilo kakve netačnosti. KlikSigurnost ne pruža garancije ili garancijske izjave. KlikSigurnost ne odgovara za bilo kakvu direktnu, indirektnu, slučajnu, posebnu ili posledičnu štetu koja proizilazi iz korišćenja usluge.</p>
 
 <h1>Brisanje naloga i podataka</h1>
-<p>Ako želite da obrišete svoj nalog i sve povezane podatke sa naše platforme, molimo vas da nas kontaktirate putem e-maila na adresu kliksigurnost.com@gmail.com. Nakon što zaprimimo vaš zahtev, obratićemo vam se kako bismo potvrdili postupak brisanja naloga i svih vaših podataka, u skladu sa važećim zakonodavstvom o zaštiti privatnosti.</p>
+<p>Ako želite da obrišete svoj nalog i sve povezane podatke sa naše platforme, molimo vas da nas kontaktirate putem e-maila na adresu podrska@kliksigurnost.com. Nakon što zaprimimo vaš zahtev, obratićemo vam se kako bismo potvrdili postupak brisanja naloga i svih vaših podataka, u skladu sa važećim zakonodavstvom o zaštiti privatnosti.</p>
 
 <h1>Kontakt</h1>
 <p>Ne oklevajte da nas kontaktirate ako imate bilo kakva pitanja.</p>
 <ul>
-<li>Putem e-pošte: kliksigurnost.com@gmail.com</li>
+<li>Putem e-pošte: podrska@kliksigurnost.com</li>
 <li>Putem linka: <a href="https://kliksigurnost.com">kliksigurnost.com</a></li>
 </ul>
 
