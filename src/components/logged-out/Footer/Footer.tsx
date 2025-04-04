@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebookF, FaEnvelope, FaViber, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../logo_final2.png";
+import "../../../styles/components/Footer2.css"
 
 const Footer = () => {
   return (
@@ -28,18 +29,18 @@ const Footer = () => {
           {/* Logo */}
           <Col className="d-flex flex-column justify-content-center align-items-center">
             <img src={logo} alt="KlikSigurnost Logo" width={80} />
-            <p className="text-muted mb-0">KlikSigurnost © 2025</p>
+            <p className="text-muted mb-0">KlikSigurnost©2025</p>
           </Col>
 
 
           {/* Copyright */}
           <Col className="d-flex flex-column align-items-end">
-            <div className="mb-2">
-              <Link to="/uslovi" className="text-dark text-decoration-none me-2">Uslovi korištenja</Link>
-            </div>
-            <div className="mb-2">
-              <Link to="/privatnost" className="text-dark text-decoration-none">Politika privatnosti</Link>
-            </div>
+          <div className="mb-2">
+            <Link to="/uslovi" className="text-dark text-decoration-none me-2 footer-link">Uslovi korištenja</Link>
+          </div>
+          <div className="mb-2">
+            <Link to="/privatnost" className="text-dark text-decoration-none footer-link">Politika privatnosti</Link>
+          </div>
             
           </Col>
         </Row>
