@@ -1,7 +1,7 @@
 /* ===== CONCERNS SECTION ===== */
 .concerns-section {
   padding: 70px 0;
-  background-color: #eff3f6;
+  background-color: white;
 }
 
 .info-box {
@@ -10,9 +10,12 @@
 
 .study-image {
   width: 100%;
-  max-width: 350px;
+  max-width: 450px;
   margin-bottom: 20px;
   border-radius: 10px;
+  max-width: 400px;
+  padding:0;
+  margin:0;
 }
 
 .concern-item {
@@ -71,7 +74,7 @@
   }
 
   .study-image {
-    max-width: 300px;
+    max-width: 400px;
   }
 }
 
