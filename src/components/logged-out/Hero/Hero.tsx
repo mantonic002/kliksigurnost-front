@@ -14,9 +14,9 @@ const features = [
   "Praćenje aktivnosti",
   "Obezbeđivanje celokupne kućne mreže",
   "Vremenska ograničenja",
-  "Podrška na srpskom jeziku",
   "Prilagođavanje prema starosnoj dobi",
-  "Sigurnost tokom učenja"
+  "Podesite jednom – bezbrižni ste zauvek",
+  "Podrška na srpskom jeziku",
 ];
 
 const HeroSection = () => {
