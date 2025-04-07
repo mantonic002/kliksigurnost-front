@@ -3,21 +3,22 @@ import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
 import { FaWindows, FaApple, FaAndroid, FaLinux } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../../styles/components/HeroSection.css";
-import { BsCheckCircleFill } from "react-icons/bs";
+import { BsCheckCircleFill, BsArrowRepeat } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 
 const features = [
-  "Automatsko filtriranje neprimerenog sadržaja",
-  "Praćenje lokacije deteta",
-  "Roditelji sami podešavaju šta će blokirati u kojem periodu",
-  "Praćenje aktivnosti",
-  "Obezbeđivanje celokupne kućne mreže",
-  "Vremenska ograničenja",
-  "Prilagođavanje prema starosnoj dobi",
-  "Podesite jednom – bezbrižni ste zauvek",
-  "Podrška na srpskom jeziku",
+  { text: "Automatsko filtriranje neprimerenog sadržaja", status: "done" },
+  { text: "Roditelji sami podešavaju šta će blokirati u kojem periodu", status: "done" },
+  { text: "Praćenje aktivnosti", status: "done" },
+  { text: "Vremenska ograničenja", status: "done" },
+  { text: "Prilagođavanje prema starosnoj dobi", status: "done" },
+  { text: "Podesite jednom – bezbrižni ste zauvek", status: "done" },
+  { text: "Podrška na srpskom jeziku", status: "done" },
+  { text: "Praćenje lokacije deteta", status: "loading" },
+  { text: "Obezbeđivanje celokupne kućne mreže", status: "loading" },
 ];
+
 
 const HeroSection = () => {
 
@@ -86,15 +87,27 @@ const HeroSection = () => {
             <Col lg={6} md={12} className="text-center text-lg-start">
       <div className="text-white hero-first give-height">
         <ListGroup variant="flush">
-          {features.map((feature, index) => (
-            <ListGroup.Item key={index} className="d-flex align-items-center bg-transparent border-0 text-light fs-5 fw-bold py-2">
+        {features.map((feature, index) => (
+          <ListGroup.Item
+            key={index}
+            className="d-flex align-items-center bg-transparent border-0 text-light fs-5 fw-bold py-2"
+          >
+            {feature.status === "done" ? (
               <BsCheckCircleFill className="text-success me-2 fs-4" style={{ flexShrink: 0 }} />
-              <div className="d-flex flex-column w-100 text-start">
-                {feature}
-              </div>
-            </ListGroup.Item>
+            ) : (
+              <BsArrowRepeat className="text-warning me-2 fs-4" style={{ flexShrink: 0 }} />
+            )}
 
-          ))}
+            <div className="d-flex flex-column w-100 text-start">
+              {feature.text}
+              {feature.status === "loading" && (
+                <span className="text-warning fs-6 fw-normal">trenutno u pripremi</span>
+              )}
+            </div>
+          </ListGroup.Item>
+        ))}
+
+
         </ListGroup>
       </div>
     </Col>

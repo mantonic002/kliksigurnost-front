@@ -22,7 +22,7 @@ const tabData = [
     image: "/images/phone1.png",
   },
   {
-    title: "Praćenje lokacije deteta",
+    title: "Praćenje lokacije deteta - u pripremi",
     content:
       "KlikSigurnost omogućava roditeljima da u realnom vremenu prate lokaciju deteta na mapi putem intuitivne aplikacije.",
     icon: <FaMapMarkerAlt />,
@@ -43,7 +43,7 @@ const tabData = [
     image: "/images/phone1.png",
   },
   {
-    title: "Obezbeđivanje celokupne kućne mreže",
+    title: "Obezbeđivanje celokupne kućne mreže - u pripremi",
     content:
       "KlikSigurnost pruža mogućnost zaštite cele kućne mreže, blokirajući neprimerene sadržaje i pretnje za sve uređaje povezane na vaš Wi-Fi, uključujući telefone, tablete, računare i pametne televizore.",
     icon: <FaWifi />,
