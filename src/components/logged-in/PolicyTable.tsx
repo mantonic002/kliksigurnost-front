@@ -46,12 +46,84 @@ export const PolicyTable = ({
     return appIds.map((id) => applicationMap.get(id) || "Unknown");
   };
 
+  // Helper function to convert time to minutes
+  const timeToMinutes = (time: string) => {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+  };
+
+  // Format time ranges the same way as in PolicyForm
+  const formatTimeRanges = (timeRanges: string): string => {
+    if (!timeRanges) return "";
+
+    // Split the time ranges string into individual time slots
+    const timeSlots = timeRanges.split(",").flatMap((range) => {
+      if (range.includes("-")) {
+        const [start, end] = range.split("-");
+        const slots = [];
+        let current = timeToMinutes(start);
+        const endMinutes = timeToMinutes(end);
+
+        while (current <= endMinutes) {
+          const hours = Math.floor(current / 60)
+            .toString()
+            .padStart(2, "0");
+          const minutes = (current % 60).toString().padStart(2, "0");
+          slots.push(`${hours}:${minutes}`);
+          current += 30; // Assuming 30-minute intervals as in PolicyForm
+        }
+        return slots;
+      }
+      return [range];
+    });
+
+    // Now format them the same way as in PolicyForm
+    if (timeSlots.length === 0) return "";
+
+    timeSlots.sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
+
+    const ranges: string[] = [];
+    let start = timeSlots[0];
+    let end = timeSlots[0];
+
+    for (let i = 1; i < timeSlots.length; i++) {
+      const currentTime = timeSlots[i];
+      const prevTime = timeSlots[i - 1];
+
+      if (timeToMinutes(currentTime) - timeToMinutes(prevTime) === 30) {
+        end = currentTime;
+      } else {
+        ranges.push(`${start}-${end}`);
+        start = currentTime;
+        end = currentTime;
+      }
+    }
+
+    ranges.push(`${start}-${end}`);
+
+    return ranges.join(", ");
+  };
+
   const formatSchedule = (schedule: Schedule | undefined): string => {
     if (!schedule) return "";
+
+    const dayNameMapping: Record<string, string> = {
+      mon: "Ponedeljak",
+      tue: "Utorak",
+      wed: "Sreda",
+      thu: "Četvrtak",
+      fri: "Petak",
+      sat: "Subota",
+      sun: "Nedelja",
+    };
+
     return Object.entries(schedule)
+      .filter(([day]) => day !== "time_zone")
       .map(([day, timeRanges]) => {
-        if (day === "time_zone" || timeRanges === null) return null;
-        return `${day}: ${timeRanges}`;
+        if (!timeRanges) return null;
+        const formattedDay = dayNameMapping[day] || day;
+        const formattedTime = formatTimeRanges(timeRanges);
+        return formattedTime ? `${formattedDay}: ${formattedTime}` : null;
       })
       .filter(Boolean)
       .join(" | ");
@@ -131,7 +203,7 @@ export const PolicyTable = ({
               )}
               {schedule && (
                 <div className="card-item">
-                  <strong>Raspored:</strong> {schedule}
+                  <strong>Raspored:</strong> ...
                 </div>
               )}
 
@@ -205,10 +277,38 @@ export const PolicyTable = ({
                 </>
               )}
               {selectedPolicy.schedule && (
-                <p>
-                  <strong>Raspored:</strong>{" "}
-                  {formatSchedule(selectedPolicy.schedule)}
-                </p>
+                <div className="schedule-display">
+                  <h6>Raspored:</h6>
+                  <ul>
+                    {Object.entries(selectedPolicy.schedule)
+                      .filter(([day]) => day !== "time_zone")
+                      .map(([day, timeRanges]) => {
+                        if (!timeRanges) return null;
+                        const formattedDay =
+                          {
+                            mon: "Ponedeljak",
+                            tue: "Utorak",
+                            wed: "Sreda",
+                            thu: "Četvrtak",
+                            fri: "Petak",
+                            sat: "Subota",
+                            sun: "Nedelja",
+                          }[day] || day;
+                        const formattedTime = formatTimeRanges(timeRanges);
+                        return formattedTime ? (
+                          <li key={day}>
+                            <strong>{formattedDay}:</strong> {formattedTime}
+                          </li>
+                        ) : null;
+                      })}
+                    {selectedPolicy.schedule.time_zone && (
+                      <li>
+                        <strong>Vremenska zona:</strong>{" "}
+                        {selectedPolicy.schedule.time_zone}
+                      </li>
+                    )}
+                  </ul>
+                </div>
               )}
               {selectedPolicy.action == "ytrestricted" && (
                 <>
