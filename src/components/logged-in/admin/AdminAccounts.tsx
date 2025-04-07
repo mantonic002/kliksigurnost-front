@@ -50,6 +50,7 @@ const AdminAccounts = () => {
       await adminService.setupAccount({
         accountId: formData.accountId,
         email: formData.email,
+        organizationName: formData.organizationName,
         authorizationToken: formData.authToken,
       });
 

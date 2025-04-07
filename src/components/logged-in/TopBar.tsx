@@ -91,13 +91,15 @@ const TopBar = () => {
 
       {/* Notifications and User Email */}
       <div className="TopBar-element">
-        <div className="action-icon" onClick={openNotifications}>
-          <div className="icon-wrapper">
-            <BsBell size={25} className="action-blue outlined" />
-            <BsBellFill size={25} className="action-blue filled" />
-            <span className="notification-badge">{notificationCount}</span>
+        {profile?.role !== "ADMIN" && (
+          <div className="action-icon" onClick={openNotifications}>
+            <div className="icon-wrapper">
+              <BsBell size={25} className="action-blue outlined" />
+              <BsBellFill size={25} className="action-blue filled" />
+              <span className="notification-badge">{notificationCount}</span>
+            </div>
           </div>
-        </div>
+        )}
         {isDropdownOpen && (
           <div className="notifications-dropdown">
             {notifications.length > 0 ? (

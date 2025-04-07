@@ -46,6 +46,7 @@ class AdminService {
   async setupAccount(data: {
     accountId: string;
     email: string;
+    organizationName: string;
     authorizationToken: string;
   }): Promise<void> {
     try {
