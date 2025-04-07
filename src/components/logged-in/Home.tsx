@@ -15,6 +15,10 @@ const Home = () => {
             <span className="klik">Klik</span>
             <span className="sigurnost">Sigurnost</span>
           </h1>
+
+          {/* TURI OVO DJE OCES*/}
+          <h2>Organisation: {profile?.organizationName}</h2>
+
           <p className="home-subtitle">
             KlikSigurnost je posvećen pružanju praktičnih i efikasnih alata za
             roditelje kako bi njihova deca bila sigurna dok koriste internet.
