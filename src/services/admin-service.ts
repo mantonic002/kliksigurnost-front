@@ -1,4 +1,5 @@
 import { Appointment } from "../models/Appointment";
+import { ContactFormMessage } from "../models/ContactFormMessage";
 import { CloudflareAccount, UserProfile } from "../models/UserProfile";
 import apiClient from "./api-client";
 
@@ -63,6 +64,42 @@ class AdminService {
       );
       return response.data;
     } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAllMessages(): Promise<ContactFormMessage[]> {
+    try {
+      const response = await apiClient.get<ContactFormMessage[]>(
+        "/admin/contact"
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching all contact messages:", error);
+      throw error;
+    }
+  }
+
+  async getPendingMessages(): Promise<ContactFormMessage[]> {
+    try {
+      const response = await apiClient.get<ContactFormMessage[]>(
+        "/admin/contact/pending"
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching pending contact messages:", error);
+      throw error;
+    }
+  }
+
+  async resolveMessage(id: number): Promise<ContactFormMessage> {
+    try {
+      const response = await apiClient.put<ContactFormMessage>(
+        `/admin/contact/resolve/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error resolving contact message ${id}:`, error);
       throw error;
     }
   }

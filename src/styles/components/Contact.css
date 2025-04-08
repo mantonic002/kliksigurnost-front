@@ -1,13 +1,9 @@
-
 .contact-section {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 1rem;
 }
 .custom-card {
-    width: 100% !important;
-    min-width: 100%;
-    margin-top: 1rem;
-    margin-left:0.01rem !important;
-    margin-right:0.01rem !important;
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+  width: 100% !important;
+  min-width: 100%;
+  margin: auto;
 }
