@@ -4,6 +4,7 @@ import adminService from "../../../services/admin-service";
 import AdminUsers from "./AdminUsers";
 import AdminAccounts from "./AdminAccounts";
 import AdminAppointments from "./AdminAppointments";
+import AdminContactMessages from "./AdminContactMessages";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +38,9 @@ const AdminDashboard = () => {
         </Tab>
         <Tab eventKey="appointments" title="Appointments">
           <AdminAppointments />
+        </Tab>
+        <Tab eventKey="supportMessages" title="Support Messages">
+          <AdminContactMessages />
         </Tab>
       </Tabs>
     </Container>
