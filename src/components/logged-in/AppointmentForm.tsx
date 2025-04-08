@@ -147,10 +147,10 @@ const AppointmentForm = () => {
               return (
                 <div key={appointment.id} className="appointment-item">
                   <span>
-                    <strong>Datum:</strong>
+                    <strong>Datum: </strong>
                     {formattedDate}
                     <strong className="ms-4">Telefon:</strong>
-                    {appointment.phoneNumber && ` (${appointment.phoneNumber})`}
+                    {appointment.phoneNumber && ` ${appointment.phoneNumber}`}
                   </span>
                   <div
                     className="action-icon"

@@ -47,6 +47,7 @@ const AdminAppointment = () => {
           return (
             <div key={appointment.id} className="appointment-item">
               <span>{appointment.userEmail}</span>
+              <span>{appointment.phoneNumber}</span>
               <span>{formattedDate}</span>
             </div>
           );
