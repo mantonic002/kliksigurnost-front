@@ -116,7 +116,6 @@ const TopBar = () => {
             )}
           </div>
         )}
-        <div className="userEmail">{profile?.email}</div>
       </div>
 
       {/* Sidebar Offcanvas */}
@@ -128,6 +127,12 @@ const TopBar = () => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <img src={logo} alt="Logo" style={{ maxHeight: "40px" }} />
+            <div className="user-details">
+              <div className="user-email">{profile?.email}</div>
+              <div className="user-organization">
+                {profile?.organizationName}
+              </div>
+            </div>
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
