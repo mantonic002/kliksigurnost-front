@@ -53,7 +53,7 @@ export const SidebarData: SidebarItem[] = [
     link: "/uredjaji",
   },
   {
-    title: "Praćenje",
+    title: "Internet aktivnost",
     iconOutline: <BsBarChartLine />,
     iconFilled: <BsBarChartLineFill />,
     element: <Logs />,

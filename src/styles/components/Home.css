@@ -7,13 +7,13 @@
   }
   
   .home-title {
-    font-size: 3rem;
+   /* font-size: 3rem;*/
     font-weight: bold;
     color: #2a3d66;
   }
     
   .title2 {
-    font-size: 2rem;
+    /* font-size: 2rem;*/
     font-weight: bold;
     color: #2a3d66;
   }
@@ -52,7 +52,7 @@
   .regular-text {
     text-align: left;
     color: black;
-    font-size: 24px;
+   /*  font-size: 24px;*/
   }
   .bubble-box {
     background-color: white; /* Svetlo plava pastelna nijansa */
@@ -62,7 +62,7 @@
     display: inline-block;
     max-width: 90%;
     text-align: center;
-    font-size: 1.1rem;
+   /*  font-size: 1.1rem;*/
     color: #2a3d66;
     margin: 20px auto;
   }
@@ -95,8 +95,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;  /* Kvadratna dimenzija */
-  height: 200px; /* Isto kao širina */
+  width: 150px;  /* Kvadratna dimenzija */
+  height: 150px; /* Isto kao širina */
   border-radius: 12px; /* Blago zaobljeni uglovi za moderan izgled */
   font-size: 14px;
   font-weight: 500;

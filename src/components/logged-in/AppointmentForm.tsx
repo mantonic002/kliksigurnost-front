@@ -168,7 +168,7 @@ const AppointmentForm = () => {
         </>
       )}
 
-      <Accordion defaultActiveKey="1" className="mb-3">
+      <Accordion className="mb-3">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Zakažite termin</Accordion.Header>
           <Accordion.Body>

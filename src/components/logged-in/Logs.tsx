@@ -106,7 +106,7 @@ function Logs() {
 
   return (
     <div className="container  mt-4">
-      <h3 className="mb-4">Logs</h3>
+      <h3 className="mb-4">Prikaz internet aktivnosti vaše dece:</h3>
       <div className="mb-3">
         <select
           className="form-select"

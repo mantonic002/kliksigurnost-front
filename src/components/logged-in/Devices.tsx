@@ -36,13 +36,12 @@ function Devices() {
           <div className="card-item-overflow">
             <BsInfoCircleFill size={30} className="me-2" />
             <strong>
-              Dodavanje uredjaja sa razlicitim pravilima dolazi 02.09.2025
+              Možete povezati do 5 različitih uređaja!
             </strong>
           </div>
           <hr />
           <div className="card-item-overflow">
-            Trenutno je moguće povezati novi uredjaj, ali na svaki uredjaj se
-            primenjuju ista pravila
+            Ukoliko se uređaj koji ste podesili ne izlistava na ovoj stranici, kontaktirajte tehničku podršku.
           </div>
         </Alert>
         {isLoading ? (

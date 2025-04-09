@@ -16,9 +16,6 @@ const Home = () => {
             <span className="sigurnost">Sigurnost</span>
           </h1>
 
-          {/* TURI OVO DJE OCES*/}
-          <h2>Organisation: {profile?.organizationName}</h2>
-
           <p className="home-subtitle">
             KlikSigurnost je posvećen pružanju praktičnih i efikasnih alata za
             roditelje kako bi njihova deca bila sigurna dok koriste internet.
@@ -28,6 +25,7 @@ const Home = () => {
         <Col md={8} className="text-center">
           <div className="bubble-box">
             <h2 className="title2">Video vodič</h2>
+            <br />
             <br />
             <p className="regular-text">
               Ako vam je potrebna pomoć pri podešavanju KlikSigurnosti, ne
