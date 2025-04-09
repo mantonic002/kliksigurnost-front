@@ -113,3 +113,31 @@
   margin-right: var(--spacing-md);
   font-size: 1.2rem;
 }
+
+/* Sidebar header styles */
+.sidebar-header {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 0;
+}
+
+.sidebar-user-info {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.user-details {
+  width: 100%;
+}
+
+.user-email {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-organization {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+}

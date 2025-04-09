@@ -1,15 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaUserPlus, FaUsersCog, FaClock, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../../styles/components/MadeEasy.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import wheel from "/images/settings_wheel.png"
-import phone from "/images/call.png"
+import wheel from "/images/settings_wheel.png";
+import phone from "/images/call.png";
 
 const MadeEasy = () => {
-
   const [isWheelInView, setIsWheelInView] = useState(false);
   const [isPhoneInView, setIsPhoneInView] = useState(false);
 
@@ -82,15 +81,18 @@ const MadeEasy = () => {
     {
       icon: <FaShieldAlt className="step-icon" />,
       title: "Aktiviranje zaštite",
-      description: "Aktivirajte zaštitu na svim uređajima koje vaše dete koristi.",
+      description:
+        "Aktivirajte zaštitu na svim uređajima koje vaše dete koristi.",
     },
   ];
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-      navigate("/prijava");
-      toast.error("Zakazivanje sastanka je dostupno samo prijavljenim korisnicima. Molimo Vas da se prijavite.");
+    navigate("/kontakt");
+    toast.warning(
+      "Zakazivanje sastanka je dostupno samo prijavljenim korisnicima. Prebacili smo vas na kontakt formu za neregistrovane korisnike.\nAko želite da razgovarate sa našim timom pozovite broj prikazan na ovoj stranici."
+    );
   };
 
   return (
@@ -107,33 +109,39 @@ const MadeEasy = () => {
         <Row className="align-items-center sec-content">
           {/* Left Section with Image */}
           <Col lg={6} className="position-relative text-center text-lg-start">
-          <div className="settings-wheel-container" ref={wheelRef}>
-            <img src={wheel} alt="Settings Wheel" className={`rotating-wheel ${isWheelInView ? 'rotate-animation' : ''}`} />
-          </div>
+            <div className="settings-wheel-container" ref={wheelRef}>
+              <img
+                src={wheel}
+                alt="Settings Wheel"
+                className={`rotating-wheel ${
+                  isWheelInView ? "rotate-animation" : ""
+                }`}
+              />
+            </div>
           </Col>
 
           {/* Right Section with Text */}
           <Col lg={6} className="text-center text-lg-start">
             <div className="made-text w-100 text-center">
-      <h3 className="section-subtitle text-center">
-        Jednostavno podešavanje u 4 koraka:
-      </h3>
-      <ul className="setup-list">
-        {steps.map((step, index) => (
-          <li key={index} className="setup-list-item">
-            <span className="step-icon-container">{step.icon}</span>
-            <div>
-              <strong className="moje">{step.title}</strong>
-              <p>{step.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <Link to="/vodic">
-        <Button variant="primary" className="learn-btn">
-          Detaljan vodič
-        </Button>
-      </Link>
+              <h3 className="section-subtitle text-center">
+                Jednostavno podešavanje u 4 koraka:
+              </h3>
+              <ul className="setup-list">
+                {steps.map((step, index) => (
+                  <li key={index} className="setup-list-item">
+                    <span className="step-icon-container">{step.icon}</span>
+                    <div>
+                      <strong className="moje">{step.title}</strong>
+                      <p>{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/vodic">
+                <Button variant="primary" className="learn-btn">
+                  Detaljan vodič
+                </Button>
+              </Link>
             </div>
           </Col>
         </Row>
@@ -146,9 +154,15 @@ const MadeEasy = () => {
             lg={6}
             className="position-relative text-center text-lg-start order-1 order-lg-2"
           >
-          <div className="settings-wheel-container" ref={phoneRef}>
-            <img src={phone} alt="korisnicka podrska" className={`phone-icon ${isPhoneInView ? 'shake-animation' : ''}`} />
-          </div>
+            <div className="settings-wheel-container" ref={phoneRef}>
+              <img
+                src={phone}
+                alt="korisnicka podrska"
+                className={`phone-icon ${
+                  isPhoneInView ? "shake-animation" : ""
+                }`}
+              />
+            </div>
           </Col>
 
           {/* Right Section with Text - Moves down on small screens */}
@@ -160,7 +174,11 @@ const MadeEasy = () => {
                 pitanja, stupite u kontakt sa našim timom tehničke podrške putem
                 poziva ili online zakazanog sastanaka.
               </p>
-              <Button variant="primary" className="learn-btn" onClick={handleClick}>
+              <Button
+                variant="primary"
+                className="learn-btn"
+                onClick={handleClick}
+              >
                 Zakažite sastanak!
               </Button>
             </div>
