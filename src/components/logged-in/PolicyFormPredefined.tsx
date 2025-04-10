@@ -11,11 +11,31 @@ import { FaPlus } from "react-icons/fa";
 import { BsInfoCircleFill, BsXLg } from "react-icons/bs";
 import { useRequest } from "../../services/useRequest";
 import { Alert } from "react-bootstrap";
+import { SchedulePicker } from "./SchedulePicker";
+import {
+  dayNameMapping,
+  formatTimeRanges,
+  formatScheduleForBackend,
+  isScheduleEmpty,
+  createPolicyObject,
+} from "./policyHelpers";
 
 const schema = z.object({
   action: z.string(),
   trafficApplications: z.string().optional(),
   trafficCategories: z.string().optional(),
+  schedule: z
+    .object({
+      mon: z.array(z.string()).optional(),
+      tue: z.array(z.string()).optional(),
+      wed: z.array(z.string()).optional(),
+      thu: z.array(z.string()).optional(),
+      fri: z.array(z.string()).optional(),
+      sat: z.array(z.string()).optional(),
+      sun: z.array(z.string()).optional(),
+      time_zone: z.string().optional(),
+    })
+    .optional(),
 });
 
 type PolicyFormData = z.infer<typeof schema>;
@@ -35,8 +55,10 @@ export const PredefinedPolicyForm = ({
   const [selectedPolicy, setSelectedPolicy] = useState<SelectOption | null>(
     null
   );
-
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formattedSchedule, setFormattedSchedule] = useState<
+    Record<string, string>
+  >({});
 
   const { handleSubmit, setValue, reset } = useForm<PolicyFormData>({
     resolver: zodResolver(schema),
@@ -44,7 +66,34 @@ export const PredefinedPolicyForm = ({
 
   const { isLoading, sendRequest } = useRequest();
 
-  // Handle policy selection
+  const updateSchedule = (newSchedule: {
+    [key: string]: string[] | string;
+  }) => {
+    const convertedSchedule = Object.entries(newSchedule).reduce(
+      (acc: Record<string, string[] | string>, [day, timeSlots]) => {
+        const englishDay = dayNameMapping[day] || day;
+        acc[englishDay] = timeSlots;
+        return acc;
+      },
+      {} as Record<string, string[] | string>
+    );
+
+    setValue("schedule", convertedSchedule);
+
+    const formatted = Object.entries(convertedSchedule).reduce(
+      (acc: Record<string, string>, [day, timeSlots]) => {
+        if (day === "time_zone") {
+          acc[day] = timeSlots as string;
+        } else if (Array.isArray(timeSlots)) {
+          acc[day] = formatTimeRanges(timeSlots);
+        }
+        return acc;
+      },
+      {}
+    );
+    setFormattedSchedule(formatted);
+  };
+
   const handlePolicyChange = (selectedOption: SelectOption | null) => {
     setSelectedPolicy(selectedOption);
 
@@ -53,7 +102,6 @@ export const PredefinedPolicyForm = ({
         (p) => p.name === selectedOption.label
       );
       if (policy && policy.name !== "Youtube") {
-        // Generate traffic strings for categories and applications
         const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
           " "
         )}})`;
@@ -61,7 +109,6 @@ export const PredefinedPolicyForm = ({
           .map((appId) => `any(app.ids[*] in {${appId}})`)
           .join(" or ");
 
-        // Set form values
         setValue("trafficCategories", trafficCategories);
         setValue("trafficApplications", trafficApplications);
         setValue("action", "block");
@@ -71,27 +118,26 @@ export const PredefinedPolicyForm = ({
     }
   };
 
-  // Handle form submission
   const onSubmit = (data: PolicyFormData) => {
-    const trafficString: string[] = [];
-    if (data.trafficCategories) {
-      trafficString.push(data.trafficCategories);
-    }
-    if (data.trafficApplications) {
-      trafficString.push(data.trafficApplications);
-    }
-
-    const policy: Policy = {
-      action: data.action,
-      traffic: trafficString.join(" or "),
-    };
+    const formattedScheduleReq = formatScheduleForBackend(data.schedule);
+    const policy = createPolicyObject(
+      data.action,
+      data.trafficCategories,
+      data.trafficApplications,
+      isScheduleEmpty(formattedScheduleReq)
+        ? undefined
+        : {
+            ...formattedScheduleReq,
+            time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }
+    );
 
     sendRequest(async () => {
       await policyService.post<Policy>(policy);
       setNewPolicies();
       reset();
       setSelectedPolicy(null);
-      reset();
+      setFormattedSchedule({});
       setIsFormOpen(false);
       toast.success("Pravilo uspešno kreirano!");
     });
@@ -105,7 +151,7 @@ export const PredefinedPolicyForm = ({
       })
       .catch((error) => {
         console.log(error);
-        alert(
+        toast.error(
           error.message ||
             "Neuspešno učitavanje pravila. Molimo pokušajte kasnije"
         );
@@ -129,7 +175,7 @@ export const PredefinedPolicyForm = ({
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-              <div className="inline-form">
+              <div className="mb-3">
                 <Select
                   className="form-control"
                   name="predefinedPolicies"
@@ -143,24 +189,41 @@ export const PredefinedPolicyForm = ({
                   getOptionLabel={(e) => e.label}
                   getOptionValue={(e) => String(e.value)}
                 />
-
-                <button
-                  type="submit"
-                  className="btn btn-success"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="spinner-border"></div>
-                  ) : (
-                    <>Sačuvaj</>
-                  )}
-                </button>
               </div>
+
+              <SchedulePicker onChange={updateSchedule} />
+
+              {Object.keys(formattedSchedule).length > 0 && (
+                <div className="schedule-display mb-3">
+                  <h6>Izabrani raspored:</h6>
+                  <ul>
+                    {Object.entries(formattedSchedule).map(([day, time]) => (
+                      <li key={day}>
+                        {day !== "time_zone" && (
+                          <strong>{day.toUpperCase()}:</strong>
+                        )}
+                        {time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="spinner-border"></div>
+                ) : (
+                  <>Sačuvaj</>
+                )}
+              </button>
             </form>
             <Alert>
               <BsInfoCircleFill size={30} className="me-2" />
               <strong>YouTube pravilo</strong>
-
               <p>
                 Ovo pravilo ograničava prikaz sadržaja YouTube-a na video snimke
                 koji su označeni kao pogodni za sve uzraste. Blokira video

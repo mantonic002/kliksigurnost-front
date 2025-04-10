@@ -8,9 +8,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FaPlus } from "react-icons/fa";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { BsXLg } from "react-icons/bs";
 import { useRequest } from "../../services/useRequest";
+import {
+  dayNameMapping,
+  formatScheduleForBackend,
+  isScheduleEmpty,
+  createPolicyObject,
+  formatTimeRanges,
+} from "./policyHelpers";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -43,16 +49,6 @@ interface PolicyFormProps {
   setPolicies: React.Dispatch<React.SetStateAction<Policy[]>>;
 }
 
-const dayNameMapping: Record<string, string> = {
-  pon: "mon",
-  uto: "tue",
-  sre: "wed",
-  čet: "thu",
-  pet: "fri",
-  sub: "sat",
-  ned: "sun",
-};
-
 export const PolicyForm = ({
   categoryOptions,
   applicationOptions,
@@ -76,10 +72,9 @@ export const PolicyForm = ({
   const updateScheduleForm = (newSchedule: {
     [key: string]: string[] | string;
   }) => {
-    // Convert Serbian day names to English
     const convertedSchedule = Object.entries(newSchedule).reduce(
       (acc: Record<string, string[] | string>, [day, timeSlots]) => {
-        const englishDay = dayNameMapping[day] || day; // Convert to English or keep as-is (e.g., time_zone)
+        const englishDay = dayNameMapping[day] || day;
         acc[englishDay] = timeSlots;
         return acc;
       },
@@ -102,7 +97,6 @@ export const PolicyForm = ({
       },
       {}
     );
-
     setFormattedSchedule(formatted);
   };
 
@@ -200,87 +194,20 @@ export const PolicyForm = ({
     setValue("trafficApplications", trafficString);
   };
 
-  const timeToMinutes = (time: string) => {
-    const [hours, minutes] = time.split(":").map(Number);
-    return hours * 60 + minutes;
-  };
-
-  const formatTimeRanges = (timeSlots: string[]) => {
-    if (timeSlots.length === 0) return "";
-
-    timeSlots.sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
-
-    const ranges: string[] = [];
-    let start = timeSlots[0];
-    let end = timeSlots[0];
-
-    for (let i = 1; i < timeSlots.length; i++) {
-      const currentTime = timeSlots[i];
-      const prevTime = timeSlots[i - 1];
-
-      if (timeToMinutes(currentTime) - timeToMinutes(prevTime) === 30) {
-        end = currentTime;
-      } else {
-        ranges.push(`${start}-${end}`);
-        start = currentTime;
-        end = currentTime;
-      }
-    }
-
-    ranges.push(`${start}-${end}`);
-
-    return ranges.join(",");
-  };
-
   const onSubmit = (data: PolicyFormData) => {
-    // Format the schedule for the backend
-    const formattedScheduleReq = Object.entries(data.schedule || {}).reduce(
-      (acc: Record<string, string>, [day, timeSlots]) => {
-        if (day === "time_zone") {
-          acc[day] = timeSlots as string;
-        } else if (Array.isArray(timeSlots)) {
-          acc[day] = formatTimeRanges(timeSlots);
-        }
-        return acc;
-      },
-      {} as Record<string, string>
+    const formattedScheduleReq = formatScheduleForBackend(data.schedule);
+    const policy = createPolicyObject(
+      "block",
+      data.trafficCategories,
+      data.trafficApplications,
+      isScheduleEmpty(formattedScheduleReq)
+        ? undefined
+        : {
+            ...formattedScheduleReq,
+            time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }
     );
 
-    // Check if the schedule is empty (excluding time_zone)
-    const isScheduleEmpty = Object.entries(formattedScheduleReq)
-      .filter(([key]) => key !== "time_zone")
-      .every(([_, value]) => value === "" || value === null);
-
-    // Prepare the final form data
-    const formData = {
-      ...data,
-      ...(isScheduleEmpty
-        ? { schedule: undefined }
-        : {
-            schedule: {
-              ...formattedScheduleReq,
-              time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            },
-          }),
-    };
-
-    // Build the traffic string
-    const trafficString: string[] = [];
-    if (formData.trafficCategories) {
-      trafficString.push(formData.trafficCategories);
-    }
-    if (formData.trafficApplications) {
-      trafficString.push(formData.trafficApplications);
-    }
-
-    // Create the policy object
-    const policy: Policy = {
-      action: "block",
-      traffic: trafficString.join(" or "),
-      schedule: formData.schedule,
-    };
-
-    // Send the request
     sendRequest(async () => {
       await policyService.post<Policy>(policy);
       setNewPolicies();
