@@ -35,7 +35,7 @@ import Home from "./components/logged-in/Home";
 import Pravila from "./components/logged-out/Blog/Pravila";
 import Contact from "./components/logged-out/Contact/Contact";
 import FooterLoggedIn from "./components/logged-in/FooterLoggedIn";
-import Privacy  from "./components/logged-out/Terms/Privacy";
+import Privacy from "./components/logged-out/Terms/Privacy";
 import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
 import Trikovi from "./components/logged-out/Blog/Trikovi";
@@ -60,6 +60,17 @@ const ProtectedRoute = () => {
 
   if (!isAuthenticated || !isTokenValid) {
     return <Navigate to="/prijava" replace />;
+  }
+
+  return <Outlet />;
+};
+
+const LoggedOutRoute = () => {
+  const { isAuthenticated } = useAuth();
+  const isTokenValid = authService.isAuthenticated();
+
+  if (isAuthenticated && isTokenValid) {
+    return <Navigate to="/pocetna" replace />;
   }
 
   return <Outlet />;
@@ -98,11 +109,6 @@ const AppContent = () => {
       <div className="Content">
         <ScrollToTop />
         <Routes>
-          <Route path="/prijava" element={<Login />} />
-          <Route path="/registracija" element={<Signup />} />
-          <Route path="/oauth-success" element={<OAuthSuccess />} />
-          <Route path="/zaboravljena-lozinka" element={<ForgottenPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/"
             element={
@@ -122,107 +128,116 @@ const AppContent = () => {
               )
             }
           />
-          <Route
-            path="/vodic"
+          <Route element={<LoggedOutRoute />}>
+            <Route path="/prijava" element={<Login />} />
+            <Route path="/registracija" element={<Signup />} />
+            <Route path="/oauth-success" element={<OAuthSuccess />} />
+            <Route
+              path="/zaboravljena-lozinka"
+              element={<ForgottenPassword />}
+            />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route
+              path="/vodic"
+              element={
+                <>
+                  <PodesavanjePremaUzrastu />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/zastoks"
+              element={
+                <>
+                  <ZastoKlikSigurnost />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/rizici"
+              element={
+                <>
+                  <SkriveniRizici />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/razgovor"
+              element={
+                <>
+                  <RazgovorSaDecom />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/pravila"
+              element={
+                <>
+                  <Pravila />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/podesavanje"
+              element={
+                <>
+                  <PodesavanjePremaUzrastu />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/sajtovi"
+              element={
+                <>
+                  <EdukativniSajtovi />
+                </>
+              }
+            />
+            <Route
+              path="/saveti/trikovi"
+              element={
+                <>
+                  <Trikovi />
+                </>
+              }
+            />
+            <Route
+              path="/kontakt"
+              element={
+                <>
+                  <Contact />
+                </>
+              }
+            />
+            <Route
+              path="/uslovi"
+              element={
+                <>
+                  <Terms />
+                </>
+              }
+            />{" "}
+            <Route
+              path="/privatnost"
+              element={
+                <>
+                  <Privacy />
+                </>
+              }
+            />
+            <Route
+            path="/podesavanje"
             element={
               <>
-                <PodesavanjePremaUzrastu />
+                <Setup />
               </>
             }
-          />
-          <Route
-            path="/saveti/zastoks"
-            element={
-              <>
-                <ZastoKlikSigurnost />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/rizici"
-            element={
-              <>
-                <SkriveniRizici />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/razgovor"
-            element={
-              <>
-                <RazgovorSaDecom />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/pravila"
-            element={
-              <>
-                <Pravila />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/podesavanje"
-            element={
-              <>
-                <PodesavanjePremaUzrastu />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/sajtovi"
-            element={
-              <>
-                <EdukativniSajtovi />
-              </>
-            }
-          />
-          <Route
-            path="/saveti/trikovi"
-            element={
-              <>
-                <Trikovi />
-              </>
-            }
-          />
-          <Route
-            path="/kontakt"
-            element={
-              <>
-                <Contact />
-              </>
-            }
-          />
-          <Route
-            path="/uslovi"
-            element={
-              <>
-                <Terms />
-              </>
-            }
-          />          
-          <Route
-          path="/privatnost"
-          element={
-            <>
-              <Privacy />
-            </>
-          }
-          />
-          <Route
-          path="/podesavanje"
-          element={
-            <>
-              <Setup />
-            </>
-          }
-          />
+            />
+            </Route>
           {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />
           </Route>
-
           {/* Loged in user routes */}
           <Route element={<ProtectedRoute />}>
             {SidebarData.map((item, index) => {

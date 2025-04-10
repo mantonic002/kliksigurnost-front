@@ -31,8 +31,22 @@ const AppointmentForm = () => {
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSlotsLoading, setIsSlotsLoading] = useState(false);
   const { sendRequest } = useRequest();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   const {
     register,
@@ -77,7 +91,6 @@ const AppointmentForm = () => {
   }, []);
 
   const fetchAvailableSlots = async (date: Date) => {
-    setIsSlotsLoading(true);
     try {
       const dateString = date.toISOString().split("T")[0];
       const res = await AppointmentService.getFreeTimeslots(dateString);
@@ -87,8 +100,6 @@ const AppointmentForm = () => {
     } catch (error) {
       console.error("Failed to fetch available slots:", error);
       setAvailableSlots([]);
-    } finally {
-      setIsSlotsLoading(false);
     }
   };
 
@@ -176,26 +187,25 @@ const AppointmentForm = () => {
               <div className="mb-3">
                 <label className="form-label">Datum i vreme:</label>
                 <br />
-                {isSlotsLoading ? (
-                  <Spinner animation="border" size="sm" />
-                ) : (
-                  <DatePicker
-                    className="form-control"
-                    selected={selectedDate}
-                    onChange={(date) => date && setSelectedDate(date)}
-                    dateFormat="MMMM d, yyyy h:mm aa"
-                    minDate={new Date()}
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    timeIntervals={30}
-                    filterTime={(time) =>
-                      availableSlotDates.some(
-                        (slot) => slot.getTime() === time.getTime()
-                      )
-                    }
-                    required
-                  />
-                )}
+                <DatePicker
+                  className="form-control"
+                  selected={selectedDate}
+                  onChange={(date) => date && setSelectedDate(date)}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  minDate={new Date()}
+                  showTimeSelect
+                  timeCaption="Vreme"
+                  timeFormat="HH:mm"
+                  timeIntervals={30}
+                  filterTime={(time) =>
+                    availableSlotDates.some(
+                      (slot) => slot.getTime() === time.getTime()
+                    )
+                  }
+                  withPortal={isMobile}
+                  calendarClassName="fixed-calendar"
+                  required
+                />
               </div>
               <div className="mb-3">
                 <label className="form-label">Telefon:</label>
@@ -221,9 +231,7 @@ const AppointmentForm = () => {
           <Accordion.Body>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group className="mb-3" controlId="contactFormPhoneNumber">
-                <Form.Label>
-                  <strong>Vaš broj telefona:</strong>
-                </Form.Label>
+                <Form.Label>Vaš broj telefona:</Form.Label>
                 <Form.Control
                   {...register("phoneNumber")}
                   type="tel"
@@ -235,9 +243,7 @@ const AppointmentForm = () => {
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" controlId="contactFormMessage">
-                <Form.Label>
-                  <strong>Poruka:</strong>
-                </Form.Label>
+                <Form.Label>Poruka:</Form.Label>
                 <Form.Control
                   {...register("message")}
                   as="textarea"
