@@ -40,6 +40,7 @@ import Terms from "./components/logged-out/Terms/Terms";
 import EdukativniSajtovi from "./components/logged-out/Blog/EdukativniSajtovi";
 import Trikovi from "./components/logged-out/Blog/Trikovi";
 import ScrollToTop from "./components/utils/ScrollToTop";
+import Setup from "./components/logged-out/Setup/Setup";
 
 function App() {
   return (
@@ -200,14 +201,23 @@ const AppContent = () => {
                 <Terms />
               </>
             }
-          />          <Route
+          />          
+          <Route
           path="/privatnost"
           element={
             <>
               <Privacy />
             </>
           }
-        />
+          />
+          <Route
+          path="/podesavanje"
+          element={
+            <>
+              <Setup />
+            </>
+          }
+          />
           {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />

@@ -205,7 +205,7 @@ const PodesavanjePremaUzrastu = () => {
             </ListGroup>
 
             <br />
-            <p>Pravilno podešen KlikSigurnost pomaže roditeljima da postave zdrave digitalne granice, omogućavajući deci da sigurno istražuju internet bez nepotrebnih rizika. Ako imate bilo kakva pitanja ili vam je potrebna pomoć pri podešavanju, naš tim za podršku je dostupan putem telefona ili online konsultacija. 😊</p>
+            <p>Pravilno podešen KlikSigurnost pomaže roditeljima da postave zdrave digitalne granice, omogućavajući deci da sigurno istražuju internet bez nepotrebnih rizika. Ako imate bilo kakva pitanja ili Vam je potrebna pomoć pri podešavanju, naš tim za podršku je dostupan putem telefona ili online konsultacija. 😊</p>
           </Col>
         </Row>
       </Container>

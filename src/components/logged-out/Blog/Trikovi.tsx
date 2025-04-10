@@ -142,7 +142,7 @@ const Trikovi = () => {
             <br/>
             <p>
                 ✅ Neka deca imaju dva profila – jedan za roditelje i „tajni“ nalog
-                 gde objavljuju sadržaj koji ne žele da vi vidite. 
+                 gde objavljuju sadržaj koji ne žele da Vi vidite. 
             </p>
             <p>
                 ✅ Možete pretražiti njihovo ime na društvenim mrežama 

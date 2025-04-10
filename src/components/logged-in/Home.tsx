@@ -28,7 +28,7 @@ const Home = () => {
             <br />
             <br />
             <p className="regular-text">
-              Ako vam je potrebna pomoć pri podešavanju KlikSigurnosti, ne
+              Ako Vam je potrebna pomoć pri podešavanju KlikSigurnosti, ne
               brinite – tu smo za vas!{" "}
             </p>
             <p className="regular-text">
@@ -44,7 +44,7 @@ const Home = () => {
             <br />
             <p className="regular-text">
               Ako nakon gledanja videa imate bilo kakva pitanja ili nedoumice,
-              naš tim tehničke podrške je tu da vam pomogne.
+              naš tim tehničke podrške je tu da Vam pomogne.
             </p>
             <p className="regular-text">
               Slobodno zakažite sastanak – rado ćemo vas voditi kroz svaki

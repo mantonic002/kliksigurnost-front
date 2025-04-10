@@ -44,7 +44,7 @@ function Navigation() {
           </Nav.Link>
           <Nav.Link
             as={Link}
-            to="/vodic"
+            to="/podesavanje"
             className="custom-nav-link special"
             style={{ fontFamily: "Montserrat, sans-serif" }}
             onClick={handleNavClick}

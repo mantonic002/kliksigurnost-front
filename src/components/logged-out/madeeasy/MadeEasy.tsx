@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaUserPlus, FaUsersCog, FaClock, FaShieldAlt } from "react-icons/fa";
+import { FaUserPlus, FaUsersCog, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../../styles/components/MadeEasy.css";
 import { toast } from "react-toastify";
@@ -71,18 +71,13 @@ const MadeEasy = () => {
     {
       icon: <FaUsersCog className="step-icon" />,
       title: "Podešavanje profila",
-      description: "Podesite profile za svako dete, prilagođavajući filtere.",
-    },
-    {
-      icon: <FaClock className="step-icon" />,
-      title: "Vremenska ograničenja",
-      description: "Definišite vremenska ograničenja i dozvoljene sadržaje.",
+      description: "Podesite željena internet pravila, postavite vremenska ograničenja.",
     },
     {
       icon: <FaShieldAlt className="step-icon" />,
       title: "Aktiviranje zaštite",
       description:
-        "Aktivirajte zaštitu na svim uređajima koje vaše dete koristi.",
+        "Aktivirajte zaštitu na svim uređajima koje vaša deca koriste.",
     },
   ];
 
@@ -124,7 +119,7 @@ const MadeEasy = () => {
           <Col lg={6} className="text-center text-lg-start">
             <div className="made-text w-100 text-center">
               <h3 className="section-subtitle text-center">
-                Jednostavno podešavanje u 4 koraka:
+                Jednostavno podešavanje u 3 koraka:
               </h3>
               <ul className="setup-list">
                 {steps.map((step, index) => (
@@ -137,7 +132,7 @@ const MadeEasy = () => {
                   </li>
                 ))}
               </ul>
-              <Link to="/vodic">
+              <Link to="/podesavanje">
                 <Button variant="primary" className="learn-btn">
                   Detaljan vodič
                 </Button>

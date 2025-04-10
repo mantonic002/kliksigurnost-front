@@ -58,7 +58,7 @@ const EdukativniSajtovi = () => {
           <Col lg={12}>
             <br />
             <p>U današnjem digitalnom dobu, internet može biti dragocen resurs za obrazovanje dece.
-                Kako bismo vam pomogli da odaberete kvalitetne i bezbedne sadržaje na srpskom 
+                Kako bismo Vam pomogli da odaberete kvalitetne i bezbedne sadržaje na srpskom 
                 jeziku, pripremili smo listu preporučenih edukativnih sajtova: 
             </p>
             <br/>

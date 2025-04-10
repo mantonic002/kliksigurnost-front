@@ -65,7 +65,7 @@ const Pravila = () => {
             </p>
             <p>
             Nakon obavljenog razgovora, naš predlog je da u svakodnevni (online) život postepeno 
-            počnete uvoditi 10 osnovnih pravila koja će vam pomoći da osigurate digitalnu bezbednost 
+            počnete uvoditi 10 osnovnih pravila koja će Vam pomoći da osigurate digitalnu bezbednost 
             u svom domu. Svako pravilo je praktično, jednostavno za primenu i fokusirano na rešavanje 
             problema sa kojima se roditelji i deca danas suočavaju.
             </p>
@@ -78,7 +78,7 @@ const Pravila = () => {
                 <li>📍 <b>Gde? </b>Insistirajte na korištenju interneta u zajedničkim prostorijama, gde možete pratiti šta rade.</li>
                 <li>🎯 <b>Za šta? </b>Navedite koje aktivnosti su dozvoljene (npr. učenje, edukativne igrice) i koje nisu (npr. neprimerene igrice ili chat sobe).</li>
             </ul>
-            <p>KlikSigurnost može vam pomoći da automatizujete ova pravila. Sa opcijom prilagođenog 
+            <p>KlikSigurnost može Vam pomoći da automatizujete ova pravila. Sa opcijom prilagođenog 
                 filtriranja, možete odrediti koje vrste sadržaja su dostupne u određeno doba dana.
             </p>
             <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
@@ -92,7 +92,7 @@ const Pravila = () => {
                 <li>📊 <b>Praćenje aktivnosti: </b>Pratite koje sajtove dete posećuje i dobijajte redovne izveštaje.</li>
             </ul>
             <p>Uz KlikSigurnost, roditelji mogu biti sigurni da su njihova deca zaštićena od 
-                najčešćih opasnosti na internetu. Ako vam ikada zatreba pomoć ili imate bilo kakva 
+                najčešćih opasnosti na internetu. Ako Vam ikada zatreba pomoć ili imate bilo kakva 
                 pitanja, naša tehnička podrška vam je uvek na raspolaganju – tu smo da vam pružimo sigurnost i mir.
             </p>
             <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
