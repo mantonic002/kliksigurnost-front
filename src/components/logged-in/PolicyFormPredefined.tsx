@@ -105,9 +105,9 @@ export const PredefinedPolicyForm = ({
         const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
           " "
         )}})`;
-        const trafficApplications = policy.applications
-          .map((appId) => `any(app.ids[*] in {${appId}})`)
-          .join(" or ");
+        const trafficApplications = `any(app.ids[*] in {${policy.applications.join(
+          " "
+        )}})`;
 
         setValue("trafficCategories", trafficCategories);
         setValue("trafficApplications", trafficApplications);
