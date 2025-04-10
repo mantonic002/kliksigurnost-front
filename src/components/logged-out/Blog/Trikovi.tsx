@@ -135,8 +135,8 @@ const Trikovi = () => {
                 ✅ Na nekim telefonima i računarima možete videti koje 
                 aplikacije su najčešće korišćene u podešavanjima baterije. 
             </p>
-            <p>🔹 <strong>Rešenje:</strong> Postavite ograničenja za preuzimanje aplikacija 
-            kako biste imali uvid u to šta dete instalira.</p>
+            <p>🔹 <strong>Rešenje:</strong> Postavite ograničenja za aplikacije kao što su <strong>Google Play Store</strong> ili <strong>Apple App Store </strong>
+             kako biste imali uvid u to šta dete instalira.</p>
             <br/>
             <h2>6. Proverite „tajne“ naloge na društvenim mrežama</h2>
             <br/>

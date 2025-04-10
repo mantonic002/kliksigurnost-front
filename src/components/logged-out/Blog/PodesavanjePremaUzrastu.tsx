@@ -83,9 +83,9 @@ const PodesavanjePremaUzrastu = () => {
                 <li>Onemogućiti pristup svim društvenim mrežama i aplikacijama koje omogućavaju interakciju sa nepoznatim osobama.</li>
               </ul>
               </ListGroup.Item>
-              <ListGroup.Item>✅ <b>Omogućiti roditeljski nadzor</b> i izveštaje o aktivnostima
+              <ListGroup.Item>✅ <strong>Pregledati izveštaje i razgovarati o online navikama</strong>
               <ul>
-                <li>Aktivirati detaljne izveštaje o aktivnostima kako biste mogli da vidite koje sajtove dete pokušava da poseti.</li>
+                <li>Redovno pregledati izveštaje o posećenim sajtovima i redovno razgovarati sa detetom o njegovim online aktivnostima.</li>
               </ul>
               </ListGroup.Item>
             </ListGroup>
@@ -115,9 +115,9 @@ const PodesavanjePremaUzrastu = () => {
                 <li>Definisati periode bez interneta, npr. blokirati internet tokom domaćeg zadatka (16h–18h) i posle 21h.</li>
               </ul>
               </ListGroup.Item>
-              <ListGroup.Item>✅ <b>Omogućiti roditeljski nadzor</b> i upozorenja
+              <ListGroup.Item>✅  <strong>Pregledati izveštaje i razgovarati o online navikama</strong>
               <ul>
-                <li>Aktivirati opciju da dobijate obaveštenja kada dete pokuša da pristupi blokiranom sadržaju.</li>
+                <li>Redovno pregledati izveštaje o posećenim sajtovima tako da budete obavešteni ako dete pokuša da pristupi blokiranim web stranicama.</li>
               </ul>
               </ListGroup.Item>
               <ListGroup.Item>✅ <b>Dozvoliti pristup proverenim edukativnim platformama</b>
@@ -153,7 +153,7 @@ const PodesavanjePremaUzrastu = () => {
               </ListGroup.Item>
               <ListGroup.Item>⚠️ <b>Pregledati izveštaje i razgovarati o online navikama</b>
               <ul>
-                <li>Podesiti nedeljne izveštaje o posećenim sajtovima i redovno razgovarati sa detetom o njegovim online aktivnostima.</li>
+                <li>Redovno pregledati izveštaje o posećenim sajtovima i redovno razgovarati sa detetom o njegovim online aktivnostima.</li>
               </ul>
               </ListGroup.Item>
               <ListGroup.Item>✅ <b>Podstaći kritičko razmišljanje</b>
@@ -187,10 +187,9 @@ const PodesavanjePremaUzrastu = () => {
             <h2>Kako da podesite KlikSigurnost u praksi?</h2>
             <ListGroup variant="flush">
               <ListGroup.Item>1️⃣ Prijavite se na KlikSigurnost nalog.</ListGroup.Item>
-              <ListGroup.Item>2️⃣ Kreirajte profil za svako dete i označite uzrast.</ListGroup.Item>
-              <ListGroup.Item>3️⃣ Podesite filtere prema uzrastu deteta.</ListGroup.Item>
-              <ListGroup.Item>4️⃣ Aktivirajte nadzor i izveštaje.</ListGroup.Item>
-              <ListGroup.Item>5️⃣ Prilagodite postavke po potrebi.</ListGroup.Item>
+              <ListGroup.Item>2️⃣ Podesite filtere prema uzrastu deteta.</ListGroup.Item>
+              <ListGroup.Item>3️⃣ Aktivirajte nadzor i izveštaje.</ListGroup.Item>
+              <ListGroup.Item>4️⃣ Prilagodite postavke po potrebi.</ListGroup.Item>
             </ListGroup>
 
             <br />
