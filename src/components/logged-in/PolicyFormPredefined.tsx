@@ -12,16 +12,13 @@ import { BsInfoCircleFill, BsXLg } from "react-icons/bs";
 import { useRequest } from "../../services/useRequest";
 import { Alert } from "react-bootstrap";
 import { SchedulePicker } from "./SchedulePicker";
-
-const dayNameMapping: Record<string, string> = {
-  pon: "mon",
-  uto: "tue",
-  sre: "wed",
-  čet: "thu",
-  pet: "fri",
-  sub: "sat",
-  ned: "sun",
-};
+import {
+  dayNameMapping,
+  formatTimeRanges,
+  formatScheduleForBackend,
+  isScheduleEmpty,
+  createPolicyObject,
+} from "./policyHelpers";
 
 const schema = z.object({
   action: z.string(),
@@ -72,7 +69,6 @@ export const PredefinedPolicyForm = ({
   const updateSchedule = (newSchedule: {
     [key: string]: string[] | string;
   }) => {
-    // Convert Serbian day names to English
     const convertedSchedule = Object.entries(newSchedule).reduce(
       (acc: Record<string, string[] | string>, [day, timeSlots]) => {
         const englishDay = dayNameMapping[day] || day;
@@ -84,7 +80,6 @@ export const PredefinedPolicyForm = ({
 
     setValue("schedule", convertedSchedule);
 
-    // Update display format
     const formatted = Object.entries(convertedSchedule).reduce(
       (acc: Record<string, string>, [day, timeSlots]) => {
         if (day === "time_zone") {
@@ -97,36 +92,6 @@ export const PredefinedPolicyForm = ({
       {}
     );
     setFormattedSchedule(formatted);
-  };
-
-  const timeToMinutes = (time: string) => {
-    const [hours, minutes] = time.split(":").map(Number);
-    return hours * 60 + minutes;
-  };
-
-  const formatTimeRanges = (timeSlots: string[]) => {
-    if (timeSlots.length === 0) return "";
-    timeSlots.sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
-
-    const ranges: string[] = [];
-    let start = timeSlots[0];
-    let end = timeSlots[0];
-
-    for (let i = 1; i < timeSlots.length; i++) {
-      const currentTime = timeSlots[i];
-      const prevTime = timeSlots[i - 1];
-
-      if (timeToMinutes(currentTime) - timeToMinutes(prevTime) === 30) {
-        end = currentTime;
-      } else {
-        ranges.push(`${start}-${end}`);
-        start = currentTime;
-        end = currentTime;
-      }
-    }
-
-    ranges.push(`${start}-${end}`);
-    return ranges.join(",");
   };
 
   const handlePolicyChange = (selectedOption: SelectOption | null) => {
@@ -154,41 +119,18 @@ export const PredefinedPolicyForm = ({
   };
 
   const onSubmit = (data: PolicyFormData) => {
-    const trafficString: string[] = [];
-    if (data.trafficCategories) {
-      trafficString.push(data.trafficCategories);
-    }
-    if (data.trafficApplications) {
-      trafficString.push(data.trafficApplications);
-    }
-
-    // Format the schedule for the backend
-    const formattedScheduleReq = Object.entries(data.schedule || {}).reduce(
-      (acc: Record<string, string>, [day, timeSlots]) => {
-        if (day === "time_zone") {
-          acc[day] = timeSlots as string;
-        } else if (Array.isArray(timeSlots)) {
-          acc[day] = formatTimeRanges(timeSlots);
-        }
-        return acc;
-      },
-      {} as Record<string, string>
+    const formattedScheduleReq = formatScheduleForBackend(data.schedule);
+    const policy = createPolicyObject(
+      data.action,
+      data.trafficCategories,
+      data.trafficApplications,
+      isScheduleEmpty(formattedScheduleReq)
+        ? undefined
+        : {
+            ...formattedScheduleReq,
+            time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          }
     );
-
-    const isScheduleEmpty = Object.entries(formattedScheduleReq)
-      .filter(([key]) => key !== "time_zone")
-      .every(([_, value]) => value === "" || value === null);
-
-    const policy: Policy = {
-      action: data.action,
-      traffic: trafficString.join(" or "),
-      ...(!isScheduleEmpty && {
-        schedule: {
-          ...formattedScheduleReq,
-          time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        },
-      }),
-    };
 
     sendRequest(async () => {
       await policyService.post<Policy>(policy);
