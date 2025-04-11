@@ -196,10 +196,14 @@ export const PolicyForm = ({
 
   const onSubmit = (data: PolicyFormData) => {
     const formattedScheduleReq = formatScheduleForBackend(data.schedule);
+
+    const trafficString: string[] = [];
+    if (data.trafficCategories) trafficString.push(data.trafficCategories);
+    if (data.trafficApplications) trafficString.push(data.trafficApplications);
+
     const policy = createPolicyObject(
       "block",
-      data.trafficCategories,
-      data.trafficApplications,
+      trafficString.join(" or "),
       isScheduleEmpty(formattedScheduleReq)
         ? undefined
         : {

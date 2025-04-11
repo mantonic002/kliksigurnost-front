@@ -22,8 +22,7 @@ import {
 
 const schema = z.object({
   action: z.string(),
-  trafficApplications: z.string().optional(),
-  trafficCategories: z.string().optional(),
+  trafficString: z.string().optional(),
   schedule: z
     .object({
       mon: z.array(z.string()).optional(),
@@ -102,15 +101,29 @@ export const PredefinedPolicyForm = ({
         (p) => p.name === selectedOption.label
       );
       if (policy && policy.name !== "Youtube") {
-        const trafficCategories = `any(dns.content_category[*] in {${policy.categories.join(
-          " "
-        )}})`;
-        const trafficApplications = `any(app.ids[*] in {${policy.applications.join(
-          " "
-        )}})`;
+        const trafficParts = [];
 
-        setValue("trafficCategories", trafficCategories);
-        setValue("trafficApplications", trafficApplications);
+        if (policy.categories.length > 0) {
+          trafficParts.push(
+            `any(dns.content_category[*] in {${policy.categories.join(" ")}})`
+          );
+        }
+
+        if (policy.applicationTypes.length > 0) {
+          trafficParts.push(
+            `any(app.type.ids[*] in {${policy.applicationTypes.join(" ")}})`
+          );
+        }
+
+        if (policy.applications.length > 0) {
+          trafficParts.push(
+            `any(app.ids[*] in {${policy.applications.join(" ")}})`
+          );
+        }
+
+        const trafficString = trafficParts.join(" or ");
+
+        setValue("trafficString", trafficString);
         setValue("action", "block");
       } else {
         setValue("action", "ytrestricted");
@@ -122,8 +135,7 @@ export const PredefinedPolicyForm = ({
     const formattedScheduleReq = formatScheduleForBackend(data.schedule);
     const policy = createPolicyObject(
       data.action,
-      data.trafficCategories,
-      data.trafficApplications,
+      data.trafficString,
       isScheduleEmpty(formattedScheduleReq)
         ? undefined
         : {

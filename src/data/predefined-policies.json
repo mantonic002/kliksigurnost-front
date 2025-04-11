@@ -2,11 +2,13 @@
     {
         "name": "Youtube",
         "categories": [],
+        "applicationTypes": [],
         "applications": []
     },
     {
         "name": "Sadrzaj za odrasle, virusi i pretnje",
         "categories": [2, 21],
+        "applicationTypes": [2, 3],
         "applications": [505]
     }
 ]
