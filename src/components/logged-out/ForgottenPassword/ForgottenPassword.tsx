@@ -31,7 +31,7 @@ function ForgottenPassword() {
     try {
       await authService.forgotPassword(data.email);
       toast.success(
-        "Ako uneti mail postoji, poslali smo link za promjenu lozinke"
+        "Ako uneti mail postoji, poslali smo link za promenu lozinke"
       );
       navigate("/");
     } catch (error: any) {

@@ -1,15 +1,94 @@
 [
     {
-        "name": "Youtube",
-        "categories": [],
+        "name": "Eksplicitan sadrzaj, igre na sreću, nasilje, sve što je 18+",
+        "categories": [2, 21, 8, 17, 29],
         "applicationTypes": [],
-        "applications": []
+        "applications": [],
+        "block": true
     },
     {
-        "name": "Sadrzaj za odrasle, virusi i pretnje",
-        "categories": [2, 21],
-        "applicationTypes": [2, 3],
-        "applications": [505]
+        "name": "Celokupan internet sadržaj",
+        "categories": [],
+        "applicationTypes": [],
+        "applications": [],
+        "block": false
+    },
+    {
+        "name": "Sve osim edukativnog dela interneta",
+        "categories": [6, 70, 96, 10, 23, 71, 72, 104, 132, 93, 145, 159],
+        "applicationTypes": [],
+        "applications": [],
+        "block": false
+    },
+    {
+        "name": "Google Play Store",
+        "categories": [],
+        "applicationTypes": [],
+        "applications": [1174],
+        "block": true
+    },
+    {
+        "name": "Youtube - samo sadržaj koji nije za decu",
+        "categories": [],
+        "applicationTypes": [],
+        "applications": [],
+        "block": true
+    },
+    {
+        "name": "Celokupan Youtube",
+        "categories": [164],
+        "applicationTypes": [],
+        "applications": [644],
+        "block": true
+    },
+    {
+        "name": "Sve aplikacije za dopisivanje, sajtovi za dopisivanje",
+        "categories": [12, 77, 98, 110, 111, 118, 126, 129, 172, 84],
+        "applicationTypes": [12],
+        "applications": [],
+        "block": true
+    },
+    {
+        "name": "Aplikacije za upoznavanje",
+        "categories": [77, 84],
+        "applicationTypes": [23],
+        "applications": [],
+        "block": true
+    },
+    {
+        "name": "Sve društvene mreže",
+        "categories": [149],
+        "applicationTypes": [11],
+        "applications": [],
+        "block": true
+    },
+    {
+        "name": "Facebook",
+        "categories": [149],
+        "applicationTypes": [],
+        "applications": [541],
+        "block": true
+    },
+    {
+        "name": "Instagram",
+        "categories": [149],
+        "applicationTypes": [],
+        "applications": [572],
+        "block": true
+    },
+    {
+        "name": "TikTok",
+        "categories": [149],
+        "applicationTypes": [],
+        "applications": [628],
+        "block": true
+    },
+    {
+        "name": "Snapchat",
+        "categories": [149],
+        "applicationTypes": [],
+        "applications": [618],
+        "block": true
     }
 ]
   

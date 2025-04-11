@@ -258,7 +258,7 @@ export const PolicyForm = ({
         <div className="modal-overlay" onClick={() => setIsFormOpen(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5>Kreirajte novo pravilo</h5>
+              <h5>Izaberite šta želite da blokirate:</h5>
               <BsXLg onClick={() => setIsFormOpen(false)} />
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
