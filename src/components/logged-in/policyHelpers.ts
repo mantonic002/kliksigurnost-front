@@ -77,17 +77,12 @@ export const handlePolicyError = (error: any) => {
 
 export const createPolicyObject = (
   actionParam: string = "block",
-  trafficCategories?: string,
-  trafficApplications?: string,
+  trafficString?: string,
   schedule?: Record<string, string>
 ): Policy => {
-  const trafficString: string[] = [];
-  if (trafficCategories) trafficString.push(trafficCategories);
-  if (trafficApplications) trafficString.push(trafficApplications);
-
   return {
     action: actionParam,
-    traffic: trafficString.join(" or "),
+    traffic: trafficString || "",
     ...(!isScheduleEmpty(schedule || {}) && { schedule }),
   };
 };
