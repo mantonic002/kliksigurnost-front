@@ -8,9 +8,8 @@ import { z } from "zod";
 import predefinedPolicies from "../../data/predefined-policies.json";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa";
-import { BsInfoCircleFill, BsXLg } from "react-icons/bs";
+import { BsXLg } from "react-icons/bs";
 import { useRequest } from "../../services/useRequest";
-import { Alert } from "react-bootstrap";
 import { SchedulePicker } from "./SchedulePicker";
 import {
   dayNameMapping,
@@ -100,7 +99,7 @@ export const PredefinedPolicyForm = ({
       const policy = predefinedPolicies.find(
         (p) => p.name === selectedOption.label
       );
-      if (policy && policy.name !== "Youtube") {
+      if (policy) {
         const trafficParts = [];
 
         if (policy.categories.length > 0) {
@@ -125,8 +124,6 @@ export const PredefinedPolicyForm = ({
 
         setValue("trafficString", trafficString);
         setValue("action", "block");
-      } else {
-        setValue("action", "ytrestricted");
       }
     }
   };
@@ -233,16 +230,6 @@ export const PredefinedPolicyForm = ({
                 )}
               </button>
             </form>
-            <Alert>
-              <BsInfoCircleFill size={30} className="me-2" />
-              <strong>YouTube samo sadržaj koji nije za decu</strong>
-              <p>
-                Ovo pravilo ograničava prikaz sadržaja YouTube-a na video snimke
-                koji su označeni kao pogodni za sve uzraste. Blokira video
-                zapise sa eksplicitnim jezikom, nasiljem, odraslim sadržajem i
-                slično.
-              </p>
-            </Alert>
           </div>
         </div>
       )}
