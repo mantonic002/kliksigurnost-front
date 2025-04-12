@@ -8,11 +8,12 @@ import logo from "./logo_final2.png";
 import "./navigationStyles.css";
 import { Link, useNavigate } from "react-router-dom";
 import riziciImage from "/images/malware.png"
-import razgovorImage from "/images/razgovor.jpg"
+import razgovorImage from "/images/conversation.png"
 import pravilaImage from "/images/rules.png"
 import podesavanjaImage from "/images/settings_ks.png"
 import edukacijaImage from "/images/bulb.png"
 import trikoviImage from "/images/family-icon.png"
+import pitanjeImage from "/images/question.png"
 
 function Navigation() {
   let navigate = useNavigate();
@@ -73,7 +74,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={pitanjeImage} alt="" className="dropdown-icon" />
               Zašto KlikSigurnost
             </NavDropdown.Item>
             <NavDropdown.Item
