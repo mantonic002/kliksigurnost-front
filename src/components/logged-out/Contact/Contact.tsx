@@ -57,13 +57,13 @@ const Contact = () => {
                 <strong>Email:</strong> podrska@kliksigurnost.com
               </p>
               <p>
-                <strong>Telefon:</strong> +381 60 123 4567
+                <strong>Telefon:</strong> +381 66 518 2959
               </p>
               <p>
-                <strong>Viber:</strong> +381 60 123 4567
+                <strong>Viber:</strong> +381 66 518 2959
               </p>
               <p>
-                <strong>WhatsApp:</strong> +381 60 123 4567
+                <strong>WhatsApp:</strong> +381 66 518 2959
               </p>
             </div>
             <hr className="my-4 border-0 border-top border-secondary" />

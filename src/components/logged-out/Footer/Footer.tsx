@@ -17,11 +17,11 @@ const Footer = () => {
             <a href="mailto:podrska@kliksigurnost.com" className="text-dark">
               <FaEnvelope size={20} />
             </a>
-            <a href="viber://chat?number=%2B381601234567" className="text-dark" target="_blank" rel="noopener noreferrer">
+            <a href="viber://chat?number=%2B381665182959" className="text-dark" target="_blank" rel="noopener noreferrer">
               <FaViber size={20} />
             </a>
 
-            <a href="https://wa.me/381601234567" className="text-dark" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/381665182959" className="text-dark" target="_blank" rel="noopener noreferrer">
               <FaWhatsapp size={20} />
             </a>
           </Col>
