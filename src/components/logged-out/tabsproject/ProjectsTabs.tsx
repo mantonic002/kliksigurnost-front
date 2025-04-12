@@ -68,7 +68,7 @@ const tabData = [
     content:
       "KlikSigurnost pruža tehničku podršku na srpskom jeziku putem poziva, online sastanka ili e-maila, čime roditeljima olakšava svaku nedoumicu ili tehnički izazov.",
     icon: <FaPhoneAlt />,
-    image: "/images/feature_call.png",
+    image: "/images/call.png",
   },
   {
     title: "Transparentnost i privatnost",
@@ -146,7 +146,7 @@ const ProjectTabs = () => {
               (tab) =>
                 tab.title === activeTab && (
                   <div key={tab.title} className="tab-details">
-                    <Row>
+                    <Row className="align-items-center h-100">
                       <Col lg={6}>
                         <div className="tab-img-area">
                           <img

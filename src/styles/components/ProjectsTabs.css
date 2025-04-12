@@ -50,10 +50,6 @@
   padding: 0 50px;
 }
 
-.tab-info {
-  margin-top: 100px;
-}
-
 .tab-info h3 {
   font-size: 35px;
 }
@@ -99,5 +95,26 @@
 
   .tab-image {
     width: 240px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tab-details {
+    height: 100%;
+  }
+
+  .tab-img-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .tab-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-top: 0; /* override old spacing */
   }
 }
