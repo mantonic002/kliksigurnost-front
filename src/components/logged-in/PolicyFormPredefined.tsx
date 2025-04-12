@@ -235,17 +235,12 @@ export const PredefinedPolicyForm = ({
             </form>
             <Alert>
               <BsInfoCircleFill size={30} className="me-2" />
-              <strong>YouTube pravilo</strong>
+              <strong>YouTube samo sadržaj koji nije za decu</strong>
               <p>
                 Ovo pravilo ograničava prikaz sadržaja YouTube-a na video snimke
                 koji su označeni kao pogodni za sve uzraste. Blokira video
                 zapise sa eksplicitnim jezikom, nasiljem, odraslim sadržajem i
                 slično.
-                <hr></hr>
-                <div className="disabled small">
-                  Ovo pravilo je trenutno u testnoj fazi, pa u retkim
-                  slučajevima možda neće raditi kao što je planirano.
-                </div>
               </p>
             </Alert>
           </div>

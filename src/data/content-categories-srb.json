@@ -282,15 +282,15 @@
         "deprecated": false
       },
       {
-        "name": "Kockanje",
+        "name": "Igre na sreću",
         "id": 8,
-        "description": "Sajtovi koji omogućavaju online kockanje.",
+        "description": "Sajtovi koji omogućavaju ili promovišu online igre na sreću.",
         "class": "premium",
         "subcategories": [
           {
-            "name": "Kockanje",
+            "name": "Igre na sreću",
             "id": 99,
-            "description": "Sajtovi koji omogućavaju online kockanje.",
+            "description": "Sajtovi koji omogućavaju ili promovišu online igre na sreću.",
             "class": "premium",
             "subcategories": null,
             "beta": false,
