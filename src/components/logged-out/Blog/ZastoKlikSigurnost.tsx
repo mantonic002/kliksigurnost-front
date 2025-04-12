@@ -1,7 +1,12 @@
 import { Container, Row, Col, Image, Badge, ListGroup} from "react-bootstrap";
-import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
 import mico from "/images/mico.png"
+import malware from "/images/malware.png"
+import phishing from "/images/phishing.png"
+import warning from "/images/warning.png"
+import explicit from "/images/explicit.jpg"
+import feature from "/images/feature_kalendar.png"
+import family from "/images/happy_family.jpg"
 
 const ZastoKlikSigurnost = () => {
   return (
@@ -72,13 +77,6 @@ const ZastoKlikSigurnost = () => {
         </Col>
       </Row>
 
-      {/* MiAn image */}
-      <Row className="justify-content-center mt-4">
-        <Col lg={10}>
-          <Image src={featuredImage} alt="KS" fluid rounded />
-        </Col>
-      </Row>
-
       <Row className="justify-content-center mt-4">
         <Col lg={8}>
           <br />
@@ -102,31 +100,35 @@ const ZastoKlikSigurnost = () => {
             {/* MiAn image */}
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={explicit} alt="KS" fluid rounded />
               </Col>
             </Row>
+            <br/>
             <li><b>Prevarantske i phishing sajtove</b> - Zlonamerni linkovi koji kradu podatke mogu biti posebno opasni za mlađe korisnike</li>
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={phishing} alt="KS" fluid rounded />
               </Col>
             </Row>
+            <br/>
             <li><b>Sajtove koji promovišu samopovređivanje i druge štetne aktivnosti</b> - KlikSigurnost aktivno blokira ove vrste pretnji</li>
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={warning} alt="KS" fluid rounded />
               </Col>
             </Row>
+            <br/>
             <li><b>Viruse i maliciozne web-stranice</b> - KlikSigurnost automatski ne odobrava pristup web sadržaju za koji proceni da može biti štetan. </li>
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={malware} alt="KS" fluid rounded />
               </Col>
             </Row>
+            <br/>
             <li><b>Prilagođeno filtriranje</b> - Sadržaj može biti filtriran po satima i danima, tako da tokom nastave ili vremena predviđenog za učenje deca mogu pristupati samo edukativnim sadržajima</li>
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={feature} alt="KS" fluid rounded />
               </Col>
             </Row>
           </ul>
@@ -163,8 +165,8 @@ const ZastoKlikSigurnost = () => {
           <h3>Sigurna budućnost za vašu porodicu</h3>
           <br />
           <Row className="mt-4">
-            <Col lg={8}>
-              <Image src={featuredImage} alt="KS" fluid rounded />
+            <Col lg={12}>
+              <Image src={family} alt="KS" fluid rounded />
             </Col>
           </Row>     
           <p>
@@ -172,7 +174,10 @@ const ZastoKlikSigurnost = () => {
           </p>
           <br />
           <br />
-          <h2>KlikSigurnost – alat koji roditelji širom regiona biraju za miran san i sigurnu budućnost svoje dece!</h2>
+          <p><strong><i>
+            KlikSigurnost – alat koji roditelji širom regiona biraju za miran san i 
+            sigurnu budućnost svoje dece!
+            </i></strong></p>
         </Col>
       </Row>
     </Container>

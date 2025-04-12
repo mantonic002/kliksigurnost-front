@@ -1,7 +1,7 @@
 import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
-import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 import "../../../styles/components/Blog.css";
 import psiholog from "/images/psiholog2.png"
+import kids from "/images/children_warm.jpg"
 
 const EdukativniSajtovi = () => {
   return (
@@ -155,7 +155,9 @@ const EdukativniSajtovi = () => {
                 </Button>
             </div>
             <br/>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={kids} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            </div>
             <br/>
             <br/>
             <p><i>Korištenjem ovih resursa, možete obezbediti da vaše dete provodi kvalitetno 

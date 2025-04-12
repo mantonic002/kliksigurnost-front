@@ -1,8 +1,8 @@
 import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
-import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
 import "../../../styles/components/Blog.css";
 import { useNavigate } from 'react-router-dom';
 import mico from "/images/mico.png"
+import icon from "/images/family-icon.png"
 
 const Trikovi = () => {
 
@@ -69,7 +69,11 @@ const Trikovi = () => {
             </p>
             <br/>
             <br/>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={icon} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            </div>
+            <br/>
+            <br/>
             <br/>
             <h2>1. Praćenje aktivnosti bez ograničenja</h2>
             <br/>
@@ -222,6 +226,8 @@ const Trikovi = () => {
             Kliknite i započnite besplatno odmah!
           </Button>
           </div>
+          <br/>
+          <br/>
           </Col>
         </Row>
       </Container>

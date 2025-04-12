@@ -1,9 +1,9 @@
-import { Container, Row, Col, Accordion, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Accordion, Button } from "react-bootstrap";
 import { FaUserPlus, FaUsersCog, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../../styles/components/Setup.css";
 import "../../../styles/components/MadeEasy.css";
-import featuredImage from "../../../logo_final2.png";
+import wheel from "/images/settings_ks.png";
 
 const Setup = () => {
   const steps = [
@@ -135,7 +135,13 @@ const Setup = () => {
             </Link>
           </div>
             <br/>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="settings-wheel-container">
+              <img
+                src={wheel}
+                alt="Settings Wheel"
+                className="rotating-wheel"
+              />
+            </div>
             <br/>
             <br/>
             <div>

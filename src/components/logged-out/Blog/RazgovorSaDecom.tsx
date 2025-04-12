@@ -1,7 +1,8 @@
 import { Container, Row, Col, Image, Badge } from "react-bootstrap";
-import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
 import psiholog from "/images/psiholog2.png"
+import razgovor from "/images/razgovor.jpg"
+import safe from "/images/safe.png"
 
 const BizBlog = () => {
   return (
@@ -61,8 +62,8 @@ const BizBlog = () => {
             <br />
             <h3 className="fw-bold">Početak Razgovora: Kako Pristupiti Temi?</h3>
             <Row className="mt-4">
-              <Col lg={5}>
-                <Image src={featuredImage} alt="Roditelj i dete razgovaraju" fluid rounded />
+              <Col lg={12}>
+                <Image src={razgovor} alt="Roditelj i dete razgovaraju" fluid rounded />
               </Col>
             </Row>
             <p>
@@ -101,11 +102,7 @@ const BizBlog = () => {
                 <li>„Ovo ti omogućava da uživaš u svojim omiljenim igrama i video zapisima bez brige.“</li>
               </ul>
             </ol>
-            <Row className="mt-4">
-              <Col lg={5}>
-                <Image src={featuredImage} alt="Roditelj i dete zajedno podešavaju KlikSigurnost" fluid rounded />
-              </Col>
-            </Row>
+
             <br />
             <br />
             <h3 className="fw-bold">Ključne Teme za Razgovor sa Decom</h3>
@@ -154,15 +151,17 @@ const BizBlog = () => {
               Razgovor o bezbednom korišćenju interneta nije samo praktična stvar – to je prilika da izgradite poverenje i otvoren odnos sa svojim detetom. Sa alatima poput <strong>KlikSigurnosti</strong>, imate dodatnu sigurnost da čak i kada niste tu, vaša deca su zaštićena od potencijalnih opasnosti.
             </p>
             <p>Vaša uloga nije samo da postavite granice, već i da budete vodič u digitalnom svetu koji je za vašu decu i uzbudljiv i nepoznat. Pristupite razgovoru sa razumevanjem i otvorenošću – jer zajedno gradite sigurno digitalno okruženje za celu porodicu.</p>
-            
-            <Row className="justify-content-center mt-4">
-              <Col lg={10}>
-                <Image src={featuredImage} alt="Porodica zajedno uživa na internetu" fluid rounded />
-              </Col>
-            </Row>
           </Col>
         </Row>
       </Container>
+      <Container fluid className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+        <Row>
+          <Col>
+            <Image src={safe} alt="Porodica zajedno uživa na internetu" fluid rounded />
+          </Col>
+        </Row>
+      </Container>
+
     </section>
   );
 };

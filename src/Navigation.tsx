@@ -7,6 +7,12 @@ import Button from "react-bootstrap/Button";
 import logo from "./logo_final2.png";
 import "./navigationStyles.css";
 import { Link, useNavigate } from "react-router-dom";
+import riziciImage from "/images/malware.png"
+import razgovorImage from "/images/razgovor.jpg"
+import pravilaImage from "/images/rules.png"
+import podesavanjaImage from "/images/settings_ks.png"
+import edukacijaImage from "/images/bulb.png"
+import trikoviImage from "/images/family-icon.png"
 
 function Navigation() {
   let navigate = useNavigate();
@@ -76,7 +82,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={riziciImage} alt="" className="dropdown-icon" />
               Skriveni Rizici digitalnog sveta
             </NavDropdown.Item>
             <NavDropdown.Item
@@ -85,7 +91,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={razgovorImage} alt="" className="dropdown-icon" />
               Razgovor sa decom o sigurnosti na internetu
             </NavDropdown.Item>
             <NavDropdown.Item
@@ -94,7 +100,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={pravilaImage} alt="" className="dropdown-icon" />
               10 osnovnih pravila u Vašem domu
             </NavDropdown.Item>
             <NavDropdown.Item
@@ -103,7 +109,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={podesavanjaImage} alt="" className="dropdown-icon" />
               Podešavanje KlikSigurnost alata prema uzrastu
             </NavDropdown.Item>
             <NavDropdown.Item
@@ -112,7 +118,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={edukacijaImage} alt="" className="dropdown-icon" />
               Preporuke za edukativne sajtove na srpskom
             </NavDropdown.Item>
             <NavDropdown.Item
@@ -121,7 +127,7 @@ function Navigation() {
               className="custom-dropdown-item"
               onClick={handleNavClick}
             >
-              <img src={logo} alt="" className="dropdown-icon" />
+              <img src={trikoviImage} alt="" className="dropdown-icon" />
               Mudri načini da budete u toku
             </NavDropdown.Item>
           </NavDropdown>

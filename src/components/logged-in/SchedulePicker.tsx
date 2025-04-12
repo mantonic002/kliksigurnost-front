@@ -155,7 +155,7 @@ export const SchedulePicker = ({
         <div className="schedule-modal-overlay">
           <div className="schedule-modal-content">
             <div className="schedule-modal-header">
-              <h5 className="schedule-modal-title">Izaberite raspored</h5>
+              <h5 className="schedule-modal-title">Izaberite period kada će pravilo da važi:</h5>
               <div className="schedule-modal-actions">
                 <button
                   type="button"

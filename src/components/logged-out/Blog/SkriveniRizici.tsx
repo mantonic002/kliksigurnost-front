@@ -1,7 +1,11 @@
 import { Container, Row, Col, Image, Badge, ListGroup} from "react-bootstrap";
-import featuredImage from '../../../logo_final2.png';
 import "../../../styles/components/Blog.css";
 import psiholog from "/images/psiholog2.png"
+import maltretiranje from "/images/cyber_bully.jpg"
+import mrznja from "/images/mrznja.jpg"
+import explicit from "/images/explicit.jpg"
+import chat from "/images/chat.jpg"
+import family from "/images/fw.jpg"
 
 const SkriveniRizici = () => {
   return (
@@ -72,7 +76,7 @@ const SkriveniRizici = () => {
           <li><b>Sajber maltretiranje</b> i drugi oblici vršnjačkog nasilja mogu uticati na mlade svaki put kada se prijave na društvene mreže ili platforme za razmenu poruka. Više od trećine mladih u 30 zemalja prijavilo je da su bili žrtve sajber maltretiranja, dok je 1 od 5 mladih izostajao iz škole zbog ovoga.</li>
             <Row className="mt-4">
             <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={maltretiranje} alt="KS" fluid rounded />
             </Col>
             </Row>
             <br/>
@@ -80,7 +84,7 @@ const SkriveniRizici = () => {
           <li><b>Govor mržnje i nasilni sadržaji</b> su nešto čemu deca i mladi mogu biti izloženi na internetu – uključujući poruke koje podstiču samopovređivanje pa čak i samoubistvo. Mladi korisnici interneta takođe su ranjivi na regrutaciju od strane ekstremističkih i terorističkih grupa.</li>
             <Row className="mt-4">
               <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={mrznja} alt="KS" fluid rounded />
               </Col>
             </Row>
             <br/>
@@ -91,7 +95,7 @@ const SkriveniRizici = () => {
           </p></li>
             <Row className="mt-4">
             <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={explicit} alt="KS" fluid rounded />
             </Col>
             </Row>
             <br/>
@@ -99,7 +103,7 @@ const SkriveniRizici = () => {
           <li><b>Seksualna eksploatacija i zlostavljanja online</b> su ubedljivo najalarmantnije pretnje. Nikada nije bilo lakše da prestupnici kontaktiraju potencijalne žrtve, dele sadržaje i podstiču druge da počine krivična dela. Oko 80% dece u 25 zemalja izjavilo je da se oseća ugroženo od seksualnog zlostavljanja ili eksploatacije na internetu.</li>
             <Row className="mt-4">
                 <Col lg={5}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={chat} alt="KS" fluid rounded />
                 </Col>
             </Row>
             <br/>
@@ -124,10 +128,13 @@ const SkriveniRizici = () => {
             <br />
             <Row className="justify-content-center mt-4">
                 <Col lg={10}>
-                <Image src={featuredImage} alt="KS" fluid rounded />
+                <Image src={family} alt="KS" fluid rounded />
                 </Col>
             </Row>
-            <h2>KlikSigurnost nije samo alat za filtriranje – to je oslonac roditeljima koji žele da osiguraju sigurno digitalno detinjstvo za svoju decu.</h2>
+            <p><strong><i>
+              KlikSigurnost nije samo alat za filtriranje – to je oslonac roditeljima koji žele 
+              da osiguraju sigurno digitalno detinjstvo za svoju decu.
+            </i></strong></p>
           {/* Additional content can be added here */}
         </Col>
       </Row>

@@ -1,7 +1,10 @@
-import { Container, Row, Col, Image, Badge} from "react-bootstrap";
-import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
+import { Container, Row, Col, Image, Badge, Button} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../../../styles/components/Blog.css";
 import psiholog from "/images/psiholog2.png"
+import blokiraj from "/images/feature_blokiraj.png"
+import kalendar from "/images/feature_kalendar.png"
+import family from "/images/happy_family.jpg"
 
 const Pravila = () => {
   return (
@@ -81,7 +84,9 @@ const Pravila = () => {
             <p>KlikSigurnost može Vam pomoći da automatizujete ova pravila. Sa opcijom prilagođenog 
                 filtriranja, možete odrediti koje vrste sadržaja su dostupne u određeno doba dana.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={blokiraj} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            </div>
             <br/>
             <h2>2. Podesite KlikSigurnost za maksimalnu zaštitu</h2>
             <br/>
@@ -95,7 +100,15 @@ const Pravila = () => {
                 najčešćih opasnosti na internetu. Ako Vam ikada zatreba pomoć ili imate bilo kakva 
                 pitanja, naša tehnička podrška vam je uvek na raspolaganju – tu smo da vam pružimo sigurnost i mir.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Link to="/podesavanje">
+                <Button variant="primary" className="learn-btn">
+                  Detaljan vodič za podešavanje!
+                </Button>
+              </Link>
+            </div>
+            <br/>
+            <br/>
             <br/>
             <h2>3. Naučite decu osnovama digitalne pismenosti</h2>
             <br/>
@@ -109,7 +122,6 @@ const Pravila = () => {
                 KlikSigurnost takođe pruža resurse i savete roditeljima kako da ovu edukaciju 
                 učine jednostavnom i prilagođenom uzrastu deteta. 
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
             <br/>
             <h2>4. Aktivno učestvujte u digitalnom životu deteta</h2>
             <br/>
@@ -125,7 +137,6 @@ const Pravila = () => {
             <p>
                 KlikSigurnost vam olakšava praćenje bez potrebe da stalno posmatrate svaki korak deteta.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
             <br/>
             <h2>5. Podesite filtere prema starosnoj dobi</h2>
             <br/>
@@ -141,7 +152,15 @@ const Pravila = () => {
             <p>
                 Ovakav pristup ne samo da osigurava sigurnost, već i pomaže deci da koriste internet na način koji je koristan i edukativan.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+
+            <div className="d-flex justify-content-center mt-4">
+              <Link to="/saveti/podesavanje">
+                <Button variant="primary" className="learn-btn">
+                  Preporuke za podešavanja u skladu sa godinama deteta
+                </Button>
+              </Link>
+            </div>
+
             <br/>
             <h2>6. Postavite ograničenja za vreme provedeno online</h2>
             <br/>
@@ -149,7 +168,9 @@ const Pravila = () => {
                 KlikSigurnost vam omogućava da postavite vremenska ograničenja za svakodnevno 
                 korišćenje interneta, pomažući deci da održe balans između digitalnog i stvarnog sveta.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={kalendar} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            </div>
             <br/>
             <h2>7. Koristite snažne lozinke i učite decu sigurnosti naloga</h2>
             <br/>
@@ -175,7 +196,6 @@ const Pravila = () => {
                 sajtovima, vremenu provedenom online i pokušajima pristupa neprikladnim sadržajima. 
                 Redovno pregledanje ovih izveštaja pomaže vam da prilagodite pravila i povećate sigurnost.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
             <br/>
             <h2>10. Budite dosledni</h2>
             <br/>
@@ -191,7 +211,9 @@ const Pravila = () => {
                 KlikSigurnost je dizajniran da omogući upravo to, kombinujći praktične funkcionalnosti 
                 sa lakoćom korištenja.
             </p>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={family} alt="KlikSigurnost" fluid rounded className="mt-12" />
+            </div>
           </Col>
         </Row>
       </Container>

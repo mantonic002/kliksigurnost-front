@@ -4,3 +4,14 @@
 .spanic {
     margin:5px;
 }
+.settings-wheel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .rotating-wheel {
+    width: 200px;
+    height: 200px;
+  }

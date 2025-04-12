@@ -1,7 +1,8 @@
-import { Container, Row, Col, Image, Badge, ListGroup } from "react-bootstrap";
-import featuredImage from "../../../logo_final2.png"; // Replace with your actual image path
+import { Container, Row, Col, Image, Badge, ListGroup, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../../../styles/components/Blog.css";
 import psiholog from "/images/psiholog2.png"
+import pod from "/images/settings_ks.png"
 
 const PodesavanjePremaUzrastu = () => {
   return (
@@ -89,7 +90,6 @@ const PodesavanjePremaUzrastu = () => {
               </ul>
               </ListGroup.Item>
             </ListGroup>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
 
             <br />
             <h2>2. Deca od 8 do 12 godina (osnovnoškolski uzrast)</h2>
@@ -126,7 +126,6 @@ const PodesavanjePremaUzrastu = () => {
               </ul>
               </ListGroup.Item>
             </ListGroup>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
 
             <br />
             <h2>3. Tinejdžeri od 13 do 16 godina</h2>
@@ -162,7 +161,6 @@ const PodesavanjePremaUzrastu = () => {
               </ul>
               </ListGroup.Item>
             </ListGroup>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
 
             <br />
             <h2>4. Odgovorni tinejdžeri</h2>
@@ -181,7 +179,6 @@ const PodesavanjePremaUzrastu = () => {
               </ul>
               </ListGroup.Item>
             </ListGroup>
-            <Image src={featuredImage} alt="KlikSigurnost" fluid rounded className="mt-4" />
 
             <br />
             <h2>Kako da podesite KlikSigurnost u praksi?</h2>
@@ -191,6 +188,14 @@ const PodesavanjePremaUzrastu = () => {
               <ListGroup.Item>3️⃣ Aktivirajte nadzor i izveštaje.</ListGroup.Item>
               <ListGroup.Item>4️⃣ Prilagodite postavke po potrebi.</ListGroup.Item>
             </ListGroup>
+
+            <div className="d-flex justify-content-center mt-4">
+              <Link to="/podesavanje">
+                <Button variant="primary" className="learn-btn">
+                  Detaljan vodič za podešavanje naloga!
+                </Button>
+              </Link>
+            </div>
 
             <br />
             <h2>Zašto koristiti KlikSigurnost?</h2>
@@ -205,6 +210,10 @@ const PodesavanjePremaUzrastu = () => {
 
             <br />
             <p>Pravilno podešen KlikSigurnost pomaže roditeljima da postave zdrave digitalne granice, omogućavajući deci da sigurno istražuju internet bez nepotrebnih rizika. Ako imate bilo kakva pitanja ili Vam je potrebna pomoć pri podešavanju, naš tim za podršku je dostupan putem telefona ili online konsultacija. 😊</p>
+            <div className="d-flex justify-content-center mt-4">
+              <Image src={pod} alt="KlikSigurnost" fluid rounded className="mt-4" />
+            </div>
+          
           </Col>
         </Row>
       </Container>
