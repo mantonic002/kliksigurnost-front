@@ -1,8 +1,7 @@
 import { useState } from "react";
 import policyService from "../../services/policy-service";
 import { Policy, Schedule } from "../../models/Policy";
-import { BsFillTrashFill, BsInfoCircleFill, BsTrash } from "react-icons/bs";
-import { Alert } from "react-bootstrap";
+import { BsFillTrashFill, BsTrash } from "react-icons/bs";
 
 interface PolicyTableProps {
   policies: Policy[];
@@ -183,9 +182,6 @@ export const PolicyTable = ({
               {policy.action == "block" && (
                 <div className="text-danger-alert">Blokirano</div>
               )}
-              {policy.action == "ytrestricted" && (
-                <div className="text-danger-alert">Youtube</div>
-              )}
               {policy.name && (
                 <div className="card-item">
                   <strong>Naziv:</strong> {policy.name}
@@ -205,17 +201,6 @@ export const PolicyTable = ({
                 <div className="card-item">
                   <strong>Raspored:</strong> ...
                 </div>
-              )}
-
-              {policy.action == "ytrestricted" && (
-                <>
-                  <div className="card-item">
-                    <strong>Kategorije:</strong> Youtube, ograničen mod
-                  </div>
-                  <div className="card-item">
-                    <strong>Aplikacije:</strong> Youtube, Youtube Music
-                  </div>
-                </>
               )}
               <div className="card-item actions">
                 <div
@@ -276,17 +261,6 @@ export const PolicyTable = ({
                   </p>
                 </>
               )}
-              {selectedPolicy.action == "ytrestricted" && (
-                <>
-                  <div className="text-danger-alert">Youtube</div>
-                  <div className="card-item">
-                    <strong>Kategorije:</strong> Youtube, ograničen mod
-                  </div>
-                  <div className="card-item">
-                    <strong>Aplikacije:</strong> Youtube, Youtube Music
-                  </div>
-                </>
-              )}
               {selectedPolicy.schedule && (
                 <div className="schedule-display">
                   <h6>Raspored:</h6>
@@ -320,25 +294,6 @@ export const PolicyTable = ({
                     )}
                   </ul>
                 </div>
-              )}
-
-              {selectedPolicy.action == "ytrestricted" && (
-                <Alert>
-                  <BsInfoCircleFill size={30} className="me-2" />
-                  <strong>Ograničeni režim YouTube-a</strong>
-
-                  <p>
-                    Ovo pravilo ograničava prikaz sadržaja YouTube-a na video
-                    snimke koji su označeni kao pogodni za sve uzraste. Blokira
-                    video zapise sa eksplicitnim jezikom, nasiljem, odraslim
-                    sadržajem i slično.
-                    <hr></hr>
-                    <div className="disabled small">
-                      Ovo pravilo je trenutno u testnoj fazi, pa u retkim
-                      slučajevima možda neće raditi kao što je planirano.
-                    </div>
-                  </p>
-                </Alert>
               )}
             </div>
           </div>

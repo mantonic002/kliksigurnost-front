@@ -28,14 +28,7 @@
         "block": true
     },
     {
-        "name": "Youtube - samo sadržaj koji nije za decu",
-        "categories": [],
-        "applicationTypes": [],
-        "applications": [],
-        "block": true
-    },
-    {
-        "name": "Celokupan Youtube",
+        "name": "Youtube",
         "categories": [164],
         "applicationTypes": [],
         "applications": [644],
