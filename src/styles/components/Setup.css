@@ -1,6 +1,14 @@
 .setup-page {
-    margin-top: 50px;
+  margin-top: 50px;
+  padding: 0 15px;
 }
+
+@media (max-width: 576px) {
+  .setup-page {
+      padding: 0 5px;
+  }
+}
+
 .spanic {
     margin:5px;
 }
@@ -15,3 +23,14 @@
     width: 200px;
     height: 200px;
   }
+
+
+  .sec-content {
+    padding: 0 100px;
+}
+
+@media (max-width: 768px) {
+    .sec-content {
+        padding: 0 15px; /* Much better for small screens */
+    }
+}

@@ -82,9 +82,9 @@ const Setup = () => {
   ];
 
   return (
-    <Container className="setup-page">
+    <Container fluid="sm" className="setup-page">
       <Row className="align-items-start sec-content">
-        <Col lg={12}>
+      <Col xs={12}>
           <h3 className="section-subtitle text-center mb-4">
             Jednostavno podešavanje u 3 koraka
           </h3>
