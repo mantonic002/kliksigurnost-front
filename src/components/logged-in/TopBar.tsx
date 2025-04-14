@@ -5,34 +5,42 @@ import notificationService from "../../services/notification-service";
 import { CanceledError } from "axios";
 import logo from "/images/logo_final2.png";
 import { useNavigate } from "react-router-dom";
-import { Offcanvas } from "react-bootstrap";
+import { Offcanvas, Dropdown } from "react-bootstrap";
 import { SidebarData, SidebarDataAdmin } from "./SidebarData";
 import "../../styles/components/TopBar.css";
 import { BsBell, BsBellFill, BsList } from "react-icons/bs";
+import React from "react";
 
 const TopBar = () => {
   const { profile, logout } = useAuth();
   const navigate = useNavigate();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [notificationCount, setNotificationCount] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  // Existing notification functions remain the same
-  const openNotifications = () => setIsDropdownOpen(!isDropdownOpen);
+  const CustomToggle = React.forwardRef<
+    HTMLDivElement,
+    { onClick: (e: React.MouseEvent) => void }
+  >(({ onClick }, ref) => (
+    <div
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+      className="action-icon"
+    >
+      <div className="icon-wrapper">
+        <BsBell size={25} className="action-blue outlined" />
+        <BsBellFill size={25} className="action-blue filled" />
+        <span className="notification-badge">{notificationCount}</span>
+      </div>
+    </div>
+  ));
 
   useEffect(() => {
     fetchNotificationCount();
-  });
-
-  useEffect(() => {
-    if (isDropdownOpen) {
-      fetchNotifications();
-    } else {
-      setNotifications([]);
-      setNotificationCount(0);
-    }
-  }, [isDropdownOpen]);
+  }, []);
 
   const fetchNotifications = async () => {
     notificationService
@@ -89,32 +97,31 @@ const TopBar = () => {
         />
       </div>
 
-      {/* Notifications and User Email */}
       <div className="TopBar-element">
         {profile?.role !== "ADMIN" && (
-          <div className="action-icon" onClick={openNotifications}>
-            <div className="icon-wrapper">
-              <BsBell size={25} className="action-blue outlined" />
-              <BsBellFill size={25} className="action-blue filled" />
-              <span className="notification-badge">{notificationCount}</span>
-            </div>
-          </div>
-        )}
-        {isDropdownOpen && (
-          <div className="notifications-dropdown">
-            {notifications.length > 0 ? (
-              notifications.map((notification) => (
-                <div key={notification.id} className="notification-item">
-                  <div className="notification-message">
-                    {notification.message}
-                  </div>
-                  <div className="notification-date">{notification.date}</div>
-                </div>
-              ))
-            ) : (
-              <div className="notification-item">No new notifications</div>
-            )}
-          </div>
+          <Dropdown onToggle={(isOpen) => isOpen && fetchNotifications()}>
+            <Dropdown.Toggle as={CustomToggle} />
+            <Dropdown.Menu className="notifications-dropdown">
+              {notifications.length > 0 ? (
+                notifications.map((notification) => (
+                  <Dropdown.Item
+                    key={notification.id}
+                    className="notification-item"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="notification-message">
+                      {notification.message}
+                    </div>
+                    <div className="notification-date">{notification.date}</div>
+                  </Dropdown.Item>
+                ))
+              ) : (
+                <Dropdown.Item className="notification-item">
+                  No new notifications
+                </Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
         )}
       </div>
 
