@@ -18,6 +18,7 @@ const TopBar = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);
 
+  // Custom dropdown toggle component
   const CustomToggle = React.forwardRef<
     HTMLDivElement,
     { onClick: (e: React.MouseEvent) => void }
@@ -65,7 +66,6 @@ const TopBar = () => {
       });
   };
 
-  // Sidebar functions
   const handleSidebarToggle = () => setShowSidebar(!showSidebar);
   const handleSidebarClose = () => setShowSidebar(false);
 
@@ -97,27 +97,38 @@ const TopBar = () => {
         />
       </div>
 
+      {/* Notifications Dropdown */}
       <div className="TopBar-element">
         {profile?.role !== "ADMIN" && (
           <Dropdown onToggle={(isOpen) => isOpen && fetchNotifications()}>
             <Dropdown.Toggle as={CustomToggle} />
-            <Dropdown.Menu className="notifications-dropdown">
+            <Dropdown.Menu className="notifications-dropdown p-0">
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <Dropdown.Item
                     key={notification.id}
-                    className="notification-item"
+                    className="notification-item p-3"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="notification-message">
+                    <div
+                      className="notification-message text-wrap"
+                      style={{ fontWeight: "normal" }}
+                    >
                       {notification.message}
                     </div>
-                    <div className="notification-date">{notification.date}</div>
+                    <div className="notification-date text-muted small mt-1">
+                      {notification.date}
+                    </div>
                   </Dropdown.Item>
                 ))
               ) : (
-                <Dropdown.Item className="notification-item">
-                  No new notifications
+                <Dropdown.Item className="notification-item p-3">
+                  <div
+                    className="notification-message"
+                    style={{ fontWeight: "normal" }}
+                  >
+                    No new notifications
+                  </div>
                 </Dropdown.Item>
               )}
             </Dropdown.Menu>
@@ -125,7 +136,6 @@ const TopBar = () => {
         )}
       </div>
 
-      {/* Sidebar Offcanvas */}
       <Offcanvas
         show={showSidebar}
         onHide={handleSidebarClose}
