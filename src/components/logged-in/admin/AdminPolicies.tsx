@@ -18,7 +18,7 @@ export const AdminPolicies = ({ policies, isLoading }: AdminPoliciesProps) => {
   };
 
   const getCategoryNames = (categoryIds: number[]): string[] => {
-    return categoryIds.map((id) => categoryMap.get(id) || "Unknown");
+    return categoryIds.map((id) => categoryMap.get(id) || "");
   };
 
   const extractApplicationIds = (traffic: string): number[] => {
@@ -32,7 +32,7 @@ export const AdminPolicies = ({ policies, isLoading }: AdminPoliciesProps) => {
   };
 
   const getApplicationNames = (appIds: number[]): string[] => {
-    return appIds.map((id) => applicationMap.get(id) || "Unknown");
+    return appIds.map((id) => applicationMap.get(id) || "");
   };
 
   const formatSchedule = (schedule: Schedule | undefined): string => {

@@ -28,7 +28,9 @@ export const PolicyTable = ({
   };
 
   const getCategoryNames = (categoryIds: number[]): string[] => {
-    return categoryIds.map((id) => categoryMap.get(id) || "Unknown");
+    return categoryIds
+      .filter((id) => categoryMap.has(id))
+      .map((id) => categoryMap.get(id)!);
   };
 
   const extractApplicationIds = (traffic: string): number[] => {
@@ -42,7 +44,9 @@ export const PolicyTable = ({
   };
 
   const getApplicationNames = (appIds: number[]): string[] => {
-    return appIds.map((id) => applicationMap.get(id) || "Unknown");
+    return appIds
+      .filter((id) => applicationMap.has(id))
+      .map((id) => applicationMap.get(id)!);
   };
 
   // Helper function to convert time to minutes
@@ -168,9 +172,13 @@ export const PolicyTable = ({
       {policies.map((policy) => {
         if (policy.action != "allow") {
           const categoryIds = extractCategoryIds(policy.traffic);
-          const categoryNames = getCategoryNames(categoryIds);
+          const categoryNames =
+            getCategoryNames(categoryIds).length > 0
+              ? getCategoryNames(categoryIds).join(", ")
+              : "";
           const applicationIds = extractApplicationIds(policy.traffic);
-          const applicationNames = getApplicationNames(applicationIds);
+          const applicationNames =
+            getApplicationNames(applicationIds).join(", ");
           const schedule = formatSchedule(policy.schedule);
 
           return (
@@ -187,19 +195,25 @@ export const PolicyTable = ({
                   <strong>Naziv:</strong> {policy.name}
                 </div>
               )}
-              {categoryNames.length > 0 && (
+              {categoryNames !== "" && (
                 <div className="card-item">
-                  <strong>Kategorije:</strong> {categoryNames.join(", ")}
+                  <strong>Kategorije:</strong> {categoryNames}
                 </div>
               )}
-              {applicationNames.length > 0 && (
+              {applicationNames !== "" && (
                 <div className="card-item">
-                  <strong>Aplikacije:</strong> {applicationNames.join(", ")}
+                  <strong>Aplikacije:</strong> {applicationNames}
                 </div>
               )}
               {schedule && (
                 <div className="card-item">
                   <strong>Raspored:</strong> ...
+                </div>
+              )}
+
+              {!schedule && (
+                <div className="card-item">
+                  <strong>Raspored:</strong> Uvek aktivno
                 </div>
               )}
               <div className="card-item actions">
@@ -245,22 +259,30 @@ export const PolicyTable = ({
               {selectedPolicy.action == "allow" && (
                 <div className="text-success-alert">Dozvoljeno</div>
               )}
-              {selectedPolicy.traffic && (
-                <>
-                  <p>
-                    <strong>Kategorije:</strong>{" "}
-                    {getCategoryNames(
-                      extractCategoryIds(selectedPolicy.traffic)
-                    ).join(", ")}
-                  </p>
-                  <p>
-                    <strong>Aplikacije:</strong>{" "}
-                    {getApplicationNames(
-                      extractApplicationIds(selectedPolicy.traffic)
-                    ).join(", ")}
-                  </p>
-                </>
-              )}
+              {selectedPolicy.traffic &&
+                (() => {
+                  const categories = getCategoryNames(
+                    extractCategoryIds(selectedPolicy.traffic)
+                  );
+                  const applications = getApplicationNames(
+                    extractApplicationIds(selectedPolicy.traffic)
+                  );
+
+                  return (
+                    <>
+                      {categories.length > 0 && (
+                        <p>
+                          <strong>Kategorije:</strong> {categories.join(", ")}
+                        </p>
+                      )}
+                      {applications.length > 0 && (
+                        <p>
+                          <strong>Aplikacije:</strong> {applications.join(", ")}
+                        </p>
+                      )}
+                    </>
+                  );
+                })()}
               {selectedPolicy.schedule && (
                 <div className="schedule-display">
                   <h6>Raspored:</h6>
@@ -294,6 +316,11 @@ export const PolicyTable = ({
                     )}
                   </ul>
                 </div>
+              )}
+              {!selectedPolicy.schedule && (
+                <p>
+                  <strong>Raspored: </strong>Ovo pravilo je uvek aktivno!
+                </p>
               )}
             </div>
           </div>
