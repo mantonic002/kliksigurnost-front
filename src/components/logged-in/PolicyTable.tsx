@@ -284,37 +284,42 @@ export const PolicyTable = ({
                   );
                 })()}
               {selectedPolicy.schedule && (
-                <div className="schedule-display">
-                  <h6>Raspored:</h6>
-                  <ul>
-                    {Object.entries(selectedPolicy.schedule)
-                      .filter(([day]) => day !== "time_zone")
-                      .map(([day, timeRanges]) => {
-                        if (!timeRanges) return null;
-                        const formattedDay =
-                          {
-                            mon: "Ponedeljak",
-                            tue: "Utorak",
-                            wed: "Sreda",
-                            thu: "Četvrtak",
-                            fri: "Petak",
-                            sat: "Subota",
-                            sun: "Nedelja",
-                          }[day] || day;
-                        const formattedTime = formatTimeRanges(timeRanges);
-                        return formattedTime ? (
-                          <li key={day}>
-                            <strong>{formattedDay}:</strong> {formattedTime}
-                          </li>
-                        ) : null;
-                      })}
-                    {selectedPolicy.schedule.time_zone && (
-                      <li>
-                        <strong>Vremenska zona:</strong>{" "}
-                        {selectedPolicy.schedule.time_zone}
-                      </li>
-                    )}
-                  </ul>
+                <div className="schedule-display card mt-3">
+                  <div className="card-header">
+                    <h6 className="mb-0">Raspored:</h6>
+                  </div>
+                  <div className="card-body">
+                    <ul>
+                      {Object.entries(selectedPolicy.schedule)
+                        .filter(([day]) => day !== "time_zone")
+                        .map(([day, timeRanges]) => {
+                          if (!timeRanges) return null;
+                          const formattedDay =
+                            {
+                              mon: "Ponedeljak",
+                              tue: "Utorak",
+                              wed: "Sreda",
+                              thu: "Četvrtak",
+                              fri: "Petak",
+                              sat: "Subota",
+                              sun: "Nedelja",
+                            }[day] || day;
+                          const formattedTime = formatTimeRanges(timeRanges);
+                          return formattedTime ? (
+                            <li key={day}>
+                              <strong>{formattedDay}:</strong> {formattedTime}
+                            </li>
+                          ) : null;
+                        })}
+                      {selectedPolicy.schedule.time_zone && (
+                        <li>
+                          <small className="text-muted">
+                            Vremenska zona: {selectedPolicy.schedule.time_zone}
+                          </small>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
                 </div>
               )}
               {!selectedPolicy.schedule && (

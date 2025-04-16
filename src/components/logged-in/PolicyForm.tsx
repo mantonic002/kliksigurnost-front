@@ -17,6 +17,7 @@ import {
   createPolicyObject,
   formatTimeRanges,
 } from "./policyHelpers";
+import { Alert } from "react-bootstrap";
 
 const schema = z.object({
   trafficApplications: z.string().optional(),
@@ -298,20 +299,37 @@ export const PolicyForm = ({
 
               <SchedulePicker onChange={updateSchedule} />
 
-              {Object.keys(formattedSchedule).length > 0 && (
-                <div className="schedule-display">
-                  <h6>Izabrani raspored:</h6>
-                  <ul>
-                    {Object.entries(formattedSchedule).map(([day, time]) => (
-                      <li key={day}>
-                        {day !== "time_zone" && (
-                          <strong>{day.toUpperCase()}:</strong>
-                        )}
-                        {time}
-                      </li>
-                    ))}
-                  </ul>
+              {Object.keys(formattedSchedule).length > 0 ? (
+                <div className="schedule-display card mt-3">
+                  <div className="card-header">
+                    <h6 className="mb-0">Raspored:</h6>
+                  </div>
+                  <div className="card-body">
+                    <ul className="list-unstyled">
+                      {Object.entries(formattedSchedule).map(([day, time]) => (
+                        <li key={day}>
+                          {day !== "time_zone" ? (
+                            <>
+                              <strong>{day.toUpperCase()}:</strong> {time}
+                            </>
+                          ) : (
+                            <small className="text-muted">
+                              Vremenska zona: {time}
+                            </small>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
+              ) : (
+                <Alert>
+                  Ovo pravilo će biti uvek aktivno. <hr />
+                  <small className="text-muted">
+                    Ukoliko želite da ograničite raspored za ovo pravilo
+                    kliknite dugme iznad
+                  </small>
+                </Alert>
               )}
 
               <button

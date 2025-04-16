@@ -195,7 +195,6 @@ body {
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  max-width: fit-content;
 }
 
 .card-disabled {
