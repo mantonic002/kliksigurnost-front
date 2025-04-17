@@ -35,13 +35,12 @@ function Devices() {
         <Alert className="card card-disabled">
           <div className="card-item-overflow">
             <BsInfoCircleFill size={30} className="me-2" />
-            <strong>
-              Možete povezati do 5 različitih uređaja!
-            </strong>
+            <strong>Možete povezati do 5 različitih uređaja!</strong>
           </div>
           <hr />
           <div className="card-item-overflow">
-            Ukoliko se uređaj koji ste podesili ne izlistava na ovoj stranici, kontaktirajte tehničku podršku.
+            Ukoliko se uređaj koji ste podesili ne izlistava na ovoj stranici,
+            kontaktirajte tehničku podršku.
           </div>
         </Alert>
         {isLoading ? (
@@ -49,9 +48,11 @@ function Devices() {
         ) : (
           devices.map((device) => (
             <div key={device.id} className="card">
-              <div className="card-item">
-                <strong>Proizvođač:</strong> {device.manufacturer}
-              </div>
+              {device.manufacturer && (
+                <div className="card-item">
+                  <strong>Proizvođač:</strong> {device.manufacturer}
+                </div>
+              )}
               <div className="card-item">
                 <strong>Model:</strong> {device.model}
               </div>
