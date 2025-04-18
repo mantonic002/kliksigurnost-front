@@ -77,7 +77,7 @@ const Setup = () => {
           </p>
         </>
       ),
-      video: "/vodic2.mp4",
+      video: "/Vodic_2.mp4",
     },
   ];
 

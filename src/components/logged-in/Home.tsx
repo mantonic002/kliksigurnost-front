@@ -44,7 +44,7 @@ const Home = () => {
             <br />
             <h3>Video vodič 2 - Podešavanje dečijeg uređaja:</h3>
             <video controls className="video-standard mt-3">
-              <source src="/vodic2.mp4" type="video/mp4" />
+              <source src="/Vodic_2.mp4" type="video/mp4" />
               Vaš pregledač ne podržava video tag.
             </video>
             <br />
