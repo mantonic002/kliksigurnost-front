@@ -59,7 +59,7 @@ const Setup = () => {
           </p>
         </>
       ),
-      video: "/video-placeholder.mp4",
+      video: "/Vodic_1.mkv",
     },
     {
       icon: <FaShieldAlt className="step-icon" />,
@@ -77,7 +77,7 @@ const Setup = () => {
           </p>
         </>
       ),
-      video: "/video-placeholder.mp4",
+      video: "/vodic2.mp4",
     },
   ];
 
@@ -110,7 +110,7 @@ const Setup = () => {
                 <Accordion.Body>
                   {step.description}
                   {step.video && (
-                    <video controls className="w-100 mt-3">
+                    <video controls className="video-standard mt-3">
                       <source src={step.video} type="video/mp4" />
                       Vaš pregledač ne podržava video tag.
                     </video>
