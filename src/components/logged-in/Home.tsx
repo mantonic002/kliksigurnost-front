@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../../styles/components/Home.css";
-import video from "/video-placeholder.mp4";
+//import video1 from "/Vodic_1.mkv";
 import { SidebarData } from "./SidebarData";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -32,13 +32,20 @@ const Home = () => {
               brinite – tu smo za vas!{" "}
             </p>
             <p className="regular-text">
-              U nastavku možete pogledati video vodič koji će vas korak po korak
+              U nastavku možete pogledati dva video vodiča koji će vas korak po korak
               provesti kroz sve postavke i omogućiti da iskoristite sve
               prednosti naše aplikacije na najbolji način:
             </p>
-            <video className="video-content" controls>
-              <source src={video} type="video/mp4" />
-              Vaš pregledač ne podržava HTML5 video.
+            <h3>Video vodič 1 - Podešavanje pravila:</h3>
+            <video controls className="video-standard mt-3">
+              <source src="/Vodic_1.mkv" type="video/mp4" />
+              Vaš pregledač ne podržava video tag.
+            </video>
+            <br />
+            <h3>Video vodič 2 - Podešavanje dečijeg uređaja:</h3>
+            <video controls className="video-standard mt-3">
+              <source src="/vodic2.mp4" type="video/mp4" />
+              Vaš pregledač ne podržava video tag.
             </video>
             <br />
             <br />
